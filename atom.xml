@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2020-09-22T10:50:19.248Z</updated>
+  <updated>2020-09-22T13:00:26.073Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vsftpd服务</title>
+    <link href="http://example.com/2020/09/22/Vsftpd%E6%9C%8D%E5%8A%A1/"/>
+    <id>http://example.com/2020/09/22/Vsftpd%E6%9C%8D%E5%8A%A1/</id>
+    <published>2020-09-22T12:58:47.000Z</published>
+    <updated>2020-09-22T13:00:26.073Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;安装vsftpd&quot;&gt;&lt;a href=&quot;#安装vsftpd&quot; class=&quot;headerlink&quot; title=&quot;安装vsftpd&quot;&gt;&lt;/a&gt;安装vsftpd&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yum install vsftpd -y&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;系统认证&quot;&gt;&lt;a href=&quot;#系统认证&quot; class=&quot;headerlink&quot; title=&quot;系统认证&quot;&gt;&lt;/a&gt;系统认证&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;vi /etc/vsftpd/vsftpd.conf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[root@localhost pub]&lt;span class=&quot;comment&quot;&gt;# egrep -v &amp;quot;#|^$&amp;quot; /etc/vsftpd/vsftpd.conf &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;anonymous_enable=NO&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;local_enable=YES&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;write_enable=YES&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;local_umask=022&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;dirmessage_enable=YES&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;xferlog_enable=YES&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;connect_from_port_20=YES&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;xferlog_file=/var/&lt;span class=&quot;built_in&quot;&gt;log&lt;/span&gt;/xferlog&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;xferlog_std_format=YES&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;chroot_list_enable=YES&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;chroot_list_file=/etc/vsftpd/chroot_list&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;listen=YES&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pam_service_name=vsftpd&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;userlist_enable=YES&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;tcp_wrappers=YES&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#启动服务&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;service vsftpd start&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#创建用户 &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;useradd -s /sbin/nologin backup&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;passwd backup &lt;span class=&quot;comment&quot;&gt;#设置密码&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;touch /etc/vsftpd/chroot_list&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="Linux基础服务" scheme="http://example.com/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+    <category term="ftp" scheme="http://example.com/tags/ftp/"/>
+    
+  </entry>
   
   <entry>
     <title>迁移记录</title>
