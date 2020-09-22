@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2020-09-22T10:38:27.972Z</updated>
+  <updated>2020-09-22T10:42:29.011Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>AWS-RDS慢查询日志查看导出</title>
+    <link href="http://example.com/2020/09/22/AWS-RDS%E6%85%A2%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97%E6%9F%A5%E7%9C%8B%E5%AF%BC%E5%87%BA/"/>
+    <id>http://example.com/2020/09/22/AWS-RDS%E6%85%A2%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97%E6%9F%A5%E7%9C%8B%E5%AF%BC%E5%87%BA/</id>
+    <published>2020-09-22T10:41:17.000Z</published>
+    <updated>2020-09-22T10:42:29.011Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;如果要分析 slow log，第一步就是先要获取到 slow log 文件，由于 RDS MySQL 是托管数据库，我们无法登录到 MySQL 所在服务器，那么应该如何来获取 slow log 文件呢？&lt;/p&gt;
+&lt;p&gt;根据 MySQL slow log 的相关配置，我们知道 slow log 的存在形式一共有两种： table 或 file ，由 log_output 参数进行控制：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;TABLE (默认) – 将一般查询写入 general_log 表，将慢速查询写入 mysql.slow_log 表；&lt;/li&gt;
+&lt;li&gt;FILE – 将一般查询日志和慢速查询日志写入文件系统；&lt;/li&gt;
+&lt;li&gt;NONE – 禁用日志记录；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;针对不同形式的 slow log，我们有不同的方法将其下载到本地：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;TABLE ：由于这是将慢查询记录存放在 MySQL 的数据表里，这里我们可以使用 sql 命令将其输出到本地的一个文件；&lt;/li&gt;
+&lt;li&gt;FILE ：慢查询日志存放在 RDS MySQL 托管主机上，我们可以利用 awscli 提供的 RDS API download-db-log-file-portion 将 slow log 下载到本地；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;具体实现形式请参加后续对应部分的内容。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="AWS服务" scheme="http://example.com/categories/AWS%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+    <category term="mysql" scheme="http://example.com/tags/mysql/"/>
+    
+    <category term="AWS慢查询日志" scheme="http://example.com/tags/AWS%E6%85%A2%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97/"/>
+    
+  </entry>
   
   <entry>
     <title>Zabbix实战-2</title>

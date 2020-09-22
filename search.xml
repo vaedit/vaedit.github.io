@@ -986,4 +986,46 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
         <tag>Zabbix</tag>
       </tags>
   </entry>
+  <entry>
+    <title>AWS-RDS慢查询日志查看导出</title>
+    <url>/2020/09/22/AWS-RDS%E6%85%A2%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97%E6%9F%A5%E7%9C%8B%E5%AF%BC%E5%87%BA/</url>
+    <content><![CDATA[<p>如果要分析 slow log，第一步就是先要获取到 slow log 文件，由于 RDS MySQL 是托管数据库，我们无法登录到 MySQL 所在服务器，那么应该如何来获取 slow log 文件呢？</p>
+<p>根据 MySQL slow log 的相关配置，我们知道 slow log 的存在形式一共有两种： table 或 file ，由 log_output 参数进行控制：</p>
+<ul>
+<li>TABLE (默认) – 将一般查询写入 general_log 表，将慢速查询写入 mysql.slow_log 表；</li>
+<li>FILE – 将一般查询日志和慢速查询日志写入文件系统；</li>
+<li>NONE – 禁用日志记录；</li>
+</ul>
+<p>针对不同形式的 slow log，我们有不同的方法将其下载到本地：</p>
+<ul>
+<li>TABLE ：由于这是将慢查询记录存放在 MySQL 的数据表里，这里我们可以使用 sql 命令将其输出到本地的一个文件；</li>
+<li>FILE ：慢查询日志存放在 RDS MySQL 托管主机上，我们可以利用 awscli 提供的 RDS API download-db-log-file-portion 将 slow log 下载到本地；</li>
+</ul>
+<p>具体实现形式请参加后续对应部分的内容。</p>
+<a id="more"></a>
+
+<h3 id="使用-sql-脚本获取-slow-log"><a href="#使用-sql-脚本获取-slow-log" class="headerlink" title="使用 sql 脚本获取 slow log"></a>使用 sql 脚本获取 slow log</h3><p>查看慢查询日志记录方式</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">show variables like <span class="string">&#x27;log_output&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>导出当前全部慢查询日志</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql -uxxx -pxxxx -h xxx -D mysql -s -r -e <span class="string">&quot;SELECT CONCAT( &#x27;# Time: &#x27;, DATE_FORMAT(start_time, &#x27;%y%m%d %H%i%s&#x27;), &#x27;\n&#x27;, &#x27;# User@Host: &#x27;, user_host, &#x27;\n&#x27;, &#x27;# Query_time: &#x27;, TIME_TO_SEC(query_time),  &#x27;  Lock_time: &#x27;, TIME_TO_SEC(lock_time), &#x27;  Rows_sent: &#x27;, rows_sent, &#x27;  Rows_examined: &#x27;, rows_examined, &#x27;\n&#x27;, sql_text, &#x27;;&#x27; ) FROM mysql.slow_log&quot;</span> &gt; /data/mysql_slow_log.log</span><br></pre></td></tr></table></figure>
+
+<p>按时间导出</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql -h mysql.xxxxxxxxxxxx.rds.cn-northwest-1.amazonaws.com.cn -u root -p -P13306 -D mysql -s -r -e <span class="string">&quot;SELECT CONCAT( &#x27;# Time: &#x27;, DATE_FORMAT(start_time, &#x27;%y%m%d %H%i%s&#x27;), &#x27;\n&#x27;, &#x27;# User@Host: &#x27;, user_host, &#x27;\n&#x27;, &#x27;# Query_time: &#x27;, TIME_TO_SEC(query_time),  &#x27;  Lock_time: &#x27;, TIME_TO_SEC(lock_time), &#x27;  Rows_sent: &#x27;, rows_sent, &#x27;  Rows_examined: &#x27;, rows_examined, &#x27;\n&#x27;, sql_text, &#x27;;&#x27; ) FROM mysql.slow_log where DATE_FORMAT(start_time, &#x27;%Y%m%d %H:%i:%s&#x27;) between &#x27;20190328 10:00:00&#x27; and &#x27;20190328 11:00:00&#x27; &quot;</span> &gt; /tmp/slow.log.10-11.log</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用-awscli-获取-MySQL-slow-log"><a href="#使用-awscli-获取-MySQL-slow-log" class="headerlink" title="使用 awscli 获取 MySQL slow log"></a>使用 awscli 获取 MySQL slow log</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">show variables like <span class="string">&#x27;%output%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">show variables like <span class="string">&#x27;%slow%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">aws rds download-db-log-file-portion --db-instance-identifier mysql --log-file-name slowquery/mysql-slowquery.log --starting-token 0 --output text&gt; mysql-slowquery.log</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>AWS服务</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+        <tag>AWS慢查询日志</tag>
+      </tags>
+  </entry>
 </search>
