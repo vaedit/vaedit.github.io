@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","b2t":false,"scrollpercent":true,"padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="安装 官方文档地址：https:&#x2F;&#x2F;www.percona.com&#x2F;doc&#x2F;percona-xtrabackup&#x2F;2.4&#x2F;  yum源安装 安装Percona源  1yum install https:&#x2F;&#x2F;repo.percona.com&#x2F;yum&#x2F;percona-release-latest.noarch.rpm -y   安装包  123yum install epel-release -yyu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Xtrabackup">
+<meta property="og:url" content="http://example.com/2020/09/22/Xtrabackup/index.html">
+<meta property="og:site_name" content="Vaedit的博客">
+<meta property="og:description" content="安装 官方文档地址：https:&#x2F;&#x2F;www.percona.com&#x2F;doc&#x2F;percona-xtrabackup&#x2F;2.4&#x2F;  yum源安装 安装Percona源  1yum install https:&#x2F;&#x2F;repo.percona.com&#x2F;yum&#x2F;percona-release-latest.noarch.rpm -y   安装包  123yum install epel-release -yyu">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-09-22T10:01:59.000Z">
+<meta property="article:modified_time" content="2020-09-22T10:03:53.007Z">
+<meta property="article:author" content="Vaedit">
+<meta property="article:tag" content="mysql备份">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2020/09/22/Xtrabackup/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Xtrabackup | Vaedit的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Vaedit的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Vaedit的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">运维技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home                          //首页 fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive          //归档 fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th           //分类 fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags                     //标签 fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user                   //关于 fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/22/Xtrabackup/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Vaedit">
+      <meta itemprop="description" content="运维技术分享学习交流">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vaedit的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Xtrabackup
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-22 18:01:59" itemprop="dateCreated datePublished" datetime="2020-09-22T18:01:59+08:00">2020-09-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mysql/" itemprop="url" rel="index"><span itemprop="name">mysql</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>7.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>7 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><blockquote>
+<p>官方文档地址：<a target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/2.4/">https://www.percona.com/doc/percona-xtrabackup/2.4/</a></p>
+</blockquote>
+<h3 id="yum源安装"><a href="#yum源安装" class="headerlink" title="yum源安装"></a>yum源安装</h3><ol>
+<li>安装Percona源</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install https://repo.percona.com/yum/percona-release-latest.noarch.rpm -y</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>安装包</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release -y</span><br><span class="line">yum install percona-xtrabackup-24 -y</span><br><span class="line">yum install qpress -y <span class="comment">#压缩备份需要</span></span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h3 id="源码编译安装"><a href="#源码编译安装" class="headerlink" title="源码编译安装"></a>源码编译安装</h3><ol>
+<li>从github获取源码</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/percona/percona-xtrabackup.git </span><br><span class="line"><span class="built_in">cd</span> percona-xtrabackup </span><br><span class="line">git checkout 2.4</span><br></pre></td></tr></table></figure>
+
+<p>然后，您应该有一个以您分支的版本命名的目录，例如 <code>percona-xtrabackup</code>。</p>
+<ol start="2">
+<li>编译安装</li>
+</ol>
+<ul>
+<li>先安装依赖</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install cmake gcc gcc-c++ libaio libaio-devel automake autoconf \ </span><br><span class="line">bison libtool ncurses-devel libgcrypt-devel libev-devel libcurl-devel \ </span><br><span class="line">vim-common</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>编译安装</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cmake -DBUILD_CONFIG = xtrabackup_release -DWITH_MAN_PAGES=OFF &amp;&amp; make -j4</span><br><span class="line">make install <span class="comment">#默认安装/usr/local/xtrabackup</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="二进制包安装"><a href="#二进制包安装" class="headerlink" title="二进制包安装"></a>二进制包安装</h3><p>1.下载2进制包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.percona.com/downloads/Percona-XtraBackup-2.4/Percona-XtraBackup-2.4.9/binary/tarball/percona-xtrabackup-2.4.9-Linux-x86_64.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>2.安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum install numactl -y</span><br><span class="line">tar xf percona-xtrabackup-2.4.9-Linux-x86_64.tar.gz -C /usr/<span class="built_in">local</span>/</span><br><span class="line">mv /usr/<span class="built_in">local</span>/percona-xtrabackup-2.4.9-Linux-x86_64/ /usr/<span class="built_in">local</span>/xtrabackup</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export PATH=$PATH:/usr/local/xtrabackup/bin&#x27;</span> &gt;&gt; /etc/profile</span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="创建备份用户"><a href="#创建备份用户" class="headerlink" title="创建备份用户"></a>创建备份用户</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create user &#39;bak&#39;@&#39;localhost&#39; identified by &#39;bak&#39;;</span><br><span class="line">grant reload,lock tables,replication client,process,super on *.* to &#39;bak&#39;@&#39;localhost&#39;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置Xtrabackup"><a href="#配置Xtrabackup" class="headerlink" title="配置Xtrabackup"></a>配置Xtrabackup</h2><p>xtrabackup读取配置文件信息在my.cnf的[mysqld]和[xtrabackup]中，如果需要配置xtrabackup的配置只需要在</p>
+<p>[xtrabackup]下配置，例如配置默认target_dir</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[xtrabackup]</span><br><span class="line">target_dir &#x3D; &#x2F;data&#x2F;backups&#x2F;mysql&#x2F;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="备份与恢复"><a href="#备份与恢复" class="headerlink" title="备份与恢复"></a>备份与恢复</h2><h3 id="完全备份"><a href="#完全备份" class="headerlink" title="完全备份"></a>完全备份</h3><h4 id="创建一次全备"><a href="#创建一次全备" class="headerlink" title="创建一次全备"></a>创建一次全备</h4><blockquote>
+<p>2.4之后版本innobackpex将被弃用，所以后续都用xtrabackup</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup -H 127.0.0.1 -ubak -pbak -P 3306 --backup --target-dir=/data/backups/</span><br></pre></td></tr></table></figure>
+
+<h4 id="准备备份文件"><a href="#准备备份文件" class="headerlink" title="准备备份文件"></a>准备备份文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup --prepare --target-dir=/data/backups/</span><br></pre></td></tr></table></figure>
+
+<h4 id="恢复备份到datadir"><a href="#恢复备份到datadir" class="headerlink" title="恢复备份到datadir"></a>恢复备份到datadir</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup --copy-back --target-dir=/data/backups/</span><br></pre></td></tr></table></figure>
+
+<p>如果你不想保存备份，可以使用–move-back</p>
+<blockquote>
+<p>在恢复备份之前，datadir必须为空。另外需要注意的是，在执行恢复之前需要关闭MySQL服务器。您无法还原到正在运行的mysqld实例的datadir（导入部分备份时除外）。</p>
+</blockquote>
+<p>还可以直接拷贝或者通过rsync来还原备份</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rsync -avrP /data/backup/ /var/lib/mysql/</span><br><span class="line">chown -R mysql:mysql /var/lib/mysql</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="增量备份"><a href="#增量备份" class="headerlink" title="增量备份"></a>增量备份</h3><h4 id="创建一次全备-1"><a href="#创建一次全备-1" class="headerlink" title="创建一次全备"></a>创建一次全备</h4><blockquote>
+<p>备份目录上一级目录必须存在，佛则报错</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup -H 127.0.0.1 -ubak -pbak -P 3306 --backup --target-dir=/data/backups/base</span><br></pre></td></tr></table></figure>
+
+<p>备份会在xtrabackup_checkpoints文件中记录LSN和备份方式信息</p>
+<h4 id="基于全备的第一次增量备份"><a href="#基于全备的第一次增量备份" class="headerlink" title="基于全备的第一次增量备份"></a>基于全备的第一次增量备份</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup -H 127.0.0.1 -ubak -pbak -P 3306 --backup --target-dir=/data/backups/inc1 \</span><br><span class="line">--incremental-basedir=/data/backups/base</span><br></pre></td></tr></table></figure>
+
+<h4 id="基于全备的第二次增量备份"><a href="#基于全备的第二次增量备份" class="headerlink" title="基于全备的第二次增量备份"></a>基于全备的第二次增量备份</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup -H 127.0.0.1 -ubak -pbak -P 3306 --backup --target-dir=/data/backups/inc2 \</span><br><span class="line">--incremental-basedir=/data/backups/inc1</span><br></pre></td></tr></table></figure>
+
+<h4 id="准备备份文件-1"><a href="#准备备份文件-1" class="headerlink" title="准备备份文件"></a>准备备份文件</h4><ol>
+<li>先对全备做只提交不回滚</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup --prepare --apply-log-only --target-dir=/data/backups/base</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>把第一次增量备份应用于全备</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup --prepare --apply-log-only --target-dir=/data/backups/base \</span><br><span class="line">--incremental-dir=/data/backups/inc1</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>把第二次增量备份应用于已修改的全备（包含第一次增量备份数据）</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup --prepare --target-dir=/data/backups/base \</span><br><span class="line">--incremental-dir=/data/backups/inc2</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：除了最后一次增量备份应用于全备的操作，其余都需要加–apply-log-only,只提交，不回滚。</p>
+</blockquote>
+<ol start="4">
+<li>再对全备做一次–prepare</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup --prepare --target-dir=/data/backups/base</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>恢复全备</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup --copy-back --target-dir=/data/backups/base</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="压缩备份"><a href="#压缩备份" class="headerlink" title="压缩备份"></a>压缩备份</h3><blockquote>
+<p>要进行压缩备份，您需要使用 选项：–compress</p>
+</blockquote>
+<h4 id="创建压缩备份"><a href="#创建压缩备份" class="headerlink" title="创建压缩备份"></a>创建压缩备份</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup -H 127.0.0.1 -ubak -pbak -P 3306 --backup --compress --target-dir=/data/compressed/</span><br></pre></td></tr></table></figure>
+
+<p>采用并行压缩加速压缩备份,采用4个压缩线程</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup -H 127.0.0.1 -ubak -pbak -P 3306 --backup --compress --compress-threads=4 \</span><br><span class="line">--target-dir=/data/compressed/</span><br></pre></td></tr></table></figure>
+
+<h4 id="准备备份文件-2"><a href="#准备备份文件-2" class="headerlink" title="准备备份文件"></a>准备备份文件</h4><p>在准备备份之前，您需要解压缩所有文件。 <em>Percona XtraBackup</em>实现了可用于解压缩备份的选项。xtrabackup –decompress</p>
+<blockquote>
+<p><em>Percona XtraBackup</em>不会自动删除压缩文件。要清理备份目录，您应该使用 选项。即使它们没有被删除，如果使用–copy-back,–rmove-back，这些文件也不会被复制/移动到datadir 。 –remove-original</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup --decompress --target-dir=/data/compressed/</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在继续之前，您需要确保已安装<a target="_blank" rel="noopener" href="http://www.quicklz.com/">qpress</a>。它可从 Percona Software存储库获得 yum install qpress -y</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup --prepare --target-dir=/data/compressed/</span><br></pre></td></tr></table></figure>
+
+<h4 id="恢复备份"><a href="#恢复备份" class="headerlink" title="恢复备份"></a>恢复备份</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup --copy-back --target-dir=/data/compressed/</span><br><span class="line">chown -R mysql:mysql /var/lib/mysql</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="加密备份"><a href="#加密备份" class="headerlink" title="加密备份"></a>加密备份</h3><blockquote>
+<p><em>Percona XtraBackup</em>已实现对加密备份的支持。它可用于使用<a target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/2.4/glossary.html#term-xbstream">xbstream</a>选项加密/解密本地或流式备份（不支持流式tar备份），以便为备份添加另一层保护。加密是通过<code>libgcrypt</code>库完成的。</p>
+</blockquote>
+<p>要进行加密备份，需要指定选项（选项 并且 是互斥的，即只需要提供其中一个）： </p>
+<p>–encrypt-key</p>
+<p>–encrypt-key-file</p>
+<blockquote>
+<ul>
+<li><code>--encrypt=ALGORITHM</code>-目前支持的算法是： <code>AES128</code>，<code>AES192</code>和<code>AES256</code></li>
+<li><code>--encrypt-key=ENCRYPTION_KEY</code> - 使用适当长度的加密密钥。如果命令行无法控制访问机器，则不建议使用此选项，因此可以将密钥视为流程信息的一部分。</li>
+<li><code>--encrypt-key-file=KEYFILE</code> - 可以读取适当长度的原始密钥的文件的名称。该文件必须是一个简单的二进制（或文本）文件，其中包含要使用的密钥。</li>
+</ul>
+</blockquote>
+<p>这两个选项， 可用于指定加密密钥:</p>
+<p> –encrypt-key</p>
+<p> –encrypt-key-file</p>
+<p>可以使用以下命令生成加密密钥：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl rand -base64 24</span><br></pre></td></tr></table></figure>
+
+<p>该命令的示例输出应如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GCHFLrDFVx6UAsRb88uLVbAVWbK+Yzfs</span><br></pre></td></tr></table></figure>
+
+<p>然后，该值可用作加密密钥</p>
+<p><strong>使用–encrypt-key选项</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup -H 127.0.0.1 -ubak -pbak -P 3306 --backup --target-dir=/data/backups --encrypt=AES256 \</span><br><span class="line">--encrypt-key=<span class="string">&quot;GCHFLrDFVx6UAsRb88uLVbAVWbK+Yzfs&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>使用–encrypt-key-file选项</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup -H 127.0.0.1 -ubak -pbak -P 3306 --backup --target-dir=/data/backups/ --encrypt=AES256 \</span><br><span class="line">--encrypt-key-file=/data/backups/keyfile</span><br></pre></td></tr></table></figure>
+
+<h4 id="优化加密备份"><a href="#优化加密备份" class="headerlink" title="优化加密备份"></a>优化加密备份</h4><p>加密备份引入了两个选项，可用于加速加密过程</p>
+<p> –encrypt-threads 指定多个线程并行地用于加密</p>
+<p> –encrypt-chunk-size  用于指定每个加密线程的工作加密缓冲区的大小（以字节为单位）（默认为64K）</p>
+<h4 id="解密加密备份"><a href="#解密加密备份" class="headerlink" title="解密加密备份"></a>解密加密备份</h4><blockquote>
+<p>可用于解密备份： –decrypt</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup --decrypt=AES256 --encrypt-key=<span class="string">&quot;GCHFLrDFVx6UAsRb88uLVbAVWbK+Yzfs&quot;</span> \</span><br><span class="line">--target-dir=/data/backups/</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup --decrypt=AES256 --encrypt-key=<span class="string">&quot;GCHFLrDFVx6UAsRb88uLVbAVWbK+Yzfs&quot;</span> \</span><br><span class="line">--target-dir=/data/backups/ --remove-original</span><br></pre></td></tr></table></figure>
+
+<h4 id="准备加密备份"><a href="#准备加密备份" class="headerlink" title="准备加密备份"></a>准备加密备份</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup --prepare --target-dir=/data/backups/</span><br></pre></td></tr></table></figure>
+
+<h4 id="恢复加密备份"><a href="#恢复加密备份" class="headerlink" title="恢复加密备份"></a>恢复加密备份</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup --copy-back --target-dir=/data/backups/</span><br></pre></td></tr></table></figure>
+
+<h3 id="部分备份"><a href="#部分备份" class="headerlink" title="部分备份"></a>部分备份</h3><blockquote>
+<p><strong>xtrabackup</strong>支持在启用独立表空间innodb_file_per_table选项时进行部分备份 ，有三种方法</p>
+<ol>
+<li>将表名与正则表达式匹配</li>
+<li>提供文件中的表名列表</li>
+<li>提供数据库列表</li>
+<li>该表必须是在开启独立表空间后创建的</li>
+</ol>
+</blockquote>
+<h4 id="–tables"><a href="#–tables" class="headerlink" title="–tables"></a>–tables</h4><p>正则匹配所有开头test的库下的所有表</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup -H 127.0.0.1 -ubak -pbak -P 3306 --backup --datadir=/var/lib/mysql --target-dir=/data/backups/ --tables=<span class="string">&quot;^test[.].*&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>正则匹配开头是test的库下的t1表</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup -H 127.0.0.1 -ubak -pbak -P 3306 --backup --datadir=/var/lib/mysql --target-dir=/data/backups/ --tables=<span class="string">&quot;^test[.]t1&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="–tables-file"><a href="#–tables-file" class="headerlink" title="–tables-file"></a>–tables-file</h4><p>以库名.表名格式写入文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;mydatabase.mytable&quot;</span> &gt; /tmp/tables.txt</span><br><span class="line">xtrabackup -H 127.0.0.1 -ubak -pbak -P 3306 --backup --tables-file=/tmp/tables.txt</span><br></pre></td></tr></table></figure>
+
+<h4 id="–databases"><a href="#–databases" class="headerlink" title="–databases"></a>–databases</h4><p>多个库空格分隔</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#多库备份中，最好同时备份mysql，sys库，这样方便恢复时用户账号信息也存在</span></span><br><span class="line">xtrabackup -H 127.0.0.1 -ubak -pbak -P 3306 --backup --databases=<span class="string">&#x27;mysql sys performance_schema ...&#x27;</span> --target-dir=/data/backups/</span><br></pre></td></tr></table></figure>
+
+<h4 id="部分备份恢复"><a href="#部分备份恢复" class="headerlink" title="部分备份恢复"></a>部分备份恢复</h4><blockquote>
+<p>部分备份有2种方式恢复</p>
+<p>1 常规备份恢复</p>
+<p>2 –export 单表恢复</p>
+</blockquote>
+<ol>
+<li>常规恢复</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup --prepare --target-dir=/data/backups/</span><br></pre></td></tr></table></figure>
+
+<p>关闭数据库,拷贝数据库目录或者对应的表文件到datadir对应的库或者表,如果直接恢复到一个新实例也可以直接用copy-back.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chown mysql.mysql datadir -R</span><br><span class="line">service mysqld start</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>–export 单表恢复</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup --prepare --<span class="built_in">export</span> --target-dir=/data/backups/</span><br></pre></td></tr></table></figure>
+
+<p>然后你能在备份目录中看到.exp文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">find /data/backups/ -name export_test.*</span><br><span class="line">/data/backups/<span class="built_in">test</span>/export_test.exp </span><br><span class="line">/data/backups/<span class="built_in">test</span>/export_test.ibd </span><br><span class="line">/data/backups/<span class="built_in">test</span>/export_test.cfg</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>目标实例必须是mysql5.6版本以上才支持导入单表</p>
+</blockquote>
+<p>要将表导入其他服务器，首先要创建一个新表，其结构与将在该服务器上导入的表相同：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE TABLE mytable (...) ENGINE=InnoDB;</span><br></pre></td></tr></table></figure>
+
+<p>然后丢弃它的表空间：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE mydatabase.mytable DISCARD TABLESPACE;</span><br></pre></td></tr></table></figure>
+
+<p>复制<code>mytable.ibd</code>和<code>mytable.exp</code>文件到数据库的主页，并导入其表空间：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE mydatabase.mytable IMPORT TABLESPACE;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ANALYZE</span> <span class="keyword">TABLE</span> mydatabase.mytable;</span><br></pre></td></tr></table></figure>
+
+<p>运行此命令后，导入表中的数据将可用。</p>
+<h3 id="限制备份"><a href="#限制备份" class="headerlink" title="限制备份"></a>限制备份</h3><blockquote>
+<p>虽然<strong>xtrabackup</strong>不会阻止数据库的操作，但任何备份都可<strong>以为</strong>正在备份的系统增加负载。在没有太多备用I / O容量的系统上，限制<strong>xtrabackup</strong>读取和写入数据的速率可能会有所帮助。您可以使用该 选项执行此操作。此选项限制每秒复制的块数。块大小为<em>10 MB</em>。</p>
+</blockquote>
+<p>–throttle=</p>
+<p>默认情况下，没有限制，<strong>xtrabackup</strong>尽可能快地读取和写入数据。如果您对IOPS设置了太严格的限制，则备份可能会非常慢，以至于它永远无法跟上InnoDB正在编写的事务日志，因此备份可能永远不会完成。</p>
+<h3 id="二进制日志"><a href="#二进制日志" class="headerlink" title="二进制日志"></a>二进制日志</h3><p>默认有两个文件会记录2进制日志信息</p>
+<ol>
+<li>在只使用XtraDB或InnoDB引擎的情况下，可以在xtrabackup_binlog_pos_innodb中查看</li>
+<li>如果有包含其他存储引擎的库（MyisAM），则通过查看xtrabackup_binlog_info </li>
+</ol>
+<blockquote>
+<p>通常情况下只有innodb两个文件2进制一样，如果有其他引擎，则通常xtrabackup_binlog_info 中所示的 position 应该会比 xtrabackup_binlog_pos_innodb 所示的数值大</p>
+</blockquote>
+<h2 id="常见选项"><a href="#常见选项" class="headerlink" title="常见选项"></a>常见选项</h2><ul>
+<li><p>–apply-log-only</p>
+<p>此选项仅在准备备份时执行重做阶段。这对增量备份非常重要。</p>
+</li>
+<li><p>–backup 进行备份并将其放入。</p>
+</li>
+<li><p>–compress </p>
+<p>此选项告诉<strong>xtrabackup</strong>使用指定的压缩算法压缩所有输出数据，包括事务日志文件和元数据文件。目前唯一支持的算法是quicklz。生成的文件具有qpress存档格式，即*.qp，xtrabackup生成的每个文件本质上都是一个文件的qpress存档，可以通过qpress文件存档提取和解压缩。</p>
+</li>
+<li><p>–compress-chunk-size=# 压缩线程的工作缓冲区大小（以字节为单位）。默认值为64K。</p>
+</li>
+<li><p>–compress-threads=# </p>
+<p>此选项指定<strong>xtrabackup</strong>用于并行数据压缩的工作线程数。此选项默认为<code>1</code>。并行压缩（：选项：xtrabackup -compress-threads）可以与并行文件复制（）一起使用。例如， 将创建4个I / O线程，这些线程将读取数据并将其传递给2个压缩线程。xtrabackup –parallel –parallel=4 –compress –compress-threads=2</p>
+</li>
+<li><p>–copy-back 将先前制作的备份中的所有文件从备份目录复制到其原始位置</p>
+</li>
+<li><p>–databases=#  此选项指定应备份的数据库和表的列表。该选项接受表单列表。`”databasename1[.table_name1] databasename2[.table_name2] . . .”</p>
+</li>
+<li><p>–datadir=DIRECTORY  备份的源目录。这应该与<em>MySQL</em>服务器的datadir相同，因此<code>my.cnf</code>如果存在则应该从中读取; 否则你必须在命令行上指定它</p>
+</li>
+<li><p>–decompress </p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+      
+
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="Vaedit 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="Vaedit 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/mysql%E5%A4%87%E4%BB%BD/" rel="tag"># mysql备份</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/09/22/contextmanager/" rel="prev" title="contextmanager">
+      <i class="fa fa-chevron-left"></i> contextmanager
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#yum%E6%BA%90%E5%AE%89%E8%A3%85"><span class="nav-text">yum源安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85"><span class="nav-text">源码编译安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8C%85%E5%AE%89%E8%A3%85"><span class="nav-text">二进制包安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%A4%87%E4%BB%BD%E7%94%A8%E6%88%B7"><span class="nav-text">创建备份用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEXtrabackup"><span class="nav-text">配置Xtrabackup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D"><span class="nav-text">备份与恢复</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8C%E5%85%A8%E5%A4%87%E4%BB%BD"><span class="nav-text">完全备份</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E6%AC%A1%E5%85%A8%E5%A4%87"><span class="nav-text">创建一次全备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6"><span class="nav-text">准备备份文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%81%A2%E5%A4%8D%E5%A4%87%E4%BB%BD%E5%88%B0datadir"><span class="nav-text">恢复备份到datadir</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A2%9E%E9%87%8F%E5%A4%87%E4%BB%BD"><span class="nav-text">增量备份</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E6%AC%A1%E5%85%A8%E5%A4%87-1"><span class="nav-text">创建一次全备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%85%A8%E5%A4%87%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%A2%9E%E9%87%8F%E5%A4%87%E4%BB%BD"><span class="nav-text">基于全备的第一次增量备份</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%85%A8%E5%A4%87%E7%9A%84%E7%AC%AC%E4%BA%8C%E6%AC%A1%E5%A2%9E%E9%87%8F%E5%A4%87%E4%BB%BD"><span class="nav-text">基于全备的第二次增量备份</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6-1"><span class="nav-text">准备备份文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9%E5%A4%87%E4%BB%BD"><span class="nav-text">压缩备份</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%8E%8B%E7%BC%A9%E5%A4%87%E4%BB%BD"><span class="nav-text">创建压缩备份</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6-2"><span class="nav-text">准备备份文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%81%A2%E5%A4%8D%E5%A4%87%E4%BB%BD"><span class="nav-text">恢复备份</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86%E5%A4%87%E4%BB%BD"><span class="nav-text">加密备份</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E5%8A%A0%E5%AF%86%E5%A4%87%E4%BB%BD"><span class="nav-text">优化加密备份</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%AF%86%E5%8A%A0%E5%AF%86%E5%A4%87%E4%BB%BD"><span class="nav-text">解密加密备份</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%8A%A0%E5%AF%86%E5%A4%87%E4%BB%BD"><span class="nav-text">准备加密备份</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%81%A2%E5%A4%8D%E5%8A%A0%E5%AF%86%E5%A4%87%E4%BB%BD"><span class="nav-text">恢复加密备份</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%83%A8%E5%88%86%E5%A4%87%E4%BB%BD"><span class="nav-text">部分备份</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%80%93tables"><span class="nav-text">–tables</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%80%93tables-file"><span class="nav-text">–tables-file</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%80%93databases"><span class="nav-text">–databases</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%83%A8%E5%88%86%E5%A4%87%E4%BB%BD%E6%81%A2%E5%A4%8D"><span class="nav-text">部分备份恢复</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%90%E5%88%B6%E5%A4%87%E4%BB%BD"><span class="nav-text">限制备份</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%97%A5%E5%BF%97"><span class="nav-text">二进制日志</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%80%89%E9%A1%B9"><span class="nav-text">常见选项</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Vaedit</p>
+  <div class="site-description" itemprop="description">运维技术分享学习交流</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/vaedit" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;vaedit" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Vaedit. All rights reserved.</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">11k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">10 分钟</span>
+</div>
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

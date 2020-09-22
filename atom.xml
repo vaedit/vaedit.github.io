@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2020-09-22T09:49:55.662Z</updated>
+  <updated>2020-09-22T10:03:53.007Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Xtrabackup</title>
+    <link href="http://example.com/2020/09/22/Xtrabackup/"/>
+    <id>http://example.com/2020/09/22/Xtrabackup/</id>
+    <published>2020-09-22T10:01:59.000Z</published>
+    <updated>2020-09-22T10:03:53.007Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;官方文档地址：&lt;a href=&quot;https://www.percona.com/doc/percona-xtrabackup/2.4/&quot;&gt;https://www.percona.com/doc/percona-xtrabackup/2.4/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;yum源安装&quot;&gt;&lt;a href=&quot;#yum源安装&quot; class=&quot;headerlink&quot; title=&quot;yum源安装&quot;&gt;&lt;/a&gt;yum源安装&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;安装Percona源&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yum install https://repo.percona.com/yum/percona-release-latest.noarch.rpm -y&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;安装包&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yum install epel-release -y&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;yum install percona-xtrabackup-24 -y&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;yum install qpress -y &lt;span class=&quot;comment&quot;&gt;#压缩备份需要&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="mysql" scheme="http://example.com/categories/mysql/"/>
+    
+    
+    <category term="mysql备份" scheme="http://example.com/tags/mysql%E5%A4%87%E4%BB%BD/"/>
+    
+  </entry>
   
   <entry>
     <title>contextmanager</title>
