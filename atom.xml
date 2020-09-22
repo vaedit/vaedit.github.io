@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2020-09-22T13:00:26.073Z</updated>
+  <updated>2020-09-22T13:03:39.694Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux-ssh隧道详解</title>
+    <link href="http://example.com/2020/09/22/Linux-ssh%E9%9A%A7%E9%81%93%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://example.com/2020/09/22/Linux-ssh%E9%9A%A7%E9%81%93%E8%AF%A6%E8%A7%A3/</id>
+    <published>2020-09-22T13:02:19.000Z</published>
+    <updated>2020-09-22T13:03:39.694Z</updated>
+    
+    
+    <summary type="html">&lt;h4 id=&quot;隧道原理&quot;&gt;&lt;a href=&quot;#隧道原理&quot; class=&quot;headerlink&quot; title=&quot;隧道原理&quot;&gt;&lt;/a&gt;隧道原理&lt;/h4&gt;&lt;p&gt;隧道是一种把一种网络协议封装进另外一种网络协议进行传输的技术。这里我们研究ssh隧道，所以所有的网络通讯都是加密的。又被称作端口转发，因为ssh隧道通常会绑定一个本地端口，所有发向这个端口端口的数据包，都会被加密并透明地传输到远端系统。&lt;/p&gt;
+&lt;h4 id=&quot;隧道的类型&quot;&gt;&lt;a href=&quot;#隧道的类型&quot; class=&quot;headerlink&quot; title=&quot;隧道的类型&quot;&gt;&lt;/a&gt;隧道的类型&lt;/h4&gt;&lt;h5 id=&quot;ssh隧道有3种类型：&quot;&gt;&lt;a href=&quot;#ssh隧道有3种类型：&quot; class=&quot;headerlink&quot; title=&quot;ssh隧道有3种类型：&quot;&gt;&lt;/a&gt;ssh隧道有3种类型：&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;动态端口转发（Socks 代理）&lt;/li&gt;
+&lt;li&gt;本地端口转发&lt;/li&gt;
+&lt;li&gt;远端端口转发&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="Linux基础服务" scheme="http://example.com/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+    <category term="ssh隧道" scheme="http://example.com/tags/ssh%E9%9A%A7%E9%81%93/"/>
+    
+  </entry>
   
   <entry>
     <title>Vsftpd服务</title>

@@ -193,6 +193,99 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/22/Linux-ssh%E9%9A%A7%E9%81%93%E8%AF%A6%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Vaedit">
+      <meta itemprop="description" content="运维技术分享学习交流">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vaedit的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/22/Linux-ssh%E9%9A%A7%E9%81%93%E8%AF%A6%E8%A7%A3/" class="post-title-link" itemprop="url">Linux-ssh隧道详解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-22 21:02:19" itemprop="dateCreated datePublished" datetime="2020-09-22T21:02:19+08:00">2020-09-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">Linux基础服务</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="隧道原理"><a href="#隧道原理" class="headerlink" title="隧道原理"></a>隧道原理</h4><p>隧道是一种把一种网络协议封装进另外一种网络协议进行传输的技术。这里我们研究ssh隧道，所以所有的网络通讯都是加密的。又被称作端口转发，因为ssh隧道通常会绑定一个本地端口，所有发向这个端口端口的数据包，都会被加密并透明地传输到远端系统。</p>
+<h4 id="隧道的类型"><a href="#隧道的类型" class="headerlink" title="隧道的类型"></a>隧道的类型</h4><h5 id="ssh隧道有3种类型："><a href="#ssh隧道有3种类型：" class="headerlink" title="ssh隧道有3种类型："></a>ssh隧道有3种类型：</h5><ul>
+<li>动态端口转发（Socks 代理）</li>
+<li>本地端口转发</li>
+<li>远端端口转发</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/22/Linux-ssh%E9%9A%A7%E9%81%93%E8%AF%A6%E8%A7%A3/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/22/Vsftpd%E6%9C%8D%E5%8A%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1031,94 +1124,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/22/Linux%E5%86%85%E6%A0%B8%E8%B0%83%E4%BC%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Vaedit">
-      <meta itemprop="description" content="运维技术分享学习交流">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Vaedit的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/22/Linux%E5%86%85%E6%A0%B8%E8%B0%83%E4%BC%98/" class="post-title-link" itemprop="url">Linux内核调优</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-22 18:23:41" itemprop="dateCreated datePublished" datetime="2020-09-22T18:23:41+08:00">2020-09-22</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%B3%BB%E7%BB%9F%E8%B0%83%E4%BC%98/" itemprop="url" rel="index"><span itemprop="name">系统调优</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>7.4k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>7 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="文件描述符和最大进程数"><a href="#文件描述符和最大进程数" class="headerlink" title="文件描述符和最大进程数"></a>文件描述符和最大进程数</h2><h3 id="ulimit的使用"><a href="#ulimit的使用" class="headerlink" title="ulimit的使用"></a>ulimit的使用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ulimit</span> </span><br><span class="line"><span class="comment">#-a 列出所有当前资源极限</span></span><br><span class="line"><span class="comment">#-n 每个进程可以同时打开的最大文件数</span></span><br><span class="line"><span class="comment">#-u 可以运行的最大并发进程数</span></span><br><span class="line"><span class="comment">#-S 设置软限制</span></span><br><span class="line"><span class="comment">#-H 设置硬限制</span></span><br><span class="line">在命令行直接执行该命令只会在当前shell生效，退出或者新开一个shell都会无效，所以可以加入到全局设置中：</span><br><span class="line">/bin/<span class="built_in">echo</span> <span class="string">&quot;ulimit -SHn 65535&quot;</span> &gt;&gt; /etc/profile</span><br><span class="line"></span><br><span class="line">有时候为了方便起见，也可以将用户资源的限制统一由一个文件来配置</span><br><span class="line">这个文件就是/etc/security/limits.conf，该文件不但能对指定用户的资源进行限制，还能对指定组的资源进行限制。</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;* hard nofile 65535&quot;</span> &gt;&gt;/etc/security/limits.conf</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;* soft nofile 65535&quot;</span> &gt;&gt;/etc/security/limits.conf</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;* soft nproc 65535&quot;</span> &gt;&gt;/etc/security/limits.conf</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;* hard nproc 65535&quot;</span> &gt;&gt;/etc/security/limits.conf</span><br><span class="line"></span><br><span class="line">需要注意的是，在centos系统中，除了/etc/security/limits.conf文件外，还有一个文件/etc/security/limits.d/20-nproc.conf（centos7.x系统），</span><br><span class="line">/etc/security/limits.d/90-nproc.conf（centos6.x系统），这个文件中，对nproc设置了一个默认值，</span><br><span class="line">并且是针对所有系统用户设置的。而如果在/etc/security/limits.conf文件中也设置了nproc值的话，</span><br><span class="line">则会被覆盖，也就是说/etc/security/limits.d/里面的文件的配置会覆盖/etc/security/limits.conf的配置。</span><br><span class="line">所以最好是删除该文件或者修改或者屏蔽该文件内容：</span><br><span class="line">/bin/sed -i <span class="string">&#x27;s/1024/65535/g&#x27;</span>  /etc/security/limits.d/90-nproc.conf</span><br><span class="line">或者：</span><br><span class="line">rm -f /etc/security/limits.d/90-nproc.conf</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/22/Linux%E5%86%85%E6%A0%B8%E8%B0%83%E4%BC%98/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1188,7 +1193,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1201,7 +1206,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1245,12 +1250,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">57k</span>
+    <span title="站点总字数">59k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">51 分钟</span>
+    <span title="站点阅读时长">53 分钟</span>
 </div>
 
     <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
