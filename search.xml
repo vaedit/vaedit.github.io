@@ -734,6 +734,8 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
 
 <h3 id="CentOS-7-x下安装"><a href="#CentOS-7-x下安装" class="headerlink" title="CentOS 7.x下安装"></a>CentOS 7.x下安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#安装ruby：</span></span><br><span class="line">yum -y install ruby rubygems ruby-devel rpm-build</span><br><span class="line">gem install fpm</span><br></pre></td></tr></table></figure>
 
+<a id="more"></a>
+
 <h2 id="FPM常用参数"><a href="#FPM常用参数" class="headerlink" title="FPM常用参数"></a>FPM常用参数</h2><ul>
 <li>-f :强制覆盖[覆盖同名rpm包] </li>
 <li>-n :指定的rpm包名</li>

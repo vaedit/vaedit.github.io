@@ -28,7 +28,7 @@
 <meta property="og:description" content="fpm工具安装CentOS 6.x下安装123456789#centos6 由于自带yum源中的ruby版本太低，需要如下安装：yum -y install rpm-buildyum update nssgpg --keyserver hkp:&#x2F;&#x2F;keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1C">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-09-22T10:28:57.000Z">
-<meta property="article:modified_time" content="2020-09-22T10:33:29.120Z">
+<meta property="article:modified_time" content="2020-09-22T10:36:18.498Z">
 <meta property="article:author" content="Vaedit">
 <meta property="article:tag" content="rpm包制作">
 <meta name="twitter:card" content="summary">
@@ -266,6 +266,8 @@
         <h2 id="fpm工具安装"><a href="#fpm工具安装" class="headerlink" title="fpm工具安装"></a>fpm工具安装</h2><h3 id="CentOS-6-x下安装"><a href="#CentOS-6-x下安装" class="headerlink" title="CentOS 6.x下安装"></a>CentOS 6.x下安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#centos6 由于自带yum源中的ruby版本太低，需要如下安装：</span></span><br><span class="line">yum -y install rpm-build</span><br><span class="line">yum update nss</span><br><span class="line">gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB</span><br><span class="line">curl -sSL https://get.rvm.io | bash -s stable </span><br><span class="line"><span class="built_in">source</span> /etc/profile.d/rvm.sh</span><br><span class="line">rvm install 1.9.3</span><br><span class="line">gem install fpm</span><br><span class="line">rvm use 1.9.3 --default <span class="comment">#选择ruby版本</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="CentOS-7-x下安装"><a href="#CentOS-7-x下安装" class="headerlink" title="CentOS 7.x下安装"></a>CentOS 7.x下安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装ruby：</span></span><br><span class="line">yum -y install ruby rubygems ruby-devel rpm-build</span><br><span class="line">gem install fpm</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
 
 <h2 id="FPM常用参数"><a href="#FPM常用参数" class="headerlink" title="FPM常用参数"></a>FPM常用参数</h2><ul>
 <li>-f :强制覆盖[覆盖同名rpm包] </li>
