@@ -1233,4 +1233,38 @@ open vnc://localhost:5901</code></pre>
         <tag>ssh隧道</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Iptables端口转发</title>
+    <url>/2020/09/22/Iptables%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/</url>
+    <content><![CDATA[<blockquote>
+<p>Linux下iptables不仅可以用来做防火墙还可以用来做端口转发</p>
+</blockquote>
+<h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><p><strong>将本机的8080端口转发至其他主机，主机IP：192.168.1.12，目标主机IP和端口：192.168.1.13:8088，规则如下</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">iptables -t nat -A PREROUTING -p tcp -m tcp --dport 8080 -j DNAT --to-destination 192.168.1.13:8088</span><br><span class="line">iptables -t nat -A POSTROUTING -p tcp -m tcp --dport 8088 -j SNAT --to-source 192.168.1.12</span><br><span class="line"><span class="built_in">echo</span> 1 &gt; /proc/sys/net/ipv4/ip_forward <span class="comment">#开启iptables forward转发功能。</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>tcp范围端口映射</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">iptables -t nat -A PREROUTING -p tcp --dport 2000:2500 -j DNAT --to 192.168.66.2:2000-2500</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<p><strong>远程转发</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">iptables -A FORWARD -p tcp --dport 80 -j ACCEPT</span><br><span class="line">iptables -A FORWARD -p tcp --sport 80 -j ACCEPT</span><br><span class="line"><span class="comment">#把访问192.168.0.12的80端口转发到192.168.0.13的80端口</span></span><br><span class="line">iptables -t nat -A PREROUTING -p tcp -i eth0 -d 192.168.0.12 --dport 80 -j DNAT --to-destination 192.168.0.13:80</span><br><span class="line"><span class="comment">#配置地址伪装 </span></span><br><span class="line">iptables -t nat -A POSTROUTING -p tcp -m tcp --dport 80 -j MASQUERADE</span><br></pre></td></tr></table></figure>
+
+<p><strong>本地转发</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#访问本机的8080端口转发到本地的80端口</span></span><br><span class="line">iptables -t nat -A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-ports 80</span><br></pre></td></tr></table></figure>
+
+<p><strong>清空转发规则（nat表）</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">iptables -F -t nat</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Linux基础服务</category>
+      </categories>
+      <tags>
+        <tag>iptables</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>openssl升级</title>
+    <url>/2020/09/22/openssl%E5%8D%87%E7%BA%A7/</url>
+    <content><![CDATA[]]></content>
+  </entry>
 </search>

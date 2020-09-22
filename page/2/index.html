@@ -193,6 +193,193 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/22/AWS-EC2%E5%9C%A8%E7%BA%BF%E7%A3%81%E7%9B%98%E6%89%A9%E5%AE%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Vaedit">
+      <meta itemprop="description" content="运维技术分享学习交流">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vaedit的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/22/AWS-EC2%E5%9C%A8%E7%BA%BF%E7%A3%81%E7%9B%98%E6%89%A9%E5%AE%B9/" class="post-title-link" itemprop="url">AWS-EC2在线磁盘扩容</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-22 18:29:39" itemprop="dateCreated datePublished" datetime="2020-09-22T18:29:39+08:00">2020-09-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AWS%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">AWS服务</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>559</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ol>
+<li><p>首先先给需要扩容的磁盘卷制作快照</p>
+</li>
+<li><p>在控制台修改对应的的磁盘卷，把容量扩大，等待扩容进程走完成</p>
+</li>
+<li><p>查看文件系统</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file -s /dev/nvme?n* <span class="comment">#查看文件系统</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据卷是否有分区，来决定是否需要执行扩展分区</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">lsblk <span class="comment">#查看磁盘</span></span><br><span class="line">NAME          MAJ:MIN RM SIZE RO TYPE MOUNTPOINT</span><br><span class="line">nvme1n1       259:0    0  30G  0 disk /data</span><br><span class="line">nvme0n1       259:1    0  16G  0 disk</span><br><span class="line">└─nvme0n1p1   259:2    0   8G  0 part /</span><br><span class="line">└─nvme0n1p128 259:3    0   1M  0 part</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#nvme1n1  没有分区，nvme0n1上有两个分区，有分区的卷需要执行扩展分区扩容</span></span><br><span class="line">growpart /dev/nvme0n1 1 <span class="comment">#请注意，设备名称和分区编号之间有空格</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/22/AWS-EC2%E5%9C%A8%E7%BA%BF%E7%A3%81%E7%9B%98%E6%89%A9%E5%AE%B9/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/22/Linux%E4%B8%8B%E5%88%B6%E4%BD%9CRPM%E5%8C%85%E5%B7%A5%E5%85%B7fpm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Vaedit">
+      <meta itemprop="description" content="运维技术分享学习交流">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vaedit的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/22/Linux%E4%B8%8B%E5%88%B6%E4%BD%9CRPM%E5%8C%85%E5%B7%A5%E5%85%B7fpm/" class="post-title-link" itemprop="url">Linux下制作RPM包工具fpm</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-22 18:28:57" itemprop="dateCreated datePublished" datetime="2020-09-22T18:28:57+08:00">2020-09-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">Linux基础服务</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>6.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="fpm工具安装"><a href="#fpm工具安装" class="headerlink" title="fpm工具安装"></a>fpm工具安装</h2><h3 id="CentOS-6-x下安装"><a href="#CentOS-6-x下安装" class="headerlink" title="CentOS 6.x下安装"></a>CentOS 6.x下安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#centos6 由于自带yum源中的ruby版本太低，需要如下安装：</span></span><br><span class="line">yum -y install rpm-build</span><br><span class="line">yum update nss</span><br><span class="line">gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB</span><br><span class="line">curl -sSL https://get.rvm.io | bash -s stable </span><br><span class="line"><span class="built_in">source</span> /etc/profile.d/rvm.sh</span><br><span class="line">rvm install 1.9.3</span><br><span class="line">gem install fpm</span><br><span class="line">rvm use 1.9.3 --default <span class="comment">#选择ruby版本</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="CentOS-7-x下安装"><a href="#CentOS-7-x下安装" class="headerlink" title="CentOS 7.x下安装"></a>CentOS 7.x下安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装ruby：</span></span><br><span class="line">yum -y install ruby rubygems ruby-devel rpm-build</span><br><span class="line">gem install fpm</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/22/Linux%E4%B8%8B%E5%88%B6%E4%BD%9CRPM%E5%8C%85%E5%B7%A5%E5%85%B7fpm/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/22/Linux%E5%86%85%E6%A0%B8%E8%B0%83%E4%BC%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -932,196 +1119,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/22/%E4%BD%BF%E7%94%A8contextmanager%EF%BC%8C%E8%AE%BE%E7%BD%AE%E4%B8%8A%E4%B8%8B%E6%96%87/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Vaedit">
-      <meta itemprop="description" content="运维技术分享学习交流">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Vaedit的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/22/%E4%BD%BF%E7%94%A8contextmanager%EF%BC%8C%E8%AE%BE%E7%BD%AE%E4%B8%8A%E4%B8%8B%E6%96%87/" class="post-title-link" itemprop="url">contextmanager</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-22 17:31:13" itemprop="dateCreated datePublished" datetime="2020-09-22T17:31:13+08:00">2020-09-22</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python%E8%BF%90%E7%BB%B4/" itemprop="url" rel="index"><span itemprop="name">python运维</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用contextmanager，设置上下文</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DBTools_V2</span>():</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, host=<span class="string">&#x27;192.168.0.188&#x27;</span>, port=<span class="number">3306</span>, db=<span class="string">&#x27;xx&#x27;</span>, user=<span class="string">&#x27;xx&#x27;</span>, passwd=<span class="string">&#x27;xx?&#x27;</span>, charset=<span class="string">&#x27;utf8&#x27;</span></span>):</span></span><br><span class="line">        <span class="comment"># 建立连接</span></span><br><span class="line">        self.conn = pymysql.connect(host=host, port=port, db=db, user=user, passwd=passwd, charset=charset)</span><br><span class="line">        <span class="comment"># 创建游标，操作设置为字典类型</span></span><br><span class="line">        self.cur = self.conn.cursor(cursor=pymysql.cursors.DictCursor)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">select_by_parameters</span>(<span class="params">self, sql, params=None</span>):</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            self.cur.execute(sql, params)</span><br><span class="line">            result = self.cur.fetchall()</span><br><span class="line">            <span class="keyword">return</span> result</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            print(e)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">update_by_parameters</span>(<span class="params">self, sql, params=None</span>):</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            count = self.cur.execute(sql, params)</span><br><span class="line">            <span class="keyword">return</span> count</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            print(e)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@contextmanager</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_mysql_connect</span>(<span class="params">host=<span class="string">&#x27;192.168.0.188&#x27;</span>, port=<span class="number">3306</span>, db=<span class="string">&#x27;xx&#x27;</span>, user=<span class="string">&#x27;xx&#x27;</span>, passwd=<span class="string">&#x27;xx?&#x27;</span>, charset=<span class="string">&#x27;utf8&#x27;</span></span>):</span></span><br><span class="line">    <span class="comment"># with 执行部分</span></span><br><span class="line">    print(<span class="string">&quot;开始执行&quot;</span>)</span><br><span class="line">    db = DBTools_V2(host=host, port=port, db=db, user=user, passwd=passwd, charset=charset)</span><br><span class="line">    <span class="comment"># as 赋值</span></span><br><span class="line">    <span class="keyword">yield</span> db</span><br><span class="line">    <span class="comment"># 执行完代码后的处理</span></span><br><span class="line">    db.conn.commit()</span><br><span class="line">    db.cur.close()</span><br><span class="line">    db.conn.close()</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/22/%E4%BD%BF%E7%94%A8contextmanager%EF%BC%8C%E8%AE%BE%E7%BD%AE%E4%B8%8A%E4%B8%8B%E6%96%87/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/22/mysql%E8%A1%A8%E4%BF%AE%E5%A4%8D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Vaedit">
-      <meta itemprop="description" content="运维技术分享学习交流">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Vaedit的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/22/mysql%E8%A1%A8%E4%BF%AE%E5%A4%8D/" class="post-title-link" itemprop="url">mysql表修复</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-22 17:17:23" itemprop="dateCreated datePublished" datetime="2020-09-22T17:17:23+08:00">2020-09-22</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="mysqlcheck"><a href="#mysqlcheck" class="headerlink" title="mysqlcheck"></a>mysqlcheck</h2><blockquote>
-<ol>
-<li><p>mysqlcheck客户端可以检查和修复MyISAM表。它还可以优化和分析表。mysqlcheck的功能类似myisamchk，但其工作不同。</p>
-</li>
-<li><p>主要差别是当mysqld服务器在运行时必须使用mysqlcheck，而myisamchk应用于服务器没有运行时。使用mysqlcheck的好处是不需要停止服务器来检查或修复表。</p>
-</li>
-<li><p>mysqlcheck为用户提供了一种方便的使用SQL语句CHECK TABLE、REPAIR TABLE、ANALYZE TABLE和OPTIMIZE TABLE的方式。它确定在要执行的操作中使用使用哪个语句，然后将语句发送到要执行的服务器上。</p>
-</li>
-</ol>
-</blockquote>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqlcheck -B 指定数据库 -r -S /data/mysql2/mysql2.sock -u root -p<span class="string">&#x27;test&#x27;</span> &gt;&gt; /var/<span class="built_in">log</span>/mysqlcheck.log</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/22/mysql%E8%A1%A8%E4%BF%AE%E5%A4%8D/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1187,7 +1188,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1200,7 +1201,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1244,12 +1245,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">59k</span>
+    <span title="站点总字数">60k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">53 分钟</span>
+    <span title="站点阅读时长">54 分钟</span>
 </div>
 
     <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
