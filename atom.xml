@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2020-09-22T10:25:05.090Z</updated>
+  <updated>2020-09-22T10:33:58.160Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,57 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vps编译php报错[ext/fileinfo/libmagic/apprentice.lo]</title>
+    <link href="http://example.com/2020/09/22/vps%E7%BC%96%E8%AF%91php%E6%8A%A5%E9%94%99-ext-fileinfo-libmagic-apprentice-lo/"/>
+    <id>http://example.com/2020/09/22/vps%E7%BC%96%E8%AF%91php%E6%8A%A5%E9%94%99-ext-fileinfo-libmagic-apprentice-lo/</id>
+    <published>2020-09-22T10:31:44.000Z</published>
+    <updated>2020-09-22T10:33:58.160Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;php编译安装执行make时报错&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="故障记录" scheme="http://example.com/categories/%E6%95%85%E9%9A%9C%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="php" scheme="http://example.com/tags/php/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux下制作RPM包工具fpm</title>
+    <link href="http://example.com/2020/09/22/Linux%E4%B8%8B%E5%88%B6%E4%BD%9CRPM%E5%8C%85%E5%B7%A5%E5%85%B7fpm/"/>
+    <id>http://example.com/2020/09/22/Linux%E4%B8%8B%E5%88%B6%E4%BD%9CRPM%E5%8C%85%E5%B7%A5%E5%85%B7fpm/</id>
+    <published>2020-09-22T10:28:57.000Z</published>
+    <updated>2020-09-22T10:33:29.120Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;fpm工具安装&quot;&gt;&lt;a href=&quot;#fpm工具安装&quot; class=&quot;headerlink&quot; title=&quot;fpm工具安装&quot;&gt;&lt;/a&gt;fpm工具安装&lt;/h2&gt;&lt;h3 id=&quot;CentOS-6-x下安装&quot;&gt;&lt;a href=&quot;#CentOS-6-x下安装&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Linux基础服务" scheme="http://example.com/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+    <category term="rpm包制作" scheme="http://example.com/tags/rpm%E5%8C%85%E5%88%B6%E4%BD%9C/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux内核调优</title>

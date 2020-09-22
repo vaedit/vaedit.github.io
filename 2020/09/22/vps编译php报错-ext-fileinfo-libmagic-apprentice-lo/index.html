@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","b2t":false,"scrollpercent":true,"padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="运维技术分享学习交流">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://example.com/about/index.html">
+  <meta name="description" content="php编译安装执行make时报错 12345&#x2F;bin&#x2F;sh &#x2F;root&#x2F;php-5.6.31&#x2F;libtool --silent --preserve-dup-deps --mode&#x3D;compile cc -I&#x2F;root&#x2F;php-5.6.31&#x2F;ext&#x2F;fileinfo&#x2F;libmagic -Iext&#x2F;fileinfo&#x2F; -I&#x2F;root&#x2F;php-5.6.31&#x2F;ext&#x2F;fileinfo&#x2F; -DPHP_AT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vps编译php报错[ext&#x2F;fileinfo&#x2F;libmagic&#x2F;apprentice.lo]">
+<meta property="og:url" content="http://example.com/2020/09/22/vps%E7%BC%96%E8%AF%91php%E6%8A%A5%E9%94%99-ext-fileinfo-libmagic-apprentice-lo/index.html">
 <meta property="og:site_name" content="Vaedit的博客">
-<meta property="og:description" content="运维技术分享学习交流">
+<meta property="og:description" content="php编译安装执行make时报错 12345&#x2F;bin&#x2F;sh &#x2F;root&#x2F;php-5.6.31&#x2F;libtool --silent --preserve-dup-deps --mode&#x3D;compile cc -I&#x2F;root&#x2F;php-5.6.31&#x2F;ext&#x2F;fileinfo&#x2F;libmagic -Iext&#x2F;fileinfo&#x2F; -I&#x2F;root&#x2F;php-5.6.31&#x2F;ext&#x2F;fileinfo&#x2F; -DPHP_AT">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-09-22T08:53:45.000Z">
-<meta property="article:modified_time" content="2020-09-22T09:33:11.881Z">
+<meta property="article:published_time" content="2020-09-22T10:31:44.000Z">
+<meta property="article:modified_time" content="2020-09-22T10:33:58.160Z">
 <meta property="article:author" content="Vaedit">
-<meta property="article:tag" content="linux,django,k8s">
+<meta property="article:tag" content="php">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/about/">
+<link rel="canonical" href="http://example.com/2020/09/22/vps%E7%BC%96%E8%AF%91php%E6%8A%A5%E9%94%99-ext-fileinfo-libmagic-apprentice-lo/">
 
 
 <script id="page-configurations">
@@ -41,13 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>about | Vaedit的博客
-</title>
+  <title>vps编译php报错[ext/fileinfo/libmagic/apprentice.lo] | Vaedit的博客</title>
   
 
 
@@ -189,43 +188,136 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
-          <div class="content page posts-expand">
+          <div class="content post posts-expand">
             
 
     
-    
-    
-    <div class="post-block" lang="zh-CN">
-      <header class="post-header">
-
-<h1 class="post-title" itemprop="name headline">about
-</h1>
-
-<div class="post-meta">
   
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/22/vps%E7%BC%96%E8%AF%91php%E6%8A%A5%E9%94%99-ext-fileinfo-libmagic-apprentice-lo/">
 
-</div>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Vaedit">
+      <meta itemprop="description" content="运维技术分享学习交流">
+    </span>
 
-</header>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vaedit的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vps编译php报错[ext/fileinfo/libmagic/apprentice.lo]
+        </h1>
 
-      
-      
-      
-      <div class="post-body">
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-22 18:31:44" itemprop="dateCreated datePublished" datetime="2020-09-22T18:31:44+08:00">2020-09-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%85%E9%9A%9C%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">故障记录</span></a>
+                </span>
+            </span>
+
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>942</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>php编译安装执行make时报错</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/bin/sh /root/php-5.6.31/libtool --silent --preserve-dup-deps --mode=compile cc -I/root/php-5.6.31/ext/fileinfo/libmagic -Iext/fileinfo/ -I/root/php-5.6.31/ext/fileinfo/ -DPHP_ATOM_INC -I/root/php-5.6.31/include -I/root/php-5.6.31/main -I/root/php-5.6.31 -I/root/php-5.6.31/ext/date/lib -I/root/php-5.6.31/ext/ereg/regex -I/usr/include/libxml2 -I/usr/include/freetype2 -I/root/php-5.6.31/ext/mbstring/oniguruma -I/root/php-5.6.31/ext/mbstring/libmbfl -I/root/php-5.6.31/ext/mbstring/libmbfl/mbfl -I/root/php-5.6.31/ext/sqlite3/libsqlite -I/root/php-5.6.31/TSRM -I/root/php-5.6.31/Zend    -I/usr/include -g -O2 -fvisibility=hidden  -c /root/php-5.6.31/ext/fileinfo/libmagic/apprentice.c -o ext/fileinfo/libmagic/apprentice.lo</span><br><span class="line">cc: Internal error: Killed (program cc1)</span><br><span class="line">Please submit a full bug report.</span><br><span class="line">See &lt;http://bugzilla.redhat.com/bugzilla&gt; <span class="keyword">for</span> instructions.</span><br><span class="line">make: *** [ext/fileinfo/libmagic/apprentice.lo] Error 1</span><br></pre></td></tr></table></figure>
+<p>这是因为个人vps内存太小没到1G引起的，在./configure时加–disable-fileinfo成功解决</p>
+
+    </div>
+
+    
+    
+    
+      
+
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="Vaedit 微信支付">
+        <p>微信支付</p>
       </div>
       
-      
-      
-    </div>
-    
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="Vaedit 支付宝">
+        <p>支付宝</p>
+      </div>
 
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/php/" rel="tag"># php</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/09/22/Linux%E4%B8%8B%E5%88%B6%E4%BD%9CRPM%E5%8C%85%E5%B7%A5%E5%85%B7fpm/" rel="prev" title="Linux下制作RPM包工具fpm">
+      <i class="fa fa-chevron-left"></i> Linux下制作RPM包工具fpm
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
     
-    
-    
+  </article>
+  
+  
+  
+
 
 
           </div>
