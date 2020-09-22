@@ -1267,4 +1267,121 @@ open vnc://localhost:5901</code></pre>
     <url>/2020/09/22/openssl%E5%8D%87%E7%BA%A7/</url>
     <content><![CDATA[]]></content>
   </entry>
+  <entry>
+    <title>Mysql二进制日志恢复</title>
+    <url>/2020/09/22/Mysql%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%97%A5%E5%BF%97%E6%81%A2%E5%A4%8D/</url>
+    <content><![CDATA[<h3 id="二进制日志导出"><a href="#二进制日志导出" class="headerlink" title="二进制日志导出"></a>二进制日志导出</h3><ol>
+<li>按时间节点导出</li>
+</ol>
+<blockquote>
+<p> –no-defaults 用来对mysql5.5之前mysqlbinlog命令报错</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysqlbinlog --no-defaults --start-date=<span class="string">&quot;2017-08-08 15:04:04&quot;</span> --stop-date=<span class="string">&quot;2017-08-08 15:12:00&quot;</span> /program/mysql1/mysql-bin.000001</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>按pos节点导出</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysqlbinlog --no-defaults mysql-bin.000003 --start-position=<span class="string">&quot;622&quot;</span> --stop-position=<span class="string">&quot;712&quot;</span> &gt;xx.sql</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>按pos节点只导出某个库</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysqlbinlog --no-defaults --database=库名 --start-position=4 --stop-position=98 mysql-bin.000001 &gt; test.sql</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>多个二进制日志导出</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysqlbinlog --database=<span class="built_in">test</span> /opt/data/APP01bin.000001 /opt/data/APP01bin.000002 &gt;test.sql </span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h3 id="二进制日志类型"><a href="#二进制日志类型" class="headerlink" title="二进制日志类型"></a>二进制日志类型</h3><blockquote>
+<p>mysql binlog的3种格式，row,mixed,statement.</p>
+</blockquote>
+<p>如果binlog是row模式，需要加上以下两个参数：</p>
+<p>–base64-output=DECODE-ROWS： 会显示出row模式带来的sql变更。</p>
+<p>-v ：显示statement模式带来的sql语句</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysqlbinlog –no-defaults –v –v –base64-output=decode-rows mysql-bin.0000001 &gt;bin.sql</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>mysql</category>
+      </categories>
+      <tags>
+        <tag>binlog恢复</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mysqlhotcopy</title>
+    <url>/2020/09/22/mysqlhotcopy/</url>
+    <content><![CDATA[<blockquote>
+<p>mysqlhotcopy的使用，只能备份MYISAM引擎数据库</p>
+</blockquote>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y perl perl-DBI perl-DBD-MySQL</span><br></pre></td></tr></table></figure>
+
+<p>需要创建一个专门用来备份的账户</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">grant select,reload,lock tables on *.* to &#39;hotcopyer&#39;@&#39;localhost&#39; identified by &#39;123456&#39;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="常用选项和示例"><a href="#常用选项和示例" class="headerlink" title="常用选项和示例"></a>常用选项和示例</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysqlhotcopy -u ... -p password -S /tmp/...sock  库名(多库名空格隔开) 备份的目录</span><br><span class="line"><span class="comment"># -u -p 后面必须有空格 可以加一个--flushlog 刷新2进制文件</span></span><br><span class="line">mysqlhotcopy -u ... -p ... -S ...  原库名 新库名  <span class="comment">#会在mysql datadir下产生一个新库目录</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>-q 安静模式 </li>
+<li>–flushlog 刷新2进制日志</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="恢复数据"><a href="#恢复数据" class="headerlink" title="恢复数据"></a>恢复数据</h3><ul>
+<li>关闭数据库</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysqladmin -uroot -p -S /mysql/data/mysql.sock shutdown</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除datadir或者移走</li>
+</ul>
+<p>把原数据移走，然后直接把备份的数据文件解压并且放回到datadir下，并且修改所属用户和组为mysql</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cp -a 备份文件 datadir</span><br><span class="line">chown mysql.mysql datadir</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>再启动数据库</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">service mysqld start</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>mysql</category>
+      </categories>
+      <tags>
+        <tag>mysqlhotcopy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mysqldump</title>
+    <url>/2020/09/22/mysqldump/</url>
+    <content><![CDATA[<h3 id="常用参数"><a href="#常用参数" class="headerlink" title="常用参数"></a>常用参数</h3><ul>
+<li><p>-A/–all-databases 备份所有数据库</p>
+</li>
+<li><p>-B/–databases 备份多个库</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysqldump -uxx -pxxx -B 库名1 库名2 &gt;xxx.sql</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>–single-transaction 只用于innodb引擎，用于保证备份数据时的一致性</p>
+</li>
+<li><p>–master-data=1/2</p>
+<p>  该选项将二进制日志的位置和文件名写入到输出中。该选项要求有RELOAD权限，并且必须启用二进制日志。如果该选项值等于1，位置和文件名被写入CHANGE MASTER语句形式的转储输出，如果你使用该SQL转储主服务器以设置从服务器，从服务器从主服务器二进制日志的正确位置开始。如果选项值等于2，CHANGE MASTER语句被写成SQL注释。</p>
+</li>
+</ul>
+<a id="more"></a>
+
+<ul>
+<li>–dump-slave=1/2 该参数用在从库端备份数据，在线搭建新的从库使用</li>
+<li>–no-data/-d 只备份表结构，不备份数据</li>
+<li>–complete-insert/-c 使用完整的插入语句，可以提高插入效率</li>
+<li>-t 只导出insert语句</li>
+<li>–where=/w 导出条件</li>
+<li>–default-character-set 设置字符集</li>
+<li>-F/–flush-logs 刷新2进制日志</li>
+</ul>
+]]></content>
+      <categories>
+        <category>mysql</category>
+      </categories>
+      <tags>
+        <tag>mysqldump</tag>
+      </tags>
+  </entry>
 </search>
