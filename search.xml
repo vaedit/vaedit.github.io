@@ -1,21 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2020/09/22/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+    <title>mysql表修复</title>
+    <url>/2020/09/22/mysql%E8%A1%A8%E4%BF%AE%E5%A4%8D/</url>
+    <content><![CDATA[<h2 id="mysqlcheck"><a href="#mysqlcheck" class="headerlink" title="mysqlcheck"></a>mysqlcheck</h2><blockquote>
+<ol>
+<li><p>mysqlcheck客户端可以检查和修复MyISAM表。它还可以优化和分析表。mysqlcheck的功能类似myisamchk，但其工作不同。</p>
+</li>
+<li><p>主要差别是当mysqld服务器在运行时必须使用mysqlcheck，而myisamchk应用于服务器没有运行时。使用mysqlcheck的好处是不需要停止服务器来检查或修复表。</p>
+</li>
+<li><p>mysqlcheck为用户提供了一种方便的使用SQL语句CHECK TABLE、REPAIR TABLE、ANALYZE TABLE和OPTIMIZE TABLE的方式。它确定在要执行的操作中使用使用哪个语句，然后将语句发送到要执行的服务器上。</p>
+</li>
+</ol>
+</blockquote>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysqlcheck -B 指定数据库 -r -S /data/mysql2/mysql2.sock -u root -p<span class="string">&#x27;test&#x27;</span> &gt;&gt; /var/<span class="built_in">log</span>/mysqlcheck.log</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h3 id="常用选项"><a href="#常用选项" class="headerlink" title="常用选项"></a>常用选项</h3><ul>
+<li><p>–optimize，-o  优化表</p>
+</li>
+<li><p>-h 主机地 </p>
+</li>
+<li><p>-P 端口号</p>
+</li>
+<li><p>-F 只检查没有正确关闭的表</p>
+</li>
+<li><p>-r 执行可以修复大部分问题的修复，只是唯一值不唯一时不能修复。</p>
+</li>
+<li><p>-a 分析表</p>
+</li>
+<li><p>-c 检查表，默认选项</p>
+</li>
+<li><p>-m 中等的检查</p>
+</li>
+<li><p>-e 完全检查，很慢</p>
+</li>
+<li><p>–database，-B 指定库 如果没指定，表示全部库</p>
+</li>
+<li><p>–all–database，-A  所有库</p>
+</li>
+<li><p>–fast，-F    只检查没有正确关闭的表。</p>
+</li>
+<li><p>–quick，-q    如果你正使用该选项在检查表，它防止扫描行以检查错误链接的检查。这是最快的检查方法。    如果你正使用该选项在修复表，它尝试只修复索引树。这是最快的修复方法。</p>
+</li>
+<li><p>–silent，-s    沉默模式。只打印错误消息</p>
+</li>
+<li><p>–tables    覆盖—database或-B选项。选项后面的所有参量被视为表名。</p>
+</li>
+<li><p>–socket=/-S   指定套接字</p>
+</li>
+</ul>
+<h2 id="myisamchk"><a href="#myisamchk" class="headerlink" title="myisamchk"></a>myisamchk</h2><blockquote>
+<p>myisamchk，只适用于myisam引擎，使用时需要关闭数据库</p>
+</blockquote>
+<h3 id="myisamchk表损坏原因"><a href="#myisamchk表损坏原因" class="headerlink" title="myisamchk表损坏原因"></a>myisamchk表损坏原因</h3><ol>
+<li><p>服务器突然断电导致数据文件损坏;强制关机,没有先关闭mysql 服务;mysqld 进程在写表时被杀掉。因为此时mysql可能正在刷新索引。             </p>
+</li>
+<li><p>磁盘损坏。             </p>
+</li>
+<li><p>服务器死机。             </p>
+</li>
+<li><p>mysql 本身的bug 。             </p>
+</li>
+</ol>
+<h3 id="MySQL中MyISAM表损坏的症状"><a href="#MySQL中MyISAM表损坏的症状" class="headerlink" title="MySQL中MyISAM表损坏的症状"></a>MySQL中MyISAM表损坏的症状</h3><ol>
+<li><p>查询数据时报出错误：Incorrect key file for table: ‘…’. Try to repair it </p>
+</li>
+<li><p>查询不能在表中找到行或返回不完全的数据。             </p>
+</li>
+<li><p>Error: Table ‘…’ is marked as crashed and should be repaired 。             </p>
+</li>
+<li><p>打开表失败： Can’t open file: ‘×××.MYI’ (errno: 145) 。</p>
+</li>
+</ol>
+<h3 id="常见选项"><a href="#常见选项" class="headerlink" title="常见选项"></a>常见选项</h3><ul>
+<li>-q 快速修复，一般和-r一起使用，快速修复</li>
+<li>-r  修复模式</li>
+<li>-o 能修复-r不能修复的问题。一般会有提示使用-o</li>
+<li>-i 打印被检测表的信息</li>
+<li>-m 中等的检查</li>
+<li>-e 最彻底的检查</li>
+<li>-a 分析表</li>
+<li>-s 安静的</li>
+<li>-B 将.MYD文件备份为file_name-time.BAK</li>
+<li>–sort-index, -S 以从高到低的顺序排序索引树块。这将优化搜寻并且将使按键值的表扫描更快。</li>
+<li>-f  强制修复，一般不使用，可能会有数据丢失</li>
+<li>myisamchk默认只用3M的内存来修复，如果要修复大表的话，显然速度会巨慢，我们可以通过为myisamchk设置更多的内存，来使其运行的更快，<br>myisamchk –sort_buffer_size=16M –key_buffer_size=16M –read_buffer_size=1M –write_buffer_size=1M<br>一般sort_buffer_size的大小16m就足够用了。</li>
+<li>myisamchk默认使用选项“–tmpdir”作为临时文件的，如果tmpdir指定内存的话，恢复的表比较大，很容易报内存的错误，所以我们可以用tmpdir指定一个比较大的文件系统<br>myisamchk –sort_buffer_size=16m –key_buffer_size=16m  –read_buffer_size=2m –write_buffer_size=1m –tmpdir=/tmp</li>
+</ul>
+<p>执行myisam表的恢复只要是修复表的三个文件，最常发生问题的文件是数据文件和索引文件</p>
+<p>tbl_name.frm：定义(格式)文件<br>tbl_name.MYD：数据文件<br>tbl_name.MYI：索引文件</p>
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h3><blockquote>
+<p>首先进入到对应的数据库下：cd /data/mysql/game | 也可以直接指定表的路径，从而不用进入目录</p>
+</blockquote>
+<h4 id="检查表"><a href="#检查表" class="headerlink" title="检查表"></a>检查表</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#快速的检查</span></span><br><span class="line">myisamchk -im /usr/<span class="built_in">local</span>/mysql/data/testx/t2</span><br><span class="line"><span class="comment">#只检查没有正常关闭的表</span></span><br><span class="line">myisamchk -iFm /usr/<span class="built_in">local</span>/mysql/data/testx/t2</span><br><span class="line"><span class="comment">#仅显示表的最重要的信息</span></span><br><span class="line">myisamchk -eim /usr/<span class="built_in">local</span>/mysql/data/testx/t2</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
+<h4 id="修复表"><a href="#修复表" class="headerlink" title="修复表"></a>修复表</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#常用的修复命令</span></span><br><span class="line">myisamchk -rq tbl_name <span class="comment">#快速修复表,只修复索引</span></span><br><span class="line">myisamchk -Br tbl_name  <span class="comment">#备份并修复表</span></span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>mysql</tag>
+      </tags>
   </entry>
 </search>
