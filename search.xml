@@ -843,4 +843,147 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
         <tag>磁盘扩容</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Zabbix实战-1</title>
+    <url>/2020/09/22/Zabbix%E5%AE%9E%E6%88%98-1/</url>
+    <content><![CDATA[<blockquote>
+<p>作者：Vaedit</p>
+<p>官网文档地址：<a href="https://www.zabbix.com/cn/download?zabbix=4.0&amp;os_distribution=centos&amp;os_version=7&amp;db=mysql&amp;ws=apache">https://www.zabbix.com/cn/download?zabbix=4.0&amp;os_distribution=centos&amp;os_version=7&amp;db=mysql&amp;ws=apache</a></p>
+</blockquote>
+<p>实验环境</p>
+<table>
+<thead>
+<tr>
+<th>ip地址</th>
+<th>组件</th>
+<th>配置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>192.168.0.160</td>
+<td>zabbix-server，php，mysql，zabbix-agent，zabbix-web，nginx等</td>
+<td>2核2G</td>
+</tr>
+<tr>
+<td>192.168.0.161</td>
+<td>zabbix-agent，nginx</td>
+<td>2核2G</td>
+</tr>
+</tbody></table>
+<h4 id="安装zabbix-server环境"><a href="#安装zabbix-server环境" class="headerlink" title="安装zabbix-server环境"></a>安装zabbix-server环境</h4><h5 id="1-初始化环境"><a href="#1-初始化环境" class="headerlink" title="1 初始化环境"></a>1 初始化环境</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#192.168.0.160</span></span><br><span class="line">setenforce 0</span><br><span class="line">systemctl stop firewalld</span><br><span class="line">systemctl <span class="built_in">enable</span> firewalld</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h5 id="2-安装Mysql"><a href="#2-安装Mysql" class="headerlink" title="2 安装Mysql"></a>2 安装Mysql</h5><p>部署Mysql 5.7版本：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum -y install yum-utils </span><br><span class="line">rpm -ivh https://dev.mysql.com/get/mysql80-community-release-el7-1.noarch.rpm</span><br><span class="line">yum-config-manager --<span class="built_in">disable</span> mysql80-community</span><br><span class="line">yum-config-manager --<span class="built_in">enable</span> mysql57-community</span><br><span class="line">yum install mysql-community-server mysql-community-devel</span><br><span class="line">systemctl start mysqld</span><br><span class="line">systemctl status mysqld</span><br><span class="line">systemctl <span class="built_in">enable</span> mysqld</span><br></pre></td></tr></table></figure>
+
+<p>设置root密码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grep <span class="string">&#x27;temporary password&#x27;</span> /var/<span class="built_in">log</span>/mysqld.log</span><br><span class="line">mysql -uroot -p</span><br><span class="line">mysql&gt; ALTER USER <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED BY <span class="string">&#x27;Zabbix@2019&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>修改配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vi /etc/my.cnf</span></span><br><span class="line">[mysql]</span><br><span class="line">socket = /tmp/mysql.sock</span><br><span class="line">[mysqld]</span><br><span class="line">user = mysql</span><br><span class="line">port = 3306</span><br><span class="line">datadir = /var/lib/mysql</span><br><span class="line">socket = /tmp/mysql.sock</span><br><span class="line">bind-address = 0.0.0.0</span><br><span class="line">pid-file = /var/run/mysqld/mysqld.pid</span><br><span class="line">character-set-server = utf8</span><br><span class="line">collation-server = utf8_general_ci</span><br><span class="line">log-error = /var/<span class="built_in">log</span>/mysqld.log</span><br><span class="line"></span><br><span class="line">max_connections = 10240</span><br><span class="line">open_files_limit = 65535</span><br><span class="line">innodb_buffer_pool_size = 3G</span><br><span class="line">innodb_flush_log_at_trx_commit = 2</span><br><span class="line">innodb_log_file_size = 256M</span><br><span class="line"><span class="comment"># 修改完成后重启</span></span><br><span class="line"><span class="comment"># systemctl restart mysqld</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="3-安装Nginx"><a href="#3-安装Nginx" class="headerlink" title="3 安装Nginx"></a>3 安装Nginx</h5><p>源码编译安装：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://nginx.org/download/nginx-1.15.3.tar.gz</span><br><span class="line">yum install gcc pcre-devel openssl-devel –y</span><br><span class="line">useradd -M -s /sbin/nologin nginx</span><br><span class="line">tar zxvf nginx-1.15.3.tar.gz</span><br><span class="line"><span class="built_in">cd</span> nginx-1.15.3</span><br><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/nginx --user=nginx --group=nginx --with-http_ssl_module --with-http_stub_status_module</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<p>修改配置文件,修改pid位置：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vi /usr/local/nginx/conf/nginx.conf</span></span><br><span class="line">pid        /var/run/nginx.pid;</span><br></pre></td></tr></table></figure>
+
+<p>配置systemd管理服务：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vi /usr/lib/systemd/system/nginx.service</span></span><br><span class="line">[Unit]</span><br><span class="line">Description=The NGINX HTTP and reverse proxy server</span><br><span class="line">After=syslog.target network.target remote-fs.target nss-lookup.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">PIDFile=/var/run/nginx.pid</span><br><span class="line">ExecStartPre=/usr/<span class="built_in">local</span>/nginx/sbin/nginx -t</span><br><span class="line">ExecStart=/usr/<span class="built_in">local</span>/nginx/sbin/nginx</span><br><span class="line">ExecReload=/usr/<span class="built_in">local</span>/nginx/sbin/nginx -s reload</span><br><span class="line">ExecStop=/bin/<span class="built_in">kill</span> -s QUIT <span class="variable">$MAINPID</span></span><br><span class="line">PrivateTmp=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<p>启动并开启自启：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl start nginx</span><br><span class="line">systemctl <span class="built_in">enable</span> nginx</span><br></pre></td></tr></table></figure>
+
+<h5 id="4-PHP部署"><a href="#4-PHP部署" class="headerlink" title="4 PHP部署"></a>4 PHP部署</h5><p>安装依赖：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install epel-release -y</span><br><span class="line">yum install -y gcc gcc-c++ make gd-devel libxml2-devel libcurl-devel libjpeg-devel libpng-devel openssl-devel libxslt-devel</span><br></pre></td></tr></table></figure>
+
+<p>源码编译安装PHP</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://docs.php.net/distributions/php-5.6.36.tar.gz</span><br><span class="line">tar zxf php-5.6.36.tar.gz</span><br><span class="line"><span class="built_in">cd</span> php-5.6.36</span><br><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/php \</span><br><span class="line">--with-config-file-path=/usr/<span class="built_in">local</span>/php/etc \</span><br><span class="line">--enable-fpm --enable-opcache \</span><br><span class="line">--with-mysql --with-mysqli  \</span><br><span class="line">--enable-session --with-zlib --with-curl --with-gd \</span><br><span class="line">--with-jpeg-dir --with-png-dir --with-freetype-dir \</span><br><span class="line">--enable-mbstring --enable-xmlwriter --enable-xmlreader \</span><br><span class="line">--enable-xml --enable-sockets --enable-bcmath --with-gettext</span><br><span class="line">make -j 8 &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<p>拷贝配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cp php.ini-production /usr/<span class="built_in">local</span>/php/etc/php.ini</span><br><span class="line">cp sapi/fpm/php-fpm.conf /usr/<span class="built_in">local</span>/php/etc/php-fpm.conf</span><br><span class="line">cp sapi/fpm/php-fpm.service /usr/lib/systemd/system/</span><br></pre></td></tr></table></figure>
+
+<p>配置systemd管理服务：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vi /usr/lib/systemd/system/php-fpm.service </span></span><br><span class="line">[Unit]</span><br><span class="line">Description=The PHP FastCGI Process Manager</span><br><span class="line">After=syslog.target network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">PIDFile=/usr/<span class="built_in">local</span>/php/var/run/php-fpm.pid</span><br><span class="line">ExecStart=/usr/<span class="built_in">local</span>/php/sbin/php-fpm --nodaemonize --fpm-config /usr/<span class="built_in">local</span>/php/etc/php-fpm.conf</span><br><span class="line">ExecReload=/bin/<span class="built_in">kill</span> -USR2 <span class="variable">$MAINPID</span></span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<p>启动并开机自启：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl start php-fpm</span><br><span class="line">systemctl <span class="built_in">enable</span> php-fpm</span><br></pre></td></tr></table></figure>
+
+<h5 id="5-部署Zabbix-server"><a href="#5-部署Zabbix-server" class="headerlink" title="5 部署Zabbix-server"></a>5 部署Zabbix-server</h5><p>安装依赖包：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install libxml2-devel libcurl-devel libevent-devel net-snmp-devel mysql-community-devel -y</span><br></pre></td></tr></table></figure>
+
+<p>源码编译安装zabbix：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -zxf zabbix-4.0.0.tar.gz</span><br><span class="line">groupadd zabbix</span><br><span class="line">useradd -g zabbix zabbix -s /sbin/nologin</span><br><span class="line"><span class="built_in">cd</span> zabbix-4.0.0</span><br><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/zabbix --enable-server --enable-agent --enable-java --with-mysql --enable-ipv6 --with-net-snmp --with-libcurl --with-libxml2</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>修改配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vi /usr/local/zabbix/etc/zabbix_server.conf</span></span><br><span class="line"><span class="comment"># egrep -v &quot;^#|^$&quot; /usr/local/zabbix/etc/zabbix_server.conf</span></span><br><span class="line">LogFile=/tmp/zabbix_server.log</span><br><span class="line">DBHost=localhost</span><br><span class="line">DBName=zabbix</span><br><span class="line">DBUser=root</span><br><span class="line">DBPassword=Zabbix@2019</span><br><span class="line">DBSocket= /tmp/mysql.sock</span><br><span class="line">Timeout=4</span><br><span class="line">AlertScriptsPath=/usr/<span class="built_in">local</span>/zabbix/alertscripts</span><br><span class="line">LogSlowQueries=3000</span><br></pre></td></tr></table></figure>
+
+<p>配置systemd管理服务：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vi /usr/lib/systemd/system/zabbix_server.service</span></span><br><span class="line">[Unit]</span><br><span class="line">Description=Zabbix Server</span><br><span class="line">After=syslog.target</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Environment=<span class="string">&quot;CONFFILE=/usr/local/zabbix/etc/zabbix_server.conf&quot;</span></span><br><span class="line">EnvironmentFile=-/etc/sysconfig/zabbix-server</span><br><span class="line">Type=forking</span><br><span class="line">Restart=on-failure</span><br><span class="line">PIDFile=/tmp/zabbix_server.pid</span><br><span class="line">KillMode=control-group</span><br><span class="line">ExecStart=/usr/<span class="built_in">local</span>/zabbix/sbin/zabbix_server -c <span class="variable">$CONFFILE</span></span><br><span class="line">ExecStop=/bin/<span class="built_in">kill</span> -SIGTERM <span class="variable">$MAINPID</span></span><br><span class="line">RestartSec=10s</span><br><span class="line">TimeoutSec=0</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<p>导入表结构：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> zabbix-4.0.0/database/mysql</span><br><span class="line">mysql -uroot –pZabbix@2019</span><br><span class="line">create database zabbix default charset utf-8;</span><br><span class="line">mysql&gt; use zabbix;</span><br><span class="line">mysql&gt; <span class="built_in">source</span> schema.sql;</span><br><span class="line">mysql&gt; <span class="built_in">source</span> images.sql;</span><br><span class="line">mysql&gt; <span class="built_in">source</span> data.sql;</span><br><span class="line"></span><br><span class="line"><span class="comment">####单独设置zabbix用户</span></span><br><span class="line">mysql&gt; create database zabbix character <span class="built_in">set</span> utf8 collate utf8_bin;</span><br><span class="line">mysql&gt; create user zabbix@localhost identified by <span class="string">&#x27;password&#x27;</span>;</span><br><span class="line">mysql&gt; grant all privileges on zabbix.* to zabbix@localhost;</span><br><span class="line">mysql&gt; quit; </span><br><span class="line"></span><br><span class="line"><span class="comment">#yum安装可以通过如下导入初始架构和数据，系统将提示您输入新创建的密码。</span></span><br><span class="line">zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -p zabbix </span><br></pre></td></tr></table></figure>
+
+<p>启动并加入开机启动：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl start zabbix-server</span><br><span class="line">systemctl <span class="built_in">enable</span> zabbix-server</span><br></pre></td></tr></table></figure>
+
+<p>启动Agent，也监控本机：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/zabbix/sbin/zabbix_agentd</span><br></pre></td></tr></table></figure>
+
+<h5 id="6-部署Zabbix-WEB"><a href="#6-部署Zabbix-WEB" class="headerlink" title="6 部署Zabbix WEB"></a>6 部署Zabbix WEB</h5><blockquote>
+<p>Zabbix前端使用PHP写的，所以必须运行在PHP支持的Web服务器上。只需要简单的从frontends/php路径下复制PHP文件到Web服务器的网站根目录，就可以访问页面了。</p>
+</blockquote>
+<p> 拷贝Zabbix前端程序到网站根目录：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cp zabbix-4.0.0/frontends/php/* /usr/<span class="built_in">local</span>/nginx/html/ -rf</span><br></pre></td></tr></table></figure>
+
+<p>修改配置参数：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vi /usr/local/php/etc/php.ini</span></span><br><span class="line">max_execution_time = 300</span><br><span class="line">memory_limit = 128M</span><br><span class="line">post_max_size = 16M</span><br><span class="line">upload_max_filesize = 2M</span><br><span class="line">max_input_time = 300</span><br><span class="line">always_populate_raw_post_data = -1</span><br><span class="line">date.timezone = Asia/Shanghai</span><br></pre></td></tr></table></figure>
+
+<p>重启php-fpm生效：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl restart php-fpm</span><br></pre></td></tr></table></figure>
+
+<p>修改Nginx配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vi /usr/local/nginx/conf/nginx.conf  </span></span><br><span class="line">  server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  localhost;</span><br><span class="line"></span><br><span class="line">        access_log  logs/zabbix.access.log  main;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            root   html;</span><br><span class="line">            index  index.php index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location ~ \.php$ &#123;</span><br><span class="line">            root           html;</span><br><span class="line">            fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">            fastcgi_index  index.php;</span><br><span class="line">            fastcgi_param  SCRIPT_FILENAME  <span class="variable">$document_root</span><span class="variable">$fastcgi_script_name</span>;</span><br><span class="line">            include        fastcgi_params;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 重启Nginx</span></span><br><span class="line">systemctl restat nginx</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以通过访问网页开始初始化配置Zabbix，初始化默认账号密码：Admin,zabbix</p>
+]]></content>
+      <categories>
+        <category>系统监控</category>
+      </categories>
+      <tags>
+        <tag>Zabbix</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Zabbix实战-2</title>
+    <url>/2020/09/22/Zabbix%E5%AE%9E%E6%88%98-2/</url>
+    <content><![CDATA[<h4 id="安装Zabbix-agent环境"><a href="#安装Zabbix-agent环境" class="headerlink" title="安装Zabbix-agent环境"></a>安装Zabbix-agent环境</h4><h5 id="1-初始化环境"><a href="#1-初始化环境" class="headerlink" title="1 初始化环境"></a>1 初始化环境</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#192.168.0.161</span></span><br><span class="line">setenforce 0</span><br><span class="line">systemctl stop firewalld</span><br><span class="line">systemctl <span class="built_in">enable</span> firewalld</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-部署-Zabbix-Agent"><a href="#2-部署-Zabbix-Agent" class="headerlink" title="2 部署 Zabbix Agent"></a>2 部署 Zabbix Agent</h5><p>CentOS7.x操作系统安装：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -Uvh https://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/zabbix-release-4.0-2.el7.noarch.rpm</span><br><span class="line">yum install zabbix-agent -y</span><br></pre></td></tr></table></figure>
+
+<p>CentOS6.x操作系统安装：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -Uvh https://repo.zabbix.com/zabbix/4.0/rhel/6/x86_64/zabbix-release-4.0-2.el7.noarch.rpm</span><br><span class="line">yum install zabbix-agent -y</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<p>修改配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># egrep -v &quot;^#|^$&quot; /etc/zabbix/zabbix_agentd.conf </span></span><br><span class="line">PidFile=/var/run/zabbix/zabbix_agentd.pid</span><br><span class="line">LogFile=/var/<span class="built_in">log</span>/zabbix/zabbix_agentd.log</span><br><span class="line">LogFileSize=0</span><br><span class="line">DebugLevel=3</span><br><span class="line">Server=192.168.0.160</span><br><span class="line">ListenPort=10050</span><br><span class="line">ListenIP=192.168.0.161</span><br><span class="line">ServerActive=192.168.0.160</span><br><span class="line">Hostname=agent1</span><br><span class="line">HostMetadata=vaedit <span class="built_in">test</span></span><br><span class="line">Include=/etc/zabbix/zabbix_agentd.d/*.conf</span><br><span class="line">UnsafeUserParameters=1</span><br></pre></td></tr></table></figure>
+
+<p>启动并加入开机启动：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl start zabbix-agent</span><br><span class="line">systemctl <span class="built_in">enable</span> zabbix-agent</span><br></pre></td></tr></table></figure>
+
+<h4 id="联通性测试"><a href="#联通性测试" class="headerlink" title="联通性测试"></a>联通性测试</h4><p>在Zabbix服务器执行以下命令，判断是否可以正常连接到Zabbix agent服务器。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/zabbix/bin/zabbix_get -s 192.168.0.161 -p 10050 -k <span class="string">&quot;system.uptime&quot;</span></span><br><span class="line"></span><br><span class="line">774564</span><br></pre></td></tr></table></figure>
+
+<p>返回数字说明连通正常。否则可能是被监控机防火墙阻断，无法连通，可以尝试在被监控机添加放行规则：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">iptables -I INPUT -s 192.168.0.160 -p tcp --dport 10050 -j ACCEPT</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>系统监控</category>
+      </categories>
+      <tags>
+        <tag>Zabbix</tag>
+      </tags>
+  </entry>
 </search>

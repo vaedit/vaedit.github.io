@@ -193,6 +193,187 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/22/rsync%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Vaedit">
+      <meta itemprop="description" content="运维技术分享学习交流">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vaedit的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/22/rsync%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/" class="post-title-link" itemprop="url">rsync服务搭建</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-22 18:12:29" itemprop="dateCreated datePublished" datetime="2020-09-22T18:12:29+08:00">2020-09-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">linux基础服务</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="server端搭建"><a href="#server端搭建" class="headerlink" title="server端搭建"></a>server端搭建</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wget  http://rsync.samba.org/ftp/rsync/src/rsync-3.0.7.tar.gz</span><br><span class="line">tar xf rsync-3.0.7.tar.gz</span><br><span class="line"><span class="built_in">cd</span> rsync-3.0.7</span><br><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/rsync</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/22/rsync%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/22/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%9B%A0%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%98%B5%E5%88%97%E5%8D%A1%E5%9D%8F%E6%8E%89%E8%80%8C%E5%AF%BC%E8%87%B4%E7%9A%84%E5%9B%9E%E6%A1%A3%E6%93%8D%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Vaedit">
+      <meta itemprop="description" content="运维技术分享学习交流">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vaedit的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/22/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%9B%A0%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%98%B5%E5%88%97%E5%8D%A1%E5%9D%8F%E6%8E%89%E8%80%8C%E5%AF%BC%E8%87%B4%E7%9A%84%E5%9B%9E%E6%A1%A3%E6%93%8D%E4%BD%9C/" class="post-title-link" itemprop="url">记录一次因服务器阵列卡坏掉而导致的回档操作</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-22 18:09:29" itemprop="dateCreated datePublished" datetime="2020-09-22T18:09:29+08:00">2020-09-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%85%E9%9A%9C%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">故障记录</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>732</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h4><ol>
+<li>周一上午刚到公司便接到策划同事发来的消息，公司某老项目游戏有玩家报登录不上。</li>
+<li>于是便登录相关项目服务器，执行脚本，结果如下图：</li>
+</ol>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/299a8d666a544ca9b9691af88fb7aa06~tplv-k3u1fbpfcp-zoom-1.image"></p>
+<p>当时返回无返回结果，及红色框内无返回值。第一直觉便觉得是不是对应服务器网络有问题。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/22/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%9B%A0%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%98%B5%E5%88%97%E5%8D%A1%E5%9D%8F%E6%8E%89%E8%80%8C%E5%AF%BC%E8%87%B4%E7%9A%84%E5%9B%9E%E6%A1%A3%E6%93%8D%E4%BD%9C/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/22/Xtrabackup/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -543,20 +724,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -600,12 +781,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">41k</span>
+    <span title="站点总字数">48k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">37 分钟</span>
+    <span title="站点阅读时长">43 分钟</span>
 </div>
 
     <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
