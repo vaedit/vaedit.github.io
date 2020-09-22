@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2020-09-22T10:13:50.944Z</updated>
+  <updated>2020-09-22T10:18:11.514Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,66 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NFS安装使用</title>
+    <link href="http://example.com/2020/09/22/NFS%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/"/>
+    <id>http://example.com/2020/09/22/NFS%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/</id>
+    <published>2020-09-22T10:17:30.000Z</published>
+    <updated>2020-09-22T10:18:11.514Z</updated>
+    
+    
+    <summary type="html">&lt;h4 id=&quot;NFS安装&quot;&gt;&lt;a href=&quot;#NFS安装&quot; class=&quot;headerlink&quot; title=&quot;NFS安装&quot;&gt;&lt;/a&gt;NFS安装&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yum install nfs* rpcbind -y&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&amp;quot;/ssf *(rw,no_root_squash,no_all_squash,sync)&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt;/etc/exports&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;service rpcbind start&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;service nfs start &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;chmod 766 /ssf&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;配置文件详解&quot;&gt;&lt;a href=&quot;#配置文件详解&quot; class=&quot;headerlink&quot; title=&quot;配置文件详解&quot;&gt;&lt;/a&gt;配置文件详解&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;vim &amp;#x2F;etc&amp;#x2F;exports &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#x2F;data&amp;#x2F;lys 192.168.2.0&amp;#x2F;24(rw,no_root_squash,no_all_squash,sync)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="Linux基础服务" scheme="http://example.com/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+    <category term="NFS" scheme="http://example.com/tags/NFS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iredmail邮件服务器部署</title>
+    <link href="http://example.com/2020/09/22/iredmail%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/"/>
+    <id>http://example.com/2020/09/22/iredmail%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/</id>
+    <published>2020-09-22T10:14:47.000Z</published>
+    <updated>2020-09-22T10:16:54.162Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;作者：Vaedit&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;iredmail部署&quot;&gt;&lt;a href=&quot;#iredmail部署&quot; class=&quot;headerlink&quot; title=&quot;iredmail部署&quot;&gt;&lt;/a&gt;iredmail部署&lt;/h2&gt;&lt;h4 id=&quot;一-服务器选型采购&quot;&gt;&lt;a href=&quot;#一-服务器选型采购&quot; class=&quot;headerlink&quot; title=&quot;一 服务器选型采购&quot;&gt;&lt;/a&gt;一 服务器选型采购&lt;/h4&gt;&lt;p&gt;由于国内云厂商默认都禁用smtp25端口，所以需要购买国外地区云服务器，低使用频率推荐至少内存2G以上。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;云厂商&lt;/th&gt;
+&lt;th&gt;服务器型号&lt;/th&gt;
+&lt;th&gt;配置&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;AWS&lt;/td&gt;
+&lt;td&gt;r4.large&lt;/td&gt;
+&lt;td&gt;2核16G&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;h4 id=&quot;二-iredmail下载安装&quot;&gt;&lt;a href=&quot;#二-iredmail下载安装&quot; class=&quot;headerlink&quot; title=&quot;二 iredmail下载安装&quot;&gt;&lt;/a&gt;二 iredmail下载安装&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;该示例后续所有一级域名都需要按照实际使用域名来修改&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Linux基础服务" scheme="http://example.com/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+    <category term="iredmail" scheme="http://example.com/tags/iredmail/"/>
+    
+  </entry>
   
   <entry>
     <title>rsync服务搭建</title>
