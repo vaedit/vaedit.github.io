@@ -98,7 +98,7 @@
 
 <h4 id="修复表"><a href="#修复表" class="headerlink" title="修复表"></a>修复表</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#常用的修复命令</span></span><br><span class="line">myisamchk -rq tbl_name <span class="comment">#快速修复表,只修复索引</span></span><br><span class="line">myisamchk -Br tbl_name  <span class="comment">#备份并修复表</span></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>mysql</category>
+        <category>数据库</category>
       </categories>
       <tags>
         <tag>mysql</tag>
@@ -372,7 +372,7 @@
 </ul>
 ]]></content>
       <categories>
-        <category>mysql</category>
+        <category>数据库</category>
       </categories>
       <tags>
         <tag>mysql备份</tag>
@@ -385,7 +385,7 @@
 
 <a id="more"></a>]]></content>
       <categories>
-        <category>python</category>
+        <category>python运维</category>
       </categories>
       <tags>
         <tag>python</tag>
@@ -420,7 +420,7 @@
 </ol>
 ]]></content>
       <categories>
-        <category>Linux</category>
+        <category>故障记录</category>
       </categories>
       <tags>
         <tag>Linux</tag>
@@ -465,11 +465,10 @@
 </ul>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#写一个脚本时刻监控同步目录的变化：</span></span><br><span class="line">vim auto_inotify.sh</span><br><span class="line"><span class="meta">#!/bin/sh  </span></span><br><span class="line">src=/data/webapps/www/</span><br><span class="line">des=/var/www/html/</span><br><span class="line">ip=192.168.0.11</span><br><span class="line">inotifywait -mrq --timefmt <span class="string">&#x27;%d/%m/%y-%H:%M&#x27;</span> --format <span class="string">&#x27;%T %w%f&#x27;</span> -e modify,delete,create,attrib <span class="variable">$&#123;src&#125;</span> | <span class="keyword">while</span> <span class="built_in">read</span> file  </span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  rsync -aP --delete <span class="variable">$src</span> root@<span class="variable">$ip</span>:<span class="variable">$des</span>    </span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#后台一直执行</span></span><br><span class="line">nohup sh auto_inotify.sh &amp;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>Linux</category>
+        <category>linux基础服务</category>
       </categories>
       <tags>
         <tag>rsync</tag>
-        <tag>linux基础服务</tag>
       </tags>
   </entry>
   <entry>
