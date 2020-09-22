@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2020-09-22T10:42:29.011Z</updated>
+  <updated>2020-09-22T10:50:19.248Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>迁移记录</title>
+    <link href="http://example.com/2020/09/22/%E8%BF%81%E7%A7%BB%E8%AE%B0%E5%BD%95/"/>
+    <id>http://example.com/2020/09/22/%E8%BF%81%E7%A7%BB%E8%AE%B0%E5%BD%95/</id>
+    <published>2020-09-22T10:47:18.000Z</published>
+    <updated>2020-09-22T10:50:19.248Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="日志记录" scheme="http://example.com/categories/%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="个人记录" scheme="http://example.com/tags/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>企业级私有镜像仓库Harbor</title>
+    <link href="http://example.com/2020/09/22/%E4%BC%81%E4%B8%9A%E7%BA%A7%E7%A7%81%E6%9C%89%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93Harbor/"/>
+    <id>http://example.com/2020/09/22/%E4%BC%81%E4%B8%9A%E7%BA%A7%E7%A7%81%E6%9C%89%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93Harbor/</id>
+    <published>2020-09-22T10:46:50.000Z</published>
+    <updated>2020-09-22T10:48:23.801Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;Harbor是vmware开源的一个私有镜像仓库软件，其提供了一个网页管理界面。&lt;br&gt; Harbor的安装需要先安装docker，docker-compose&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;Docker安装：&quot;&gt;&lt;a href=&quot;#Docker安装：&quot; class=&quot;headerlink&quot; title=&quot;Docker安装：&quot;&gt;&lt;/a&gt;Docker安装：&lt;/h4&gt;&lt;p&gt;docker安装官方文档：&lt;a href=&quot;https://docs.docker.com/install/linux/docker-ce/centos/#install-using-the-repository&quot;&gt;https://docs.docker.com/install/linux/docker-ce/centos/#install-using-the-repository&lt;/a&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yum install -y yum-utils device-mapper-persistent-data lvm2 &lt;span class=&quot;comment&quot;&gt;#安装必要的软件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;yum-config-manager --add-repo  &lt;span class=&quot;comment&quot;&gt;#添加docker官方源 &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;yum install docker-ce &lt;span class=&quot;comment&quot;&gt;#安装docker社区版&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;systemctl start docker&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;附一个更改国内镜像源的方法：&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# vi /etc/docker/daemon.json&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;&amp;quot;registry-mirrors&amp;quot;&lt;/span&gt;: [ &lt;span class=&quot;string&quot;&gt;&amp;quot;https://registry.docker-cn.com&amp;quot;&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#改完后重启docker&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;systemctl restart docker&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="k8s生态圈" scheme="http://example.com/categories/k8s%E7%94%9F%E6%80%81%E5%9C%88/"/>
+    
+    
+    <category term="Harbor" scheme="http://example.com/tags/Harbor/"/>
+    
+  </entry>
   
   <entry>
     <title>AWS-RDS慢查询日志查看导出</title>

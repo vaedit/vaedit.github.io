@@ -1028,4 +1028,70 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
         <tag>AWS慢查询日志</tag>
       </tags>
   </entry>
+  <entry>
+    <title>企业级私有镜像仓库Harbor</title>
+    <url>/2020/09/22/%E4%BC%81%E4%B8%9A%E7%BA%A7%E7%A7%81%E6%9C%89%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93Harbor/</url>
+    <content><![CDATA[<blockquote>
+<p>Harbor是vmware开源的一个私有镜像仓库软件，其提供了一个网页管理界面。<br> Harbor的安装需要先安装docker，docker-compose</p>
+</blockquote>
+<h4 id="Docker安装："><a href="#Docker安装：" class="headerlink" title="Docker安装："></a>Docker安装：</h4><p>docker安装官方文档：<a href="https://docs.docker.com/install/linux/docker-ce/centos/#install-using-the-repository">https://docs.docker.com/install/linux/docker-ce/centos/#install-using-the-repository</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y yum-utils device-mapper-persistent-data lvm2 <span class="comment">#安装必要的软件</span></span><br><span class="line">yum-config-manager --add-repo  <span class="comment">#添加docker官方源 </span></span><br><span class="line">yum install docker-ce <span class="comment">#安装docker社区版</span></span><br><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure>
+<p>附一个更改国内镜像源的方法：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vi /etc/docker/daemon.json</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="string">&quot;registry-mirrors&quot;</span>: [ <span class="string">&quot;https://registry.docker-cn.com&quot;</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#改完后重启docker</span></span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h4 id="docker-compose安装"><a href="#docker-compose安装" class="headerlink" title="docker-compose安装"></a>docker-compose安装</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#下载2进制包直接解压安装即可</span></span><br><span class="line">unzip docker-compose-linux-x86_64.zip</span><br><span class="line">chmod  +x docker-compose</span><br><span class="line">mv docker-compose /usr/bin</span><br></pre></td></tr></table></figure>
+<h4 id="Harbor安装"><a href="#Harbor安装" class="headerlink" title="Harbor安装"></a>Harbor安装</h4><blockquote>
+<p>官网github地址：https:github.com/vmware/harbor</p>
+</blockquote>
+<blockquote>
+<p>自签证书文档地址：<a href="https://github.com/vmware/harbor/blob/master/docs/configure_https.md">https://github.com/vmware/harbor/blob/master/docs/configure_https.md</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#下载安装包并解压：</span></span><br><span class="line">tar xf harbor-offline-installer-v1.4.0.tgz</span><br><span class="line"><span class="built_in">cd</span> harbor</span><br><span class="line">mkdir ssl</span><br><span class="line"><span class="built_in">cd</span> ssl</span><br><span class="line"><span class="comment">#生成ca证书：</span></span><br><span class="line">openssl req \</span><br><span class="line">    -newkey rsa:4096 -nodes -sha256 -keyout ca.key \</span><br><span class="line">-x509 -days 365 -out ca.crt</span><br><span class="line"> </span><br><span class="line"><span class="comment">#这一步中hostname要输入域名：如reg.vaedit.com</span></span><br><span class="line">openssl req \</span><br><span class="line">    -newkey rsa:4096 -nodes -sha256 -keyout reg.vaedit.com.key \</span><br><span class="line">    -out reg.vaedit.com.csr</span><br><span class="line"> </span><br><span class="line">openssl x509 -req -days 365 -<span class="keyword">in</span> reg.vaedit.com.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out reg.vaedit.com.crt</span><br></pre></td></tr></table></figure>
+<p>修改harbor配置文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#vim harbor.cfg</span></span><br><span class="line">hostname = reg.vaedit.com</span><br><span class="line">ui_url_protocol = https <span class="comment">#https认证</span></span><br><span class="line">ssl_cert = ./ssl/reg.vaedit.com.crt <span class="comment">#生成的证书路径</span></span><br><span class="line">ssl_cert_key = ./ssl/reg.vaedit.com.key</span><br><span class="line">harbor_admin_password = 12345 <span class="comment">#设置密码</span></span><br><span class="line">./prepare</span><br><span class="line">./install.sh</span><br><span class="line">docker-compose ps <span class="comment">#查看docker-compose 启动的服务</span></span><br></pre></td></tr></table></figure>
+
+<p>然后在本地电脑进行本地解析：</p>
+<p><a href="https://reg.vaedit.com/">https://reg.vaedit.com</a> 访问</p>
+<p>默认账号密码：</p>
+<p>admin 12345</p>
+<p>然后就可以创建项目：共有和私有(共有不需要认证，只能下载，不能上传，私有需要认证，可以通过定义不同的角色来控制权限如管理员，开发人员，访客。)</p>
+<p>创建用户然后分配给项目</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/29b1fa7f720e40809953c3d836ff2e1e~tplv-k3u1fbpfcp-zoom-1.image"></p>
+<h4 id="客户端使用harbor仓库"><a href="#客户端使用harbor仓库" class="headerlink" title="客户端使用harbor仓库"></a>客户端使用harbor仓库</h4><ol>
+<li><p>还是得本地域名解析</p>
+<p>在/etc/hosts中添加：</p>
+<p>192.168.0.16 reg.vaedit.com</p>
+</li>
+<li><p>把域名证书拷贝到客户端</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir /etc/docker/certs.d/reg.vaedit.com -p</span><br></pre></td></tr></table></figure>
+<p>然后把证书的crt拷贝到该目录下</p>
+</li>
+<li><p>登录认证： </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker login reg.vaedit.com --username=vaedit --password=xxxx</span><br></pre></td></tr></table></figure>
+<p>上传先打tag再push, 格式为 reg.vaedit.com/项目名(test)/nginx:v1</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>k8s生态圈</category>
+      </categories>
+      <tags>
+        <tag>Harbor</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>迁移记录</title>
+    <url>/2020/09/22/%E8%BF%81%E7%A7%BB%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;今日把博客文章迁移到hexo，仅此作为记录&quot;</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>日志记录</category>
+      </categories>
+      <tags>
+        <tag>个人记录</tag>
+      </tags>
+  </entry>
 </search>

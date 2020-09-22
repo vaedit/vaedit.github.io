@@ -20,20 +20,22 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","b2t":false,"scrollpercent":true,"padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="安装Zabbix-agent环境1 初始化环境1234#192.168.0.161setenforce 0systemctl stop firewalldsystemctl enable firewalld  2 部署 Zabbix AgentCentOS7.x操作系统安装： 12rpm -Uvh https:&#x2F;&#x2F;repo.zabbix.com&#x2F;zabbix&#x2F;4.0&#x2F;rhel&#x2F;7&#x2F;x86_64&#x2F;z">
+  <meta name="description" content="Harbor是vmware开源的一个私有镜像仓库软件，其提供了一个网页管理界面。 Harbor的安装需要先安装docker，docker-compose  Docker安装：docker安装官方文档：https:&#x2F;&#x2F;docs.docker.com&#x2F;install&#x2F;linux&#x2F;docker-ce&#x2F;centos&#x2F;#install-using-the-repository 1234yum instal">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Zabbix实战-2">
-<meta property="og:url" content="http://example.com/2020/09/22/Zabbix%E5%AE%9E%E6%88%98-2/index.html">
+<meta property="og:title" content="企业级私有镜像仓库Harbor">
+<meta property="og:url" content="http://example.com/2020/09/22/%E4%BC%81%E4%B8%9A%E7%BA%A7%E7%A7%81%E6%9C%89%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93Harbor/index.html">
 <meta property="og:site_name" content="Vaedit的博客">
-<meta property="og:description" content="安装Zabbix-agent环境1 初始化环境1234#192.168.0.161setenforce 0systemctl stop firewalldsystemctl enable firewalld  2 部署 Zabbix AgentCentOS7.x操作系统安装： 12rpm -Uvh https:&#x2F;&#x2F;repo.zabbix.com&#x2F;zabbix&#x2F;4.0&#x2F;rhel&#x2F;7&#x2F;x86_64&#x2F;z">
+<meta property="og:description" content="Harbor是vmware开源的一个私有镜像仓库软件，其提供了一个网页管理界面。 Harbor的安装需要先安装docker，docker-compose  Docker安装：docker安装官方文档：https:&#x2F;&#x2F;docs.docker.com&#x2F;install&#x2F;linux&#x2F;docker-ce&#x2F;centos&#x2F;#install-using-the-repository 1234yum instal">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-09-22T10:37:10.000Z">
-<meta property="article:modified_time" content="2020-09-22T10:38:27.972Z">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/29b1fa7f720e40809953c3d836ff2e1e~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="article:published_time" content="2020-09-22T10:46:50.000Z">
+<meta property="article:modified_time" content="2020-09-22T10:48:23.801Z">
 <meta property="article:author" content="Vaedit">
-<meta property="article:tag" content="Zabbix">
+<meta property="article:tag" content="Harbor">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/29b1fa7f720e40809953c3d836ff2e1e~tplv-k3u1fbpfcp-zoom-1.image">
 
-<link rel="canonical" href="http://example.com/2020/09/22/Zabbix%E5%AE%9E%E6%88%98-2/">
+<link rel="canonical" href="http://example.com/2020/09/22/%E4%BC%81%E4%B8%9A%E7%BA%A7%E7%A7%81%E6%9C%89%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93Harbor/">
 
 
 <script id="page-configurations">
@@ -46,7 +48,7 @@
   };
 </script>
 
-  <title>Zabbix实战-2 | Vaedit的博客</title>
+  <title>企业级私有镜像仓库Harbor | Vaedit的博客</title>
   
 
 
@@ -196,7 +198,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/22/Zabbix%E5%AE%9E%E6%88%98-2/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/22/%E4%BC%81%E4%B8%9A%E7%BA%A7%E7%A7%81%E6%9C%89%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93Harbor/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -209,7 +211,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Zabbix实战-2
+          企业级私有镜像仓库Harbor
         </h1>
 
         <div class="post-meta">
@@ -219,7 +221,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-09-22 18:37:10" itemprop="dateCreated datePublished" datetime="2020-09-22T18:37:10+08:00">2020-09-22</time>
+              <time title="创建时间：2020-09-22 18:46:50" itemprop="dateCreated datePublished" datetime="2020-09-22T18:46:50+08:00">2020-09-22</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -227,7 +229,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7/" itemprop="url" rel="index"><span itemprop="name">系统监控</span></a>
+                  <a href="/categories/k8s%E7%94%9F%E6%80%81%E5%9C%88/" itemprop="url" rel="index"><span itemprop="name">k8s生态圈</span></a>
                 </span>
             </span>
 
@@ -244,14 +246,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.1k</span>
+              <span>1.8k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -263,39 +265,55 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="安装Zabbix-agent环境"><a href="#安装Zabbix-agent环境" class="headerlink" title="安装Zabbix-agent环境"></a>安装Zabbix-agent环境</h4><h5 id="1-初始化环境"><a href="#1-初始化环境" class="headerlink" title="1 初始化环境"></a>1 初始化环境</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#192.168.0.161</span></span><br><span class="line">setenforce 0</span><br><span class="line">systemctl stop firewalld</span><br><span class="line">systemctl <span class="built_in">enable</span> firewalld</span><br></pre></td></tr></table></figure>
-
-<h5 id="2-部署-Zabbix-Agent"><a href="#2-部署-Zabbix-Agent" class="headerlink" title="2 部署 Zabbix Agent"></a>2 部署 Zabbix Agent</h5><p>CentOS7.x操作系统安装：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh https://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/zabbix-release-4.0-2.el7.noarch.rpm</span><br><span class="line">yum install zabbix-agent -y</span><br></pre></td></tr></table></figure>
-
-<p>CentOS6.x操作系统安装：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh https://repo.zabbix.com/zabbix/4.0/rhel/6/x86_64/zabbix-release-4.0-2.el7.noarch.rpm</span><br><span class="line">yum install zabbix-agent -y</span><br></pre></td></tr></table></figure>
+        <blockquote>
+<p>Harbor是vmware开源的一个私有镜像仓库软件，其提供了一个网页管理界面。<br> Harbor的安装需要先安装docker，docker-compose</p>
+</blockquote>
+<h4 id="Docker安装："><a href="#Docker安装：" class="headerlink" title="Docker安装："></a>Docker安装：</h4><p>docker安装官方文档：<a target="_blank" rel="noopener" href="https://docs.docker.com/install/linux/docker-ce/centos/#install-using-the-repository">https://docs.docker.com/install/linux/docker-ce/centos/#install-using-the-repository</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils device-mapper-persistent-data lvm2 <span class="comment">#安装必要的软件</span></span><br><span class="line">yum-config-manager --add-repo  <span class="comment">#添加docker官方源 </span></span><br><span class="line">yum install docker-ce <span class="comment">#安装docker社区版</span></span><br><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure>
+<p>附一个更改国内镜像源的方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vi /etc/docker/daemon.json</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="string">&quot;registry-mirrors&quot;</span>: [ <span class="string">&quot;https://registry.docker-cn.com&quot;</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#改完后重启docker</span></span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
 
 <a id="more"></a>
 
-<p>修改配置文件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># egrep -v &quot;^#|^$&quot; /etc/zabbix/zabbix_agentd.conf </span></span><br><span class="line">PidFile=/var/run/zabbix/zabbix_agentd.pid</span><br><span class="line">LogFile=/var/<span class="built_in">log</span>/zabbix/zabbix_agentd.log</span><br><span class="line">LogFileSize=0</span><br><span class="line">DebugLevel=3</span><br><span class="line">Server=192.168.0.160</span><br><span class="line">ListenPort=10050</span><br><span class="line">ListenIP=192.168.0.161</span><br><span class="line">ServerActive=192.168.0.160</span><br><span class="line">Hostname=agent1</span><br><span class="line">HostMetadata=vaedit <span class="built_in">test</span></span><br><span class="line">Include=/etc/zabbix/zabbix_agentd.d/*.conf</span><br><span class="line">UnsafeUserParameters=1</span><br></pre></td></tr></table></figure>
+<h4 id="docker-compose安装"><a href="#docker-compose安装" class="headerlink" title="docker-compose安装"></a>docker-compose安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#下载2进制包直接解压安装即可</span></span><br><span class="line">unzip docker-compose-linux-x86_64.zip</span><br><span class="line">chmod  +x docker-compose</span><br><span class="line">mv docker-compose /usr/bin</span><br></pre></td></tr></table></figure>
+<h4 id="Harbor安装"><a href="#Harbor安装" class="headerlink" title="Harbor安装"></a>Harbor安装</h4><blockquote>
+<p>官网github地址：https:github.com/vmware/harbor</p>
+</blockquote>
+<blockquote>
+<p>自签证书文档地址：<a target="_blank" rel="noopener" href="https://github.com/vmware/harbor/blob/master/docs/configure_https.md">https://github.com/vmware/harbor/blob/master/docs/configure_https.md</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#下载安装包并解压：</span></span><br><span class="line">tar xf harbor-offline-installer-v1.4.0.tgz</span><br><span class="line"><span class="built_in">cd</span> harbor</span><br><span class="line">mkdir ssl</span><br><span class="line"><span class="built_in">cd</span> ssl</span><br><span class="line"><span class="comment">#生成ca证书：</span></span><br><span class="line">openssl req \</span><br><span class="line">    -newkey rsa:4096 -nodes -sha256 -keyout ca.key \</span><br><span class="line">-x509 -days 365 -out ca.crt</span><br><span class="line"> </span><br><span class="line"><span class="comment">#这一步中hostname要输入域名：如reg.vaedit.com</span></span><br><span class="line">openssl req \</span><br><span class="line">    -newkey rsa:4096 -nodes -sha256 -keyout reg.vaedit.com.key \</span><br><span class="line">    -out reg.vaedit.com.csr</span><br><span class="line"> </span><br><span class="line">openssl x509 -req -days 365 -<span class="keyword">in</span> reg.vaedit.com.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out reg.vaedit.com.crt</span><br></pre></td></tr></table></figure>
+<p>修改harbor配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#vim harbor.cfg</span></span><br><span class="line">hostname = reg.vaedit.com</span><br><span class="line">ui_url_protocol = https <span class="comment">#https认证</span></span><br><span class="line">ssl_cert = ./ssl/reg.vaedit.com.crt <span class="comment">#生成的证书路径</span></span><br><span class="line">ssl_cert_key = ./ssl/reg.vaedit.com.key</span><br><span class="line">harbor_admin_password = 12345 <span class="comment">#设置密码</span></span><br><span class="line">./prepare</span><br><span class="line">./install.sh</span><br><span class="line">docker-compose ps <span class="comment">#查看docker-compose 启动的服务</span></span><br></pre></td></tr></table></figure>
 
-<p>启动并加入开机启动：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start zabbix-agent</span><br><span class="line">systemctl <span class="built_in">enable</span> zabbix-agent</span><br></pre></td></tr></table></figure>
+<p>然后在本地电脑进行本地解析：</p>
+<p><a target="_blank" rel="noopener" href="https://reg.vaedit.com/">https://reg.vaedit.com</a> 访问</p>
+<p>默认账号密码：</p>
+<p>admin 12345</p>
+<p>然后就可以创建项目：共有和私有(共有不需要认证，只能下载，不能上传，私有需要认证，可以通过定义不同的角色来控制权限如管理员，开发人员，访客。)</p>
+<p>创建用户然后分配给项目</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/29b1fa7f720e40809953c3d836ff2e1e~tplv-k3u1fbpfcp-zoom-1.image"></p>
+<h4 id="客户端使用harbor仓库"><a href="#客户端使用harbor仓库" class="headerlink" title="客户端使用harbor仓库"></a>客户端使用harbor仓库</h4><ol>
+<li><p>还是得本地域名解析</p>
+<p>在/etc/hosts中添加：</p>
+<p>192.168.0.16 reg.vaedit.com</p>
+</li>
+<li><p>把域名证书拷贝到客户端</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /etc/docker/certs.d/reg.vaedit.com -p</span><br></pre></td></tr></table></figure>
+<p>然后把证书的crt拷贝到该目录下</p>
+</li>
+<li><p>登录认证： </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker login reg.vaedit.com --username=vaedit --password=xxxx</span><br></pre></td></tr></table></figure>
+<p>上传先打tag再push, 格式为 reg.vaedit.com/项目名(test)/nginx:v1</p>
+</li>
+</ol>
 
-<h4 id="联通性测试"><a href="#联通性测试" class="headerlink" title="联通性测试"></a>联通性测试</h4><p>在Zabbix服务器执行以下命令，判断是否可以正常连接到Zabbix agent服务器。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/zabbix/bin/zabbix_get -s 192.168.0.161 -p 10050 -k <span class="string">&quot;system.uptime&quot;</span></span><br><span class="line"></span><br><span class="line">774564</span><br></pre></td></tr></table></figure>
-
-<p>返回数字说明连通正常。否则可能是被监控机防火墙阻断，无法连通，可以尝试在被监控机添加放行规则：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -I INPUT -s 192.168.0.160 -p tcp --dport 10050 -j ACCEPT</span><br></pre></td></tr></table></figure>
     </div>
 
     
     
     
       
-  <div class="popular-posts-header">相关文章</div>
-  <ul class="popular-posts">
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\09\22\Zabbix实战-1\" rel="bookmark">Zabbix实战-1</a></div>
-    </li>
-  </ul>
 
         <div class="reward-container">
   <div></div>
@@ -320,7 +338,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Zabbix/" rel="tag"># Zabbix</a>
+              <a href="/tags/Harbor/" rel="tag"># Harbor</a>
           </div>
 
         
@@ -329,12 +347,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/09/22/Zabbix%E5%AE%9E%E6%88%98-1/" rel="prev" title="Zabbix实战-1">
-      <i class="fa fa-chevron-left"></i> Zabbix实战-1
+    <a href="/2020/09/22/AWS-RDS%E6%85%A2%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97%E6%9F%A5%E7%9C%8B%E5%AF%BC%E5%87%BA/" rel="prev" title="AWS-RDS慢查询日志查看导出">
+      <i class="fa fa-chevron-left"></i> AWS-RDS慢查询日志查看导出
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/09/22/AWS-RDS%E6%85%A2%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97%E6%9F%A5%E7%9C%8B%E5%AF%BC%E5%87%BA/" rel="next" title="AWS-RDS慢查询日志查看导出">
-      AWS-RDS慢查询日志查看导出 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/09/22/%E8%BF%81%E7%A7%BB%E8%AE%B0%E5%BD%95/" rel="next" title="迁移记录">
+      迁移记录 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -394,7 +412,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Zabbix-agent%E7%8E%AF%E5%A2%83"><span class="nav-text">安装Zabbix-agent环境</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E5%88%9D%E5%A7%8B%E5%8C%96%E7%8E%AF%E5%A2%83"><span class="nav-text">1 初始化环境</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E9%83%A8%E7%BD%B2-Zabbix-Agent"><span class="nav-text">2 部署 Zabbix Agent</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%81%94%E9%80%9A%E6%80%A7%E6%B5%8B%E8%AF%95"><span class="nav-text">联通性测试</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Docker%E5%AE%89%E8%A3%85%EF%BC%9A"><span class="nav-text">Docker安装：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#docker-compose%E5%AE%89%E8%A3%85"><span class="nav-text">docker-compose安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Harbor%E5%AE%89%E8%A3%85"><span class="nav-text">Harbor安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BD%BF%E7%94%A8harbor%E4%BB%93%E5%BA%93"><span class="nav-text">客户端使用harbor仓库</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
