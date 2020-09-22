@@ -43,6 +43,34 @@
   </entry>
   
   <entry>
+    <title>AWS-EC2在线磁盘扩容</title>
+    <link href="http://example.com/2020/09/22/AWS-EC2%E5%9C%A8%E7%BA%BF%E7%A3%81%E7%9B%98%E6%89%A9%E5%AE%B9/"/>
+    <id>http://example.com/2020/09/22/AWS-EC2%E5%9C%A8%E7%BA%BF%E7%A3%81%E7%9B%98%E6%89%A9%E5%AE%B9/</id>
+    <published>2020-09-22T10:29:39.000Z</published>
+    <updated>2020-09-22T10:35:07.365Z</updated>
+    
+    
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;首先先给需要扩容的磁盘卷制作快照&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在控制台修改对应的的磁盘卷，把容量扩大，等待扩容进程走完成&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;查看文件系统&lt;/p&gt;
+ &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;file -s /dev/nvme?n* &lt;span class=&quot;comment&quot;&gt;#查看文件系统&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;根据卷是否有分区，来决定是否需要执行扩展分区&lt;/p&gt;
+ &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;lsblk &lt;span class=&quot;comment&quot;&gt;#查看磁盘&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NAME          MAJ:MIN RM SIZE RO TYPE MOUNTPOINT&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;nvme1n1       259:0    0  30G  0 disk /data&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;nvme0n1       259:1    0  16G  0 disk&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;└─nvme0n1p1   259:2    0   8G  0 part /&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;└─nvme0n1p128 259:3    0   1M  0 part&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#nvme1n1  没有分区，nvme0n1上有两个分区，有分区的卷需要执行扩展分区扩容&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;growpart /dev/nvme0n1 1 &lt;span class=&quot;comment&quot;&gt;#请注意，设备名称和分区编号之间有空格&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="AWS服务" scheme="http://example.com/categories/AWS%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+    <category term="磁盘扩容" scheme="http://example.com/tags/%E7%A3%81%E7%9B%98%E6%89%A9%E5%AE%B9/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Linux下制作RPM包工具fpm</title>
     <link href="http://example.com/2020/09/22/Linux%E4%B8%8B%E5%88%B6%E4%BD%9CRPM%E5%8C%85%E5%B7%A5%E5%85%B7fpm/"/>
     <id>http://example.com/2020/09/22/Linux%E4%B8%8B%E5%88%B6%E4%BD%9CRPM%E5%8C%85%E5%B7%A5%E5%85%B7fpm/</id>
