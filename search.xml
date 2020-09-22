@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>contextmanager</title>
+    <url>/2020/09/22/contextmanager/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>mysql表修复</title>
     <url>/2020/09/22/mysql%E8%A1%A8%E4%BF%AE%E5%A4%8D/</url>
     <content><![CDATA[<h2 id="mysqlcheck"><a href="#mysqlcheck" class="headerlink" title="mysqlcheck"></a>mysqlcheck</h2><blockquote>
@@ -98,10 +103,5 @@
       <tags>
         <tag>mysql</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>contextmanager</title>
-    <url>/2020/09/22/contextmanager/</url>
-    <content><![CDATA[]]></content>
   </entry>
 </search>
