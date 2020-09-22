@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2020-09-22T09:38:29.117Z</updated>
+  <updated>2020-09-22T09:42:09.093Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://example.com/2020/09/22/contextmanager/"/>
     <id>http://example.com/2020/09/22/contextmanager/</id>
     <published>2020-09-22T09:31:13.000Z</published>
-    <updated>2020-09-22T09:38:29.117Z</updated>
+    <updated>2020-09-22T09:42:09.093Z</updated>
     
     
       
@@ -46,7 +46,7 @@
     <link href="http://example.com/2020/09/22/mysql%E8%A1%A8%E4%BF%AE%E5%A4%8D/"/>
     <id>http://example.com/2020/09/22/mysql%E8%A1%A8%E4%BF%AE%E5%A4%8D/</id>
     <published>2020-09-22T09:17:23.000Z</published>
-    <updated>2020-09-22T09:18:20.946Z</updated>
+    <updated>2020-09-22T09:42:48.102Z</updated>
     
     
       
@@ -58,6 +58,8 @@
       
     
     
+    
+    <category term="mysql" scheme="http://example.com/categories/mysql/"/>
     
     
     <category term="mysql" scheme="http://example.com/tags/mysql/"/>
