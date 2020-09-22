@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Vaedit博客</title>
+  <title>Vaedit的博客</title>
   
-  <subtitle>博客</subtitle>
+  <subtitle>运维技术博客</subtitle>
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
