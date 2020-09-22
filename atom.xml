@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2020-09-22T10:10:32.001Z</updated>
+  <updated>2020-09-22T10:13:50.944Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>rsync服务搭建</title>
+    <link href="http://example.com/2020/09/22/rsync%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/"/>
+    <id>http://example.com/2020/09/22/rsync%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/</id>
+    <published>2020-09-22T10:12:29.000Z</published>
+    <updated>2020-09-22T10:13:50.944Z</updated>
+    
+    
+    <summary type="html">&lt;h4 id=&quot;server端搭建&quot;&gt;&lt;a href=&quot;#server端搭建&quot; class=&quot;headerlink&quot; title=&quot;server端搭建&quot;&gt;&lt;/a&gt;server端搭建&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;wget  http://rsync.samba.org/ftp/rsync/src/rsync-3.0.7.tar.gz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;tar xf rsync-3.0.7.tar.gz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt; rsync-3.0.7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;./configure --prefix=/usr/&lt;span class=&quot;built_in&quot;&gt;local&lt;/span&gt;/rsync&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;make &amp;amp;&amp;amp; make install&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="Linux" scheme="http://example.com/categories/Linux/"/>
+    
+    
+    <category term="rsync" scheme="http://example.com/tags/rsync/"/>
+    
+    <category term="linux基础服务" scheme="http://example.com/tags/linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>记录一次因服务器阵列卡坏掉而导致的回档操作</title>
