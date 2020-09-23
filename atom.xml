@@ -3,11 +3,11 @@
   <title>Vaedit的博客</title>
   
   <subtitle>运维技术博客</subtitle>
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="https://www.1000b1.com/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
+  <link href="https://www.1000b1.com/"/>
   <updated>2020-09-23T09:31:22.338Z</updated>
-  <id>http://example.com/</id>
+  <id>https://www.1000b1.com/</id>
   
   <author>
     <name>Vaedit</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Django2.2-DateTimeField去掉微秒</title>
-    <link href="http://example.com/2020/09/23/Django2-2-DateTimeField%E5%8E%BB%E6%8E%89%E5%BE%AE%E7%A7%92/"/>
-    <id>http://example.com/2020/09/23/Django2-2-DateTimeField%E5%8E%BB%E6%8E%89%E5%BE%AE%E7%A7%92/</id>
+    <link href="https://www.1000b1.com/Django2-2-DateTimeField%E5%8E%BB%E6%8E%89%E5%BE%AE%E7%A7%92.html"/>
+    <id>https://www.1000b1.com/Django2-2-DateTimeField%E5%8E%BB%E6%8E%89%E5%BE%AE%E7%A7%92.html</id>
     <published>2020-09-23T09:08:24.000Z</published>
     <updated>2020-09-23T09:31:22.338Z</updated>
     
@@ -34,17 +34,17 @@
     
     
     
-    <category term="python" scheme="http://example.com/categories/python/"/>
+    <category term="python" scheme="https://www.1000b1.com/categories/python/"/>
     
     
-    <category term="Django" scheme="http://example.com/tags/Django/"/>
+    <category term="Django" scheme="https://www.1000b1.com/tags/Django/"/>
     
   </entry>
   
   <entry>
     <title>mysqldump</title>
-    <link href="http://example.com/2020/09/22/mysqldump/"/>
-    <id>http://example.com/2020/09/22/mysqldump/</id>
+    <link href="https://www.1000b1.com/mysqldump.html"/>
+    <id>https://www.1000b1.com/mysqldump.html</id>
     <published>2020-09-22T13:15:14.000Z</published>
     <updated>2020-09-22T13:16:34.377Z</updated>
     
@@ -64,17 +64,17 @@
     
     
     
-    <category term="mysql" scheme="http://example.com/categories/mysql/"/>
+    <category term="mysql" scheme="https://www.1000b1.com/categories/mysql/"/>
     
     
-    <category term="mysqldump" scheme="http://example.com/tags/mysqldump/"/>
+    <category term="mysqldump" scheme="https://www.1000b1.com/tags/mysqldump/"/>
     
   </entry>
   
   <entry>
     <title>mysqlhotcopy</title>
-    <link href="http://example.com/2020/09/22/mysqlhotcopy/"/>
-    <id>http://example.com/2020/09/22/mysqlhotcopy/</id>
+    <link href="https://www.1000b1.com/mysqlhotcopy.html"/>
+    <id>https://www.1000b1.com/mysqlhotcopy.html</id>
     <published>2020-09-22T13:15:06.000Z</published>
     <updated>2020-09-22T13:15:49.354Z</updated>
     
@@ -96,17 +96,17 @@
     
     
     
-    <category term="mysql" scheme="http://example.com/categories/mysql/"/>
+    <category term="mysql" scheme="https://www.1000b1.com/categories/mysql/"/>
     
     
-    <category term="mysqlhotcopy" scheme="http://example.com/tags/mysqlhotcopy/"/>
+    <category term="mysqlhotcopy" scheme="https://www.1000b1.com/tags/mysqlhotcopy/"/>
     
   </entry>
   
   <entry>
     <title>Mysql二进制日志恢复</title>
-    <link href="http://example.com/2020/09/22/Mysql%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%97%A5%E5%BF%97%E6%81%A2%E5%A4%8D/"/>
-    <id>http://example.com/2020/09/22/Mysql%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%97%A5%E5%BF%97%E6%81%A2%E5%A4%8D/</id>
+    <link href="https://www.1000b1.com/Mysql%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%97%A5%E5%BF%97%E6%81%A2%E5%A4%8D.html"/>
+    <id>https://www.1000b1.com/Mysql%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%97%A5%E5%BF%97%E6%81%A2%E5%A4%8D.html</id>
     <published>2020-09-22T13:13:36.000Z</published>
     <updated>2020-09-22T13:14:24.865Z</updated>
     
@@ -136,17 +136,17 @@
     
     
     
-    <category term="mysql" scheme="http://example.com/categories/mysql/"/>
+    <category term="mysql" scheme="https://www.1000b1.com/categories/mysql/"/>
     
     
-    <category term="binlog恢复" scheme="http://example.com/tags/binlog%E6%81%A2%E5%A4%8D/"/>
+    <category term="binlog恢复" scheme="https://www.1000b1.com/tags/binlog%E6%81%A2%E5%A4%8D/"/>
     
   </entry>
   
   <entry>
     <title>Iptables端口转发</title>
-    <link href="http://example.com/2020/09/22/Iptables%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/"/>
-    <id>http://example.com/2020/09/22/Iptables%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/</id>
+    <link href="https://www.1000b1.com/Iptables%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91.html"/>
+    <id>https://www.1000b1.com/Iptables%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91.html</id>
     <published>2020-09-22T13:10:31.000Z</published>
     <updated>2020-09-22T13:11:16.238Z</updated>
     
@@ -162,17 +162,17 @@
     
     
     
-    <category term="Linux基础服务" scheme="http://example.com/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/"/>
+    <category term="Linux基础服务" scheme="https://www.1000b1.com/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/"/>
     
     
-    <category term="iptables" scheme="http://example.com/tags/iptables/"/>
+    <category term="iptables" scheme="https://www.1000b1.com/tags/iptables/"/>
     
   </entry>
   
   <entry>
     <title>openssl升级</title>
-    <link href="http://example.com/2020/09/22/openssl%E5%8D%87%E7%BA%A7/"/>
-    <id>http://example.com/2020/09/22/openssl%E5%8D%87%E7%BA%A7/</id>
+    <link href="https://www.1000b1.com/openssl%E5%8D%87%E7%BA%A7.html"/>
+    <id>https://www.1000b1.com/openssl%E5%8D%87%E7%BA%A7.html</id>
     <published>2020-09-22T13:07:26.000Z</published>
     <updated>2020-09-22T13:07:26.883Z</updated>
     
@@ -184,8 +184,8 @@
   
   <entry>
     <title>Linux-ssh隧道详解</title>
-    <link href="http://example.com/2020/09/22/Linux-ssh%E9%9A%A7%E9%81%93%E8%AF%A6%E8%A7%A3/"/>
-    <id>http://example.com/2020/09/22/Linux-ssh%E9%9A%A7%E9%81%93%E8%AF%A6%E8%A7%A3/</id>
+    <link href="https://www.1000b1.com/Linux-ssh%E9%9A%A7%E9%81%93%E8%AF%A6%E8%A7%A3.html"/>
+    <id>https://www.1000b1.com/Linux-ssh%E9%9A%A7%E9%81%93%E8%AF%A6%E8%A7%A3.html</id>
     <published>2020-09-22T13:02:19.000Z</published>
     <updated>2020-09-22T13:03:39.694Z</updated>
     
@@ -199,17 +199,17 @@
     
     
     
-    <category term="Linux基础服务" scheme="http://example.com/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/"/>
+    <category term="Linux基础服务" scheme="https://www.1000b1.com/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/"/>
     
     
-    <category term="ssh隧道" scheme="http://example.com/tags/ssh%E9%9A%A7%E9%81%93/"/>
+    <category term="ssh隧道" scheme="https://www.1000b1.com/tags/ssh%E9%9A%A7%E9%81%93/"/>
     
   </entry>
   
   <entry>
     <title>Vsftpd服务</title>
-    <link href="http://example.com/2020/09/22/Vsftpd%E6%9C%8D%E5%8A%A1/"/>
-    <id>http://example.com/2020/09/22/Vsftpd%E6%9C%8D%E5%8A%A1/</id>
+    <link href="https://www.1000b1.com/Vsftpd%E6%9C%8D%E5%8A%A1.html"/>
+    <id>https://www.1000b1.com/Vsftpd%E6%9C%8D%E5%8A%A1.html</id>
     <published>2020-09-22T12:58:47.000Z</published>
     <updated>2020-09-22T13:00:26.073Z</updated>
     
@@ -220,17 +220,17 @@
     
     
     
-    <category term="Linux基础服务" scheme="http://example.com/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/"/>
+    <category term="Linux基础服务" scheme="https://www.1000b1.com/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/"/>
     
     
-    <category term="ftp" scheme="http://example.com/tags/ftp/"/>
+    <category term="ftp" scheme="https://www.1000b1.com/tags/ftp/"/>
     
   </entry>
   
   <entry>
     <title>迁移记录</title>
-    <link href="http://example.com/2020/09/22/%E8%BF%81%E7%A7%BB%E8%AE%B0%E5%BD%95/"/>
-    <id>http://example.com/2020/09/22/%E8%BF%81%E7%A7%BB%E8%AE%B0%E5%BD%95/</id>
+    <link href="https://www.1000b1.com/%E8%BF%81%E7%A7%BB%E8%AE%B0%E5%BD%95.html"/>
+    <id>https://www.1000b1.com/%E8%BF%81%E7%A7%BB%E8%AE%B0%E5%BD%95.html</id>
     <published>2020-09-22T10:47:18.000Z</published>
     <updated>2020-09-22T10:50:19.248Z</updated>
     
@@ -245,17 +245,17 @@
     
     
     
-    <category term="日志记录" scheme="http://example.com/categories/%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95/"/>
+    <category term="日志记录" scheme="https://www.1000b1.com/categories/%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95/"/>
     
     
-    <category term="个人记录" scheme="http://example.com/tags/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95/"/>
+    <category term="个人记录" scheme="https://www.1000b1.com/tags/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95/"/>
     
   </entry>
   
   <entry>
     <title>企业级私有镜像仓库Harbor</title>
-    <link href="http://example.com/2020/09/22/%E4%BC%81%E4%B8%9A%E7%BA%A7%E7%A7%81%E6%9C%89%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93Harbor/"/>
-    <id>http://example.com/2020/09/22/%E4%BC%81%E4%B8%9A%E7%BA%A7%E7%A7%81%E6%9C%89%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93Harbor/</id>
+    <link href="https://www.1000b1.com/%E4%BC%81%E4%B8%9A%E7%BA%A7%E7%A7%81%E6%9C%89%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93Harbor.html"/>
+    <id>https://www.1000b1.com/%E4%BC%81%E4%B8%9A%E7%BA%A7%E7%A7%81%E6%9C%89%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93Harbor.html</id>
     <published>2020-09-22T10:46:50.000Z</published>
     <updated>2020-09-22T10:48:23.801Z</updated>
     
@@ -270,17 +270,17 @@
     
     
     
-    <category term="k8s生态圈" scheme="http://example.com/categories/k8s%E7%94%9F%E6%80%81%E5%9C%88/"/>
+    <category term="k8s生态圈" scheme="https://www.1000b1.com/categories/k8s%E7%94%9F%E6%80%81%E5%9C%88/"/>
     
     
-    <category term="Harbor" scheme="http://example.com/tags/Harbor/"/>
+    <category term="Harbor" scheme="https://www.1000b1.com/tags/Harbor/"/>
     
   </entry>
   
   <entry>
     <title>AWS-RDS慢查询日志查看导出</title>
-    <link href="http://example.com/2020/09/22/AWS-RDS%E6%85%A2%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97%E6%9F%A5%E7%9C%8B%E5%AF%BC%E5%87%BA/"/>
-    <id>http://example.com/2020/09/22/AWS-RDS%E6%85%A2%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97%E6%9F%A5%E7%9C%8B%E5%AF%BC%E5%87%BA/</id>
+    <link href="https://www.1000b1.com/AWS-RDS%E6%85%A2%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97%E6%9F%A5%E7%9C%8B%E5%AF%BC%E5%87%BA.html"/>
+    <id>https://www.1000b1.com/AWS-RDS%E6%85%A2%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97%E6%9F%A5%E7%9C%8B%E5%AF%BC%E5%87%BA.html</id>
     <published>2020-09-22T10:41:17.000Z</published>
     <updated>2020-09-22T10:42:29.011Z</updated>
     
@@ -301,19 +301,19 @@
     
     
     
-    <category term="AWS服务" scheme="http://example.com/categories/AWS%E6%9C%8D%E5%8A%A1/"/>
+    <category term="AWS服务" scheme="https://www.1000b1.com/categories/AWS%E6%9C%8D%E5%8A%A1/"/>
     
     
-    <category term="mysql" scheme="http://example.com/tags/mysql/"/>
+    <category term="AWS慢查询日志" scheme="https://www.1000b1.com/tags/AWS%E6%85%A2%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97/"/>
     
-    <category term="AWS慢查询日志" scheme="http://example.com/tags/AWS%E6%85%A2%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97/"/>
+    <category term="mysql" scheme="https://www.1000b1.com/tags/mysql/"/>
     
   </entry>
   
   <entry>
     <title>Zabbix实战-2</title>
-    <link href="http://example.com/2020/09/22/Zabbix%E5%AE%9E%E6%88%98-2/"/>
-    <id>http://example.com/2020/09/22/Zabbix%E5%AE%9E%E6%88%98-2/</id>
+    <link href="https://www.1000b1.com/Zabbix%E5%AE%9E%E6%88%98-2.html"/>
+    <id>https://www.1000b1.com/Zabbix%E5%AE%9E%E6%88%98-2.html</id>
     <published>2020-09-22T10:37:10.000Z</published>
     <updated>2020-09-22T10:38:27.972Z</updated>
     
@@ -328,17 +328,17 @@
     
     
     
-    <category term="系统监控" scheme="http://example.com/categories/%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7/"/>
+    <category term="系统监控" scheme="https://www.1000b1.com/categories/%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7/"/>
     
     
-    <category term="Zabbix" scheme="http://example.com/tags/Zabbix/"/>
+    <category term="Zabbix" scheme="https://www.1000b1.com/tags/Zabbix/"/>
     
   </entry>
   
   <entry>
     <title>Zabbix实战-1</title>
-    <link href="http://example.com/2020/09/22/Zabbix%E5%AE%9E%E6%88%98-1/"/>
-    <id>http://example.com/2020/09/22/Zabbix%E5%AE%9E%E6%88%98-1/</id>
+    <link href="https://www.1000b1.com/Zabbix%E5%AE%9E%E6%88%98-1.html"/>
+    <id>https://www.1000b1.com/Zabbix%E5%AE%9E%E6%88%98-1.html</id>
     <published>2020-09-22T10:37:06.000Z</published>
     <updated>2020-09-22T10:37:47.897Z</updated>
     
@@ -371,17 +371,17 @@
     
     
     
-    <category term="系统监控" scheme="http://example.com/categories/%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7/"/>
+    <category term="系统监控" scheme="https://www.1000b1.com/categories/%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7/"/>
     
     
-    <category term="Zabbix" scheme="http://example.com/tags/Zabbix/"/>
+    <category term="Zabbix" scheme="https://www.1000b1.com/tags/Zabbix/"/>
     
   </entry>
   
   <entry>
     <title>vps编译php报错[ext/fileinfo/libmagic/apprentice.lo]</title>
-    <link href="http://example.com/2020/09/22/vps%E7%BC%96%E8%AF%91php%E6%8A%A5%E9%94%99-ext-fileinfo-libmagic-apprentice-lo/"/>
-    <id>http://example.com/2020/09/22/vps%E7%BC%96%E8%AF%91php%E6%8A%A5%E9%94%99-ext-fileinfo-libmagic-apprentice-lo/</id>
+    <link href="https://www.1000b1.com/vps%E7%BC%96%E8%AF%91php%E6%8A%A5%E9%94%99-ext-fileinfo-libmagic-apprentice-lo.html"/>
+    <id>https://www.1000b1.com/vps%E7%BC%96%E8%AF%91php%E6%8A%A5%E9%94%99-ext-fileinfo-libmagic-apprentice-lo.html</id>
     <published>2020-09-22T10:31:44.000Z</published>
     <updated>2020-09-22T10:33:58.160Z</updated>
     
@@ -397,17 +397,17 @@
     
     
     
-    <category term="故障记录" scheme="http://example.com/categories/%E6%95%85%E9%9A%9C%E8%AE%B0%E5%BD%95/"/>
+    <category term="故障记录" scheme="https://www.1000b1.com/categories/%E6%95%85%E9%9A%9C%E8%AE%B0%E5%BD%95/"/>
     
     
-    <category term="php" scheme="http://example.com/tags/php/"/>
+    <category term="php" scheme="https://www.1000b1.com/tags/php/"/>
     
   </entry>
   
   <entry>
     <title>AWS-EC2在线磁盘扩容</title>
-    <link href="http://example.com/2020/09/22/AWS-EC2%E5%9C%A8%E7%BA%BF%E7%A3%81%E7%9B%98%E6%89%A9%E5%AE%B9/"/>
-    <id>http://example.com/2020/09/22/AWS-EC2%E5%9C%A8%E7%BA%BF%E7%A3%81%E7%9B%98%E6%89%A9%E5%AE%B9/</id>
+    <link href="https://www.1000b1.com/AWS-EC2%E5%9C%A8%E7%BA%BF%E7%A3%81%E7%9B%98%E6%89%A9%E5%AE%B9.html"/>
+    <id>https://www.1000b1.com/AWS-EC2%E5%9C%A8%E7%BA%BF%E7%A3%81%E7%9B%98%E6%89%A9%E5%AE%B9.html</id>
     <published>2020-09-22T10:29:39.000Z</published>
     <updated>2020-09-22T10:35:07.365Z</updated>
     
@@ -425,17 +425,17 @@
     
     
     
-    <category term="AWS服务" scheme="http://example.com/categories/AWS%E6%9C%8D%E5%8A%A1/"/>
+    <category term="AWS服务" scheme="https://www.1000b1.com/categories/AWS%E6%9C%8D%E5%8A%A1/"/>
     
     
-    <category term="磁盘扩容" scheme="http://example.com/tags/%E7%A3%81%E7%9B%98%E6%89%A9%E5%AE%B9/"/>
+    <category term="磁盘扩容" scheme="https://www.1000b1.com/tags/%E7%A3%81%E7%9B%98%E6%89%A9%E5%AE%B9/"/>
     
   </entry>
   
   <entry>
     <title>Linux下制作RPM包工具fpm</title>
-    <link href="http://example.com/2020/09/22/Linux%E4%B8%8B%E5%88%B6%E4%BD%9CRPM%E5%8C%85%E5%B7%A5%E5%85%B7fpm/"/>
-    <id>http://example.com/2020/09/22/Linux%E4%B8%8B%E5%88%B6%E4%BD%9CRPM%E5%8C%85%E5%B7%A5%E5%85%B7fpm/</id>
+    <link href="https://www.1000b1.com/Linux%E4%B8%8B%E5%88%B6%E4%BD%9CRPM%E5%8C%85%E5%B7%A5%E5%85%B7fpm.html"/>
+    <id>https://www.1000b1.com/Linux%E4%B8%8B%E5%88%B6%E4%BD%9CRPM%E5%8C%85%E5%B7%A5%E5%85%B7fpm.html</id>
     <published>2020-09-22T10:28:57.000Z</published>
     <updated>2020-09-22T10:36:18.498Z</updated>
     
@@ -446,17 +446,17 @@
     
     
     
-    <category term="Linux基础服务" scheme="http://example.com/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/"/>
+    <category term="Linux基础服务" scheme="https://www.1000b1.com/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/"/>
     
     
-    <category term="rpm包制作" scheme="http://example.com/tags/rpm%E5%8C%85%E5%88%B6%E4%BD%9C/"/>
+    <category term="rpm包制作" scheme="https://www.1000b1.com/tags/rpm%E5%8C%85%E5%88%B6%E4%BD%9C/"/>
     
   </entry>
   
   <entry>
     <title>Linux内核调优</title>
-    <link href="http://example.com/2020/09/22/Linux%E5%86%85%E6%A0%B8%E8%B0%83%E4%BC%98/"/>
-    <id>http://example.com/2020/09/22/Linux%E5%86%85%E6%A0%B8%E8%B0%83%E4%BC%98/</id>
+    <link href="https://www.1000b1.com/Linux%E5%86%85%E6%A0%B8%E8%B0%83%E4%BC%98.html"/>
+    <id>https://www.1000b1.com/Linux%E5%86%85%E6%A0%B8%E8%B0%83%E4%BC%98.html</id>
     <published>2020-09-22T10:23:41.000Z</published>
     <updated>2020-09-22T10:25:05.090Z</updated>
     
@@ -465,17 +465,17 @@
     
     
     
-    <category term="系统调优" scheme="http://example.com/categories/%E7%B3%BB%E7%BB%9F%E8%B0%83%E4%BC%98/"/>
+    <category term="系统调优" scheme="https://www.1000b1.com/categories/%E7%B3%BB%E7%BB%9F%E8%B0%83%E4%BC%98/"/>
     
     
-    <category term="Linux" scheme="http://example.com/tags/Linux/"/>
+    <category term="Linux" scheme="https://www.1000b1.com/tags/Linux/"/>
     
   </entry>
   
   <entry>
     <title>Linux历史命令调优</title>
-    <link href="http://example.com/2020/09/22/Linux%E5%8E%86%E5%8F%B2%E5%91%BD%E4%BB%A4%E8%B0%83%E4%BC%98/"/>
-    <id>http://example.com/2020/09/22/Linux%E5%8E%86%E5%8F%B2%E5%91%BD%E4%BB%A4%E8%B0%83%E4%BC%98/</id>
+    <link href="https://www.1000b1.com/Linux%E5%8E%86%E5%8F%B2%E5%91%BD%E4%BB%A4%E8%B0%83%E4%BC%98.html"/>
+    <id>https://www.1000b1.com/Linux%E5%8E%86%E5%8F%B2%E5%91%BD%E4%BB%A4%E8%B0%83%E4%BC%98.html</id>
     <published>2020-09-22T10:23:08.000Z</published>
     <updated>2020-09-22T10:25:19.179Z</updated>
     
@@ -485,17 +485,17 @@
     
     
     
-    <category term="系统调优" scheme="http://example.com/categories/%E7%B3%BB%E7%BB%9F%E8%B0%83%E4%BC%98/"/>
+    <category term="系统调优" scheme="https://www.1000b1.com/categories/%E7%B3%BB%E7%BB%9F%E8%B0%83%E4%BC%98/"/>
     
     
-    <category term="Linux" scheme="http://example.com/tags/Linux/"/>
+    <category term="Linux" scheme="https://www.1000b1.com/tags/Linux/"/>
     
   </entry>
   
   <entry>
     <title>Shell并发编程</title>
-    <link href="http://example.com/2020/09/22/Shell%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    <id>http://example.com/2020/09/22/Shell%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/</id>
+    <link href="https://www.1000b1.com/Shell%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B.html"/>
+    <id>https://www.1000b1.com/Shell%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B.html</id>
     <published>2020-09-22T10:21:42.000Z</published>
     <updated>2020-09-22T10:22:35.760Z</updated>
     
@@ -504,17 +504,17 @@
     
     
     
-    <category term="Shell脚本" scheme="http://example.com/categories/Shell%E8%84%9A%E6%9C%AC/"/>
+    <category term="Shell脚本" scheme="https://www.1000b1.com/categories/Shell%E8%84%9A%E6%9C%AC/"/>
     
     
-    <category term="Shell" scheme="http://example.com/tags/Shell/"/>
+    <category term="Shell" scheme="https://www.1000b1.com/tags/Shell/"/>
     
   </entry>
   
   <entry>
     <title>NFS安装使用</title>
-    <link href="http://example.com/2020/09/22/NFS%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/"/>
-    <id>http://example.com/2020/09/22/NFS%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/</id>
+    <link href="https://www.1000b1.com/NFS%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8.html"/>
+    <id>https://www.1000b1.com/NFS%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8.html</id>
     <published>2020-09-22T10:17:30.000Z</published>
     <updated>2020-09-22T10:18:11.514Z</updated>
     
@@ -525,10 +525,10 @@
     
     
     
-    <category term="Linux基础服务" scheme="http://example.com/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/"/>
+    <category term="Linux基础服务" scheme="https://www.1000b1.com/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/"/>
     
     
-    <category term="NFS" scheme="http://example.com/tags/NFS/"/>
+    <category term="NFS" scheme="https://www.1000b1.com/tags/NFS/"/>
     
   </entry>
   
