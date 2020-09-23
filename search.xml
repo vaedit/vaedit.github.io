@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>AWS-EC2在线磁盘扩容</title>
-    <url>/AWS-EC2%E5%9C%A8%E7%BA%BF%E7%A3%81%E7%9B%98%E6%89%A9%E5%AE%B9.html</url>
+    <url>//abbrlink.html</url>
     <content><![CDATA[<ol>
 <li><p>首先先给需要扩容的磁盘卷制作快照</p>
 </li>
@@ -31,7 +31,7 @@
   </entry>
   <entry>
     <title>AWS-RDS慢查询日志查看导出</title>
-    <url>/AWS-RDS%E6%85%A2%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97%E6%9F%A5%E7%9C%8B%E5%AF%BC%E5%87%BA.html</url>
+    <url>//abbrlink.html</url>
     <content><![CDATA[<p>如果要分析 slow log，第一步就是先要获取到 slow log 文件，由于 RDS MySQL 是托管数据库，我们无法登录到 MySQL 所在服务器，那么应该如何来获取 slow log 文件呢？</p>
 <p>根据 MySQL slow log 的相关配置，我们知道 slow log 的存在形式一共有两种： table 或 file ，由 log_output 参数进行控制：</p>
 <ul>
@@ -73,7 +73,7 @@
   </entry>
   <entry>
     <title>Django2.2-DateTimeField去掉微秒</title>
-    <url>/Django2-2-DateTimeField%E5%8E%BB%E6%8E%89%E5%BE%AE%E7%A7%92.html</url>
+    <url>//abbrlink.html</url>
     <content><![CDATA[<h4 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h4><ul>
 <li>Django 2.2</li>
 <li>Mysql 5.7</li>
@@ -108,8 +108,37 @@
       </tags>
   </entry>
   <entry>
+    <title>Iptables端口转发</title>
+    <url>//abbrlink.html</url>
+    <content><![CDATA[<blockquote>
+<p>Linux下iptables不仅可以用来做防火墙还可以用来做端口转发</p>
+</blockquote>
+<h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><p><strong>将本机的8080端口转发至其他主机，主机IP：192.168.1.12，目标主机IP和端口：192.168.1.13:8088，规则如下</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">iptables -t nat -A PREROUTING -p tcp -m tcp --dport 8080 -j DNAT --to-destination 192.168.1.13:8088</span><br><span class="line">iptables -t nat -A POSTROUTING -p tcp -m tcp --dport 8088 -j SNAT --to-source 192.168.1.12</span><br><span class="line"><span class="built_in">echo</span> 1 &gt; /proc/sys/net/ipv4/ip_forward <span class="comment">#开启iptables forward转发功能。</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>tcp范围端口映射</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">iptables -t nat -A PREROUTING -p tcp --dport 2000:2500 -j DNAT --to 192.168.66.2:2000-2500</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<p><strong>远程转发</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">iptables -A FORWARD -p tcp --dport 80 -j ACCEPT</span><br><span class="line">iptables -A FORWARD -p tcp --sport 80 -j ACCEPT</span><br><span class="line"><span class="comment">#把访问192.168.0.12的80端口转发到192.168.0.13的80端口</span></span><br><span class="line">iptables -t nat -A PREROUTING -p tcp -i eth0 -d 192.168.0.12 --dport 80 -j DNAT --to-destination 192.168.0.13:80</span><br><span class="line"><span class="comment">#配置地址伪装 </span></span><br><span class="line">iptables -t nat -A POSTROUTING -p tcp -m tcp --dport 80 -j MASQUERADE</span><br></pre></td></tr></table></figure>
+
+<p><strong>本地转发</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#访问本机的8080端口转发到本地的80端口</span></span><br><span class="line">iptables -t nat -A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-ports 80</span><br></pre></td></tr></table></figure>
+
+<p><strong>清空转发规则（nat表）</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">iptables -F -t nat</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Linux基础服务</category>
+      </categories>
+      <tags>
+        <tag>iptables</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux-ssh隧道详解</title>
-    <url>/Linux-ssh%E9%9A%A7%E9%81%93%E8%AF%A6%E8%A7%A3.html</url>
+    <url>//abbrlink.html</url>
     <content><![CDATA[<h4 id="隧道原理"><a href="#隧道原理" class="headerlink" title="隧道原理"></a>隧道原理</h4><p>隧道是一种把一种网络协议封装进另外一种网络协议进行传输的技术。这里我们研究ssh隧道，所以所有的网络通讯都是加密的。又被称作端口转发，因为ssh隧道通常会绑定一个本地端口，所有发向这个端口端口的数据包，都会被加密并透明地传输到远端系统。</p>
 <h4 id="隧道的类型"><a href="#隧道的类型" class="headerlink" title="隧道的类型"></a>隧道的类型</h4><h5 id="ssh隧道有3种类型："><a href="#ssh隧道有3种类型：" class="headerlink" title="ssh隧道有3种类型："></a>ssh隧道有3种类型：</h5><ul>
 <li>动态端口转发（Socks 代理）</li>
@@ -223,37 +252,8 @@ open vnc://localhost:5901</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>Iptables端口转发</title>
-    <url>/Iptables%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91.html</url>
-    <content><![CDATA[<blockquote>
-<p>Linux下iptables不仅可以用来做防火墙还可以用来做端口转发</p>
-</blockquote>
-<h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><p><strong>将本机的8080端口转发至其他主机，主机IP：192.168.1.12，目标主机IP和端口：192.168.1.13:8088，规则如下</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">iptables -t nat -A PREROUTING -p tcp -m tcp --dport 8080 -j DNAT --to-destination 192.168.1.13:8088</span><br><span class="line">iptables -t nat -A POSTROUTING -p tcp -m tcp --dport 8088 -j SNAT --to-source 192.168.1.12</span><br><span class="line"><span class="built_in">echo</span> 1 &gt; /proc/sys/net/ipv4/ip_forward <span class="comment">#开启iptables forward转发功能。</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>tcp范围端口映射</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">iptables -t nat -A PREROUTING -p tcp --dport 2000:2500 -j DNAT --to 192.168.66.2:2000-2500</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-
-<p><strong>远程转发</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">iptables -A FORWARD -p tcp --dport 80 -j ACCEPT</span><br><span class="line">iptables -A FORWARD -p tcp --sport 80 -j ACCEPT</span><br><span class="line"><span class="comment">#把访问192.168.0.12的80端口转发到192.168.0.13的80端口</span></span><br><span class="line">iptables -t nat -A PREROUTING -p tcp -i eth0 -d 192.168.0.12 --dport 80 -j DNAT --to-destination 192.168.0.13:80</span><br><span class="line"><span class="comment">#配置地址伪装 </span></span><br><span class="line">iptables -t nat -A POSTROUTING -p tcp -m tcp --dport 80 -j MASQUERADE</span><br></pre></td></tr></table></figure>
-
-<p><strong>本地转发</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#访问本机的8080端口转发到本地的80端口</span></span><br><span class="line">iptables -t nat -A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-ports 80</span><br></pre></td></tr></table></figure>
-
-<p><strong>清空转发规则（nat表）</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">iptables -F -t nat</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Linux基础服务</category>
-      </categories>
-      <tags>
-        <tag>iptables</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux下制作RPM包工具fpm</title>
-    <url>/Linux%E4%B8%8B%E5%88%B6%E4%BD%9CRPM%E5%8C%85%E5%B7%A5%E5%85%B7fpm.html</url>
+    <url>//abbrlink.html</url>
     <content><![CDATA[<h2 id="fpm工具安装"><a href="#fpm工具安装" class="headerlink" title="fpm工具安装"></a>fpm工具安装</h2><h3 id="CentOS-6-x下安装"><a href="#CentOS-6-x下安装" class="headerlink" title="CentOS 6.x下安装"></a>CentOS 6.x下安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#centos6 由于自带yum源中的ruby版本太低，需要如下安装：</span></span><br><span class="line">yum -y install rpm-build</span><br><span class="line">yum update nss</span><br><span class="line">gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB</span><br><span class="line">curl -sSL https://get.rvm.io | bash -s stable </span><br><span class="line"><span class="built_in">source</span> /etc/profile.d/rvm.sh</span><br><span class="line">rvm install 1.9.3</span><br><span class="line">gem install fpm</span><br><span class="line">rvm use 1.9.3 --default <span class="comment">#选择ruby版本</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="CentOS-7-x下安装"><a href="#CentOS-7-x下安装" class="headerlink" title="CentOS 7.x下安装"></a>CentOS 7.x下安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#安装ruby：</span></span><br><span class="line">yum -y install ruby rubygems ruby-devel rpm-build</span><br><span class="line">gem install fpm</span><br></pre></td></tr></table></figure>
@@ -326,7 +326,7 @@ open vnc://localhost:5901</code></pre>
   </entry>
   <entry>
     <title>Linux内核调优</title>
-    <url>/Linux%E5%86%85%E6%A0%B8%E8%B0%83%E4%BC%98.html</url>
+    <url>//abbrlink.html</url>
     <content><![CDATA[<h2 id="文件描述符和最大进程数"><a href="#文件描述符和最大进程数" class="headerlink" title="文件描述符和最大进程数"></a>文件描述符和最大进程数</h2><h3 id="ulimit的使用"><a href="#ulimit的使用" class="headerlink" title="ulimit的使用"></a>ulimit的使用</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ulimit</span> </span><br><span class="line"><span class="comment">#-a 列出所有当前资源极限</span></span><br><span class="line"><span class="comment">#-n 每个进程可以同时打开的最大文件数</span></span><br><span class="line"><span class="comment">#-u 可以运行的最大并发进程数</span></span><br><span class="line"><span class="comment">#-S 设置软限制</span></span><br><span class="line"><span class="comment">#-H 设置硬限制</span></span><br><span class="line">在命令行直接执行该命令只会在当前shell生效，退出或者新开一个shell都会无效，所以可以加入到全局设置中：</span><br><span class="line">/bin/<span class="built_in">echo</span> <span class="string">&quot;ulimit -SHn 65535&quot;</span> &gt;&gt; /etc/profile</span><br><span class="line"></span><br><span class="line">有时候为了方便起见，也可以将用户资源的限制统一由一个文件来配置</span><br><span class="line">这个文件就是/etc/security/limits.conf，该文件不但能对指定用户的资源进行限制，还能对指定组的资源进行限制。</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;* hard nofile 65535&quot;</span> &gt;&gt;/etc/security/limits.conf</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;* soft nofile 65535&quot;</span> &gt;&gt;/etc/security/limits.conf</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;* soft nproc 65535&quot;</span> &gt;&gt;/etc/security/limits.conf</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;* hard nproc 65535&quot;</span> &gt;&gt;/etc/security/limits.conf</span><br><span class="line"></span><br><span class="line">需要注意的是，在centos系统中，除了/etc/security/limits.conf文件外，还有一个文件/etc/security/limits.d/20-nproc.conf（centos7.x系统），</span><br><span class="line">/etc/security/limits.d/90-nproc.conf（centos6.x系统），这个文件中，对nproc设置了一个默认值，</span><br><span class="line">并且是针对所有系统用户设置的。而如果在/etc/security/limits.conf文件中也设置了nproc值的话，</span><br><span class="line">则会被覆盖，也就是说/etc/security/limits.d/里面的文件的配置会覆盖/etc/security/limits.conf的配置。</span><br><span class="line">所以最好是删除该文件或者修改或者屏蔽该文件内容：</span><br><span class="line">/bin/sed -i <span class="string">&#x27;s/1024/65535/g&#x27;</span>  /etc/security/limits.d/90-nproc.conf</span><br><span class="line">或者：</span><br><span class="line">rm -f /etc/security/limits.d/90-nproc.conf</span><br></pre></td></tr></table></figure>
 
 <a id="more"></a>
@@ -363,7 +363,7 @@ open vnc://localhost:5901</code></pre>
   </entry>
   <entry>
     <title>Linux历史命令调优</title>
-    <url>/Linux%E5%8E%86%E5%8F%B2%E5%91%BD%E4%BB%A4%E8%B0%83%E4%BC%98.html</url>
+    <url>//abbrlink.html</url>
     <content><![CDATA[<h4 id="合理使用shell历史记录功能"><a href="#合理使用shell历史记录功能" class="headerlink" title="合理使用shell历史记录功能"></a>合理使用shell历史记录功能</h4><p>默认shell命令是存在.bash_history中，且不够详细，通过把以下命令写入到/etc/profile中，可以隐蔽的保存历史命令记录并方便审计。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#history</span></span><br><span class="line">HISTDIR=/usr/share/.<span class="built_in">history</span></span><br><span class="line"><span class="built_in">export</span> HISTORY_FILE=<span class="variable">$&#123;HISTDIR&#125;</span>/`date <span class="string">&#x27;+%Y-%m-%d&#x27;</span>`.<span class="built_in">log</span></span><br><span class="line"><span class="keyword">if</span> [ ! -d <span class="variable">$HISTDIR</span> ];<span class="keyword">then</span></span><br><span class="line">mkdir -p <span class="variable">$HISTDIR</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="keyword">if</span> [ ! -f <span class="variable">$HISTORY_FILE</span> ];<span class="keyword">then</span></span><br><span class="line">    touch <span class="variable">$HISTORY_FILE</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="built_in">readonly</span> PROMPT_COMMAND=<span class="string">&#x27;&#123; date &quot;+%Y-%m-%d %T ##### $(who am i |awk -v user=$USER &quot;&#123;print user \&quot; \&quot;\$2\&quot; \&quot;\$5&#125;&quot;) #### $(pwd) #### $(history 1 | &#123; read x cmd; echo &quot;$cmd&quot;; &#125;)&quot;; &#125; &gt;&gt; $HISTORY_FILE&#x27;</span></span><br></pre></td></tr></table></figure>
 
@@ -384,7 +384,7 @@ open vnc://localhost:5901</code></pre>
   </entry>
   <entry>
     <title>Mysql二进制日志恢复</title>
-    <url>/Mysql%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%97%A5%E5%BF%97%E6%81%A2%E5%A4%8D.html</url>
+    <url>//abbrlink.html</url>
     <content><![CDATA[<h3 id="二进制日志导出"><a href="#二进制日志导出" class="headerlink" title="二进制日志导出"></a>二进制日志导出</h3><ol>
 <li>按时间节点导出</li>
 </ol>
@@ -426,7 +426,7 @@ open vnc://localhost:5901</code></pre>
   </entry>
   <entry>
     <title>NFS安装使用</title>
-    <url>/NFS%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8.html</url>
+    <url>//abbrlink.html</url>
     <content><![CDATA[<h4 id="NFS安装"><a href="#NFS安装" class="headerlink" title="NFS安装"></a>NFS安装</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install nfs* rpcbind -y</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;/ssf *(rw,no_root_squash,no_all_squash,sync)&quot;</span> &gt;&gt;/etc/exports</span><br><span class="line">service rpcbind start</span><br><span class="line">service nfs start </span><br><span class="line">chmod 766 /ssf</span><br></pre></td></tr></table></figure>
 
 <h4 id="配置文件详解"><a href="#配置文件详解" class="headerlink" title="配置文件详解"></a>配置文件详解</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim &#x2F;etc&#x2F;exports </span><br><span class="line">&#x2F;data&#x2F;lys 192.168.2.0&#x2F;24(rw,no_root_squash,no_all_squash,sync)</span><br></pre></td></tr></table></figure>
@@ -455,7 +455,7 @@ open vnc://localhost:5901</code></pre>
   </entry>
   <entry>
     <title>Shell并发编程</title>
-    <url>/Shell%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B.html</url>
+    <url>//abbrlink.html</url>
     <content><![CDATA[<h4 id="案例1-通过文件描述符控制并发数"><a href="#案例1-通过文件描述符控制并发数" class="headerlink" title="案例1 通过文件描述符控制并发数"></a>案例1 通过文件描述符控制并发数</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#用fifo处理shell下多进程并发：</span></span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#author : vaedit</span></span><br><span class="line"><span class="comment">#date : 2017-8-15</span></span><br><span class="line"><span class="comment">#需要执行的工作函数</span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">mima</span></span>()&#123;</span><br><span class="line">  openssl rand -base64 40 &gt;&gt; ssf.txt</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#判断是否存在fifo文件</span></span><br><span class="line"><span class="keyword">if</span>  [ -e /tmp/$$.fifo ];<span class="keyword">then</span></span><br><span class="line">  rm -rf /tmp/$$.fifo</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="comment">#创建$$.fifo 主要是为了防止同名</span></span><br><span class="line">fifo_file=/tmp/$$.fifo</span><br><span class="line">mkfifo <span class="variable">$fifo_file</span></span><br><span class="line"><span class="comment">#把文件表述符fd6和fifo文件绑定</span></span><br><span class="line"><span class="built_in">exec</span> 6&lt;&gt;<span class="string">&quot;<span class="variable">$fifo_file</span>&quot;</span></span><br><span class="line">process_num=10</span><br><span class="line"><span class="comment">#向fd6中输入10个回车</span></span><br><span class="line"><span class="keyword">for</span> ((i=0;i&lt;<span class="variable">$process_num</span>;i++))</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> </span><br><span class="line"><span class="keyword">done</span> &gt;&amp;6</span><br><span class="line"><span class="comment">#处理业务</span></span><br><span class="line"><span class="keyword">for</span> ((a=0;a&lt;10;a++))  <span class="comment">#这里写10表示业务总条数，比如业务总共要执行100次，就填100</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  <span class="built_in">read</span> -u6 <span class="comment">##read -u6命令执行一次，相当于尝试从fd6中获取一行，如果获取不到，则阻塞#获取到了一行后，fd6就少了一行了，开始处理子进程，子进程放在后台执行</span></span><br><span class="line">  &#123;</span><br><span class="line">  mima</span><br><span class="line">  sleep 3  <span class="comment"># 暂停3秒，这里是关键点，其实引入管道模拟多线程的关键就是为了这个暂停的3秒（实际上是微大于3秒的），让系统有个缓冲的时间，起到限制所谓并发的进程数量。</span></span><br><span class="line">  <span class="built_in">echo</span> &gt;&amp;6  <span class="comment">#表示向fd6中输入一行，补充刚才消耗的</span></span><br><span class="line">  &#125; &amp;</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="built_in">wait</span> <span class="comment">#等待所有的后台子进程结束</span></span><br><span class="line"><span class="comment">#关闭fd6</span></span><br><span class="line"><span class="built_in">exec</span> 6&gt;&amp;-</span><br></pre></td></tr></table></figure>
 
 <a id="more"></a>
@@ -478,7 +478,7 @@ open vnc://localhost:5901</code></pre>
   </entry>
   <entry>
     <title>Vsftpd服务</title>
-    <url>/Vsftpd%E6%9C%8D%E5%8A%A1.html</url>
+    <url>//abbrlink.html</url>
     <content><![CDATA[<h3 id="安装vsftpd"><a href="#安装vsftpd" class="headerlink" title="安装vsftpd"></a>安装vsftpd</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install vsftpd -y</span><br></pre></td></tr></table></figure>
 
 <h4 id="系统认证"><a href="#系统认证" class="headerlink" title="系统认证"></a>系统认证</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vi /etc/vsftpd/vsftpd.conf</span><br><span class="line">[root@localhost pub]<span class="comment"># egrep -v &quot;#|^$&quot; /etc/vsftpd/vsftpd.conf </span></span><br><span class="line">anonymous_enable=NO</span><br><span class="line">local_enable=YES</span><br><span class="line">write_enable=YES</span><br><span class="line">local_umask=022</span><br><span class="line">dirmessage_enable=YES</span><br><span class="line">xferlog_enable=YES</span><br><span class="line">connect_from_port_20=YES</span><br><span class="line">xferlog_file=/var/<span class="built_in">log</span>/xferlog</span><br><span class="line">xferlog_std_format=YES</span><br><span class="line">chroot_list_enable=YES</span><br><span class="line">chroot_list_file=/etc/vsftpd/chroot_list</span><br><span class="line">listen=YES</span><br><span class="line">pam_service_name=vsftpd</span><br><span class="line">userlist_enable=YES</span><br><span class="line">tcp_wrappers=YES</span><br><span class="line"><span class="comment">#启动服务</span></span><br><span class="line">service vsftpd start</span><br><span class="line"><span class="comment">#创建用户 </span></span><br><span class="line">useradd -s /sbin/nologin backup</span><br><span class="line">passwd backup <span class="comment">#设置密码</span></span><br><span class="line">touch /etc/vsftpd/chroot_list</span><br></pre></td></tr></table></figure>
@@ -502,7 +502,7 @@ open vnc://localhost:5901</code></pre>
   </entry>
   <entry>
     <title>Xtrabackup</title>
-    <url>/Xtrabackup.html</url>
+    <url>//abbrlink.html</url>
     <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><blockquote>
 <p>官方文档地址：<a href="https://www.percona.com/doc/percona-xtrabackup/2.4/">https://www.percona.com/doc/percona-xtrabackup/2.4/</a></p>
 </blockquote>
@@ -776,7 +776,7 @@ open vnc://localhost:5901</code></pre>
   </entry>
   <entry>
     <title>Zabbix实战-1</title>
-    <url>/Zabbix%E5%AE%9E%E6%88%98-1.html</url>
+    <url>//abbrlink.html</url>
     <content><![CDATA[<blockquote>
 <p>作者：Vaedit</p>
 <p>官网文档地址：<a href="https://www.zabbix.com/cn/download?zabbix=4.0&amp;os_distribution=centos&amp;os_version=7&amp;db=mysql&amp;ws=apache">https://www.zabbix.com/cn/download?zabbix=4.0&amp;os_distribution=centos&amp;os_version=7&amp;db=mysql&amp;ws=apache</a></p>
@@ -888,7 +888,7 @@ open vnc://localhost:5901</code></pre>
   </entry>
   <entry>
     <title>Zabbix实战-2</title>
-    <url>/Zabbix%E5%AE%9E%E6%88%98-2.html</url>
+    <url>//abbrlink.html</url>
     <content><![CDATA[<h4 id="安装Zabbix-agent环境"><a href="#安装Zabbix-agent环境" class="headerlink" title="安装Zabbix-agent环境"></a>安装Zabbix-agent环境</h4><h5 id="1-初始化环境"><a href="#1-初始化环境" class="headerlink" title="1 初始化环境"></a>1 初始化环境</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#192.168.0.161</span></span><br><span class="line">setenforce 0</span><br><span class="line">systemctl stop firewalld</span><br><span class="line">systemctl <span class="built_in">enable</span> firewalld</span><br></pre></td></tr></table></figure>
 
 <h5 id="2-部署-Zabbix-Agent"><a href="#2-部署-Zabbix-Agent" class="headerlink" title="2 部署 Zabbix Agent"></a>2 部署 Zabbix Agent</h5><p>CentOS7.x操作系统安装：</p>
@@ -919,7 +919,7 @@ open vnc://localhost:5901</code></pre>
   </entry>
   <entry>
     <title>iredmail邮件服务器部署</title>
-    <url>/iredmail%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2.html</url>
+    <url>//abbrlink.html</url>
     <content><![CDATA[<blockquote>
 <p>作者：Vaedit</p>
 </blockquote>
@@ -1031,9 +1031,9 @@ open vnc://localhost:5901</code></pre>
 <li><p>mariadb默认数据库目录存放在/var/lib/mysql，安装完成后需要停掉切换到/data/mysql下</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#关闭并全备mariadb</span></span><br><span class="line">systemctl stop mariadb</span><br><span class="line">nestat -ntlp|grep mysql</span><br><span class="line">cp -a /var/lib/mysql /data/</span><br><span class="line"></span><br><span class="line"><span class="comment">#修改下配置文件指定mariadb datadir</span></span><br><span class="line">vim /etc/my.cnf</span><br><span class="line">datadir=/data/mysql</span><br><span class="line"></span><br><span class="line"><span class="comment">#启动</span></span><br><span class="line">systemctl start mariadb</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>默认后台管理地址：<a href="https://mail.domain.com/iredadmin/">https://mail.domain.com/iredadmin/</a>  账号：<a href="mailto:&#112;&#111;&#x73;&#116;&#109;&#97;&#115;&#x74;&#x65;&#x72;&#x40;&#x64;&#x6f;&#x6d;&#x61;&#105;&#110;&#46;&#99;&#x6f;&#109;">&#112;&#111;&#x73;&#116;&#109;&#97;&#115;&#x74;&#x65;&#x72;&#x40;&#x64;&#x6f;&#x6d;&#x61;&#105;&#110;&#46;&#99;&#x6f;&#109;</a> 密码：安装时指定</p>
+<li><p>默认后台管理地址：<a href="https://mail.domain.com/iredadmin/">https://mail.domain.com/iredadmin/</a>  账号：<a href="mailto:&#112;&#111;&#115;&#x74;&#x6d;&#97;&#115;&#x74;&#x65;&#x72;&#64;&#x64;&#111;&#x6d;&#97;&#x69;&#110;&#46;&#x63;&#x6f;&#x6d;">&#112;&#111;&#115;&#x74;&#x6d;&#97;&#115;&#x74;&#x65;&#x72;&#64;&#x64;&#111;&#x6d;&#97;&#x69;&#110;&#46;&#x63;&#x6f;&#x6d;</a> 密码：安装时指定</p>
 </li>
-<li><p>web mail地址：<a href="https://mail.domain.com/mail/">https://mail.domain.com/mail/</a>  账号：<a href="mailto:&#x70;&#x6f;&#x73;&#x74;&#109;&#x61;&#x73;&#116;&#101;&#x72;&#64;&#100;&#111;&#109;&#97;&#x69;&#x6e;&#x2e;&#x63;&#x6f;&#109;">&#x70;&#x6f;&#x73;&#x74;&#109;&#x61;&#x73;&#116;&#101;&#x72;&#64;&#100;&#111;&#109;&#97;&#x69;&#x6e;&#x2e;&#x63;&#x6f;&#109;</a> 密码：安装时指定</p>
+<li><p>web mail地址：<a href="https://mail.domain.com/mail/">https://mail.domain.com/mail/</a>  账号：<a href="mailto:&#x70;&#111;&#x73;&#116;&#x6d;&#97;&#115;&#x74;&#101;&#114;&#x40;&#x64;&#x6f;&#109;&#x61;&#x69;&#x6e;&#46;&#99;&#x6f;&#x6d;">&#x70;&#111;&#x73;&#116;&#x6d;&#97;&#115;&#x74;&#101;&#114;&#x40;&#x64;&#x6f;&#109;&#x61;&#x69;&#x6e;&#46;&#99;&#x6f;&#x6d;</a> 密码：安装时指定</p>
 </li>
 <li><pre><code class="bash">#各服务默认端口
 POP3 service: port 110 over TLS (recommended), or port 995 with SSL.
@@ -1065,7 +1065,7 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
   </entry>
   <entry>
     <title>mysqldump</title>
-    <url>/mysqldump.html</url>
+    <url>//abbrlink.html</url>
     <content><![CDATA[<h3 id="常用参数"><a href="#常用参数" class="headerlink" title="常用参数"></a>常用参数</h3><ul>
 <li><p>-A/–all-databases 备份所有数据库</p>
 </li>
@@ -1099,7 +1099,7 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
   </entry>
   <entry>
     <title>mysqlhotcopy</title>
-    <url>/mysqlhotcopy.html</url>
+    <url>//abbrlink.html</url>
     <content><![CDATA[<blockquote>
 <p>mysqlhotcopy的使用，只能备份MYISAM引擎数据库</p>
 </blockquote>
@@ -1140,7 +1140,7 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
   </entry>
   <entry>
     <title>mysql表修复</title>
-    <url>/mysql%E8%A1%A8%E4%BF%AE%E5%A4%8D.html</url>
+    <url>//abbrlink.html</url>
     <content><![CDATA[<h2 id="mysqlcheck"><a href="#mysqlcheck" class="headerlink" title="mysqlcheck"></a>mysqlcheck</h2><blockquote>
 <ol>
 <li><p>mysqlcheck客户端可以检查和修复MyISAM表。它还可以优化和分析表。mysqlcheck的功能类似myisamchk，但其工作不同。</p>
@@ -1244,12 +1244,12 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
   </entry>
   <entry>
     <title>openssl升级</title>
-    <url>/openssl%E5%8D%87%E7%BA%A7.html</url>
+    <url>//abbrlink.html</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>rsync服务搭建</title>
-    <url>/rsync%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA.html</url>
+    <url>//abbrlink.html</url>
     <content><![CDATA[<h4 id="server端搭建"><a href="#server端搭建" class="headerlink" title="server端搭建"></a>server端搭建</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget  http://rsync.samba.org/ftp/rsync/src/rsync-3.0.7.tar.gz</span><br><span class="line">tar xf rsync-3.0.7.tar.gz</span><br><span class="line"><span class="built_in">cd</span> rsync-3.0.7</span><br><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/rsync</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
 
 <a id="more"></a>
@@ -1294,7 +1294,7 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
   </entry>
   <entry>
     <title>vps编译php报错[ext/fileinfo/libmagic/apprentice.lo]</title>
-    <url>/vps%E7%BC%96%E8%AF%91php%E6%8A%A5%E9%94%99-ext-fileinfo-libmagic-apprentice-lo.html</url>
+    <url>//abbrlink.html</url>
     <content><![CDATA[<p>php编译安装执行make时报错</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/bin/sh /root/php-5.6.31/libtool --silent --preserve-dup-deps --mode=compile cc -I/root/php-5.6.31/ext/fileinfo/libmagic -Iext/fileinfo/ -I/root/php-5.6.31/ext/fileinfo/ -DPHP_ATOM_INC -I/root/php-5.6.31/include -I/root/php-5.6.31/main -I/root/php-5.6.31 -I/root/php-5.6.31/ext/date/lib -I/root/php-5.6.31/ext/ereg/regex -I/usr/include/libxml2 -I/usr/include/freetype2 -I/root/php-5.6.31/ext/mbstring/oniguruma -I/root/php-5.6.31/ext/mbstring/libmbfl -I/root/php-5.6.31/ext/mbstring/libmbfl/mbfl -I/root/php-5.6.31/ext/sqlite3/libsqlite -I/root/php-5.6.31/TSRM -I/root/php-5.6.31/Zend    -I/usr/include -g -O2 -fvisibility=hidden  -c /root/php-5.6.31/ext/fileinfo/libmagic/apprentice.c -o ext/fileinfo/libmagic/apprentice.lo</span><br><span class="line">cc: Internal error: Killed (program cc1)</span><br><span class="line">Please submit a full bug report.</span><br><span class="line">See &lt;http://bugzilla.redhat.com/bugzilla&gt; <span class="keyword">for</span> instructions.</span><br><span class="line">make: *** [ext/fileinfo/libmagic/apprentice.lo] Error 1</span><br></pre></td></tr></table></figure>
 <p>这是因为个人vps内存太小没到1G引起的，在./configure时加–disable-fileinfo成功解决</p>
@@ -1308,7 +1308,7 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
   </entry>
   <entry>
     <title>企业级私有镜像仓库Harbor</title>
-    <url>/%E4%BC%81%E4%B8%9A%E7%BA%A7%E7%A7%81%E6%9C%89%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93Harbor.html</url>
+    <url>//abbrlink.html</url>
     <content><![CDATA[<blockquote>
 <p>Harbor是vmware开源的一个私有镜像仓库软件，其提供了一个网页管理界面。<br> Harbor的安装需要先安装docker，docker-compose</p>
 </blockquote>
@@ -1361,7 +1361,7 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
   </entry>
   <entry>
     <title>contextmanager</title>
-    <url>/%E4%BD%BF%E7%94%A8contextmanager%EF%BC%8C%E8%AE%BE%E7%BD%AE%E4%B8%8A%E4%B8%8B%E6%96%87.html</url>
+    <url>//abbrlink.html</url>
     <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用contextmanager，设置上下文</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DBTools_V2</span>():</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, host=<span class="string">&#x27;192.168.0.188&#x27;</span>, port=<span class="number">3306</span>, db=<span class="string">&#x27;xx&#x27;</span>, user=<span class="string">&#x27;xx&#x27;</span>, passwd=<span class="string">&#x27;xx?&#x27;</span>, charset=<span class="string">&#x27;utf8&#x27;</span></span>):</span></span><br><span class="line">        <span class="comment"># 建立连接</span></span><br><span class="line">        self.conn = pymysql.connect(host=host, port=port, db=db, user=user, passwd=passwd, charset=charset)</span><br><span class="line">        <span class="comment"># 创建游标，操作设置为字典类型</span></span><br><span class="line">        self.cur = self.conn.cursor(cursor=pymysql.cursors.DictCursor)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">select_by_parameters</span>(<span class="params">self, sql, params=None</span>):</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            self.cur.execute(sql, params)</span><br><span class="line">            result = self.cur.fetchall()</span><br><span class="line">            <span class="keyword">return</span> result</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            print(e)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">update_by_parameters</span>(<span class="params">self, sql, params=None</span>):</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            count = self.cur.execute(sql, params)</span><br><span class="line">            <span class="keyword">return</span> count</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            print(e)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@contextmanager</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_mysql_connect</span>(<span class="params">host=<span class="string">&#x27;192.168.0.188&#x27;</span>, port=<span class="number">3306</span>, db=<span class="string">&#x27;xx&#x27;</span>, user=<span class="string">&#x27;xx&#x27;</span>, passwd=<span class="string">&#x27;xx?&#x27;</span>, charset=<span class="string">&#x27;utf8&#x27;</span></span>):</span></span><br><span class="line">    <span class="comment"># with 执行部分</span></span><br><span class="line">    print(<span class="string">&quot;开始执行&quot;</span>)</span><br><span class="line">    db = DBTools_V2(host=host, port=port, db=db, user=user, passwd=passwd, charset=charset)</span><br><span class="line">    <span class="comment"># as 赋值</span></span><br><span class="line">    <span class="keyword">yield</span> db</span><br><span class="line">    <span class="comment"># 执行完代码后的处理</span></span><br><span class="line">    db.conn.commit()</span><br><span class="line">    db.cur.close()</span><br><span class="line">    db.conn.close()</span><br></pre></td></tr></table></figure>
 
 <a id="more"></a>]]></content>
@@ -1373,21 +1373,8 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
       </tags>
   </entry>
   <entry>
-    <title>迁移记录</title>
-    <url>/%E8%BF%81%E7%A7%BB%E8%AE%B0%E5%BD%95.html</url>
-    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;今日把博客文章迁移到hexo，仅此作为记录&quot;</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>日志记录</category>
-      </categories>
-      <tags>
-        <tag>个人记录</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>记录一次因服务器阵列卡坏掉而导致的回档操作</title>
-    <url>/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%9B%A0%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%98%B5%E5%88%97%E5%8D%A1%E5%9D%8F%E6%8E%89%E8%80%8C%E5%AF%BC%E8%87%B4%E7%9A%84%E5%9B%9E%E6%A1%A3%E6%93%8D%E4%BD%9C.html</url>
+    <url>//abbrlink.html</url>
     <content><![CDATA[<h4 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h4><ol>
 <li>周一上午刚到公司便接到策划同事发来的消息，公司某老项目游戏有玩家报登录不上。</li>
 <li>于是便登录相关项目服务器，执行脚本，结果如下图：</li>
@@ -1418,6 +1405,19 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
       </categories>
       <tags>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>迁移记录</title>
+    <url>//abbrlink.html</url>
+    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;今日把博客文章迁移到hexo，仅此作为记录&quot;</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>日志记录</category>
+      </categories>
+      <tags>
+        <tag>个人记录</tag>
       </tags>
   </entry>
 </search>
