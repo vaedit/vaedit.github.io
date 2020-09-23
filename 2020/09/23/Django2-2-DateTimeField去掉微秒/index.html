@@ -20,17 +20,17 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","b2t":false,"scrollpercent":true,"padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="环境 Django 2.2 Mysql 5.7  问题不管如何设置时间格式，数据库字段保存都有毫秒(我的需求是去掉毫秒)，如下图  12#models中定义字段exetime &#x3D; models.DateTimeField(auto_now_add&#x3D;True,verbose_name&#x3D;&amp;#x27;执行时间&amp;#x27;)  期间尝试了修改setings.py 123DATETIME_FORMAT&#x3D;&amp;q">
+  <meta name="description" content="环境 Django 2.2 Mysql 5.7  问题不管如何设置时间格式，数据库字段保存都有微秒(我的需求是去掉微秒)，如下图  12#models中定义字段exetime &#x3D; models.DateTimeField(auto_now_add&#x3D;True,verbose_name&#x3D;&amp;#x27;执行时间&amp;#x27;)  期间尝试了修改setings.py 123DATETIME_FORMAT&#x3D;&amp;q">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Django2.2-DateTimeField去掉毫秒">
+<meta property="og:title" content="Django2.2-DateTimeField去掉微秒">
 <meta property="og:url" content="http://example.com/2020/09/23/Django2-2-DateTimeField%E5%8E%BB%E6%8E%89%E5%BE%AE%E7%A7%92/index.html">
 <meta property="og:site_name" content="Vaedit的博客">
-<meta property="og:description" content="环境 Django 2.2 Mysql 5.7  问题不管如何设置时间格式，数据库字段保存都有毫秒(我的需求是去掉毫秒)，如下图  12#models中定义字段exetime &#x3D; models.DateTimeField(auto_now_add&#x3D;True,verbose_name&#x3D;&amp;#x27;执行时间&amp;#x27;)  期间尝试了修改setings.py 123DATETIME_FORMAT&#x3D;&amp;q">
+<meta property="og:description" content="环境 Django 2.2 Mysql 5.7  问题不管如何设置时间格式，数据库字段保存都有微秒(我的需求是去掉微秒)，如下图  12#models中定义字段exetime &#x3D; models.DateTimeField(auto_now_add&#x3D;True,verbose_name&#x3D;&amp;#x27;执行时间&amp;#x27;)  期间尝试了修改setings.py 123DATETIME_FORMAT&#x3D;&amp;q">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://vaedit-images.oss-cn-beijing.aliyuncs.com/img/image-20200923171022616.png">
 <meta property="og:image" content="https://vaedit-images.oss-cn-beijing.aliyuncs.com/img/image-20200923172512462.png">
 <meta property="article:published_time" content="2020-09-23T09:08:24.000Z">
-<meta property="article:modified_time" content="2020-09-23T09:27:24.972Z">
+<meta property="article:modified_time" content="2020-09-23T09:30:31.251Z">
 <meta property="article:author" content="Vaedit">
 <meta property="article:tag" content="Django">
 <meta name="twitter:card" content="summary">
@@ -49,7 +49,7 @@
   };
 </script>
 
-  <title>Django2.2-DateTimeField去掉毫秒 | Vaedit的博客</title>
+  <title>Django2.2-DateTimeField去掉微秒 | Vaedit的博客</title>
   
 
 
@@ -212,7 +212,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Django2.2-DateTimeField去掉毫秒
+          Django2.2-DateTimeField去掉微秒
         </h1>
 
         <div class="post-meta">
@@ -270,7 +270,7 @@
 <li>Django 2.2</li>
 <li>Mysql 5.7</li>
 </ul>
-<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>不管如何设置时间格式，数据库字段保存都有毫秒(我的需求是去掉毫秒)，如下图</p>
+<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>不管如何设置时间格式，数据库字段保存都有微秒(我的需求是去掉微秒)，如下图</p>
 <p><img src="https://vaedit-images.oss-cn-beijing.aliyuncs.com/img/image-20200923171022616.png" alt="image-20200923171022616"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#models中定义字段</span></span><br><span class="line">exetime = models.DateTimeField(auto_now_add=<span class="literal">True</span>,verbose_name=<span class="string">&#x27;执行时间&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
