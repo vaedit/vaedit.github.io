@@ -6,7 +6,7 @@
   <link href="https://www.1000b1.com/atom.xml" rel="self"/>
   
   <link href="https://www.1000b1.com/"/>
-  <updated>2020-09-23T09:31:22.338Z</updated>
+  <updated>2020-09-23T10:09:14.695Z</updated>
   <id>https://www.1000b1.com/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>Django2.2-DateTimeField去掉微秒</title>
-    <link href="https://www.1000b1.com/abbrlink.html"/>
-    <id>https://www.1000b1.com/abbrlink.html</id>
+    <link href="https://www.1000b1.com/2488942.html"/>
+    <id>https://www.1000b1.com/2488942.html</id>
     <published>2020-09-23T09:08:24.000Z</published>
-    <updated>2020-09-23T09:31:22.338Z</updated>
+    <updated>2020-09-23T10:09:14.695Z</updated>
     
     
     <summary type="html">&lt;h4 id=&quot;环境&quot;&gt;&lt;a href=&quot;#环境&quot; class=&quot;headerlink&quot; title=&quot;环境&quot;&gt;&lt;/a&gt;环境&lt;/h4&gt;&lt;ul&gt;
@@ -43,10 +43,10 @@
   
   <entry>
     <title>mysqldump</title>
-    <link href="https://www.1000b1.com/abbrlink.html"/>
-    <id>https://www.1000b1.com/abbrlink.html</id>
+    <link href="https://www.1000b1.com/df2ed841.html"/>
+    <id>https://www.1000b1.com/df2ed841.html</id>
     <published>2020-09-22T13:15:14.000Z</published>
-    <updated>2020-09-22T13:16:34.377Z</updated>
+    <updated>2020-09-23T10:09:14.705Z</updated>
     
     
     <summary type="html">&lt;h3 id=&quot;常用参数&quot;&gt;&lt;a href=&quot;#常用参数&quot; class=&quot;headerlink&quot; title=&quot;常用参数&quot;&gt;&lt;/a&gt;常用参数&lt;/h3&gt;&lt;ul&gt;
@@ -73,10 +73,10 @@
   
   <entry>
     <title>mysqlhotcopy</title>
-    <link href="https://www.1000b1.com/abbrlink.html"/>
-    <id>https://www.1000b1.com/abbrlink.html</id>
+    <link href="https://www.1000b1.com/14f2069a.html"/>
+    <id>https://www.1000b1.com/14f2069a.html</id>
     <published>2020-09-22T13:15:06.000Z</published>
-    <updated>2020-09-22T13:15:49.354Z</updated>
+    <updated>2020-09-23T10:09:14.705Z</updated>
     
     
     <summary type="html">&lt;blockquote&gt;
@@ -105,10 +105,10 @@
   
   <entry>
     <title>Mysql二进制日志恢复</title>
-    <link href="https://www.1000b1.com/abbrlink.html"/>
-    <id>https://www.1000b1.com/abbrlink.html</id>
+    <link href="https://www.1000b1.com/70b491cf.html"/>
+    <id>https://www.1000b1.com/70b491cf.html</id>
     <published>2020-09-22T13:13:36.000Z</published>
-    <updated>2020-09-22T13:14:24.865Z</updated>
+    <updated>2020-09-23T10:09:14.699Z</updated>
     
     
     <summary type="html">&lt;h3 id=&quot;二进制日志导出&quot;&gt;&lt;a href=&quot;#二进制日志导出&quot; class=&quot;headerlink&quot; title=&quot;二进制日志导出&quot;&gt;&lt;/a&gt;二进制日志导出&lt;/h3&gt;&lt;ol&gt;
@@ -145,10 +145,10 @@
   
   <entry>
     <title>Iptables端口转发</title>
-    <link href="https://www.1000b1.com/abbrlink.html"/>
-    <id>https://www.1000b1.com/abbrlink.html</id>
+    <link href="https://www.1000b1.com/818ac74b.html"/>
+    <id>https://www.1000b1.com/818ac74b.html</id>
     <published>2020-09-22T13:10:31.000Z</published>
-    <updated>2020-09-22T13:11:16.238Z</updated>
+    <updated>2020-09-23T10:09:14.695Z</updated>
     
     
     <summary type="html">&lt;blockquote&gt;
@@ -171,10 +171,10 @@
   
   <entry>
     <title>openssl升级</title>
-    <link href="https://www.1000b1.com/abbrlink.html"/>
-    <id>https://www.1000b1.com/abbrlink.html</id>
+    <link href="https://www.1000b1.com/ceb34f9a.html"/>
+    <id>https://www.1000b1.com/ceb34f9a.html</id>
     <published>2020-09-22T13:07:26.000Z</published>
-    <updated>2020-09-22T13:07:26.883Z</updated>
+    <updated>2020-09-23T10:09:14.707Z</updated>
     
     
     
@@ -184,10 +184,10 @@
   
   <entry>
     <title>Linux-ssh隧道详解</title>
-    <link href="https://www.1000b1.com/abbrlink.html"/>
-    <id>https://www.1000b1.com/abbrlink.html</id>
+    <link href="https://www.1000b1.com/d517a7ab.html"/>
+    <id>https://www.1000b1.com/d517a7ab.html</id>
     <published>2020-09-22T13:02:19.000Z</published>
-    <updated>2020-09-22T13:03:39.694Z</updated>
+    <updated>2020-09-23T10:09:14.696Z</updated>
     
     
     <summary type="html">&lt;h4 id=&quot;隧道原理&quot;&gt;&lt;a href=&quot;#隧道原理&quot; class=&quot;headerlink&quot; title=&quot;隧道原理&quot;&gt;&lt;/a&gt;隧道原理&lt;/h4&gt;&lt;p&gt;隧道是一种把一种网络协议封装进另外一种网络协议进行传输的技术。这里我们研究ssh隧道，所以所有的网络通讯都是加密的。又被称作端口转发，因为ssh隧道通常会绑定一个本地端口，所有发向这个端口端口的数据包，都会被加密并透明地传输到远端系统。&lt;/p&gt;
@@ -208,10 +208,10 @@
   
   <entry>
     <title>Vsftpd服务</title>
-    <link href="https://www.1000b1.com/abbrlink.html"/>
-    <id>https://www.1000b1.com/abbrlink.html</id>
+    <link href="https://www.1000b1.com/6900bf65.html"/>
+    <id>https://www.1000b1.com/6900bf65.html</id>
     <published>2020-09-22T12:58:47.000Z</published>
-    <updated>2020-09-22T13:00:26.073Z</updated>
+    <updated>2020-09-23T10:09:14.701Z</updated>
     
     
     <summary type="html">&lt;h3 id=&quot;安装vsftpd&quot;&gt;&lt;a href=&quot;#安装vsftpd&quot; class=&quot;headerlink&quot; title=&quot;安装vsftpd&quot;&gt;&lt;/a&gt;安装vsftpd&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yum install vsftpd -y&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -229,10 +229,10 @@
   
   <entry>
     <title>迁移记录</title>
-    <link href="https://www.1000b1.com/abbrlink.html"/>
-    <id>https://www.1000b1.com/abbrlink.html</id>
+    <link href="https://www.1000b1.com/7a001119.html"/>
+    <id>https://www.1000b1.com/7a001119.html</id>
     <published>2020-09-22T10:47:18.000Z</published>
-    <updated>2020-09-22T10:50:19.248Z</updated>
+    <updated>2020-09-23T10:09:14.712Z</updated>
     
     
       
@@ -254,10 +254,10 @@
   
   <entry>
     <title>企业级私有镜像仓库Harbor</title>
-    <link href="https://www.1000b1.com/abbrlink.html"/>
-    <id>https://www.1000b1.com/abbrlink.html</id>
+    <link href="https://www.1000b1.com/932165fe.html"/>
+    <id>https://www.1000b1.com/932165fe.html</id>
     <published>2020-09-22T10:46:50.000Z</published>
-    <updated>2020-09-22T10:48:23.801Z</updated>
+    <updated>2020-09-23T10:09:14.709Z</updated>
     
     
     <summary type="html">&lt;blockquote&gt;
@@ -279,10 +279,10 @@
   
   <entry>
     <title>AWS-RDS慢查询日志查看导出</title>
-    <link href="https://www.1000b1.com/abbrlink.html"/>
-    <id>https://www.1000b1.com/abbrlink.html</id>
+    <link href="https://www.1000b1.com/5ed6ea01.html"/>
+    <id>https://www.1000b1.com/5ed6ea01.html</id>
     <published>2020-09-22T10:41:17.000Z</published>
-    <updated>2020-09-22T10:42:29.011Z</updated>
+    <updated>2020-09-23T10:09:14.694Z</updated>
     
     
     <summary type="html">&lt;p&gt;如果要分析 slow log，第一步就是先要获取到 slow log 文件，由于 RDS MySQL 是托管数据库，我们无法登录到 MySQL 所在服务器，那么应该如何来获取 slow log 文件呢？&lt;/p&gt;
@@ -312,10 +312,10 @@
   
   <entry>
     <title>Zabbix实战-2</title>
-    <link href="https://www.1000b1.com/abbrlink.html"/>
-    <id>https://www.1000b1.com/abbrlink.html</id>
+    <link href="https://www.1000b1.com/32f6428a.html"/>
+    <id>https://www.1000b1.com/32f6428a.html</id>
     <published>2020-09-22T10:37:10.000Z</published>
-    <updated>2020-09-22T10:38:27.972Z</updated>
+    <updated>2020-09-23T10:09:14.703Z</updated>
     
     
     <summary type="html">&lt;h4 id=&quot;安装Zabbix-agent环境&quot;&gt;&lt;a href=&quot;#安装Zabbix-agent环境&quot; class=&quot;headerlink&quot; title=&quot;安装Zabbix-agent环境&quot;&gt;&lt;/a&gt;安装Zabbix-agent环境&lt;/h4&gt;&lt;h5 id=&quot;1-初始化环境&quot;&gt;&lt;a href=&quot;#1-初始化环境&quot; class=&quot;headerlink&quot; title=&quot;1 初始化环境&quot;&gt;&lt;/a&gt;1 初始化环境&lt;/h5&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#192.168.0.161&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;setenforce 0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;systemctl stop firewalld&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;systemctl &lt;span class=&quot;built_in&quot;&gt;enable&lt;/span&gt; firewalld&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -337,10 +337,10 @@
   
   <entry>
     <title>Zabbix实战-1</title>
-    <link href="https://www.1000b1.com/abbrlink.html"/>
-    <id>https://www.1000b1.com/abbrlink.html</id>
+    <link href="https://www.1000b1.com/abff1330.html"/>
+    <id>https://www.1000b1.com/abff1330.html</id>
     <published>2020-09-22T10:37:06.000Z</published>
-    <updated>2020-09-22T10:37:47.897Z</updated>
+    <updated>2020-09-23T10:09:14.703Z</updated>
     
     
     <summary type="html">&lt;blockquote&gt;
@@ -380,10 +380,10 @@
   
   <entry>
     <title>vps编译php报错[ext/fileinfo/libmagic/apprentice.lo]</title>
-    <link href="https://www.1000b1.com/abbrlink.html"/>
-    <id>https://www.1000b1.com/abbrlink.html</id>
+    <link href="https://www.1000b1.com/fd6f40e2.html"/>
+    <id>https://www.1000b1.com/fd6f40e2.html</id>
     <published>2020-09-22T10:31:44.000Z</published>
-    <updated>2020-09-22T10:33:58.160Z</updated>
+    <updated>2020-09-23T10:09:14.708Z</updated>
     
     
       
@@ -406,10 +406,10 @@
   
   <entry>
     <title>AWS-EC2在线磁盘扩容</title>
-    <link href="https://www.1000b1.com/abbrlink.html"/>
-    <id>https://www.1000b1.com/abbrlink.html</id>
+    <link href="https://www.1000b1.com/b97f48ac.html"/>
+    <id>https://www.1000b1.com/b97f48ac.html</id>
     <published>2020-09-22T10:29:39.000Z</published>
-    <updated>2020-09-22T10:35:07.365Z</updated>
+    <updated>2020-09-23T10:09:14.693Z</updated>
     
     
     <summary type="html">&lt;ol&gt;
@@ -434,10 +434,10 @@
   
   <entry>
     <title>Linux下制作RPM包工具fpm</title>
-    <link href="https://www.1000b1.com/abbrlink.html"/>
-    <id>https://www.1000b1.com/abbrlink.html</id>
+    <link href="https://www.1000b1.com/dbf9115.html"/>
+    <id>https://www.1000b1.com/dbf9115.html</id>
     <published>2020-09-22T10:28:57.000Z</published>
-    <updated>2020-09-22T10:36:18.498Z</updated>
+    <updated>2020-09-23T10:09:14.697Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;fpm工具安装&quot;&gt;&lt;a href=&quot;#fpm工具安装&quot; class=&quot;headerlink&quot; title=&quot;fpm工具安装&quot;&gt;&lt;/a&gt;fpm工具安装&lt;/h2&gt;&lt;h3 id=&quot;CentOS-6-x下安装&quot;&gt;&lt;a href=&quot;#CentOS-6-x下安装&quot; class=&quot;headerlink&quot; title=&quot;CentOS 6.x下安装&quot;&gt;&lt;/a&gt;CentOS 6.x下安装&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#centos6 由于自带yum源中的ruby版本太低，需要如下安装：&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;yum -y install rpm-build&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;yum update nss&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;curl -sSL https://get.rvm.io | bash -s stable &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;source&lt;/span&gt; /etc/profile.d/rvm.sh&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;rvm install 1.9.3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;gem install fpm&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;rvm use 1.9.3 --default &lt;span class=&quot;comment&quot;&gt;#选择ruby版本&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -455,10 +455,10 @@
   
   <entry>
     <title>Linux内核调优</title>
-    <link href="https://www.1000b1.com/abbrlink.html"/>
-    <id>https://www.1000b1.com/abbrlink.html</id>
+    <link href="https://www.1000b1.com/763b0dcd.html"/>
+    <id>https://www.1000b1.com/763b0dcd.html</id>
     <published>2020-09-22T10:23:41.000Z</published>
-    <updated>2020-09-22T10:25:05.090Z</updated>
+    <updated>2020-09-23T10:09:14.697Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;文件描述符和最大进程数&quot;&gt;&lt;a href=&quot;#文件描述符和最大进程数&quot; class=&quot;headerlink&quot; title=&quot;文件描述符和最大进程数&quot;&gt;&lt;/a&gt;文件描述符和最大进程数&lt;/h2&gt;&lt;h3 id=&quot;ulimit的使用&quot;&gt;&lt;a href=&quot;#ulimit的使用&quot; class=&quot;headerlink&quot; title=&quot;ulimit的使用&quot;&gt;&lt;/a&gt;ulimit的使用&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;ulimit&lt;/span&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#-a 列出所有当前资源极限&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#-n 每个进程可以同时打开的最大文件数&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#-u 可以运行的最大并发进程数&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#-S 设置软限制&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#-H 设置硬限制&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;在命令行直接执行该命令只会在当前shell生效，退出或者新开一个shell都会无效，所以可以加入到全局设置中：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;/bin/&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&amp;quot;ulimit -SHn 65535&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; /etc/profile&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;有时候为了方便起见，也可以将用户资源的限制统一由一个文件来配置&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;这个文件就是/etc/security/limits.conf，该文件不但能对指定用户的资源进行限制，还能对指定组的资源进行限制。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&amp;quot;* hard nofile 65535&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt;/etc/security/limits.conf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&amp;quot;* soft nofile 65535&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt;/etc/security/limits.conf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&amp;quot;* soft nproc 65535&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt;/etc/security/limits.conf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&amp;quot;* hard nproc 65535&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt;/etc/security/limits.conf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;需要注意的是，在centos系统中，除了/etc/security/limits.conf文件外，还有一个文件/etc/security/limits.d/20-nproc.conf（centos7.x系统），&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;/etc/security/limits.d/90-nproc.conf（centos6.x系统），这个文件中，对nproc设置了一个默认值，&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;并且是针对所有系统用户设置的。而如果在/etc/security/limits.conf文件中也设置了nproc值的话，&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;则会被覆盖，也就是说/etc/security/limits.d/里面的文件的配置会覆盖/etc/security/limits.conf的配置。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;所以最好是删除该文件或者修改或者屏蔽该文件内容：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;/bin/sed -i &lt;span class=&quot;string&quot;&gt;&amp;#x27;s/1024/65535/g&amp;#x27;&lt;/span&gt;  /etc/security/limits.d/90-nproc.conf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;或者：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;rm -f /etc/security/limits.d/90-nproc.conf&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
@@ -474,10 +474,10 @@
   
   <entry>
     <title>Linux历史命令调优</title>
-    <link href="https://www.1000b1.com/abbrlink.html"/>
-    <id>https://www.1000b1.com/abbrlink.html</id>
+    <link href="https://www.1000b1.com/2b8a17fa.html"/>
+    <id>https://www.1000b1.com/2b8a17fa.html</id>
     <published>2020-09-22T10:23:08.000Z</published>
-    <updated>2020-09-22T10:25:19.179Z</updated>
+    <updated>2020-09-23T10:09:14.698Z</updated>
     
     
     <summary type="html">&lt;h4 id=&quot;合理使用shell历史记录功能&quot;&gt;&lt;a href=&quot;#合理使用shell历史记录功能&quot; class=&quot;headerlink&quot; title=&quot;合理使用shell历史记录功能&quot;&gt;&lt;/a&gt;合理使用shell历史记录功能&lt;/h4&gt;&lt;p&gt;默认shell命令是存在.bash_history中，且不够详细，通过把以下命令写入到/etc/profile中，可以隐蔽的保存历史命令记录并方便审计。&lt;/p&gt;
@@ -494,10 +494,10 @@
   
   <entry>
     <title>Shell并发编程</title>
-    <link href="https://www.1000b1.com/abbrlink.html"/>
-    <id>https://www.1000b1.com/abbrlink.html</id>
+    <link href="https://www.1000b1.com/ebb1f950.html"/>
+    <id>https://www.1000b1.com/ebb1f950.html</id>
     <published>2020-09-22T10:21:42.000Z</published>
-    <updated>2020-09-22T10:22:35.760Z</updated>
+    <updated>2020-09-23T10:09:14.700Z</updated>
     
     
     <summary type="html">&lt;h4 id=&quot;案例1-通过文件描述符控制并发数&quot;&gt;&lt;a href=&quot;#案例1-通过文件描述符控制并发数&quot; class=&quot;headerlink&quot; title=&quot;案例1 通过文件描述符控制并发数&quot;&gt;&lt;/a&gt;案例1 通过文件描述符控制并发数&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#用fifo处理shell下多进程并发：&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#!/bin/bash&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#author : vaedit&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#date : 2017-8-15&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#需要执行的工作函数&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;mima&lt;/span&gt;&lt;/span&gt;()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  openssl rand -base64 40 &amp;gt;&amp;gt; ssf.txt&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#判断是否存在fifo文件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;  [ -e /tmp/$$.fifo ];&lt;span class=&quot;keyword&quot;&gt;then&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  rm -rf /tmp/$$.fifo&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;fi&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#创建$$.fifo 主要是为了防止同名&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;fifo_file=/tmp/$$.fifo&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mkfifo &lt;span class=&quot;variable&quot;&gt;$fifo_file&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#把文件表述符fd6和fifo文件绑定&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;exec&lt;/span&gt; 6&amp;lt;&amp;gt;&lt;span class=&quot;string&quot;&gt;&amp;quot;&lt;span class=&quot;variable&quot;&gt;$fifo_file&lt;/span&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;process_num=10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#向fd6中输入10个回车&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; ((i=0;i&amp;lt;&lt;span class=&quot;variable&quot;&gt;$process_num&lt;/span&gt;;i++))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;done&lt;/span&gt; &amp;gt;&amp;amp;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#处理业务&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; ((a=0;a&amp;lt;10;a++))  &lt;span class=&quot;comment&quot;&gt;#这里写10表示业务总条数，比如业务总共要执行100次，就填100&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;built_in&quot;&gt;read&lt;/span&gt; -u6 &lt;span class=&quot;comment&quot;&gt;##read -u6命令执行一次，相当于尝试从fd6中获取一行，如果获取不到，则阻塞#获取到了一行后，fd6就少了一行了，开始处理子进程，子进程放在后台执行&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  mima&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  sleep 3  &lt;span class=&quot;comment&quot;&gt;# 暂停3秒，这里是关键点，其实引入管道模拟多线程的关键就是为了这个暂停的3秒（实际上是微大于3秒的），让系统有个缓冲的时间，起到限制所谓并发的进程数量。&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &amp;gt;&amp;amp;6  &lt;span class=&quot;comment&quot;&gt;#表示向fd6中输入一行，补充刚才消耗的&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125; &amp;amp;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;done&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;wait&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;#等待所有的后台子进程结束&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#关闭fd6&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;exec&lt;/span&gt; 6&amp;gt;&amp;amp;-&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
@@ -513,10 +513,10 @@
   
   <entry>
     <title>NFS安装使用</title>
-    <link href="https://www.1000b1.com/abbrlink.html"/>
-    <id>https://www.1000b1.com/abbrlink.html</id>
+    <link href="https://www.1000b1.com/aa512fbf.html"/>
+    <id>https://www.1000b1.com/aa512fbf.html</id>
     <published>2020-09-22T10:17:30.000Z</published>
-    <updated>2020-09-22T10:18:11.514Z</updated>
+    <updated>2020-09-23T10:09:14.699Z</updated>
     
     
     <summary type="html">&lt;h4 id=&quot;NFS安装&quot;&gt;&lt;a href=&quot;#NFS安装&quot; class=&quot;headerlink&quot; title=&quot;NFS安装&quot;&gt;&lt;/a&gt;NFS安装&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yum install nfs* rpcbind -y&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&amp;quot;/ssf *(rw,no_root_squash,no_all_squash,sync)&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt;/etc/exports&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;service rpcbind start&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;service nfs start &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;chmod 766 /ssf&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
