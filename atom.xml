@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2020-09-23T09:30:31.251Z</updated>
+  <updated>2020-09-23T09:31:22.338Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,20 +21,16 @@
     <link href="http://example.com/2020/09/23/Django2-2-DateTimeField%E5%8E%BB%E6%8E%89%E5%BE%AE%E7%A7%92/"/>
     <id>http://example.com/2020/09/23/Django2-2-DateTimeField%E5%8E%BB%E6%8E%89%E5%BE%AE%E7%A7%92/</id>
     <published>2020-09-23T09:08:24.000Z</published>
-    <updated>2020-09-23T09:30:31.251Z</updated>
+    <updated>2020-09-23T09:31:22.338Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;h4 id=&quot;环境&quot;&gt;&lt;a href=&quot;#环境&quot; class=&quot;headerlink&quot; title=&quot;环境&quot;&gt;&lt;/a&gt;环境&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;Django 2.2&lt;/li&gt;
 &lt;li&gt;Mysql 5.7&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&quot;问题&quot;&gt;&lt;a</summary>
-        
-      
+&lt;h4 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h4&gt;&lt;p&gt;不管如何设置时间格式，数据库字段保存都有微秒(我的需求是去掉微秒)，如下图&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://vaedit-images.oss-cn-beijing.aliyuncs.com/img/image-20200923171022616.png&quot; alt=&quot;image-20200923171022616&quot;&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#models中定义字段&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;exetime = models.DateTimeField(auto_now_add=&lt;span class=&quot;literal&quot;&gt;True&lt;/span&gt;,verbose_name=&lt;span class=&quot;string&quot;&gt;&amp;#x27;执行时间&amp;#x27;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
