@@ -1245,7 +1245,34 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
   <entry>
     <title>openssl升级</title>
     <url>/ceb34f9a.html</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h3 id="1-查看原版本"><a href="#1-查看原版本" class="headerlink" title="1.查看原版本"></a>1.查看原版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl version -a </span><br></pre></td></tr></table></figure>
+<h3 id="2-下载openssl对应版本"><a href="#2-下载openssl对应版本" class="headerlink" title="2.下载openssl对应版本"></a>2.下载openssl对应版本</h3><p>PASS</p>
+<h3 id="3-更新zlib"><a href="#3-更新zlib" class="headerlink" title="3.更新zlib"></a>3.更新zlib</h3><h4 id="zlib简介"><a href="#zlib简介" class="headerlink" title="zlib简介"></a>zlib简介</h4><blockquote>
+<p>zlib是一个很好的压缩解压缩库.</p>
+</blockquote>
+<p>yum安装 </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install zlib -y</span><br></pre></td></tr></table></figure>
+<p>源码安装:<br>查看本机是否安装好zlib<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">whereis zlib</span><br></pre></td></tr></table></figure><br>如果安装好会输出路径，这样直接跳过前两步安装步骤：    </p>
+<ul>
+<li>下载源码包        </li>
+<li>解压，编辑安装</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./configure  </span><br><span class="line"> make </span><br><span class="line"> sudo make install</span><br></pre></td></tr></table></figure>
+<p>如果在安装时设定了路径则需要:<br>如./configure –prefix=/usr/zlib   </p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vi /etc/ld.so.conf.d/zlib.conf</span><br><span class="line">/usr/zlib/bin  <span class="comment">#在其中添加刚才的路径  </span></span><br><span class="line">ldconfig <span class="comment">#加载安装的库文件	</span></span><br></pre></td></tr></table></figure>
+<h3 id="4解压安装openssl"><a href="#4解压安装openssl" class="headerlink" title="4解压安装openssl"></a>4解压安装openssl</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar xzvf openssl-1.0.2h.tar.gz  </span><br><span class="line"><span class="built_in">cd</span> openssl-1.0.2h  </span><br><span class="line">./config shared zlib  </span><br><span class="line">make  </span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>替换旧版openssl</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mv /usr/bin/openssl /usr/bin/openssl.bak  </span><br><span class="line">mv /usr/include/openssl /usr/include/openssl.bak	</span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/ssl/bin/openssl /usr/bin/openssl  	</span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/ssl/include/openssl /usr/include/openssl</span><br></pre></td></tr></table></figure>
+<p>配置库文件路径：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;/usr/local/ssl/lib&quot;</span> &gt;&gt;/etc/ld.so.conf</span><br><span class="line">ldconfig -v</span><br></pre></td></tr></table></figure>
+<h3 id="5-查看是否升级成功"><a href="#5-查看是否升级成功" class="headerlink" title="5.查看是否升级成功"></a>5.查看是否升级成功</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl version -a</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Linux基础服务</category>
+      </categories>
+      <tags>
+        <tag>openssl</tag>
+      </tags>
   </entry>
   <entry>
     <title>vps编译php报错[ext/fileinfo/libmagic/apprentice.lo]</title>
