@@ -6,7 +6,7 @@
   <link href="https://www.1000b1.com/atom.xml" rel="self"/>
   
   <link href="https://www.1000b1.com/"/>
-  <updated>2020-09-23T10:09:14.695Z</updated>
+  <updated>2020-10-10T08:48:24.467Z</updated>
   <id>https://www.1000b1.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>curl报错记录</title>
+    <link href="https://www.1000b1.com/3a6ce56f.html"/>
+    <id>https://www.1000b1.com/3a6ce56f.html</id>
+    <published>2020-10-10T08:42:56.000Z</published>
+    <updated>2020-10-10T08:48:24.467Z</updated>
+    
+    
+    <summary type="html">Centos下curl报错curl:(35)SSLconnecterror</summary>
+    
+    
+    
+    <category term="Linux故障记录" scheme="https://www.1000b1.com/categories/Linux%E6%95%85%E9%9A%9C%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="curl" scheme="https://www.1000b1.com/tags/curl/"/>
+    
+  </entry>
   
   <entry>
     <title>Django2.2-DateTimeField去掉微秒</title>
@@ -514,27 +533,6 @@
     
     
     <category term="Shell" scheme="https://www.1000b1.com/tags/Shell/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NFS安装使用</title>
-    <link href="https://www.1000b1.com/aa512fbf.html"/>
-    <id>https://www.1000b1.com/aa512fbf.html</id>
-    <published>2020-09-22T10:17:30.000Z</published>
-    <updated>2020-09-23T10:09:14.699Z</updated>
-    
-    
-    <summary type="html">&lt;h4 id=&quot;NFS安装&quot;&gt;&lt;a href=&quot;#NFS安装&quot; class=&quot;headerlink&quot; title=&quot;NFS安装&quot;&gt;&lt;/a&gt;NFS安装&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yum install nfs* rpcbind -y&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&amp;quot;/ssf *(rw,no_root_squash,no_all_squash,sync)&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt;/etc/exports&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;service rpcbind start&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;service nfs start &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;chmod 766 /ssf&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;h4 id=&quot;配置文件详解&quot;&gt;&lt;a href=&quot;#配置文件详解&quot; class=&quot;headerlink&quot; title=&quot;配置文件详解&quot;&gt;&lt;/a&gt;配置文件详解&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;vim &amp;#x2F;etc&amp;#x2F;exports &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#x2F;data&amp;#x2F;lys 192.168.2.0&amp;#x2F;24(rw,no_root_squash,no_all_squash,sync)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="Linux基础服务" scheme="https://www.1000b1.com/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/"/>
-    
-    
-    <category term="NFS" scheme="https://www.1000b1.com/tags/NFS/"/>
     
   </entry>
   
