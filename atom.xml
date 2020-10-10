@@ -6,7 +6,7 @@
   <link href="https://www.1000b1.com/atom.xml" rel="self"/>
   
   <link href="https://www.1000b1.com/"/>
-  <updated>2020-10-10T08:48:35.789Z</updated>
+  <updated>2020-10-10T09:00:38.491Z</updated>
   <id>https://www.1000b1.com/</id>
   
   <author>
@@ -21,14 +21,14 @@
     <link href="https://www.1000b1.com/3a6ce56f.html"/>
     <id>https://www.1000b1.com/3a6ce56f.html</id>
     <published>2020-10-10T08:42:56.000Z</published>
-    <updated>2020-10-10T08:48:35.789Z</updated>
+    <updated>2020-10-10T09:00:38.491Z</updated>
     
     
     <summary type="html">Centos下curl报错curl:(35)SSLconnecterror</summary>
     
     
     
-    <category term="Linux故障记录" scheme="https://www.1000b1.com/categories/Linux%E6%95%85%E9%9A%9C%E8%AE%B0%E5%BD%95/"/>
+    <category term="故障记录" scheme="https://www.1000b1.com/categories/%E6%95%85%E9%9A%9C%E8%AE%B0%E5%BD%95/"/>
     
     
     <category term="curl" scheme="https://www.1000b1.com/tags/curl/"/>
@@ -40,7 +40,7 @@
     <link href="https://www.1000b1.com/2488942.html"/>
     <id>https://www.1000b1.com/2488942.html</id>
     <published>2020-09-23T09:08:24.000Z</published>
-    <updated>2020-09-23T10:09:14.695Z</updated>
+    <updated>2020-10-10T09:00:45.974Z</updated>
     
     
     <summary type="html">&lt;h4 id=&quot;环境&quot;&gt;&lt;a href=&quot;#环境&quot; class=&quot;headerlink&quot; title=&quot;环境&quot;&gt;&lt;/a&gt;环境&lt;/h4&gt;&lt;ul&gt;
@@ -53,7 +53,7 @@
     
     
     
-    <category term="python" scheme="https://www.1000b1.com/categories/python/"/>
+    <category term="python运维" scheme="https://www.1000b1.com/categories/python%E8%BF%90%E7%BB%B4/"/>
     
     
     <category term="Django" scheme="https://www.1000b1.com/tags/Django/"/>
@@ -65,7 +65,7 @@
     <link href="https://www.1000b1.com/df2ed841.html"/>
     <id>https://www.1000b1.com/df2ed841.html</id>
     <published>2020-09-22T13:15:14.000Z</published>
-    <updated>2020-09-25T06:34:37.802Z</updated>
+    <updated>2020-10-10T09:01:29.851Z</updated>
     
     
     <summary type="html">&lt;h3 id=&quot;常用参数&quot;&gt;&lt;a href=&quot;#常用参数&quot; class=&quot;headerlink&quot; title=&quot;常用参数&quot;&gt;&lt;/a&gt;常用参数&lt;/h3&gt;&lt;ul&gt;
@@ -83,7 +83,7 @@
     
     
     
-    <category term="mysql" scheme="https://www.1000b1.com/categories/mysql/"/>
+    <category term="数据库" scheme="https://www.1000b1.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
     <category term="mysqldump" scheme="https://www.1000b1.com/tags/mysqldump/"/>
@@ -95,7 +95,7 @@
     <link href="https://www.1000b1.com/14f2069a.html"/>
     <id>https://www.1000b1.com/14f2069a.html</id>
     <published>2020-09-22T13:15:06.000Z</published>
-    <updated>2020-09-25T06:34:54.279Z</updated>
+    <updated>2020-10-10T09:01:34.895Z</updated>
     
     
     <summary type="html">&lt;blockquote&gt;
@@ -115,7 +115,7 @@
     
     
     
-    <category term="mysql" scheme="https://www.1000b1.com/categories/mysql/"/>
+    <category term="数据库" scheme="https://www.1000b1.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
     <category term="mysqlhotcopy" scheme="https://www.1000b1.com/tags/mysqlhotcopy/"/>
@@ -127,7 +127,7 @@
     <link href="https://www.1000b1.com/70b491cf.html"/>
     <id>https://www.1000b1.com/70b491cf.html</id>
     <published>2020-09-22T13:13:36.000Z</published>
-    <updated>2020-09-23T10:09:14.699Z</updated>
+    <updated>2020-10-10T09:01:22.511Z</updated>
     
     
     <summary type="html">&lt;h3 id=&quot;二进制日志导出&quot;&gt;&lt;a href=&quot;#二进制日志导出&quot; class=&quot;headerlink&quot; title=&quot;二进制日志导出&quot;&gt;&lt;/a&gt;二进制日志导出&lt;/h3&gt;&lt;ol&gt;
@@ -155,7 +155,7 @@
     
     
     
-    <category term="mysql" scheme="https://www.1000b1.com/categories/mysql/"/>
+    <category term="数据库" scheme="https://www.1000b1.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
     <category term="binlog恢复" scheme="https://www.1000b1.com/tags/binlog%E6%81%A2%E5%A4%8D/"/>

@@ -101,7 +101,7 @@
 
 ]]></content>
       <categories>
-        <category>python</category>
+        <category>python运维</category>
       </categories>
       <tags>
         <tag>Django</tag>
@@ -418,7 +418,7 @@ open vnc://localhost:5901</code></pre>
 <p>-v ：显示statement模式带来的sql语句</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysqlbinlog –no-defaults –v –v –base64-output=decode-rows mysql-bin.0000001 &gt;bin.sql</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>mysql</category>
+        <category>数据库</category>
       </categories>
       <tags>
         <tag>binlog恢复</tag>
@@ -1091,7 +1091,7 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
 </ul>
 ]]></content>
       <categories>
-        <category>mysql</category>
+        <category>数据库</category>
       </categories>
       <tags>
         <tag>mysqldump</tag>
@@ -1132,7 +1132,7 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
 </ul>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">service mysqld start</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>mysql</category>
+        <category>数据库</category>
       </categories>
       <tags>
         <tag>mysqlhotcopy</tag>
@@ -1415,7 +1415,7 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
 </ul>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#写一个脚本时刻监控同步目录的变化：</span></span><br><span class="line">vim auto_inotify.sh</span><br><span class="line"><span class="meta">#!/bin/sh  </span></span><br><span class="line">src=/data/webapps/www/</span><br><span class="line">des=/var/www/html/</span><br><span class="line">ip=192.168.0.11</span><br><span class="line">inotifywait -mrq --timefmt <span class="string">&#x27;%d/%m/%y-%H:%M&#x27;</span> --format <span class="string">&#x27;%T %w%f&#x27;</span> -e modify,delete,create,attrib <span class="variable">$&#123;src&#125;</span> | <span class="keyword">while</span> <span class="built_in">read</span> file  </span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  rsync -aP --delete <span class="variable">$src</span> root@<span class="variable">$ip</span>:<span class="variable">$des</span>    </span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#后台一直执行</span></span><br><span class="line">nohup sh auto_inotify.sh &amp;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>linux基础服务</category>
+        <category>Linux基础服务</category>
       </categories>
       <tags>
         <tag>rsync</tag>
@@ -1465,7 +1465,7 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
 </blockquote>
 ]]></content>
       <categories>
-        <category>Linux故障记录</category>
+        <category>故障记录</category>
       </categories>
       <tags>
         <tag>curl</tag>
