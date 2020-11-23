@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.1000b1.com/463405f9.html</loc>
+    <loc>https://www.1000b1.com/b8ae5402.html</loc>
     
     <lastmod>2020-11-23</lastmod>
     
@@ -395,17 +395,17 @@
     <priority>0.6</priority>
   </url>
   
-
-  
   <url>
-    <loc>https://www.1000b1.com/categories/AWS%E6%9C%8D%E5%8A%A1/</loc>
+    <loc>https://www.1000b1.com/tags/python-Django/</loc>
     <lastmod>2020-11-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
+
+  
   <url>
-    <loc>https://www.1000b1.com/categories/python/</loc>
+    <loc>https://www.1000b1.com/categories/AWS%E6%9C%8D%E5%8A%A1/</loc>
     <lastmod>2020-11-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -469,6 +469,13 @@
   
   <url>
     <loc>https://www.1000b1.com/categories/%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2020-11-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.1000b1.com/categories/Django/</loc>
     <lastmod>2020-11-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

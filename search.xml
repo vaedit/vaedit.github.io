@@ -1472,8 +1472,8 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
       </tags>
   </entry>
   <entry>
-    <title>Django-DRF</title>
-    <url>/463405f9.html</url>
+    <title>Django学习1</title>
+    <url>/b8ae5402.html</url>
     <content><![CDATA[<h4 id="安装Django"><a href="#安装Django" class="headerlink" title="安装Django"></a>安装Django</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install django==2.2.0</span><br><span class="line"><span class="meta">#</span><span class="bash">pip install djangorestframework</span></span><br></pre></td></tr></table></figure>
 
 
@@ -1490,10 +1490,10 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
 
 ]]></content>
       <categories>
-        <category>python</category>
+        <category>Django</category>
       </categories>
       <tags>
-        <tag>Django</tag>
+        <tag>python,Django</tag>
       </tags>
   </entry>
 </search>

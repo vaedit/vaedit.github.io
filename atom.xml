@@ -6,7 +6,7 @@
   <link href="https://www.1000b1.com/atom.xml" rel="self"/>
   
   <link href="https://www.1000b1.com/"/>
-  <updated>2020-11-23T10:42:21.973Z</updated>
+  <updated>2020-11-23T10:49:47.239Z</updated>
   <id>https://www.1000b1.com/</id>
   
   <author>
@@ -17,21 +17,21 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Django-DRF</title>
-    <link href="https://www.1000b1.com/463405f9.html"/>
-    <id>https://www.1000b1.com/463405f9.html</id>
-    <published>2020-11-23T10:14:57.000Z</published>
-    <updated>2020-11-23T10:42:21.973Z</updated>
+    <title>Django学习1</title>
+    <link href="https://www.1000b1.com/b8ae5402.html"/>
+    <id>https://www.1000b1.com/b8ae5402.html</id>
+    <published>2020-11-23T10:48:42.000Z</published>
+    <updated>2020-11-23T10:49:47.239Z</updated>
     
     
-    <summary type="html">Django基础教程</summary>
+    <summary type="html">Django学习后端接口开发1</summary>
     
     
     
-    <category term="python" scheme="https://www.1000b1.com/categories/python/"/>
+    <category term="Django" scheme="https://www.1000b1.com/categories/Django/"/>
     
     
-    <category term="Django" scheme="https://www.1000b1.com/tags/Django/"/>
+    <category term="python,Django" scheme="https://www.1000b1.com/tags/python-Django/"/>
     
   </entry>
   
