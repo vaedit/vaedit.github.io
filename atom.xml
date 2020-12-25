@@ -6,7 +6,7 @@
   <link href="https://www.1000b1.com/atom.xml" rel="self"/>
   
   <link href="https://www.1000b1.com/"/>
-  <updated>2020-11-23T10:49:47.239Z</updated>
+  <updated>2020-12-25T07:34:31.565Z</updated>
   <id>https://www.1000b1.com/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>CentosYUM源报错</title>
+    <link href="https://www.1000b1.com/a151d928.html"/>
+    <id>https://www.1000b1.com/a151d928.html</id>
+    <published>2020-12-25T05:34:37.000Z</published>
+    <updated>2020-12-25T07:34:31.565Z</updated>
+    
+    
+    <summary type="html">&lt;h4 id=&quot;记录线上Centos6系统服务器，yum报错问题&quot;&gt;&lt;a href=&quot;#记录线上Centos6系统服务器，yum报错问题&quot; class=&quot;headerlink&quot; title=&quot;记录线上Centos6系统服务器，yum报错问题&quot;&gt;&lt;/a&gt;记录线上Centos6系统服务器，yum报错问题&lt;/h4&gt;&lt;h5 id=&quot;问题：&quot;&gt;&lt;a href=&quot;#问题：&quot; class=&quot;headerlink&quot; title=&quot;问题：&quot;&gt;&lt;/a&gt;问题：&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;线上6版本服务器突发yum执行报错,“Invalid release/repo/arch combination/”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;https://vaedit-images.oss-cn-beijing.aliyuncs.com/img/image-20201225151919549.png&quot; alt=&quot;image-20201225151919549&quot;&gt;&lt;/p&gt;
+&lt;h5 id=&quot;处理过程&quot;&gt;&lt;a href=&quot;#处理过程&quot; class=&quot;headerlink&quot; title=&quot;处理过程:&quot;&gt;&lt;/a&gt;处理过程:&lt;/h5&gt;&lt;p&gt;由于Centos6已于今年11月停止支持,这是官方源站下的readme&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;This directory (and version of CentOS) is deprecated. Please see this FAQ&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;concerning the CentOS release scheme:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;https:&amp;#x2F;&amp;#x2F;wiki.centos.org&amp;#x2F;FAQ&amp;#x2F;General&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Please keep in mind that 6.0, 6.1, 6.2, 6.3, 6.4 , 6.5, 6.6, 6.7, 6.8 , 6.9 and 6.10 no longer get any updates, nor&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;any security fix&amp;#39;s.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;The whole CentOS 6 is *dead* and *shouldn&amp;#39;t* be used anywhere at *all*&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;由于centos6停止支持，官方把源移到了&lt;a href=&quot;https://vault.centos.org/6.8/%E4%B8%8B,%E6%89%80%E4%BB%A5%E4%BC%9A%E6%8A%A5%E9%94%99%E3%80%82&quot;&gt;https://vault.centos.org/6.8/下,所以会报错。&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Linux基础服务" scheme="https://www.1000b1.com/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+    <category term="Linux,YUM" scheme="https://www.1000b1.com/tags/Linux-YUM/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Django学习1</title>
     <link href="https://www.1000b1.com/b8ae5402.html"/>
     <id>https://www.1000b1.com/b8ae5402.html</id>
     <published>2020-11-23T10:48:42.000Z</published>
-    <updated>2020-11-23T10:49:47.239Z</updated>
+    <updated>2020-11-23T10:49:53.412Z</updated>
     
     
     <summary type="html">Django学习后端接口开发1</summary>
@@ -506,26 +532,6 @@
     
     
     <summary type="html">&lt;h2 id=&quot;文件描述符和最大进程数&quot;&gt;&lt;a href=&quot;#文件描述符和最大进程数&quot; class=&quot;headerlink&quot; title=&quot;文件描述符和最大进程数&quot;&gt;&lt;/a&gt;文件描述符和最大进程数&lt;/h2&gt;&lt;h3 id=&quot;ulimit的使用&quot;&gt;&lt;a href=&quot;#ulimit的使用&quot; class=&quot;headerlink&quot; title=&quot;ulimit的使用&quot;&gt;&lt;/a&gt;ulimit的使用&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;ulimit&lt;/span&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#-a 列出所有当前资源极限&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#-n 每个进程可以同时打开的最大文件数&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#-u 可以运行的最大并发进程数&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#-S 设置软限制&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#-H 设置硬限制&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;在命令行直接执行该命令只会在当前shell生效，退出或者新开一个shell都会无效，所以可以加入到全局设置中：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;/bin/&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&amp;quot;ulimit -SHn 65535&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; /etc/profile&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;有时候为了方便起见，也可以将用户资源的限制统一由一个文件来配置&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;这个文件就是/etc/security/limits.conf，该文件不但能对指定用户的资源进行限制，还能对指定组的资源进行限制。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&amp;quot;* hard nofile 65535&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt;/etc/security/limits.conf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&amp;quot;* soft nofile 65535&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt;/etc/security/limits.conf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&amp;quot;* soft nproc 65535&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt;/etc/security/limits.conf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&amp;quot;* hard nproc 65535&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt;/etc/security/limits.conf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;需要注意的是，在centos系统中，除了/etc/security/limits.conf文件外，还有一个文件/etc/security/limits.d/20-nproc.conf（centos7.x系统），&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;/etc/security/limits.d/90-nproc.conf（centos6.x系统），这个文件中，对nproc设置了一个默认值，&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;并且是针对所有系统用户设置的。而如果在/etc/security/limits.conf文件中也设置了nproc值的话，&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;则会被覆盖，也就是说/etc/security/limits.d/里面的文件的配置会覆盖/etc/security/limits.conf的配置。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;所以最好是删除该文件或者修改或者屏蔽该文件内容：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;/bin/sed -i &lt;span class=&quot;string&quot;&gt;&amp;#x27;s/1024/65535/g&amp;#x27;&lt;/span&gt;  /etc/security/limits.d/90-nproc.conf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;或者：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;rm -f /etc/security/limits.d/90-nproc.conf&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="系统调优" scheme="https://www.1000b1.com/categories/%E7%B3%BB%E7%BB%9F%E8%B0%83%E4%BC%98/"/>
-    
-    
-    <category term="Linux" scheme="https://www.1000b1.com/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux历史命令调优</title>
-    <link href="https://www.1000b1.com/2b8a17fa.html"/>
-    <id>https://www.1000b1.com/2b8a17fa.html</id>
-    <published>2020-09-22T10:23:08.000Z</published>
-    <updated>2020-09-23T10:09:14.698Z</updated>
-    
-    
-    <summary type="html">&lt;h4 id=&quot;合理使用shell历史记录功能&quot;&gt;&lt;a href=&quot;#合理使用shell历史记录功能&quot; class=&quot;headerlink&quot; title=&quot;合理使用shell历史记录功能&quot;&gt;&lt;/a&gt;合理使用shell历史记录功能&lt;/h4&gt;&lt;p&gt;默认shell命令是存在.bash_history中，且不够详细，通过把以下命令写入到/etc/profile中，可以隐蔽的保存历史命令记录并方便审计。&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#history&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;HISTDIR=/usr/share/.&lt;span class=&quot;built_in&quot;&gt;history&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;export&lt;/span&gt; HISTORY_FILE=&lt;span class=&quot;variable&quot;&gt;$&amp;#123;HISTDIR&amp;#125;&lt;/span&gt;/`date &lt;span class=&quot;string&quot;&gt;&amp;#x27;+%Y-%m-%d&amp;#x27;&lt;/span&gt;`.&lt;span class=&quot;built_in&quot;&gt;log&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; [ ! -d &lt;span class=&quot;variable&quot;&gt;$HISTDIR&lt;/span&gt; ];&lt;span class=&quot;keyword&quot;&gt;then&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mkdir -p &lt;span class=&quot;variable&quot;&gt;$HISTDIR&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;fi&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; [ ! -f &lt;span class=&quot;variable&quot;&gt;$HISTORY_FILE&lt;/span&gt; ];&lt;span class=&quot;keyword&quot;&gt;then&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    touch &lt;span class=&quot;variable&quot;&gt;$HISTORY_FILE&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;fi&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;readonly&lt;/span&gt; PROMPT_COMMAND=&lt;span class=&quot;string&quot;&gt;&amp;#x27;&amp;#123; date &amp;quot;+%Y-%m-%d %T ##### $(who am i |awk -v user=$USER &amp;quot;&amp;#123;print user \&amp;quot; \&amp;quot;\$2\&amp;quot; \&amp;quot;\$5&amp;#125;&amp;quot;) #### $(pwd) #### $(history 1 | &amp;#123; read x cmd; echo &amp;quot;$cmd&amp;quot;; &amp;#125;)&amp;quot;; &amp;#125; &amp;gt;&amp;gt; $HISTORY_FILE&amp;#x27;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
