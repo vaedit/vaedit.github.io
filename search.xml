@@ -1506,7 +1506,7 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
 <h5 id="处理过程"><a href="#处理过程" class="headerlink" title="处理过程:"></a>处理过程:</h5><p>由于Centos6已于今年11月停止支持,这是官方源站下的readme</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">This directory (and version of CentOS) is deprecated. Please see this FAQ</span><br><span class="line">concerning the CentOS release scheme:</span><br><span class="line"></span><br><span class="line">https:&#x2F;&#x2F;wiki.centos.org&#x2F;FAQ&#x2F;General</span><br><span class="line"></span><br><span class="line">Please keep in mind that 6.0, 6.1, 6.2, 6.3, 6.4 , 6.5, 6.6, 6.7, 6.8 , 6.9 and 6.10 no longer get any updates, nor</span><br><span class="line">any security fix&#39;s.</span><br><span class="line">The whole CentOS 6 is *dead* and *shouldn&#39;t* be used anywhere at *all*</span><br></pre></td></tr></table></figure>
 
-<p>由于centos6停止支持，官方把源移到了<a href="https://vault.centos.org/6.8/%E4%B8%8B,%E6%89%80%E4%BB%A5%E4%BC%9A%E6%8A%A5%E9%94%99%E3%80%82">https://vault.centos.org/6.8/下,所以会报错。</a></p>
+<p>由于centos6停止支持，官方把源移到了<a href="https://vault.centos.org/6.8/">https://vault.centos.org/6.8/</a> 下,所以会报错。</p>
 <a id="more"></a>
 
 <h5 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h5><p>原repo</p>

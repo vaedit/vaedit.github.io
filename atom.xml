@@ -6,7 +6,7 @@
   <link href="https://www.1000b1.com/atom.xml" rel="self"/>
   
   <link href="https://www.1000b1.com/"/>
-  <updated>2020-12-25T07:34:31.565Z</updated>
+  <updated>2020-12-29T02:38:58.198Z</updated>
   <id>https://www.1000b1.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://www.1000b1.com/a151d928.html"/>
     <id>https://www.1000b1.com/a151d928.html</id>
     <published>2020-12-25T05:34:37.000Z</published>
-    <updated>2020-12-25T07:34:31.565Z</updated>
+    <updated>2020-12-29T02:38:58.198Z</updated>
     
     
     <summary type="html">&lt;h4 id=&quot;记录线上Centos6系统服务器，yum报错问题&quot;&gt;&lt;a href=&quot;#记录线上Centos6系统服务器，yum报错问题&quot; class=&quot;headerlink&quot; title=&quot;记录线上Centos6系统服务器，yum报错问题&quot;&gt;&lt;/a&gt;记录线上Centos6系统服务器，yum报错问题&lt;/h4&gt;&lt;h5 id=&quot;问题：&quot;&gt;&lt;a href=&quot;#问题：&quot; class=&quot;headerlink&quot; title=&quot;问题：&quot;&gt;&lt;/a&gt;问题：&lt;/h5&gt;&lt;ul&gt;
@@ -31,7 +31,7 @@
 &lt;h5 id=&quot;处理过程&quot;&gt;&lt;a href=&quot;#处理过程&quot; class=&quot;headerlink&quot; title=&quot;处理过程:&quot;&gt;&lt;/a&gt;处理过程:&lt;/h5&gt;&lt;p&gt;由于Centos6已于今年11月停止支持,这是官方源站下的readme&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;This directory (and version of CentOS) is deprecated. Please see this FAQ&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;concerning the CentOS release scheme:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;https:&amp;#x2F;&amp;#x2F;wiki.centos.org&amp;#x2F;FAQ&amp;#x2F;General&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Please keep in mind that 6.0, 6.1, 6.2, 6.3, 6.4 , 6.5, 6.6, 6.7, 6.8 , 6.9 and 6.10 no longer get any updates, nor&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;any security fix&amp;#39;s.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;The whole CentOS 6 is *dead* and *shouldn&amp;#39;t* be used anywhere at *all*&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 
-&lt;p&gt;由于centos6停止支持，官方把源移到了&lt;a href=&quot;https://vault.centos.org/6.8/%E4%B8%8B,%E6%89%80%E4%BB%A5%E4%BC%9A%E6%8A%A5%E9%94%99%E3%80%82&quot;&gt;https://vault.centos.org/6.8/下,所以会报错。&lt;/a&gt;&lt;/p&gt;</summary>
+&lt;p&gt;由于centos6停止支持，官方把源移到了&lt;a href=&quot;https://vault.centos.org/6.8/&quot;&gt;https://vault.centos.org/6.8/&lt;/a&gt; 下,所以会报错。&lt;/p&gt;</summary>
     
     
     
