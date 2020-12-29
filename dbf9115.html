@@ -28,7 +28,7 @@
 <meta property="og:description" content="fpm工具安装CentOS 6.x下安装123456789#centos6 由于自带yum源中的ruby版本太低，需要如下安装：yum -y install rpm-buildyum update nssgpg --keyserver hkp:&#x2F;&#x2F;keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1C">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-09-22T10:28:57.000Z">
-<meta property="article:modified_time" content="2020-09-25T06:34:12.753Z">
+<meta property="article:modified_time" content="2020-12-29T02:50:10.070Z">
 <meta property="article:author" content="Vaedit">
 <meta property="article:tag" content="rpm包制作">
 <meta name="twitter:card" content="summary">
@@ -244,7 +244,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>6.6k</span>
+              <span>6.7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -270,46 +270,79 @@
 <a id="more"></a>
 
 <h2 id="FPM常用参数"><a href="#FPM常用参数" class="headerlink" title="FPM常用参数"></a>FPM常用参数</h2><ul>
-<li>-f :强制覆盖[覆盖同名rpm包] </li>
-<li>-n :指定的rpm包名</li>
-<li>-p :指定的rpm包文件放置位置 </li>
-<li>-v :指定的rpm包版本 </li>
-<li>-d :指定依赖的软件   ( [-d ‘name’] or [-d ‘name &gt; version’] 例子: -d ‘libstdc++ &gt;= 4.4.3’)</li>
-<li>-a :指定系统架构,如果是noarch则为’-a all’ 或者 ‘-a native’ [x86_64] 当软件不区分64位或32位的时候可以 noarch</li>
-<li>-s :指定INPUT的数据类型 ([“-s dir”] 省略数据类型) </li>
-<li>-m :指定打包人员[Packager]  ([ -m ‘user’])</li>
-<li>-C :指定打包的相对路径,类似于buildroot. 譬如-C /tmp/apr/ 而打包机器的数据包路径是/tmp/apr/{opt,usr,etc} 那安装这个rpm包后,在本地的数据就是/opt/,/usr/,/etc/</li>
-<li>-t :指定需要制作成什么包,可选项有(deb,rpm,solaris,etc)<ul>
-<li>支持的源类型:：<pre><code>&quot;dir&quot; &quot;rpm&quot; &quot;gem&quot; &quot;python&quot; &quot;empty&quot; &quot;tar&quot; &quot;deb&quot; &quot;cpan&quot; &quot;npm&quot; &quot;osxpkg&quot; &quot;pear&quot; &quot;pkgin&quot; &quot;virtualenv&quot; &quot;zip&quot;</code></pre>
+<li><p>-f :强制覆盖[覆盖同名rpm包] </p>
+</li>
+<li><p>-n :指定的rpm包名</p>
+</li>
+<li><p>-p :指定的rpm包文件放置位置 </p>
+</li>
+<li><p>-v :指定的rpm包版本 </p>
+</li>
+<li><p>-d :指定依赖的软件   ( [-d ‘name’] or [-d ‘name &gt; version’] 例子: -d ‘libstdc++ &gt;= 4.4.3’)</p>
+</li>
+<li><p>-a :指定系统架构,如果是noarch则为’-a all’ 或者 ‘-a native’ [x86_64] 当软件不区分64位或32位的时候可以 noarch</p>
+</li>
+<li><p>-s :指定INPUT的数据类型 ([“-s dir”] 省略数据类型) </p>
+</li>
+<li><p>-m :指定打包人员[Packager]  ([ -m ‘user’])</p>
+</li>
+<li><p>-C :指定打包的相对路径,类似于buildroot. 譬如-C /tmp/apr/ 而打包机器的数据包路径是/tmp/apr/{opt,usr,etc} 那安装这个rpm包后,在本地的数据就是/opt/,/usr/,/etc/</p>
+</li>
+<li><p>-t :指定需要制作成什么包,可选项有(deb,rpm,solaris,etc)</p>
 <ul>
-<li>支持的目标类型:<br>  “rpm” “deb” “solaris” “puppet” “dir” “osxpkg” “p5p” “puppet” “sh” “solaris” “tar” “zip” </li>
+<li><p>支持的源类型:</p>
+<pre><code>  &quot;dir&quot; &quot;rpm&quot; &quot;gem&quot; &quot;python&quot; &quot;empty&quot; &quot;tar&quot; &quot;deb&quot; &quot;cpan&quot; &quot;npm&quot; &quot;osxpkg&quot; &quot;pear&quot; &quot;pkgin&quot; &quot;virtualenv&quot; &quot;zip&quot;</code></pre>
+</li>
+<li><p>支持的目标类型:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;rpm&quot; &quot;deb&quot; &quot;solaris&quot; &quot;puppet&quot; &quot;dir&quot; &quot;osxpkg&quot; &quot;p5p&quot; &quot;puppet&quot; &quot;sh&quot; &quot;solaris&quot; &quot;tar&quot; &quot;zip&quot; </span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-</ul>
+<li><p>–description         :软件包描述 </p>
 </li>
-<li>–description         :软件包描述 </li>
-<li>–conflicts         :指定冲突软件 </li>
-<li>–url                 :指定站点[惯例都是添加软件的官网 例如: –url  “<a target="_blank" rel="noopener" href="http://www.cnblog.com/roach57&quot;">http://www.cnblog.com/roach57&quot;</a> ] </li>
-<li>–verbose             :安装过程详细打印 </li>
-<li>–after-install     :包安装之后执行的脚本 也可写作 –post-install FILE </li>
-<li>–before-install     :包安装之前执行的脚本  </li>
-<li>–after-remove         :包卸载之后执行的脚本 </li>
-<li>–before-remove     :包卸载之前执行的脚本 </li>
-<li>–after-upgrade     :包更新之后执行的脚本[仅支持 deb 和 rpm 这两种包] </li>
-<li>–before-upgrade     :包更新之前执行的脚本 </li>
-<li>–pre-install     rpm包安装前执行的脚本 </li>
-<li>–post-install     rpm包安装后执行的脚本 </li>
-<li>–pre-uninstall     rpm包卸载前执行的脚本 </li>
-<li>–post-uninstall     rpm包卸载后执行的脚本 </li>
-<li>–iteration         :发布序号[就是rpm包里面的release] </li>
-<li>–epoch             :纪元  [不知道干嘛用的] </li>
-<li>–no-rpm-sign        :不使用rpm签名   Signature </li>
-<li>–license             :证书许可 [可选项有 ‘BSD(开源软件)’ ‘GPLv2(自由软件)’ ‘MIT’ ‘Public Domain(公共域)’ ‘Distributable(贡献)’ ‘commercial(商业)’ ‘Share(共享)等’,一般的开发都写’BSD’或’GPL’]</li>
-<li>–vendor             :供应商名称 [ –vendor ‘roach57@163.com’] </li>
-<li>–no-depends         :代表没有任何依赖包,和-d是对立的,不能共用 </li>
-<li>–config-files         :指定配置文件,可以指定目录[递归] </li>
-<li>–directories         :指定包目录 </li>
-<li>–category             :软件所属的类别[这是个什么软件]下面有个对应的表格:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">[参考这个文件 &#x2F;usr&#x2F;share&#x2F;doc&#x2F;rpm-x.x.x&#x2F;GROUPS ]</span><br><span class="line">Amusements&#x2F;Games [娱乐&#x2F;游戏]</span><br><span class="line">Amusements&#x2F;Graphics [娱乐&#x2F;图形]</span><br><span class="line">Applications&#x2F;Archiving [应用&#x2F;文档]</span><br><span class="line">Applications&#x2F;Communications [应用&#x2F;通讯]</span><br><span class="line">Applications&#x2F;Databases [应用&#x2F;数据库]</span><br><span class="line">Applications&#x2F;Editors [应用&#x2F;编辑器]</span><br><span class="line">Applications&#x2F;Emulators [应用&#x2F;仿真器]</span><br><span class="line">Applications&#x2F;Engineering [应用&#x2F;工程]</span><br><span class="line">Applications&#x2F;File [应用&#x2F;文件]</span><br><span class="line">Applications&#x2F;Internet [应用&#x2F;因特网]</span><br><span class="line">Applications&#x2F;Multimedia [应用&#x2F;多媒体]</span><br><span class="line">Applications&#x2F;Productivity [应用&#x2F;产品]</span><br><span class="line">Applications&#x2F;Publishing [应用&#x2F;印刷]</span><br><span class="line">Applications&#x2F;System [应用&#x2F;系统]</span><br><span class="line">Applications&#x2F;Text [应用&#x2F;文本]</span><br><span class="line">Development&#x2F;Debuggers [开发&#x2F;调试器]</span><br><span class="line">Development&#x2F;Languages [开发&#x2F;语言]</span><br><span class="line">Development&#x2F;Libraries [开发&#x2F;函数库]</span><br><span class="line">Development&#x2F;System [开发&#x2F;系统]</span><br><span class="line">Development&#x2F;Tools [开发&#x2F;工具]</span><br><span class="line">Documentation [文档]</span><br><span class="line">System Environment&#x2F;Base [系统环境&#x2F;基础]</span><br><span class="line">System Environment&#x2F;Daemons [系统环境&#x2F;守护]</span><br><span class="line">System Environment&#x2F;Kernel [系统环境&#x2F;内核]</span><br><span class="line">System Environment&#x2F;Libraries [系统环境&#x2F;函数库]</span><br><span class="line">System Environment&#x2F;Shells [系统环境&#x2F;接口]</span><br><span class="line">User Interface&#x2F;Desktops [用户界面&#x2F;桌面]</span><br><span class="line">User Interface&#x2F;X [用户界面&#x2F;X窗口]</span><br><span class="line">User Interface&#x2F;X Hardware Support [用户界面&#x2F;X硬件支持]</span><br></pre></td></tr></table></figure>
+<li><p>–conflicts         :指定冲突软件 </p>
+</li>
+<li><p>–url                 :指定站点[惯例都是添加软件的官网 例如: –url  “<a target="_blank" rel="noopener" href="http://www.cnblog.com/roach57&quot;">http://www.cnblog.com/roach57&quot;</a> ] </p>
+</li>
+<li><p>–verbose             :安装过程详细打印 </p>
+</li>
+<li><p>–after-install     :包安装之后执行的脚本 也可写作 –post-install FILE </p>
+</li>
+<li><p>–before-install     :包安装之前执行的脚本  </p>
+</li>
+<li><p>–after-remove         :包卸载之后执行的脚本 </p>
+</li>
+<li><p>–before-remove     :包卸载之前执行的脚本 </p>
+</li>
+<li><p>–after-upgrade     :包更新之后执行的脚本[仅支持 deb 和 rpm 这两种包] </p>
+</li>
+<li><p>–before-upgrade     :包更新之前执行的脚本 </p>
+</li>
+<li><p>–pre-install     rpm包安装前执行的脚本 </p>
+</li>
+<li><p>–post-install     rpm包安装后执行的脚本 </p>
+</li>
+<li><p>–pre-uninstall     rpm包卸载前执行的脚本 </p>
+</li>
+<li><p>–post-uninstall     rpm包卸载后执行的脚本 </p>
+</li>
+<li><p>–iteration         :发布序号[就是rpm包里面的release] </p>
+</li>
+<li><p>–epoch             :纪元  [不知道干嘛用的] </p>
+</li>
+<li><p>–no-rpm-sign        :不使用rpm签名   Signature </p>
+</li>
+<li><p>–license             :证书许可 [可选项有 ‘BSD(开源软件)’ ‘GPLv2(自由软件)’ ‘MIT’ ‘Public Domain(公共域)’ ‘Distributable(贡献)’ ‘commercial(商业)’ ‘Share(共享)等’,一般的开发都写’BSD’或’GPL’]</p>
+</li>
+<li><p>–vendor             :供应商名称 [ –vendor ‘roach57@163.com’] </p>
+</li>
+<li><p>–no-depends         :代表没有任何依赖包,和-d是对立的,不能共用 </p>
+</li>
+<li><p>–config-files         :指定配置文件,可以指定目录[递归] </p>
+</li>
+<li><p>–directories         :指定包目录 </p>
+</li>
+<li><p>–category             :软件所属的类别[这是个什么软件]下面有个对应的表格:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">[参考这个文件 &#x2F;usr&#x2F;share&#x2F;doc&#x2F;rpm-x.x.x&#x2F;GROUPS ]</span><br><span class="line">Amusements&#x2F;Games [娱乐&#x2F;游戏]</span><br><span class="line">Amusements&#x2F;Graphics [娱乐&#x2F;图形]</span><br><span class="line">Applications&#x2F;Archiving [应用&#x2F;文档]</span><br><span class="line">Applications&#x2F;Communications [应用&#x2F;通讯]</span><br><span class="line">Applications&#x2F;Databases [应用&#x2F;数据库]</span><br><span class="line">Applications&#x2F;Editors [应用&#x2F;编辑器]</span><br><span class="line">Applications&#x2F;Emulators [应用&#x2F;仿真器]</span><br><span class="line">Applications&#x2F;Engineering [应用&#x2F;工程]</span><br><span class="line">Applications&#x2F;File [应用&#x2F;文件]</span><br><span class="line">Applications&#x2F;Internet [应用&#x2F;因特网]</span><br><span class="line">Applications&#x2F;Multimedia [应用&#x2F;多媒体]</span><br><span class="line">Applications&#x2F;Productivity [应用&#x2F;产品]</span><br><span class="line">Applications&#x2F;Publishing [应用&#x2F;印刷]</span><br><span class="line">Applications&#x2F;System [应用&#x2F;系统]</span><br><span class="line">Applications&#x2F;Text [应用&#x2F;文本]</span><br><span class="line">Development&#x2F;Debuggers [开发&#x2F;调试器]</span><br><span class="line">Development&#x2F;Languages [开发&#x2F;语言]</span><br><span class="line">Development&#x2F;Libraries [开发&#x2F;函数库]</span><br><span class="line">Development&#x2F;System [开发&#x2F;系统]</span><br><span class="line">Development&#x2F;Tools [开发&#x2F;工具]</span><br><span class="line">Documentation [文档]</span><br><span class="line">System Environment&#x2F;Base [系统环境&#x2F;基础]</span><br><span class="line">System Environment&#x2F;Daemons [系统环境&#x2F;守护]</span><br><span class="line">System Environment&#x2F;Kernel [系统环境&#x2F;内核]</span><br><span class="line">System Environment&#x2F;Libraries [系统环境&#x2F;函数库]</span><br><span class="line">System Environment&#x2F;Shells [系统环境&#x2F;接口]</span><br><span class="line">User Interface&#x2F;Desktops [用户界面&#x2F;桌面]</span><br><span class="line">User Interface&#x2F;X [用户界面&#x2F;X窗口]</span><br><span class="line">User Interface&#x2F;X Hardware Support [用户界面&#x2F;X硬件支持]</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <hr>
