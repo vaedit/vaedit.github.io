@@ -1559,4 +1559,21 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
         <tag>Linux,YUM</tag>
       </tags>
   </entry>
+  <entry>
+    <title>django接收并保存前端el-upload传递的文件</title>
+    <url>/7ed37b22.html</url>
+    <content><![CDATA[<h4 id="前端代码"><a href="#前端代码" class="headerlink" title="前端代码"></a>前端代码</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;el-upload</span><br><span class="line">  class&#x3D;&quot;upload-demo&quot;</span><br><span class="line">  ref&#x3D;&quot;upload&quot;</span><br><span class="line">  action&#x3D;&quot;&#x2F;api&#x2F;v1&#x2F;yw-sql&quot;  &#x2F;&#x2F; 接口地址</span><br><span class="line">  multiple</span><br><span class="line">  :headers&#x3D;&quot;importHeaders&quot; &#x2F;&#x2F; 添加请求头token</span><br><span class="line">  :on-preview&#x3D;&quot;handlePreview&quot; &#x2F;&#x2F; 点击已上传的文件链接时的钩子, 可以通过 file.response 拿到服务端返回数据</span><br><span class="line">  :on-remove&#x3D;&quot;handleRemove&quot; &#x2F;&#x2F; 删除时的钩子</span><br><span class="line">  :file-list&#x3D;&quot;fileList&quot;</span><br><span class="line">  :auto-upload&#x3D;&quot;false&quot;&gt;  &#x2F;&#x2F; 是否自动上传</span><br><span class="line">  &lt;el-button slot&#x3D;&quot;trigger&quot; size&#x3D;&quot;small&quot; type&#x3D;&quot;primary&quot;&gt;选取文件&lt;&#x2F;el-button&gt;</span><br><span class="line">  &lt;el-button style&#x3D;&quot;margin-left: 10px;&quot; size&#x3D;&quot;small&quot; type&#x3D;&quot;success&quot; @click&#x3D;&quot;submitUpload&quot;&gt;上传到服务器&lt;&#x2F;el-button&gt;</span><br><span class="line">  &lt;div slot&#x3D;&quot;tip&quot; class&#x3D;&quot;el-upload__tip&quot;&gt;只能上传SQL文件，且不超过100M&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;el-upload&gt;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h4 id="后端代码"><a href="#后端代码" class="headerlink" title="后端代码"></a>后端代码</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">post</span>(<span class="params">self, request</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;接收文件&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        files = request.FILES.getlist(<span class="string">&quot;file&quot;</span>,<span class="literal">None</span>)</span><br><span class="line">        <span class="keyword">for</span> file <span class="keyword">in</span> files:</span><br><span class="line">            sql_path = <span class="string">f&quot;<span class="subst">&#123;os.getcwd()&#125;</span>/sql/<span class="subst">&#123;file.name&#125;</span>&quot;</span></span><br><span class="line">            <span class="comment"># 写入文件</span></span><br><span class="line">            <span class="keyword">with</span> open(sql_path, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">                <span class="keyword">for</span> content <span class="keyword">in</span> file.chunks():</span><br><span class="line">                    print(content)</span><br><span class="line">                    f.write(content)</span><br><span class="line">        <span class="keyword">return</span> JSONApiResponse()</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">return</span> JSONApiResponse(code=<span class="number">401</span>, msg=str(e))</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Django</category>
+      </categories>
+      <tags>
+        <tag>Django</tag>
+      </tags>
+  </entry>
 </search>
