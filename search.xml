@@ -1576,4 +1576,30 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
         <tag>Django</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Fabric远程后台执行脚本</title>
+    <url>/34fbb0ff.html</url>
+    <content><![CDATA[<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><ul>
+<li>工作中遇到项目启动，分为5个jar，项目有启动和关闭都有顺序要求，在使用fabric直接执行nohup stop.sh &amp;的时候，发现并没有执行成功过了，只会在远程机器上短时间看到该命令进程存在，然后退出，没有执行成功。</li>
+</ul>
+<h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><ol>
+<li>使用已经存在daemon技术，如init、supervisord、upstart、systemd等</li>
+<li>使用screen、tmux、dtach等工具来从当前shell中detach进程，注意关闭pty</li>
+<li>使用nohup</li>
+</ol>
+<h5 id="nohup方式（比较麻烦，不推荐）"><a href="#nohup方式（比较麻烦，不推荐）" class="headerlink" title="nohup方式（比较麻烦，不推荐）"></a>nohup方式（比较麻烦，不推荐）</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">(nohup sh stop.sh &gt;&amp; /dev/null &lt; /dev/null &amp;) &amp;&amp; sleep <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 下面这个没有尝试</span></span><br><span class="line">nohup sh -c <span class="string">&quot;( ( sh stop.sh &amp;&gt;/dev/null ) &amp; )</span></span><br></pre></td></tr></table></figure>
+
+<p>如果脚本中含有nohup启动，记得也要按上述方式</p>
+<h5 id="dtach方式"><a href="#dtach方式" class="headerlink" title="dtach方式"></a>dtach方式</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line"><span class="comment"># yum install dtach -y</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> fabric <span class="keyword">import</span> Connection, Config</span><br><span class="line">config = Config(overrides=&#123;<span class="string">&#x27;load_ssh_configs&#x27;</span>:<span class="literal">False</span>,<span class="string">&quot;run.pty&quot;</span>: <span class="literal">False</span></span><br><span class="line">cmd=<span class="string">&#x27;cd /root/server &amp;&amp; sh start.sh&#x27;</span></span><br><span class="line">re = Connection(host=host, connect_timeout=<span class="number">2</span>, config=config).run(<span class="string">&#x27;dtach -n `mktemp -u /tmp/%s.XXXX` %s&#x27;</span>  % (<span class="string">&#x27;startGs&#x27;</span>,cmd))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="screen-推荐"><a href="#screen-推荐" class="headerlink" title="screen(推荐)"></a>screen(推荐)</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line"><span class="comment"># yum install screen -y</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> fabric <span class="keyword">import</span> Connection, Config</span><br><span class="line">config = Config(overrides=&#123;<span class="string">&#x27;load_ssh_configs&#x27;</span>:<span class="literal">False</span>,<span class="string">&quot;run.pty&quot;</span>: <span class="literal">False</span>&#125;)</span><br><span class="line"></span><br><span class="line">Connection(host=host, connect_timeout=<span class="number">2</span>, config=config).run(<span class="string">&quot;screen -dmS test1 bash -c &#x27;source /etc/profile &amp;&amp; cd /root/server &amp;&amp; sh start.sh &amp;&amp; sleep 360&#x27;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>python运维</category>
+      </categories>
+      <tags>
+        <tag>fabric</tag>
+      </tags>
+  </entry>
 </search>
