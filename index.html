@@ -262,14 +262,14 @@
 <li>使用screen、tmux、dtach等工具来从当前shell中detach进程，注意关闭pty</li>
 <li>使用nohup</li>
 </ol>
-<h5 id="nohup方式（比较麻烦，不推荐）"><a href="#nohup方式（比较麻烦，不推荐）" class="headerlink" title="nohup方式（比较麻烦，不推荐）"></a>nohup方式（比较麻烦，不推荐）</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(nohup sh stop.sh &gt;&amp; /dev/null &lt; /dev/null &amp;) &amp;&amp; sleep <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 下面这个没有尝试</span></span><br><span class="line">nohup sh -c <span class="string">&quot;( ( sh stop.sh &amp;&gt;/dev/null ) &amp; )</span></span><br></pre></td></tr></table></figure>
-
-<p>如果脚本中含有nohup启动，记得也要按上述方式</p>
-<h5 id="dtach方式"><a href="#dtach方式" class="headerlink" title="dtach方式"></a>dtach方式</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line"><span class="comment"># yum install dtach -y</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> fabric <span class="keyword">import</span> Connection, Config</span><br><span class="line">config = Config(overrides=&#123;<span class="string">&#x27;load_ssh_configs&#x27;</span>:<span class="literal">False</span>,<span class="string">&quot;run.pty&quot;</span>: <span class="literal">False</span></span><br><span class="line">cmd=<span class="string">&#x27;cd /root/server &amp;&amp; sh start.sh&#x27;</span></span><br><span class="line">re = Connection(host=host, connect_timeout=<span class="number">2</span>, config=config).run(<span class="string">&#x27;dtach -n `mktemp -u /tmp/%s.XXXX` %s&#x27;</span>  % (<span class="string">&#x27;startGs&#x27;</span>,cmd))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h5 id="screen-推荐"><a href="#screen-推荐" class="headerlink" title="screen(推荐)"></a>screen(推荐)</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line"><span class="comment"># yum install screen -y</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> fabric <span class="keyword">import</span> Connection, Config</span><br><span class="line">config = Config(overrides=&#123;<span class="string">&#x27;load_ssh_configs&#x27;</span>:<span class="literal">False</span>,<span class="string">&quot;run.pty&quot;</span>: <span class="literal">False</span>&#125;)</span><br><span class="line"></span><br><span class="line">Connection(host=host, connect_timeout=<span class="number">2</span>, config=config).run(<span class="string">&quot;screen -dmS test1 bash -c &#x27;source /etc/profile &amp;&amp; cd /root/server &amp;&amp; sh start.sh &amp;&amp; sleep 360&#x27;&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/34fbb0ff.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -418,14 +418,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.1k</span>
+              <span>4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -1267,12 +1267,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">73k</span>
+    <span title="站点总字数">76k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:06</span>
+    <span title="站点阅读时长">1:09</span>
 </div>
 
     <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>

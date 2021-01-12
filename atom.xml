@@ -6,7 +6,7 @@
   <link href="https://www.1000b1.com/atom.xml" rel="self"/>
   
   <link href="https://www.1000b1.com/"/>
-  <updated>2021-01-12T10:36:31.564Z</updated>
+  <updated>2021-01-12T10:59:29.181Z</updated>
   <id>https://www.1000b1.com/</id>
   
   <author>
@@ -21,17 +21,17 @@
     <link href="https://www.1000b1.com/34fbb0ff.html"/>
     <id>https://www.1000b1.com/34fbb0ff.html</id>
     <published>2021-01-12T10:13:05.000Z</published>
-    <updated>2021-01-12T10:36:31.564Z</updated>
+    <updated>2021-01-12T10:59:29.181Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;h4 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;工作中遇到项目启动，分为5个jar，项目有启动和关闭都有顺序要求，在使用fabric直接执行nohup stop.sh</summary>
-        
-      
+&lt;li&gt;工作中遇到项目启动，分为5个jar，项目有启动和关闭都有顺序要求，在使用fabric直接执行nohup stop.sh &amp;amp;的时候，发现并没有执行成功过了，只会在远程机器上短时间看到该命令进程存在，然后退出，没有执行成功。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;解决办法&quot;&gt;&lt;a href=&quot;#解决办法&quot; class=&quot;headerlink&quot; title=&quot;解决办法&quot;&gt;&lt;/a&gt;解决办法&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;使用已经存在daemon技术，如init、supervisord、upstart、systemd等&lt;/li&gt;
+&lt;li&gt;使用screen、tmux、dtach等工具来从当前shell中detach进程，注意关闭pty&lt;/li&gt;
+&lt;li&gt;使用nohup&lt;/li&gt;
+&lt;/ol&gt;</summary>
     
     
     
@@ -66,7 +66,7 @@
     <link href="https://www.1000b1.com/a151d928.html"/>
     <id>https://www.1000b1.com/a151d928.html</id>
     <published>2020-12-25T05:34:37.000Z</published>
-    <updated>2020-12-29T02:38:58.198Z</updated>
+    <updated>2021-01-12T10:59:02.746Z</updated>
     
     
     <summary type="html">&lt;h4 id=&quot;记录线上Centos6系统服务器，yum报错问题&quot;&gt;&lt;a href=&quot;#记录线上Centos6系统服务器，yum报错问题&quot; class=&quot;headerlink&quot; title=&quot;记录线上Centos6系统服务器，yum报错问题&quot;&gt;&lt;/a&gt;记录线上Centos6系统服务器，yum报错问题&lt;/h4&gt;&lt;h5 id=&quot;问题：&quot;&gt;&lt;a href=&quot;#问题：&quot; class=&quot;headerlink&quot; title=&quot;问题：&quot;&gt;&lt;/a&gt;问题：&lt;/h5&gt;&lt;ul&gt;
