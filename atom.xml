@@ -6,7 +6,7 @@
   <link href="https://www.1000b1.com/atom.xml" rel="self"/>
   
   <link href="https://www.1000b1.com/"/>
-  <updated>2021-01-15T08:31:18.073Z</updated>
+  <updated>2021-01-15T08:39:46.301Z</updated>
   <id>https://www.1000b1.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://www.1000b1.com/319af7fb.html"/>
     <id>https://www.1000b1.com/319af7fb.html</id>
     <published>2021-01-15T08:07:33.000Z</published>
-    <updated>2021-01-15T08:31:18.073Z</updated>
+    <updated>2021-01-15T08:39:46.301Z</updated>
     
     
     <summary type="html">&lt;blockquote&gt;
@@ -33,7 +33,7 @@
 &lt;li&gt;停止并重新启动实例会更改实例的公有 IP 地址。在将外部流量路由到您的实例时，最佳做法是使用&lt;a href=&quot;https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html&quot;&gt;弹性 IP 地址&lt;/a&gt;而不是公有 IP 地址。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;创建[新的密钥对](&lt;a href=&quot;https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair&quot;&gt;https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair&lt;/a&gt; .)。&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;创建&lt;a href=&quot;https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair&quot;&gt;新的密钥对&lt;/a&gt;。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;如果您在 Amazon EC2 控制台中创建私有密钥，&lt;a href=&quot;https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#retrieving-the-public-key&quot;&gt;请检索密钥对中的公钥&lt;/a&gt;。&lt;/p&gt;
 &lt;/li&gt;
