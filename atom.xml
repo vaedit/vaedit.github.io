@@ -6,7 +6,7 @@
   <link href="https://www.1000b1.com/atom.xml" rel="self"/>
   
   <link href="https://www.1000b1.com/"/>
-  <updated>2021-01-15T08:26:17.540Z</updated>
+  <updated>2021-01-15T08:31:18.073Z</updated>
   <id>https://www.1000b1.com/</id>
   
   <author>
@@ -21,19 +21,29 @@
     <link href="https://www.1000b1.com/319af7fb.html"/>
     <id>https://www.1000b1.com/319af7fb.html</id>
     <published>2021-01-15T08:07:33.000Z</published>
-    <updated>2021-01-15T08:26:17.540Z</updated>
+    <updated>2021-01-15T08:31:18.073Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;blockquote&gt;
 &lt;p&gt;如果EC2实例忘记了密码或秘钥，该如何重置密码和秘钥呢？&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h5 id=&quot;方法1：输入用户信息&quot;&gt;&lt;a href=&quot;#方法1：输入用户信息&quot; class=&quot;headerlink&quot;</summary>
-        
-      
+&lt;h5 id=&quot;方法1：输入用户信息&quot;&gt;&lt;a href=&quot;#方法1：输入用户信息&quot; class=&quot;headerlink&quot; title=&quot;方法1：输入用户信息&quot;&gt;&lt;/a&gt;方法1：输入用户信息&lt;/h5&gt;&lt;p&gt;&lt;strong&gt;警告：&lt;/strong&gt;在开始执行此过程之前，请注意以下事项：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;此过程需要停止和启动您的 EC2 实例。请注意，实例存储卷中的数据将丢失。有关更多信息，请参阅&lt;a href=&quot;https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#display-instance-root-device-type&quot;&gt;确定实例的根设备类型&lt;/a&gt;。请务必&lt;a href=&quot;https://aws.amazon.com/premiumsupport/knowledge-center/back-up-instance-store-ebs/&quot;&gt;备份您想保存在实例存储卷上的所有数据&lt;/a&gt;。&lt;/li&gt;
+&lt;li&gt;停止并重新启动实例会更改实例的公有 IP 地址。在将外部流量路由到您的实例时，最佳做法是使用&lt;a href=&quot;https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html&quot;&gt;弹性 IP 地址&lt;/a&gt;而不是公有 IP 地址。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;创建[新的密钥对](&lt;a href=&quot;https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair&quot;&gt;https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair&lt;/a&gt; .)。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;如果您在 Amazon EC2 控制台中创建私有密钥，&lt;a href=&quot;https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#retrieving-the-public-key&quot;&gt;请检索密钥对中的公钥&lt;/a&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;打开 &lt;a href=&quot;https://console.aws.amazon.com/ec2/&quot;&gt;Amazon EC2 控制台&lt;/a&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html#starting-stopping-instances&quot;&gt;停止您的实例&lt;/a&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;依次选择&lt;strong&gt;操作&lt;/strong&gt;、&lt;strong&gt;实例设置&lt;/strong&gt;和&lt;strong&gt;查看/更改用户数据&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;将以下脚本复制到&lt;strong&gt;查看/更改用户数据&lt;/strong&gt;对话框中：&lt;/p&gt;</summary>
     
     
     

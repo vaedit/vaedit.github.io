@@ -28,7 +28,7 @@
 <meta property="og:description" content="如果EC2实例忘记了密码或秘钥，该如何重置密码和秘钥呢？  方法1：输入用户信息警告：在开始执行此过程之前，请注意以下事项：  此过程需要停止和启动您的 EC2 实例。请注意，实例存储卷中的数据将丢失。有关更多信息，请参阅确定实例的根设备类型。请务必备份您想保存在实例存储卷上的所有数据。 停止并重新启动实例会更改实例的公有 IP 地址。在将外部流量路由到您的实例时，最佳做法是使用弹性 IP 地址">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-01-15T08:07:33.000Z">
-<meta property="article:modified_time" content="2021-01-15T08:26:17.540Z">
+<meta property="article:modified_time" content="2021-01-15T08:31:18.073Z">
 <meta property="article:author" content="Vaedit">
 <meta property="article:tag" content="AWS">
 <meta name="twitter:card" content="summary">
@@ -278,6 +278,8 @@
 <li><p>依次选择<strong>操作</strong>、<strong>实例设置</strong>和<strong>查看/更改用户数据</strong>。</p>
 </li>
 <li><p>将以下脚本复制到<strong>查看/更改用户数据</strong>对话框中：</p>
+<a id="more"></a>
+
 </li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Content-Type: multipart/mixed; boundary=&quot;//&quot;</span><br><span class="line">MIME-Version: 1.0</span><br><span class="line"></span><br><span class="line">--//</span><br><span class="line">Content-Type: text/cloud-config; charset=&quot;us-ascii&quot;</span><br><span class="line">MIME-Version: 1.0</span><br><span class="line">Content-Transfer-Encoding: 7bit</span><br><span class="line">Content-Disposition: attachment; filename=&quot;cloud-config.txt&quot;</span><br><span class="line"></span><br><span class="line">#cloud-config</span><br><span class="line">cloud_final_modules:</span><br><span class="line">- [users-groups, once]</span><br><span class="line">users:</span><br><span class="line">  - name: username (用户名root/centos/ec2-user根据自己情况来)</span><br><span class="line">    ssh-authorized-keys: </span><br><span class="line">    - PublicKeypair(注意这里是直接填写完整的rsa-开头的公钥)</span><br></pre></td></tr></table></figure>
@@ -304,8 +306,7 @@
 </li>
 </ol>
 <p>​      <strong>注意：</strong>如果您的实例为 Amazon Linux 2 2.0.20190618 或更高版本，则可以使用 <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-connect-methods.html">EC2 Instance Connect</a> 连接到该实例。</p>
-<p><strong>方法 2：使用 AWS Systems Manager</strong></p>
-<p>如果您无法访问的实例在 AWS Systems Manager 中被列为<a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/managed_instances.html">托管实例</a>，则可以使用<a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-ec2reset.html"> AWSSupport-ResetAccess 文档</a>从丢失密钥对的场景中恢复。该自动化文档在指定的 EC2 实例上使用<a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Linux-Server-EC2Rescue.html">适用于 Linux 的 EC2Rescue</a> 工具来自动生成并添加新的 SSH（公有/私有）密钥对。</p>
+<h5 id="方法-2：使用-AWS-Systems-Manager"><a href="#方法-2：使用-AWS-Systems-Manager" class="headerlink" title="方法 2：使用 AWS Systems Manager"></a>方法 2：使用 AWS Systems Manager</h5><p>如果您无法访问的实例在 AWS Systems Manager 中被列为<a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/managed_instances.html">托管实例</a>，则可以使用<a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-ec2reset.html"> AWSSupport-ResetAccess 文档</a>从丢失密钥对的场景中恢复。该自动化文档在指定的 EC2 实例上使用<a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Linux-Server-EC2Rescue.html">适用于 Linux 的 EC2Rescue</a> 工具来自动生成并添加新的 SSH（公有/私有）密钥对。</p>
 <p>您的实例的新 SSH 私钥已加密并保存在 <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html">AWS Systems Manager Parameter Store</a> 中。参数名称为 <strong>/ec2rl/openssh/instance_id/key</strong>。使用此参数的值作为内容创建一个新的 <strong>.pem</strong> 文件，并将其用于连接您无法访问的实例。</p>
 <p><strong>注意：</strong>自动化工作流程会创建一个备份且启用密码的 Amazon 系统映像 (AMI)。新的 AMI 不会自动删除，而是保留在您的账户中。</p>
 <p>要找到这些 AMI：</p>
@@ -409,7 +410,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B9%E6%B3%951%EF%BC%9A%E8%BE%93%E5%85%A5%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="nav-text">方法1：输入用户信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89-%E7%A3%81%E7%9B%98%E8%BD%AC%E7%A7%BB%E5%A4%A7%E6%B3%95%EF%BC%88%E6%88%91%E4%BD%BF%E7%94%A8%E8%AF%A5%E6%96%B9%E6%B3%95%E6%88%90%E5%8A%9F-%E7%BB%88%E6%9E%81%E6%96%B9%E6%B3%95%EF%BC%8Ciptables%E4%B8%8D%E5%B0%8F%E5%BF%83%E5%A2%99%E6%8E%89ssh%E7%AB%AF%E5%8F%A3%E4%B9%9F%E5%8F%AF%E4%BB%A5%E7%94%A8%E8%AF%A5%E6%96%B9%E6%B3%95%E8%A7%A3%E5%86%B3%E5%93%A6%EF%BC%89"><span class="nav-text">方法三 磁盘转移大法（我使用该方法成功,终极方法，iptables不小心墙掉ssh端口也可以用该方法解决哦）</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B9%E6%B3%951%EF%BC%9A%E8%BE%93%E5%85%A5%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="nav-text">方法1：输入用户信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B9%E6%B3%95-2%EF%BC%9A%E4%BD%BF%E7%94%A8-AWS-Systems-Manager"><span class="nav-text">方法 2：使用 AWS Systems Manager</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89-%E7%A3%81%E7%9B%98%E8%BD%AC%E7%A7%BB%E5%A4%A7%E6%B3%95%EF%BC%88%E6%88%91%E4%BD%BF%E7%94%A8%E8%AF%A5%E6%96%B9%E6%B3%95%E6%88%90%E5%8A%9F-%E7%BB%88%E6%9E%81%E6%96%B9%E6%B3%95%EF%BC%8Ciptables%E4%B8%8D%E5%B0%8F%E5%BF%83%E5%A2%99%E6%8E%89ssh%E7%AB%AF%E5%8F%A3%E4%B9%9F%E5%8F%AF%E4%BB%A5%E7%94%A8%E8%AF%A5%E6%96%B9%E6%B3%95%E8%A7%A3%E5%86%B3%E5%93%A6%EF%BC%89"><span class="nav-text">方法三 磁盘转移大法（我使用该方法成功,终极方法，iptables不小心墙掉ssh端口也可以用该方法解决哦）</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
