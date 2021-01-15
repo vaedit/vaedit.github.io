@@ -188,6 +188,155 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.1000b1.com/319af7fb.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://vaedit-images.oss-cn-beijing.aliyuncs.com/img/image-20200922163734252.png">
+      <meta itemprop="name" content="Vaedit">
+      <meta itemprop="description" content="运维技术分享学习交流">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vaedit的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/319af7fb.html" class="post-title-link" itemprop="url">AWS-EC2遗失秘钥或密码如何重置密码或秘钥</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-01-15 16:07:33" itemprop="dateCreated datePublished" datetime="2021-01-15T16:07:33+08:00">2021-01-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AWS%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">AWS服务</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>如果EC2实例忘记了密码或秘钥，该如何重置密码和秘钥呢？</p>
+</blockquote>
+<h5 id="方法1：输入用户信息"><a href="#方法1：输入用户信息" class="headerlink" title="方法1：输入用户信息"></a>方法1：输入用户信息</h5><p><strong>警告：</strong>在开始执行此过程之前，请注意以下事项：</p>
+<ul>
+<li>此过程需要停止和启动您的 EC2 实例。请注意，实例存储卷中的数据将丢失。有关更多信息，请参阅<a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#display-instance-root-device-type">确定实例的根设备类型</a>。请务必<a target="_blank" rel="noopener" href="https://aws.amazon.com/premiumsupport/knowledge-center/back-up-instance-store-ebs/">备份您想保存在实例存储卷上的所有数据</a>。</li>
+<li>停止并重新启动实例会更改实例的公有 IP 地址。在将外部流量路由到您的实例时，最佳做法是使用<a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">弹性 IP 地址</a>而不是公有 IP 地址。</li>
+</ul>
+<ol>
+<li><p>创建[新的密钥对](<a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair</a> .)。</p>
+</li>
+<li><p>如果您在 Amazon EC2 控制台中创建私有密钥，<a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#retrieving-the-public-key">请检索密钥对中的公钥</a>。</p>
+</li>
+<li><p>打开 <a target="_blank" rel="noopener" href="https://console.aws.amazon.com/ec2/">Amazon EC2 控制台</a>。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html#starting-stopping-instances">停止您的实例</a>。</p>
+</li>
+<li><p>依次选择<strong>操作</strong>、<strong>实例设置</strong>和<strong>查看/更改用户数据</strong>。</p>
+</li>
+<li><p>将以下脚本复制到<strong>查看/更改用户数据</strong>对话框中：</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Content-Type: multipart/mixed; boundary=&quot;//&quot;</span><br><span class="line">MIME-Version: 1.0</span><br><span class="line"></span><br><span class="line">--//</span><br><span class="line">Content-Type: text/cloud-config; charset=&quot;us-ascii&quot;</span><br><span class="line">MIME-Version: 1.0</span><br><span class="line">Content-Transfer-Encoding: 7bit</span><br><span class="line">Content-Disposition: attachment; filename=&quot;cloud-config.txt&quot;</span><br><span class="line"></span><br><span class="line">#cloud-config</span><br><span class="line">cloud_final_modules:</span><br><span class="line">- [users-groups, once]</span><br><span class="line">users:</span><br><span class="line">  - name: username (用户名root/centos/ec2-user根据自己情况来)</span><br><span class="line">    ssh-authorized-keys: </span><br><span class="line">    - PublicKeypair(注意这里是直接填写完整的rsa-开头的公钥)</span><br></pre></td></tr></table></figure>
+
+<p>将 <strong>username</strong> 替换为您的用户名，如 <strong>ec2-user</strong>。您可以输入默认用户名，或者如果先前已为该实例设置了自定义用户名，则输入此用户名。有关默认用户名的列表，请参阅<a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connection-prereqs.html">连接到实例的一般先决条件</a>。</p>
+<p>将 <strong>PublicKeypair</strong> 替换为第 2 步中检索到的公钥。确保输入以 <strong>ssh-rsa</strong> 开头的完整公钥。</p>
+<ol start="7">
+<li><p>选择<strong>保存</strong>。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html#starting-stopping-instances">启动您的实例</a>。</p>
+</li>
+<li><p>cloud-init 阶段完成后，请验证<a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#retrieving-the-public-key">公钥是否已被替换</a>。</p>
+</li>
+</ol>
+<p>​     <strong>重要提示：</strong>由于脚本包含密钥对，请删除<strong>用户数据</strong>字段中的脚本。</p>
+<ol start="10">
+<li><p><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html#starting-stopping-instances">停止您的实例</a>。</p>
+</li>
+<li><p>依次选择<strong>操作</strong>、<strong>实例设置</strong>和<strong>查看/更改用户数据</strong>。</p>
+</li>
+<li><p>删除<strong>查看/更改用户数据</strong>对话框中的所有文本，然后选择<strong>保存</strong>。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html#starting-stopping-instances">启动您的实例</a>。</p>
+</li>
+</ol>
+<p>​      <strong>注意：</strong>如果您的实例为 Amazon Linux 2 2.0.20190618 或更高版本，则可以使用 <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-connect-methods.html">EC2 Instance Connect</a> 连接到该实例。</p>
+<p><strong>方法 2：使用 AWS Systems Manager</strong></p>
+<p>如果您无法访问的实例在 AWS Systems Manager 中被列为<a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/managed_instances.html">托管实例</a>，则可以使用<a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-ec2reset.html"> AWSSupport-ResetAccess 文档</a>从丢失密钥对的场景中恢复。该自动化文档在指定的 EC2 实例上使用<a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Linux-Server-EC2Rescue.html">适用于 Linux 的 EC2Rescue</a> 工具来自动生成并添加新的 SSH（公有/私有）密钥对。</p>
+<p>您的实例的新 SSH 私钥已加密并保存在 <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html">AWS Systems Manager Parameter Store</a> 中。参数名称为 <strong>/ec2rl/openssh/instance_id/key</strong>。使用此参数的值作为内容创建一个新的 <strong>.pem</strong> 文件，并将其用于连接您无法访问的实例。</p>
+<p><strong>注意：</strong>自动化工作流程会创建一个备份且启用密码的 Amazon 系统映像 (AMI)。新的 AMI 不会自动删除，而是保留在您的账户中。</p>
+<p>要找到这些 AMI：</p>
+<ol>
+<li><p>打开 <a target="_blank" rel="noopener" href="https://console.aws.amazon.com/ec2/">Amazon EC2 控制台</a>，然后选择 <strong>AMI</strong>。</p>
+</li>
+<li><p>在搜索字段中输入自动化执行 ID。</p>
+</li>
+</ol>
+<blockquote>
+<p>以上两个方法方法一尝试了好几次，没有成功，方法2由于实例并不是托管实例，无法使用</p>
+<p>以上文档源文地址：<a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/premiumsupport/knowledge-center/user-data-replace-key-pair-ec2/">https://aws.amazon.com/cn/premiumsupport/knowledge-center/user-data-replace-key-pair-ec2/</a></p>
+</blockquote>
+<h5 id="方法三-磁盘转移大法（我使用该方法成功-终极方法，iptables不小心墙掉ssh端口也可以用该方法解决哦）"><a href="#方法三-磁盘转移大法（我使用该方法成功-终极方法，iptables不小心墙掉ssh端口也可以用该方法解决哦）" class="headerlink" title="方法三 磁盘转移大法（我使用该方法成功,终极方法，iptables不小心墙掉ssh端口也可以用该方法解决哦）"></a>方法三 磁盘转移大法（我使用该方法成功,终极方法，iptables不小心墙掉ssh端口也可以用该方法解决哦）</h5><ol>
+<li>由于生产环境都是系统盘和数据盘区分，数据都是存储在数据盘上，这里就有可操作性空间</li>
+<li>把数据卷断开源实例连接（这里也可以做快照）</li>
+<li>新建一个和源实例一个镜像的新实例（包括地域，安全组，vpc子网，密钥对尽量保持一致，省的后面改）</li>
+<li>把断开的数据卷关联到新实例上</li>
+<li>登录新实例系统，挂载卷，能查看到mysql，nginx等数据就完美</li>
+<li>安装需要的程序软件，尽量和源实例上版本保持一致，恢复环境后，从新把源实例上的弹性IP绑定到新实例上</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://www.1000b1.com/34fbb0ff.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -413,14 +562,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>4k</span>
+              <span>3.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -1041,101 +1190,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.1000b1.com/818ac74b.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://vaedit-images.oss-cn-beijing.aliyuncs.com/img/image-20200922163734252.png">
-      <meta itemprop="name" content="Vaedit">
-      <meta itemprop="description" content="运维技术分享学习交流">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Vaedit的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/818ac74b.html" class="post-title-link" itemprop="url">Iptables端口转发</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-22 21:10:31" itemprop="dateCreated datePublished" datetime="2020-09-22T21:10:31+08:00">2020-09-22</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">Linux基础服务</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>826</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>Linux下iptables不仅可以用来做防火墙还可以用来做端口转发</p>
-</blockquote>
-<h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><p><strong>将本机的8080端口转发至其他主机，主机IP：192.168.1.12，目标主机IP和端口：192.168.1.13:8088，规则如下</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">iptables -t nat -A PREROUTING -p tcp -m tcp --dport 8080 -j DNAT --to-destination 192.168.1.13:8088</span><br><span class="line">iptables -t nat -A POSTROUTING -p tcp -m tcp --dport 8088 -j SNAT --to-source 192.168.1.12</span><br><span class="line"><span class="built_in">echo</span> 1 &gt; /proc/sys/net/ipv4/ip_forward <span class="comment">#开启iptables forward转发功能。</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>tcp范围端口映射</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -t nat -A PREROUTING -p tcp --dport 2000:2500 -j DNAT --to 192.168.66.2:2000-2500</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/818ac74b.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1207,7 +1261,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1220,7 +1274,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1264,12 +1318,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">76k</span>
+    <span title="站点总字数">77k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:09</span>
+    <span title="站点阅读时长">1:10</span>
 </div>
 
     <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>

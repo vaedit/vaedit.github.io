@@ -6,7 +6,7 @@
   <link href="https://www.1000b1.com/atom.xml" rel="self"/>
   
   <link href="https://www.1000b1.com/"/>
-  <updated>2021-01-12T10:59:29.181Z</updated>
+  <updated>2021-01-15T08:26:17.540Z</updated>
   <id>https://www.1000b1.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>AWS-EC2遗失秘钥或密码如何重置密码或秘钥</title>
+    <link href="https://www.1000b1.com/319af7fb.html"/>
+    <id>https://www.1000b1.com/319af7fb.html</id>
+    <published>2021-01-15T08:07:33.000Z</published>
+    <updated>2021-01-15T08:26:17.540Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;如果EC2实例忘记了密码或秘钥，该如何重置密码和秘钥呢？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h5 id=&quot;方法1：输入用户信息&quot;&gt;&lt;a href=&quot;#方法1：输入用户信息&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="AWS服务" scheme="https://www.1000b1.com/categories/AWS%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+    <category term="AWS" scheme="https://www.1000b1.com/tags/AWS/"/>
+    
+  </entry>
   
   <entry>
     <title>Fabric远程后台执行脚本</title>
@@ -66,7 +94,7 @@
     <link href="https://www.1000b1.com/a151d928.html"/>
     <id>https://www.1000b1.com/a151d928.html</id>
     <published>2020-12-25T05:34:37.000Z</published>
-    <updated>2021-01-12T10:59:02.746Z</updated>
+    <updated>2021-01-15T02:48:34.600Z</updated>
     
     
     <summary type="html">&lt;h4 id=&quot;记录线上Centos6系统服务器，yum报错问题&quot;&gt;&lt;a href=&quot;#记录线上Centos6系统服务器，yum报错问题&quot; class=&quot;headerlink&quot; title=&quot;记录线上Centos6系统服务器，yum报错问题&quot;&gt;&lt;/a&gt;记录线上Centos6系统服务器，yum报错问题&lt;/h4&gt;&lt;h5 id=&quot;问题：&quot;&gt;&lt;a href=&quot;#问题：&quot; class=&quot;headerlink&quot; title=&quot;问题：&quot;&gt;&lt;/a&gt;问题：&lt;/h5&gt;&lt;ul&gt;
@@ -516,34 +544,6 @@
     
     
     <category term="php" scheme="https://www.1000b1.com/tags/php/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>AWS-EC2在线磁盘扩容</title>
-    <link href="https://www.1000b1.com/b97f48ac.html"/>
-    <id>https://www.1000b1.com/b97f48ac.html</id>
-    <published>2020-09-22T10:29:39.000Z</published>
-    <updated>2020-09-23T10:09:14.693Z</updated>
-    
-    
-    <summary type="html">&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;首先先给需要扩容的磁盘卷制作快照&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;在控制台修改对应的的磁盘卷，把容量扩大，等待扩容进程走完成&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;查看文件系统&lt;/p&gt;
- &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;file -s /dev/nvme?n* &lt;span class=&quot;comment&quot;&gt;#查看文件系统&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;根据卷是否有分区，来决定是否需要执行扩展分区&lt;/p&gt;
- &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;lsblk &lt;span class=&quot;comment&quot;&gt;#查看磁盘&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NAME          MAJ:MIN RM SIZE RO TYPE MOUNTPOINT&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;nvme1n1       259:0    0  30G  0 disk /data&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;nvme0n1       259:1    0  16G  0 disk&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;└─nvme0n1p1   259:2    0   8G  0 part /&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;└─nvme0n1p128 259:3    0   1M  0 part&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#nvme1n1  没有分区，nvme0n1上有两个分区，有分区的卷需要执行扩展分区扩容&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;growpart /dev/nvme0n1 1 &lt;span class=&quot;comment&quot;&gt;#请注意，设备名称和分区编号之间有空格&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="AWS服务" scheme="https://www.1000b1.com/categories/AWS%E6%9C%8D%E5%8A%A1/"/>
-    
-    
-    <category term="磁盘扩容" scheme="https://www.1000b1.com/tags/%E7%A3%81%E7%9B%98%E6%89%A9%E5%AE%B9/"/>
     
   </entry>
   
