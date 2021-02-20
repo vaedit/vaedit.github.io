@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.1000b1.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","b2t":false,"scrollpercent":true,"padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="DOCKER 安装与实践安装DockerCentOS上安装Docker123456789101112131415161718192021#如果有旧版本卸载旧版本yum remove docker docker-common docker-selinux docker-engine#安装依赖yum install -y yum-utils device-mapper-persistent-data">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DOCKER的学习记录-安装与实践">
+<meta property="og:url" content="https://www.1000b1.com/534ced63.html">
+<meta property="og:site_name" content="Vaedit的博客">
+<meta property="og:description" content="DOCKER 安装与实践安装DockerCentOS上安装Docker123456789101112131415161718192021#如果有旧版本卸载旧版本yum remove docker docker-common docker-selinux docker-engine#安装依赖yum install -y yum-utils device-mapper-persistent-data">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:%5CUsers%5CVaedit%5CDesktop%5C%25E6%2597%25A5%25E5%25B8%25B8%25E8%25AE%25B0%25E5%25BD%2595%5Cimages%5C1565941555294.png">
+<meta property="og:image" content="c:%5CUsers%5CVaedit%5CDesktop%5C%25E6%2597%25A5%25E5%25B8%25B8%25E8%25AE%25B0%25E5%25BD%2595%5Cimages%5C1566193999562.png">
+<meta property="article:published_time" content="2021-02-20T04:46:44.000Z">
+<meta property="article:modified_time" content="2021-02-20T04:50:04.593Z">
+<meta property="article:author" content="Vaedit">
+<meta property="article:tag" content="docker,k8s">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:%5CUsers%5CVaedit%5CDesktop%5C%25E6%2597%25A5%25E5%25B8%25B8%25E8%25AE%25B0%25E5%25BD%2595%5Cimages%5C1565941555294.png">
+
+<link rel="canonical" href="https://www.1000b1.com/534ced63.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>DOCKER的学习记录-安装与实践 | Vaedit的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Vaedit的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Vaedit的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">运维技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home                          //首页 fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive          //归档 fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th           //分类 fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags                     //标签 fa-fw"></i>标签</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.1000b1.com/534ced63.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://vaedit-images.oss-cn-beijing.aliyuncs.com/img/image-20200922163734252.png">
+      <meta itemprop="name" content="Vaedit">
+      <meta itemprop="description" content="运维技术分享学习交流">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vaedit的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          DOCKER的学习记录-安装与实践
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-02-20 12:46:44" itemprop="dateCreated datePublished" datetime="2021-02-20T12:46:44+08:00">2021-02-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/k8s%E7%94%9F%E6%80%81%E5%9C%88/" itemprop="url" rel="index"><span itemprop="name">k8s生态圈</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>10k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>10 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="DOCKER-安装与实践"><a href="#DOCKER-安装与实践" class="headerlink" title="DOCKER 安装与实践"></a><center>DOCKER 安装与实践</center></h1><h2 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h2><h3 id="CentOS上安装Docker"><a href="#CentOS上安装Docker" class="headerlink" title="CentOS上安装Docker"></a>CentOS上安装Docker</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#如果有旧版本卸载旧版本</span></span><br><span class="line">yum remove docker docker-common docker-selinux docker-engine</span><br><span class="line"><span class="comment">#安装依赖</span></span><br><span class="line">yum install -y yum-utils device-mapper-persistent-data lvm2</span><br><span class="line"><span class="comment">#添加官方docker稳定版yum源</span></span><br><span class="line">yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span><br><span class="line"><span class="comment">#国内推荐用国内源</span></span><br><span class="line">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看docker版本</span></span><br><span class="line">yum list docker-ce --showduplicates | sort -r</span><br><span class="line"></span><br><span class="line">yum makecache fast</span><br><span class="line"><span class="comment">#安装docker社区版</span></span><br><span class="line">yum install docker-ce-18.09.8 -y <span class="comment">#安装指定版本</span></span><br><span class="line">yum install docker-ce <span class="comment">#默认最新</span></span><br><span class="line"><span class="comment">#设置docker开机自启和启动</span></span><br><span class="line">systemctl <span class="built_in">enable</span> docker</span><br><span class="line">systemctl start docker</span><br><span class="line"><span class="comment">#查看docker版本信息</span></span><br><span class="line">docker info</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h3 id="镜像加速器"><a href="#镜像加速器" class="headerlink" title="镜像加速器"></a>镜像加速器</h3><p>CentOS修改/etc/docker/daemon.json中写入如下内容（如果文件不存在则新建该文件）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"> &#123; </span><br><span class="line">    <span class="string">&quot;registry-mirrors&quot;</span>: [ </span><br><span class="line">        <span class="string">&quot;https://registry.docker-cn.com&quot;</span> </span><br><span class="line">    ] </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#或者直接执行脚本</span></span><br><span class="line">curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#阿里云镜像加速</span></span><br><span class="line">sudo mkdir -p /etc/docker</span><br><span class="line">sudo tee /etc/docker/daemon.json &lt;&lt;-<span class="string">&#x27;EOF&#x27;</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;registry-mirrors&quot;</span>: [<span class="string">&quot;https://b9pmyelo.mirror.aliyuncs.com&quot;</span>]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<p> 重启服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reload </span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h2><h3 id="管理镜像常用命令"><a href="#管理镜像常用命令" class="headerlink" title="管理镜像常用命令"></a>管理镜像常用命令</h3><table>
+<thead>
+<tr>
+<th align="left">指令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">ls</td>
+<td>列出镜像</td>
+</tr>
+<tr>
+<td align="left">build</td>
+<td>构建镜像来自Dockerfile</td>
+</tr>
+<tr>
+<td align="left">history</td>
+<td>显示历史镜像</td>
+</tr>
+<tr>
+<td align="left">inspect</td>
+<td>显示一个或多个镜像详细信息</td>
+</tr>
+<tr>
+<td align="left">pull</td>
+<td>从镜像仓库拉取镜像</td>
+</tr>
+<tr>
+<td align="left">rm</td>
+<td>删除镜像</td>
+</tr>
+<tr>
+<td align="left">prune</td>
+<td>移除未使用的镜像。没有被标记或被任何容器引用</td>
+</tr>
+<tr>
+<td align="left">tag</td>
+<td>创建标记</td>
+</tr>
+<tr>
+<td align="left">export</td>
+<td>导出容器文件系统到tar归档文件</td>
+</tr>
+<tr>
+<td align="left">import</td>
+<td>导入容器文件系统到tar归档文件创建镜像</td>
+</tr>
+<tr>
+<td align="left">save</td>
+<td>保存一个或多个镜像到tar归档文件</td>
+</tr>
+<tr>
+<td align="left">load</td>
+<td>加载镜像来自tar归档或者标准输入</td>
+</tr>
+</tbody></table>
+<h3 id="获取镜像"><a href="#获取镜像" class="headerlink" title="获取镜像"></a>获取镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull [选项] [Docker Registry地址]&lt;仓库名&gt;:&lt;标签&gt;</span><br></pre></td></tr></table></figure>
+
+<p>默认如果没有给出registry地址,就从Docker Hub 获取镜像</p>
+<h3 id="运行容器"><a href="#运行容器" class="headerlink" title="运行容器"></a>运行容器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull ubuntu:14.04</span><br><span class="line">docker run -it --rm ubuntu:14.04 bash</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>-it ：这是两个参数，一个是 -i ：交互式操作，一个是 -t 终端。我们这里打算进入 bash 执行一些命令并查看返回结果，因此我们需要交互式终端。 </li>
+<li>–rm ：这个参数是说容器退出后随之将其删除。默认情况下，为了排障需求，退出的容 器并不会立即删除，除非手动 docker rm 。我们这里只是随便执行个命令，看看结果， 不需要排障和保留结果，因此使用 –rm 可以避免浪费空间</li>
+<li>ubuntu:14.04 ：这是指用 ubuntu:14.04 镜像为基础来启动容器。 </li>
+<li>bash ：放在镜像名后的是命令，这里我们希望有个交互式 Shell，因此用的是 bash 。 </li>
+</ul>
+<h3 id="列出镜像"><a href="#列出镜像" class="headerlink" title="列出镜像"></a>列出镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker images <span class="comment">#列出本地镜像</span></span><br><span class="line">docker image ls <span class="comment">#新版本命令</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>列表包含了仓库名、标签、镜像 ID、创建时间以及所占用的空间。 </p>
+</blockquote>
+<p>其中仓库名、标签在之前的基础概念章节已经介绍过了。镜像 <strong>ID</strong> 则是镜像的唯一标识，一个 </p>
+<p>镜像可以对应多个标签。因此，在上面的例子中，我们可以看到 ubuntu:16.04 和 </p>
+<p>ubuntu:latest 拥有相同的 ID，因为它们对应的是同一个镜像。 </p>
+<p><strong>列出部分镜像</strong></p>
+<blockquote>
+<p>不加任何参数的情况下， docker images 会列出所有顶级镜像</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#根据仓库名列出镜像</span></span><br><span class="line">docker images ubuntu</span><br><span class="line">docker image ls ubuntu <span class="comment">#新版</span></span><br><span class="line"><span class="comment">#列出特定的某个镜像，也就是说指定仓库名和标签</span></span><br><span class="line">docker images ubuntu:16.04</span><br></pre></td></tr></table></figure>
+
+<p>除此以外， docker images 还支持强大的过滤器参数 –filter ，或者简写 -f 。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看在 mongo:3.2 之后建立的镜像</span></span><br><span class="line">docker images -f since=mongo:3.2</span><br><span class="line">docker image ls -f since=mongo:3.2</span><br><span class="line"><span class="comment">#查看某个镜像之前建立的镜像只需要把since改为before即可</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>以特定格式显示</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker images -q <span class="comment">#只显示镜像id</span></span><br><span class="line">docker image ls -q</span><br><span class="line"><span class="comment">#使用go的模板语法自定义列出镜像结果</span></span><br><span class="line"><span class="comment">#只包含镜像ID和仓库名</span></span><br><span class="line">docker images --format <span class="string">&quot;&#123;&#123;.ID&#125;&#125;: &#123;&#123;.Repository&#125;&#125;&quot;</span></span><br><span class="line">docker images ls --format <span class="string">&quot;&#123;&#123;.ID&#125;&#125;: &#123;&#123;.Repository&#125;&#125;&quot;</span></span><br><span class="line"><span class="comment">#以表格等距显示，并且有标题行，和默认一样，不过自己定义列</span></span><br><span class="line">docker images --format <span class="string">&quot;table &#123;&#123;.ID&#125;&#125;\t&#123;&#123;.Repository&#125;&#125;\t&#123;&#123;.Tag&#125;&#125;&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="镜像体积"><a href="#镜像体积" class="headerlink" title="镜像体积"></a>镜像体积</h3><p>如果仔细观察，会注意到，这里标识的所占用空间和在 Docker Hub 上看到的镜像大小不同。 </p>
+<p>比如， ubuntu:16.04 镜像大小，在这里是 127 MB ，但是在 Docker Hub 显示的却是 50 </p>
+<p>MB 。这是因为 Docker Hub 中显示的体积是压缩后的体积。在镜像下载和上传过程中镜像是 </p>
+<p>保持着压缩状态的，因此 Docker Hub 所显示的大小是网络传输中更关心的流量大小。而 </p>
+<p>docker images 显示的是镜像下载到本地后，展开的大小，准确说，是展开后的各层所占空 </p>
+<p>间的总和，因为镜像到本地后，查看空间的时候，更关心的是本地磁盘空间占用的大小。 </p>
+<p>另外一个需要注意的问题是， docker images 列表中的镜像体积总和并非是所有镜像实际硬 </p>
+<p>盘消耗。由于 Docker 镜像是多层存储结构，并且可以继承、复用，因此不同镜像可能会因为 </p>
+<p>使用相同的基础镜像，从而拥有共同的层。由于 Docker 使用 Union FS，相同的层只需要保 </p>
+<p>存一份即可，因此实际镜像硬盘占用空间很可能要比这个列表镜像大小的总和要小的多。 </p>
+<p>你可以通过以下命令来便捷的查看镜像、容器、数据卷所占用的空间。 </p>
+<h3 id="虚悬镜像"><a href="#虚悬镜像" class="headerlink" title="虚悬镜像"></a>虚悬镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;none&gt; &lt;none&gt; 00285df0df87 5 days ago 342 M B</span><br></pre></td></tr></table></figure>
+
+<p>这个镜像原本是有镜像名和标签的，原来为 mongo:3.2 ，随着官方镜像维护，发布了新版本 </p>
+<p>后，重新 docker pull mongo:3.2 时， mongo:3.2 这个镜像名被转移到了新下载的镜像身 </p>
+<p>上，而旧的镜像上的这个名称则被取消，从而成为了 <none> 。除了 docker pull 可能导致 </p>
+<p>这种情况， docker build 也同样可以导致这种现象。由于新旧镜像同名，旧镜像名称被取 </p>
+<p>消，从而出现仓库名、标签均为 <none> 的镜像。这类无标签镜像也被称为 虚悬镜像 </p>
+<p><strong>(dangling image)</strong> ，可以用下面的命令专门显示这类镜像</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images -f dangling=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>一般来说这些虚悬镜像已经没用可以用以下命令删除</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker image prune</span><br></pre></td></tr></table></figure>
+
+<h3 id="中间层镜像"><a href="#中间层镜像" class="headerlink" title="中间层镜像"></a>中间层镜像</h3><p>为了加速镜像构建、重复利用资源，Docker 会利用 中间层镜像。所以在使用一段时间后，可 </p>
+<p>能会看到一些依赖的中间层镜像。默认的 docker images 列表中只会显示顶层镜像，如果希 </p>
+<p>望显示包括中间层镜像在内的所有镜像的话，需要加 -a 参数。 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker images -a </span><br><span class="line">docker image ls -a <span class="comment">#新版</span></span><br></pre></td></tr></table></figure>
+
+<p>这样会看到很多无标签的镜像，与之前的虚悬镜像不同，这些无标签的镜像很多都是中间层 </p>
+<p>镜像，是其它镜像所依赖的镜像。这些无标签镜像不应该删除，否则会导致上层镜像因为依 </p>
+<p>赖丢失而出错。实际上，这些镜像也没必要删除，因为之前说过，相同的层只会存一遍，而 </p>
+<p>这些镜像是别的镜像的依赖，因此并不会因为它们被列出来而多存了一份，无论如何你也会 </p>
+<p>需要它们。只要删除那些依赖它们的镜像后，这些依赖的中间层镜像也会被连带删除。 </p>
+<h3 id="docker-commit"><a href="#docker-commit" class="headerlink" title="docker commit"></a>docker commit</h3><blockquote>
+<p>docker commit 命令除了学习之外，还有一些特殊的应用场合，比如被入侵后保存现场等。但是，不要使用 docker commit 定制镜像，定制镜像应该使用 Dockerfile 来完成。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#把容器webserver提交成nginx:2镜像</span></span><br><span class="line">docker commit --author <span class="string">&quot;Tao Wang &lt;twang2218@gmail.com&gt;&quot;</span> --message <span class="string">&quot;修改了默认网页&quot;</span> webserver nginx:v2</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker image save fce289e99eb9 -o hello.tar <span class="comment">#导出镜像</span></span><br><span class="line"></span><br><span class="line">docker image load  &lt; hello.tar <span class="comment">#导入镜像</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h2><h3 id="创建容器常用选项"><a href="#创建容器常用选项" class="headerlink" title="创建容器常用选项"></a>创建容器常用选项</h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-i,–interactive</td>
+<td>交互式</td>
+</tr>
+<tr>
+<td>-t,–tty</td>
+<td>分配一个伪终端</td>
+</tr>
+<tr>
+<td>-d,–detach</td>
+<td>后台运行容器</td>
+</tr>
+<tr>
+<td>-e,–env</td>
+<td>设置环境变量</td>
+</tr>
+<tr>
+<td>-p,–publish list</td>
+<td>发布端口到宿主机</td>
+</tr>
+<tr>
+<td>-P,–publish-all</td>
+<td>发布容器所有EXPOSE的端口到宿主机的随机端口</td>
+</tr>
+<tr>
+<td>-name string</td>
+<td>指定容器名</td>
+</tr>
+<tr>
+<td>-h,–hostname</td>
+<td>设置容器主机名</td>
+</tr>
+<tr>
+<td>–ip string</td>
+<td>指定容器ip，只能用于自定义网络</td>
+</tr>
+<tr>
+<td>–network</td>
+<td>连接到一个网络</td>
+</tr>
+<tr>
+<td>–mount mount</td>
+<td>将文件系统附加到容器</td>
+</tr>
+<tr>
+<td>-v,–volume list</td>
+<td>绑定挂载一个卷</td>
+</tr>
+<tr>
+<td>–restart string</td>
+<td>容器退出时重启策略，默认no，可选值：【always|on-failure】</td>
+</tr>
+</tbody></table>
+<h3 id="容器资源限制"><a href="#容器资源限制" class="headerlink" title="容器资源限制"></a>容器资源限制</h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-m,–memory</td>
+<td>容器可以使用的最大内存量</td>
+</tr>
+<tr>
+<td>–memory-swap</td>
+<td>允许使用swap的最大量</td>
+</tr>
+<tr>
+<td>–memory-swappiness=&lt;0-100&gt;</td>
+<td>容器使用swap交换分区的百分比（0-100,默认为-1）</td>
+</tr>
+<tr>
+<td>–oom-kill-disable</td>
+<td>禁用OOM Killer</td>
+</tr>
+<tr>
+<td>–cpus</td>
+<td>可以使用的cpu数量</td>
+</tr>
+<tr>
+<td>–cpuset-cpus</td>
+<td>限制容器使用特定的cpu核心，如（0-3,0,1）</td>
+</tr>
+<tr>
+<td>–cpu-shares</td>
+<td>cpu共享（相对权重）</td>
+</tr>
+</tbody></table>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><h5 id="内存限制"><a href="#内存限制" class="headerlink" title="内存限制"></a>内存限制</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#允许容器最多使用500M内存和100M的Swap，并禁用OOM Killer：</span></span><br><span class="line">docker run -d --name nginx03 --memory=<span class="string">&quot;500m&quot;</span> --memory-swap=<span class="string">&quot;600m&quot;</span> --oom-kill-disable nginx</span><br></pre></td></tr></table></figure>
+
+<h5 id="CPU限制"><a href="#CPU限制" class="headerlink" title="CPU限制"></a>CPU限制</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#允许容器最多使用一个半的CPU：</span></span><br><span class="line">docker run -d --name nginx04 --cpus=<span class="string">&quot;1.5&quot;</span> nginx</span><br><span class="line"><span class="comment">#允许容器最多使用50%的CPU：</span></span><br><span class="line">docker run -d --name nginx05 --cpus=<span class="string">&quot;.5&quot;</span> nginx</span><br></pre></td></tr></table></figure>
+
+<h3 id="管理容器常用选项"><a href="#管理容器常用选项" class="headerlink" title="管理容器常用选项"></a>管理容器常用选项</h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ls</td>
+<td>列出容器</td>
+</tr>
+<tr>
+<td>inspect</td>
+<td>查看一个或多个容器详细信息</td>
+</tr>
+<tr>
+<td>exec</td>
+<td>在运行的容器中执行命令</td>
+</tr>
+<tr>
+<td>commit</td>
+<td>创建一个新镜像来自容器</td>
+</tr>
+<tr>
+<td>cp</td>
+<td>拷贝文件/文件夹到容器</td>
+</tr>
+<tr>
+<td>logs</td>
+<td>获取容器日志</td>
+</tr>
+<tr>
+<td>port</td>
+<td>列出或指定容器端口映射</td>
+</tr>
+<tr>
+<td>top</td>
+<td>显示一个容器运行的进程</td>
+</tr>
+<tr>
+<td>stats</td>
+<td>显示容器资源使用统计</td>
+</tr>
+<tr>
+<td>stop/start</td>
+<td>停止/启动一个或多个容器</td>
+</tr>
+<tr>
+<td>rm</td>
+<td>删除一个或多个容器</td>
+</tr>
+</tbody></table>
+<h2 id="管理容器数据"><a href="#管理容器数据" class="headerlink" title="管理容器数据"></a>管理容器数据</h2><p>Docker提供三种方式将数据从宿主机挂载到容器中：</p>
+<ul>
+<li><p>volumes：Docker管理宿主机文件系统的一部分（/var/lib/docker/volumes）。保存数据的最佳方式。</p>
+</li>
+<li><p>bind mounts：将宿主机上的任意位置的文件或者目录挂载到容器中。</p>
+</li>
+<li><p>tmpfs：挂载存储在主机系统的内存中，而不会写入主机的文件系统。如果不希望将数据持久存储在任何位置，可以使用tmpfs，同时避免写入容器可写层提高性能。</p>
+</li>
+</ul>
+<h3 id="Volume"><a href="#Volume" class="headerlink" title="Volume"></a>Volume</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#管理卷： </span></span><br><span class="line">docker volume create nginx-vol</span><br><span class="line">docker volume ls</span><br><span class="line">docker volume inspect nginx-vol</span><br><span class="line"><span class="comment">#用卷创建一个容器: </span></span><br><span class="line">docker run -d --name=nginx-test --mount src=nginx-vol,dst=/usr/share/nginx/html nginx</span><br><span class="line">docker run -d --name=nginx-test -v nginx-vol:/usr/share/nginx/html nginx</span><br><span class="line"><span class="comment">#清理： </span></span><br><span class="line">docker stop nginx-test</span><br><span class="line">docker rm nginx-test </span><br><span class="line">docker volume rm nginx-vol</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：<br>1.如果没有指定卷，自动创建。<br>2.建议使用–mount，更通用</p>
+</blockquote>
+<h3 id="Bind-Mount"><a href="#Bind-Mount" class="headerlink" title="Bind Mount"></a>Bind Mount</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#用卷创建一个容器：</span></span><br><span class="line">docker run -d -it --name=nginx-test --mount <span class="built_in">type</span>=<span class="built_in">bind</span>,src=/app/wwwroot,dst=/usr/share/nginx/html nginx</span><br><span class="line">docker run -d -it --name=nginx-test -v /app/wwwroot:/usr/share/nginx/html nginx</span><br><span class="line"><span class="comment">#验证绑定：</span></span><br><span class="line">docker inspect nginx-test</span><br><span class="line"><span class="comment">#清理：</span></span><br><span class="line">docker stop nginx-test</span><br><span class="line">docker rm nginx-test </span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：</p>
+<p>1.如果源文件/目录没有存在，不会自动创建，会抛出一个错误。</p>
+<p>2.如果挂载目标在容器中非空目录，则该目录现有内容将被隐藏</p>
+</blockquote>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>Volume特点：</p>
+<ul>
+<li><p>多个运行容器之间共享数据。</p>
+</li>
+<li><p>当容器停止或被移除时，该卷依然存在。</p>
+</li>
+<li><p>多个容器可以同时挂载相同的卷。</p>
+</li>
+<li><p>当明确删除卷时，卷才会被删除。</p>
+</li>
+<li><p>将容器的数据存储在远程主机或其他存储上</p>
+</li>
+<li><p>将数据从一台Docker主机迁移到另一台时，先停止容器，然后备份卷的目录（/var/lib/docker/volumes/）</p>
+</li>
+</ul>
+<p>Bind Mounts特点：</p>
+<ul>
+<li><p>从主机共享配置文件到容器。默认情况下，挂载主机/etc/resolv.conf到每个容器，提供DNS解析。</p>
+</li>
+<li><p>在Docker主机上的开发环境和容器之间共享源代码。例如，可以将Maven target目录挂载到容器中，每次在Docker主机上构建Maven项目时，容器都可以访问构建的项目包。</p>
+</li>
+<li><p>当Docker主机的文件或目录结构保证与容器所需的绑定挂载一致时</p>
+</li>
+</ul>
+<h2 id="容器网络"><a href="#容器网络" class="headerlink" title="容器网络"></a>容器网络</h2><h3 id="网络模式"><a href="#网络模式" class="headerlink" title="网络模式"></a>网络模式</h3><ul>
+<li><p><strong>bridge</strong></p>
+<p>–net=bridge 默认网络，Docker启动后创建一个docker0网桥，默认创建的容器也是添加到这个网桥中</p>
+</li>
+<li><p><strong>host</strong></p>
+</li>
+</ul>
+<p>​      –net=host容器不会获得一个独立的network namespace，而是与宿主机共用一个。这就意味着容器不会有自己的网卡信息，而是使用宿主机的。容器除了网络，其他都是隔离的。</p>
+<ul>
+<li><strong>none</strong></li>
+</ul>
+<p>​      –net=none 获取独立的network namespace，但不为容器进行任何网络配置，需要我们手动配置</p>
+<ul>
+<li><strong>container</strong></li>
+</ul>
+<p>​      –net=container:Name/ID与指定的容器使用同一个network namespace，具有同样的网络配置信息，两个容器除了网络，其他都还是隔离的。</p>
+<ul>
+<li><strong>自定义网络</strong></li>
+</ul>
+<p>​      与默认的bridge原理一样，但自定义网络具备内部DNS发现，可以通过容器名或者主机名容器之间网络通信</p>
+<h3 id="网络原理"><a href="#网络原理" class="headerlink" title="网络原理"></a>网络原理</h3><p><img src="C:%5CUsers%5CVaedit%5CDesktop%5C%25E6%2597%25A5%25E5%25B8%25B8%25E8%25AE%25B0%25E5%25BD%2595%5Cimages%5C1565941555294.png" alt="1565941555294"></p>
+<h2 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h2><h3 id="Dockerfile指令"><a href="#Dockerfile指令" class="headerlink" title="Dockerfile指令"></a>Dockerfile指令</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FROM</td>
+<td>构建新镜像是基于哪个镜像</td>
+</tr>
+<tr>
+<td>MAINTAINER</td>
+<td>镜像维护者姓名或邮箱地址</td>
+</tr>
+<tr>
+<td>RUN</td>
+<td>构建镜像时运行的shell命令</td>
+</tr>
+<tr>
+<td>COPY</td>
+<td>拷贝文件或目录到镜像中</td>
+</tr>
+<tr>
+<td>ENV</td>
+<td>设置环境变量</td>
+</tr>
+<tr>
+<td>USER</td>
+<td>为RUN，CMD和ENTRYPOINT执行命令指定运行用户</td>
+</tr>
+<tr>
+<td>EXPOSE</td>
+<td>声明容器运行的服务端口</td>
+</tr>
+<tr>
+<td>HEALTHCHECK</td>
+<td>容器中服务健康检查</td>
+</tr>
+<tr>
+<td>WORKDIR</td>
+<td>为RUN，CMD，ENTRYPOINT，COPY和ADD设置工作目录</td>
+</tr>
+<tr>
+<td>ENTRYPOINT</td>
+<td>运行容器时执行，如果有多个ENTRYPOINT指令，最后一个生效</td>
+</tr>
+<tr>
+<td>CMD</td>
+<td>运行容器时执行，如果有多个CMD指令，最后一个生效</td>
+</tr>
+</tbody></table>
+<h3 id="构建镜像"><a href="#构建镜像" class="headerlink" title="构建镜像"></a>构建镜像</h3><h4 id="构建镜像指令"><a href="#构建镜像指令" class="headerlink" title="构建镜像指令"></a>构建镜像指令</h4><p>Usage: docker build [OPTIONS] PATH | URL | -[flags]</p>
+<p>Options:</p>
+<p>-t, –tag list     # 镜像名称</p>
+<p>-f, –file string  # 指定Dockerfile文件位置</p>
+<p>docker build .</p>
+<p>docker build -t shykes/myapp .</p>
+<p>docker build -t shykes/myapp -f /path/Dockerfile /path</p>
+<p>docker build -t shykes/myapp <a target="_blank" rel="noopener" href="http://www.example.com/Dockerfile">http://www.example.com/Dockerfile</a></p>
+<h4 id="构建基础镜像"><a href="#构建基础镜像" class="headerlink" title="构建基础镜像"></a>构建基础镜像</h4><h4 id="实例1-构建tomcat镜像"><a href="#实例1-构建tomcat镜像" class="headerlink" title="实例1.构建tomcat镜像"></a>实例1.构建tomcat镜像</h4><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> centos:<span class="number">7</span></span><br><span class="line"><span class="keyword">MAINTAINER</span> www.vaedit.com</span><br><span class="line"></span><br><span class="line"><span class="keyword">ENV</span> VERSION=<span class="number">8.5</span>.<span class="number">47</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> yum install java-1.8.0-openjdk wget curl unzip iproute net-tools -y &amp;&amp; \</span></span><br><span class="line"><span class="bash">    yum clean all &amp;&amp; \</span></span><br><span class="line"><span class="bash">    rm -rf /var/cache/yum/*</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v<span class="variable">$&#123;VERSION&#125;</span>/bin/apache-tomcat-<span class="variable">$&#123;VERSION&#125;</span>.tar.gz &amp;&amp; \</span></span><br><span class="line"><span class="bash">    tar zxf apache-tomcat-<span class="variable">$&#123;VERSION&#125;</span>.tar.gz &amp;&amp; \</span></span><br><span class="line"><span class="bash">    mv apache-tomcat-<span class="variable">$&#123;VERSION&#125;</span> /usr/<span class="built_in">local</span>/tomcat &amp;&amp; \</span></span><br><span class="line"><span class="bash">    rm -rf apache-tomcat-<span class="variable">$&#123;VERSION&#125;</span>.tar.gz /usr/<span class="built_in">local</span>/tomcat/webapps/* &amp;&amp; \</span></span><br><span class="line"><span class="bash">    mkdir /usr/<span class="built_in">local</span>/tomcat/webapps/<span class="built_in">test</span> &amp;&amp; \</span></span><br><span class="line"><span class="bash">    <span class="built_in">echo</span> <span class="string">&quot;ok&quot;</span> &gt; /usr/<span class="built_in">local</span>/tomcat/webapps/<span class="built_in">test</span>/status.html &amp;&amp; \</span></span><br><span class="line"><span class="bash">    sed -i <span class="string">&#x27;1a JAVA_OPTS=&quot;-Djava.security.egd=file:/dev/./urandom&quot;&#x27;</span> /usr/<span class="built_in">local</span>/tomcat/bin/catalina.sh &amp;&amp; \</span></span><br><span class="line"><span class="bash">    ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ENV</span> PATH $PATH:/usr/local/tomcat/bin</span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /usr/<span class="built_in">local</span>/tomcat</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">8080</span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> [<span class="string">&quot;catalina.sh&quot;</span>, <span class="string">&quot;run&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="企业级容器仓库Harbor"><a href="#企业级容器仓库Harbor" class="headerlink" title="企业级容器仓库Harbor"></a>企业级容器仓库Harbor</h2><p>Habor是由VMWare公司开源的容器镜像仓库。事实上，Habor是在Docker Registry上进行了相应的企业级扩展，从而获得了更加广泛的应用，这些新的企业级特性包括：管理用户界面，基于角色的访问控制，AD/LDAP集成以及审计日志等，足以满足基本企业需求。</p>
+<h3 id="Harbor安装部署"><a href="#Harbor安装部署" class="headerlink" title="Harbor安装部署"></a>Harbor安装部署</h3><ol>
+<li><p>下载harbor离线安装包：harbor-offline-installer-v1.6.1.tgz</p>
+</li>
+<li><p>解压并进入目录</p>
+</li>
+<li><p>修改配置文件harbor.cfg</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hostname = reg.vaedit.com</span><br><span class="line">harbor_admin_password = Harbor12345</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>./prepare</p>
+</li>
+<li><p>sh install.sh</p>
+</li>
+</ol>
+<h3 id="使用私有仓库注意点"><a href="#使用私有仓库注意点" class="headerlink" title="使用私有仓库注意点"></a>使用私有仓库注意点</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#需要在/etc/docker/daemon.json中添加私有仓库信任</span><br><span class="line">&#123;</span><br><span class="line">        <span class="attr">&quot;registry-mirrors&quot;</span>: [</span><br><span class="line">        <span class="string">&quot;http://f1361db2.m.daocloud.io&quot;</span></span><br><span class="line">    ],</span><br><span class="line">        <span class="attr">&quot;insecure-registries&quot;</span>:[</span><br><span class="line">        <span class="string">&quot;192.168.0.6&quot;</span></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Jenkins和docker-CI-CD"><a href="#Jenkins和docker-CI-CD" class="headerlink" title="Jenkins和docker CI/CD"></a>Jenkins和docker CI/CD</h2><ul>
+<li>持续集成（Continuous Integration，CI）：代码合并、构建、部署、测试都在一起，不断地执行这个过程，并对结果反馈。</li>
+<li>持续部署（ContinuousDeployment，CD）：部署到测试环境、预生产环境、生产环境。</li>
+<li>持续交付（ContinuousDelivery，CD）：将最终产品发布到生产环境，给用户使用。</li>
+</ul>
+<h3 id="pipeline示例"><a href="#pipeline示例" class="headerlink" title="pipeline示例"></a>pipeline示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">node &#123;   &#x2F;&#x2F; 指定Slave标签</span><br><span class="line">   &#x2F;&#x2F; 拉取代码</span><br><span class="line">   stage(&#39;Git Checkout&#39;) &#123; </span><br><span class="line">        checkout([$class: &#39;GitSCM&#39;, branches: [[name: &#39;$Branch&#39;]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: &#39;git@192.168.0.6:&#x2F;home&#x2F;git&#x2F;tomcat-java-demo.git&#39;]]])</span><br><span class="line">   &#125;</span><br><span class="line">   &#x2F;&#x2F; 代码编译</span><br><span class="line">   stage(&#39;Maven Build&#39;) &#123;</span><br><span class="line">        sh &#39;&#39;&#39;</span><br><span class="line">        export JAVA_HOME&#x3D;&#x2F;usr&#x2F;local&#x2F;jdk</span><br><span class="line">        &#x2F;usr&#x2F;local&#x2F;maven&#x2F;bin&#x2F;mvn clean package -Dmaven.test.skip&#x3D;true</span><br><span class="line">        &#39;&#39;&#39;</span><br><span class="line">   &#125;</span><br><span class="line">   &#x2F;&#x2F; 项目打包到镜像并推送到镜像仓库</span><br><span class="line">   stage(&#39;Build and Push Image&#39;) &#123;</span><br><span class="line">        sh &#39;&#39;&#39;</span><br><span class="line">        REPOSITORY&#x3D;192.168.0.6&#x2F;test&#x2F;java-demo:$&#123;Branch&#125;</span><br><span class="line">        echo &#39;</span><br><span class="line">        FROM 192.168.0.6&#x2F;test&#x2F;tomcat:v1</span><br><span class="line">        COPY target&#x2F;*.war &#x2F;usr&#x2F;local&#x2F;tomcat&#x2F;webapps&#x2F;ROOT.war</span><br><span class="line">        &#39; &gt; Dockerfile</span><br><span class="line">        docker build -t $REPOSITORY .</span><br><span class="line">        docker login -u vaedit -p 1qaz@WSX 192.168.0.6</span><br><span class="line">        docker push $REPOSITORY</span><br><span class="line">        &#39;&#39;&#39;</span><br><span class="line">   &#125;</span><br><span class="line">   &#x2F;&#x2F; 部署到Docker主机</span><br><span class="line">   stage(&#39;Deploy to Docker&#39;) &#123;</span><br><span class="line">        sh &#39;&#39;&#39;</span><br><span class="line">        REPOSITORY&#x3D;192.168.0.6&#x2F;test&#x2F;java-demo:$&#123;Branch&#125;</span><br><span class="line">        docker rm -f java-demo |true</span><br><span class="line">        docker image rm $REPOSITORY |true</span><br><span class="line">        docker login -u vaedit -p 1qaz@WSX 192.168.0.6</span><br><span class="line">        docker run -d --name java-demo -p 88:8080 $REPOSITORY</span><br><span class="line">        &#39;&#39;&#39;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="jenkins安装插件报错"><a href="#jenkins安装插件报错" class="headerlink" title="jenkins安装插件报错"></a>jenkins安装插件报错</h3><blockquote>
+<p>jenkins插件下载中心：<a target="_blank" rel="noopener" href="http://updates.jenkins-ci.org/download/plugins/">http://updates.jenkins-ci.org/download/plugins/</a></p>
+</blockquote>
+<p><img src="C:%5CUsers%5CVaedit%5CDesktop%5C%25E6%2597%25A5%25E5%25B8%25B8%25E8%25AE%25B0%25E5%25BD%2595%5Cimages%5C1566193999562.png" alt="1566193999562"></p>
+<p>报安装插件依赖错误，则需要手动从上面网址下载插件版本，并上传安装</p>
+<h4 id="docker-常用命令"><a href="#docker-常用命令" class="headerlink" title="docker 常用命令"></a>docker 常用命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker rm -f $(docker ps -qa) <span class="comment">#删除所有容器</span></span><br><span class="line"></span><br><span class="line">docker stats 容器id <span class="comment">#查看容器资源情况</span></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+      
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/docker-k8s/" rel="tag"># docker,k8s</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/85caec3f.html" rel="prev" title="批处理工具fabric教程">
+      <i class="fa fa-chevron-left"></i> 批处理工具fabric教程
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DOCKER-%E5%AE%89%E8%A3%85%E4%B8%8E%E5%AE%9E%E8%B7%B5"><span class="nav-text">DOCKER 安装与实践</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Docker"><span class="nav-text">安装Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CentOS%E4%B8%8A%E5%AE%89%E8%A3%85Docker"><span class="nav-text">CentOS上安装Docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E5%99%A8"><span class="nav-text">镜像加速器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%95%9C%E5%83%8F"><span class="nav-text">镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%A1%E7%90%86%E9%95%9C%E5%83%8F%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-text">管理镜像常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E9%95%9C%E5%83%8F"><span class="nav-text">获取镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E5%AE%B9%E5%99%A8"><span class="nav-text">运行容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%97%E5%87%BA%E9%95%9C%E5%83%8F"><span class="nav-text">列出镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%95%9C%E5%83%8F%E4%BD%93%E7%A7%AF"><span class="nav-text">镜像体积</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%99%9A%E6%82%AC%E9%95%9C%E5%83%8F"><span class="nav-text">虚悬镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E9%97%B4%E5%B1%82%E9%95%9C%E5%83%8F"><span class="nav-text">中间层镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker-commit"><span class="nav-text">docker commit</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%B9%E5%99%A8"><span class="nav-text">容器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%AE%B9%E5%99%A8%E5%B8%B8%E7%94%A8%E9%80%89%E9%A1%B9"><span class="nav-text">创建容器常用选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%B9%E5%99%A8%E8%B5%84%E6%BA%90%E9%99%90%E5%88%B6"><span class="nav-text">容器资源限制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E9%99%90%E5%88%B6"><span class="nav-text">内存限制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CPU%E9%99%90%E5%88%B6"><span class="nav-text">CPU限制</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%A1%E7%90%86%E5%AE%B9%E5%99%A8%E5%B8%B8%E7%94%A8%E9%80%89%E9%A1%B9"><span class="nav-text">管理容器常用选项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%A1%E7%90%86%E5%AE%B9%E5%99%A8%E6%95%B0%E6%8D%AE"><span class="nav-text">管理容器数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Volume"><span class="nav-text">Volume</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bind-Mount"><span class="nav-text">Bind Mount</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%B9%E5%99%A8%E7%BD%91%E7%BB%9C"><span class="nav-text">容器网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%BC%8F"><span class="nav-text">网络模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86"><span class="nav-text">网络原理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dockerfile"><span class="nav-text">Dockerfile</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Dockerfile%E6%8C%87%E4%BB%A4"><span class="nav-text">Dockerfile指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E9%95%9C%E5%83%8F"><span class="nav-text">构建镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E9%95%9C%E5%83%8F%E6%8C%87%E4%BB%A4"><span class="nav-text">构建镜像指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E5%9F%BA%E7%A1%80%E9%95%9C%E5%83%8F"><span class="nav-text">构建基础镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B1-%E6%9E%84%E5%BB%BAtomcat%E9%95%9C%E5%83%8F"><span class="nav-text">实例1.构建tomcat镜像</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%AE%B9%E5%99%A8%E4%BB%93%E5%BA%93Harbor"><span class="nav-text">企业级容器仓库Harbor</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Harbor%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2"><span class="nav-text">Harbor安装部署</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%A7%81%E6%9C%89%E4%BB%93%E5%BA%93%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="nav-text">使用私有仓库注意点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jenkins%E5%92%8Cdocker-CI-CD"><span class="nav-text">Jenkins和docker CI&#x2F;CD</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pipeline%E7%A4%BA%E4%BE%8B"><span class="nav-text">pipeline示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jenkins%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6%E6%8A%A5%E9%94%99"><span class="nav-text">jenkins安装插件报错</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#docker-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-text">docker 常用命令</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Vaedit"
+      src="https://vaedit-images.oss-cn-beijing.aliyuncs.com/img/image-20200922163734252.png">
+  <p class="site-author-name" itemprop="name">Vaedit</p>
+  <div class="site-description" itemprop="description">运维技术分享学习交流</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">35</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/vaedit" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;vaedit" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:vaedit@qq.com" title="E-Mail → mailto:vaedit@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">本站著作权归作者所有：来自作者Vaedit的原创作品，如需转载，请注明出处，否则将追究法律责任</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">92k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:24</span>
+</div>
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
