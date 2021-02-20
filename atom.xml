@@ -6,7 +6,7 @@
   <link href="https://www.1000b1.com/atom.xml" rel="self"/>
   
   <link href="https://www.1000b1.com/"/>
-  <updated>2021-02-20T04:39:10.435Z</updated>
+  <updated>2021-02-20T04:43:03.224Z</updated>
   <id>https://www.1000b1.com/</id>
   
   <author>
@@ -21,16 +21,17 @@
     <link href="https://www.1000b1.com/85caec3f.html"/>
     <id>https://www.1000b1.com/85caec3f.html</id>
     <published>2021-02-19T09:52:24.000Z</published>
-    <updated>2021-02-20T04:39:10.435Z</updated>
+    <updated>2021-02-20T04:43:03.224Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Python-批处理工具Fabric教程&quot;&gt;&lt;a href=&quot;#Python-批处理工具Fabric教程&quot; class=&quot;headerlink&quot; title=&quot;Python 批处理工具Fabric教程&quot;&gt;&lt;/a&gt;Python</summary>
-        
-      
+    <summary type="html">&lt;h1 id=&quot;Python-批处理工具Fabric教程&quot;&gt;&lt;a href=&quot;#Python-批处理工具Fabric教程&quot; class=&quot;headerlink&quot; title=&quot;Python 批处理工具Fabric教程&quot;&gt;&lt;/a&gt;Python 批处理工具Fabric教程&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;Author： Vaedit&lt;/p&gt;
+&lt;p&gt;Time：二〇二一年二月二十日 11:03:52&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;1-Fabric安装&quot;&gt;&lt;a href=&quot;#1-Fabric安装&quot; class=&quot;headerlink&quot; title=&quot;1 Fabric安装&quot;&gt;&lt;/a&gt;1 Fabric安装&lt;/h4&gt;&lt;h5 id=&quot;1-1-环境要求&quot;&gt;&lt;a href=&quot;#1-1-环境要求&quot; class=&quot;headerlink&quot; title=&quot;1.1 环境要求&quot;&gt;&lt;/a&gt;1.1 环境要求&lt;/h5&gt;&lt;p&gt;python == 3.6&lt;/p&gt;
+&lt;p&gt;系统：Centos 等Linux发行版&lt;/p&gt;
+&lt;h5 id=&quot;1-2-官网&quot;&gt;&lt;a href=&quot;#1-2-官网&quot; class=&quot;headerlink&quot; title=&quot;1.2 官网&quot;&gt;&lt;/a&gt;1.2 官网&lt;/h5&gt;&lt;p&gt;&lt;a href=&quot;http://www.fabfile.org/&quot;&gt;http://www.fabfile.org/&lt;/a&gt;&lt;/p&gt;
+&lt;h5 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h5&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;pip install fabric==2.5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
