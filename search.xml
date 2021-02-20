@@ -2101,7 +2101,7 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
 <li><strong>自定义网络</strong></li>
 </ul>
 <p>​      与默认的bridge原理一样，但自定义网络具备内部DNS发现，可以通过容器名或者主机名容器之间网络通信</p>
-<h3 id="网络原理"><a href="#网络原理" class="headerlink" title="网络原理"></a>网络原理</h3><p><img src="C:%5CUsers%5CVaedit%5CDesktop%5C%25E6%2597%25A5%25E5%25B8%25B8%25E8%25AE%25B0%25E5%25BD%2595%5Cimages%5C1565941555294.png" alt="1565941555294"></p>
+<h3 id="网络原理"><a href="#网络原理" class="headerlink" title="网络原理"></a>网络原理</h3><p><img src="https://vaedit-images.oss-cn-beijing.aliyuncs.com/img/image-20210220125246952.png" alt="image-20210220125246952"></p>
 <h2 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h2><h3 id="Dockerfile指令"><a href="#Dockerfile指令" class="headerlink" title="Dockerfile指令"></a>Dockerfile指令</h3><table>
 <thead>
 <tr>
@@ -2196,7 +2196,7 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
 <h3 id="jenkins安装插件报错"><a href="#jenkins安装插件报错" class="headerlink" title="jenkins安装插件报错"></a>jenkins安装插件报错</h3><blockquote>
 <p>jenkins插件下载中心：<a href="http://updates.jenkins-ci.org/download/plugins/">http://updates.jenkins-ci.org/download/plugins/</a></p>
 </blockquote>
-<p><img src="C:%5CUsers%5CVaedit%5CDesktop%5C%25E6%2597%25A5%25E5%25B8%25B8%25E8%25AE%25B0%25E5%25BD%2595%5Cimages%5C1566193999562.png" alt="1566193999562"></p>
+<p><img src="https://vaedit-images.oss-cn-beijing.aliyuncs.com/img/image-20210220125314518.png" alt="image-20210220125314518"></p>
 <p>报安装插件依赖错误，则需要手动从上面网址下载插件版本，并上传安装</p>
 <h4 id="docker-常用命令"><a href="#docker-常用命令" class="headerlink" title="docker 常用命令"></a>docker 常用命令</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker rm -f $(docker ps -qa) <span class="comment">#删除所有容器</span></span><br><span class="line"></span><br><span class="line">docker stats 容器id <span class="comment">#查看容器资源情况</span></span><br></pre></td></tr></table></figure>
 
