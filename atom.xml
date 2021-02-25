@@ -6,7 +6,7 @@
   <link href="https://www.1000b1.com/atom.xml" rel="self"/>
   
   <link href="https://www.1000b1.com/"/>
-  <updated>2021-02-20T04:53:19.840Z</updated>
+  <updated>2021-02-25T09:55:08.982Z</updated>
   <id>https://www.1000b1.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>AWS通过SDK搜集资源信息</title>
+    <link href="https://www.1000b1.com/44ed022d.html"/>
+    <id>https://www.1000b1.com/44ed022d.html</id>
+    <published>2021-02-25T09:43:45.000Z</published>
+    <updated>2021-02-25T09:55:08.982Z</updated>
+    
+    
+    <summary type="html">通过SDK搜集AWS资产信息</summary>
+    
+    
+    
+    <category term="AWS服务" scheme="https://www.1000b1.com/categories/AWS%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+    <category term="boto3" scheme="https://www.1000b1.com/tags/boto3/"/>
+    
+  </entry>
   
   <entry>
     <title>DOCKER的学习记录-安装与实践</title>
@@ -491,39 +510,6 @@
     
     
     <category term="Harbor" scheme="https://www.1000b1.com/tags/Harbor/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>AWS-RDS慢查询日志查看导出</title>
-    <link href="https://www.1000b1.com/5ed6ea01.html"/>
-    <id>https://www.1000b1.com/5ed6ea01.html</id>
-    <published>2020-09-22T10:41:17.000Z</published>
-    <updated>2020-09-23T10:09:14.694Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;如果要分析 slow log，第一步就是先要获取到 slow log 文件，由于 RDS MySQL 是托管数据库，我们无法登录到 MySQL 所在服务器，那么应该如何来获取 slow log 文件呢？&lt;/p&gt;
-&lt;p&gt;根据 MySQL slow log 的相关配置，我们知道 slow log 的存在形式一共有两种： table 或 file ，由 log_output 参数进行控制：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;TABLE (默认) – 将一般查询写入 general_log 表，将慢速查询写入 mysql.slow_log 表；&lt;/li&gt;
-&lt;li&gt;FILE – 将一般查询日志和慢速查询日志写入文件系统；&lt;/li&gt;
-&lt;li&gt;NONE – 禁用日志记录；&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;针对不同形式的 slow log，我们有不同的方法将其下载到本地：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;TABLE ：由于这是将慢查询记录存放在 MySQL 的数据表里，这里我们可以使用 sql 命令将其输出到本地的一个文件；&lt;/li&gt;
-&lt;li&gt;FILE ：慢查询日志存放在 RDS MySQL 托管主机上，我们可以利用 awscli 提供的 RDS API download-db-log-file-portion 将 slow log 下载到本地；&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;具体实现形式请参加后续对应部分的内容。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="AWS服务" scheme="https://www.1000b1.com/categories/AWS%E6%9C%8D%E5%8A%A1/"/>
-    
-    
-    <category term="AWS慢查询日志" scheme="https://www.1000b1.com/tags/AWS%E6%85%A2%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97/"/>
-    
-    <category term="mysql" scheme="https://www.1000b1.com/tags/mysql/"/>
     
   </entry>
   
