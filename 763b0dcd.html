@@ -27,14 +27,14 @@
 <meta property="og:site_name" content="Vaedit的博客">
 <meta property="og:description" content="文件描述符和最大进程数ulimit的使用123456789101112131415161718192021222324ulimit #-a 列出所有当前资源极限#-n 每个进程可以同时打开的最大文件数#-u 可以运行的最大并发进程数#-S 设置软限制#-H 设置硬限制在命令行直接执行该命令只会在当前shell生效，退出或者新开一个shell都会无效，所以可以加入到全局设置中：&#x2F;bin&#x2F;echo &amp;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/85434e952e604f6dbcfbae0b6284bd2b~tplv-k3u1fbpfcp-zoom-1.image">
-<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7ab1ce48e60a4593ab9d30d993c93f24~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://gitee.com/Vaedit/images/raw/master/img/85434e952e604f6dbcfbae0b6284bd2b~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://gitee.com/Vaedit/images/raw/master/img/7ab1ce48e60a4593ab9d30d993c93f24~tplv-k3u1fbpfcp-zoom-1.image">
 <meta property="article:published_time" content="2020-09-22T10:23:41.000Z">
-<meta property="article:modified_time" content="2020-09-25T06:34:00.813Z">
+<meta property="article:modified_time" content="2021-03-12T07:53:11.934Z">
 <meta property="article:author" content="Vaedit">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/85434e952e604f6dbcfbae0b6284bd2b~tplv-k3u1fbpfcp-zoom-1.image">
+<meta name="twitter:image" content="https://gitee.com/Vaedit/images/raw/master/img/85434e952e604f6dbcfbae0b6284bd2b~tplv-k3u1fbpfcp-zoom-1.image">
 
 <link rel="canonical" href="https://www.1000b1.com/763b0dcd.html">
 
@@ -265,8 +265,8 @@
 
 <a id="more"></a>
 
-<h2 id="TCP-IP协议"><a href="#TCP-IP协议" class="headerlink" title="TCP/IP协议"></a>TCP/IP协议</h2><p>七层网络模型<br><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/85434e952e604f6dbcfbae0b6284bd2b~tplv-k3u1fbpfcp-zoom-1.image"></p>
-<h3 id="3次握手4次挥手"><a href="#3次握手4次挥手" class="headerlink" title="3次握手4次挥手"></a>3次握手4次挥手</h3><p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7ab1ce48e60a4593ab9d30d993c93f24~tplv-k3u1fbpfcp-zoom-1.image"></p>
+<h2 id="TCP-IP协议"><a href="#TCP-IP协议" class="headerlink" title="TCP/IP协议"></a>TCP/IP协议</h2><p>七层网络模型<br><img src="https://gitee.com/Vaedit/images/raw/master/img/85434e952e604f6dbcfbae0b6284bd2b~tplv-k3u1fbpfcp-zoom-1.image"></p>
+<h3 id="3次握手4次挥手"><a href="#3次握手4次挥手" class="headerlink" title="3次握手4次挥手"></a>3次握手4次挥手</h3><p><img src="https://gitee.com/Vaedit/images/raw/master/img/7ab1ce48e60a4593ab9d30d993c93f24~tplv-k3u1fbpfcp-zoom-1.image"></p>
 <h4 id="3次握手原理："><a href="#3次握手原理：" class="headerlink" title="3次握手原理："></a>3次握手原理：</h4><p><strong>第一次握手</strong>：建立连接。客户端发送连接请求报文段，将SYN位置为1，Sequence Number为x；然后客户端进入SYN_SENT状态，等待服务器的确认；</p>
 <p><strong>第二次握手</strong>：服务器收到SYN报文段。服务器收到客户端的SYN报文段，需要对这个SYN报文段进行确认，设置Acknowledgment Number为x+1(Sequence Number+1)；<br>同时，自己自己还要发送SYN请求信息，将SYN位置为1，Sequence Number为y；服务器端将上述所有信息放到一个报文段（即SYN+ACK报文段）中，一并发送给客户端，此时服务器进入SYN_RECV状态；</p>
 <p><strong>第三次握手</strong>：客户端收到服务器的SYN+ACK报文段。然后将Acknowledgment Number设置为y+1，向服务器发送ACK报文段，这个报文段发送完毕以后，客户端和服务器端都进入ESTABLISHED状态，完成TCP三次握手。</p>

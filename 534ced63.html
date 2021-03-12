@@ -27,14 +27,14 @@
 <meta property="og:site_name" content="Vaedit的博客">
 <meta property="og:description" content="DOCKER 安装与实践安装DockerCentOS上安装Docker123456789101112131415161718192021#如果有旧版本卸载旧版本yum remove docker docker-common docker-selinux docker-engine#安装依赖yum install -y yum-utils device-mapper-persistent-data">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://vaedit-images.oss-cn-beijing.aliyuncs.com/img/image-20210220125246952.png">
-<meta property="og:image" content="https://vaedit-images.oss-cn-beijing.aliyuncs.com/img/image-20210220125314518.png">
+<meta property="og:image" content="https://gitee.com/Vaedit/images/raw/master/img/image-20210220125246952.png">
+<meta property="og:image" content="https://gitee.com/Vaedit/images/raw/master/img/image-20210220125314518.png">
 <meta property="article:published_time" content="2021-02-20T04:46:44.000Z">
-<meta property="article:modified_time" content="2021-02-20T04:53:19.840Z">
+<meta property="article:modified_time" content="2021-03-12T07:52:00.435Z">
 <meta property="article:author" content="Vaedit">
 <meta property="article:tag" content="docker,k8s">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://vaedit-images.oss-cn-beijing.aliyuncs.com/img/image-20210220125246952.png">
+<meta name="twitter:image" content="https://gitee.com/Vaedit/images/raw/master/img/image-20210220125246952.png">
 
 <link rel="canonical" href="https://www.1000b1.com/534ced63.html">
 
@@ -620,7 +620,7 @@
 <li><strong>自定义网络</strong></li>
 </ul>
 <p>​      与默认的bridge原理一样，但自定义网络具备内部DNS发现，可以通过容器名或者主机名容器之间网络通信</p>
-<h3 id="网络原理"><a href="#网络原理" class="headerlink" title="网络原理"></a>网络原理</h3><p><img src="https://vaedit-images.oss-cn-beijing.aliyuncs.com/img/image-20210220125246952.png" alt="image-20210220125246952"></p>
+<h3 id="网络原理"><a href="#网络原理" class="headerlink" title="网络原理"></a>网络原理</h3><p><img src="https://gitee.com/Vaedit/images/raw/master/img/image-20210220125246952.png" alt="image-20210220125246952"></p>
 <h2 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h2><h3 id="Dockerfile指令"><a href="#Dockerfile指令" class="headerlink" title="Dockerfile指令"></a>Dockerfile指令</h3><table>
 <thead>
 <tr>
@@ -715,7 +715,7 @@
 <h3 id="jenkins安装插件报错"><a href="#jenkins安装插件报错" class="headerlink" title="jenkins安装插件报错"></a>jenkins安装插件报错</h3><blockquote>
 <p>jenkins插件下载中心：<a target="_blank" rel="noopener" href="http://updates.jenkins-ci.org/download/plugins/">http://updates.jenkins-ci.org/download/plugins/</a></p>
 </blockquote>
-<p><img src="https://vaedit-images.oss-cn-beijing.aliyuncs.com/img/image-20210220125314518.png" alt="image-20210220125314518"></p>
+<p><img src="https://gitee.com/Vaedit/images/raw/master/img/image-20210220125314518.png" alt="image-20210220125314518"></p>
 <p>报安装插件依赖错误，则需要手动从上面网址下载插件版本，并上传安装</p>
 <h4 id="docker-常用命令"><a href="#docker-常用命令" class="headerlink" title="docker 常用命令"></a>docker 常用命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker rm -f $(docker ps -qa) <span class="comment">#删除所有容器</span></span><br><span class="line"></span><br><span class="line">docker stats 容器id <span class="comment">#查看容器资源情况</span></span><br></pre></td></tr></table></figure>
 

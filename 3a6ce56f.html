@@ -27,15 +27,15 @@
 <meta property="og:site_name" content="Vaedit的博客">
 <meta property="og:description" content="Centos下curl报错curl:(35)SSLconnecterror">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/805d5abfb29a4c8581515a547e367dda~tplv-k3u1fbpfcp-watermark.webp">
-<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ade06a24cbdf4f1b8f7dd5553fede616~tplv-k3u1fbpfcp-watermark.webp">
-<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bcb8cecad5dd4002821ac38110c7d9ae~tplv-k3u1fbpfcp-watermark.webp">
+<meta property="og:image" content="https://gitee.com/Vaedit/images/raw/master/img/805d5abfb29a4c8581515a547e367dda~tplv-k3u1fbpfcp-watermark.webp">
+<meta property="og:image" content="https://gitee.com/Vaedit/images/raw/master/img/ade06a24cbdf4f1b8f7dd5553fede616~tplv-k3u1fbpfcp-watermark.webp">
+<meta property="og:image" content="https://gitee.com/Vaedit/images/raw/master/img/bcb8cecad5dd4002821ac38110c7d9ae~tplv-k3u1fbpfcp-watermark.webp">
 <meta property="article:published_time" content="2020-10-10T08:42:56.000Z">
-<meta property="article:modified_time" content="2020-10-10T09:00:38.491Z">
+<meta property="article:modified_time" content="2021-03-12T07:51:03.472Z">
 <meta property="article:author" content="Vaedit">
 <meta property="article:tag" content="curl">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/805d5abfb29a4c8581515a547e367dda~tplv-k3u1fbpfcp-watermark.webp">
+<meta name="twitter:image" content="https://gitee.com/Vaedit/images/raw/master/img/805d5abfb29a4c8581515a547e367dda~tplv-k3u1fbpfcp-watermark.webp">
 
 <link rel="canonical" href="https://www.1000b1.com/3a6ce56f.html">
 
@@ -264,15 +264,15 @@
 
       
         <h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>线上服务器使用curl访问苹果接口，访问报错如图</p>
-<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/805d5abfb29a4c8581515a547e367dda~tplv-k3u1fbpfcp-watermark.webp"></p>
+<p><img src="https://gitee.com/Vaedit/images/raw/master/img/805d5abfb29a4c8581515a547e367dda~tplv-k3u1fbpfcp-watermark.webp"></p>
 <p>无论用ip访问还是域名访问都报错，本地访问接口地址正常，ping也正常，只有线上服务器访问报错</p>
 <h4 id="排查解决"><a href="#排查解决" class="headerlink" title="排查解决"></a>排查解决</h4><p>由于没有遇到过类似情，同地域其他服务器都能正常访问，只有一个项目服务器不能访问，初步怀疑DNS问题，通过切换DNS发现还是没能解决，排除DNS问题。</p>
 <p>通过curl -v 更详细的看下报错</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X GET https://appleid.apple.com/auth/keys -v</span><br></pre></td></tr></table></figure>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ade06a24cbdf4f1b8f7dd5553fede616~tplv-k3u1fbpfcp-watermark.webp"></p>
+<p><img src="https://gitee.com/Vaedit/images/raw/master/img/ade06a24cbdf4f1b8f7dd5553fede616~tplv-k3u1fbpfcp-watermark.webp"></p>
 <p>从上图发现报错和NSS有关，查阅资料发现可能是nss需要升级，所以找测试环境的同类型服务器测试升级</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install nss libcurl -y;yum update nss libcurl -y</span><br></pre></td></tr></table></figure>
-<p>恢复正常<br><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bcb8cecad5dd4002821ac38110c7d9ae~tplv-k3u1fbpfcp-watermark.webp"></p>
+<p>恢复正常<br><img src="https://gitee.com/Vaedit/images/raw/master/img/bcb8cecad5dd4002821ac38110c7d9ae~tplv-k3u1fbpfcp-watermark.webp"></p>
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><blockquote>
 <p>该问题是由于生产环境使用centos6.x版本的curl及nss版本过低引起，升级版本后可以正常访问</p>
 </blockquote>

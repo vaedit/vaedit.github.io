@@ -79,7 +79,7 @@
 <li>Mysql 5.7</li>
 </ul>
 <h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>不管如何设置时间格式，数据库字段保存都有微秒(我的需求是去掉微秒)，如下图</p>
-<p><img src="https://vaedit-images.oss-cn-beijing.aliyuncs.com/img/image-20200923171022616.png" alt="image-20200923171022616"></p>
+<p><img src="https://gitee.com/Vaedit/images/raw/master/img/image-20200923171022616.png" alt="image-20200923171022616"></p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#models中定义字段</span></span><br><span class="line">exetime = models.DateTimeField(auto_now_add=<span class="literal">True</span>,verbose_name=<span class="string">&#x27;执行时间&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 <a id="more"></a>
@@ -364,8 +364,8 @@ open vnc://localhost:5901</code></pre>
 
 <a id="more"></a>
 
-<h2 id="TCP-IP协议"><a href="#TCP-IP协议" class="headerlink" title="TCP/IP协议"></a>TCP/IP协议</h2><p>七层网络模型<br><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/85434e952e604f6dbcfbae0b6284bd2b~tplv-k3u1fbpfcp-zoom-1.image"></p>
-<h3 id="3次握手4次挥手"><a href="#3次握手4次挥手" class="headerlink" title="3次握手4次挥手"></a>3次握手4次挥手</h3><p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7ab1ce48e60a4593ab9d30d993c93f24~tplv-k3u1fbpfcp-zoom-1.image"></p>
+<h2 id="TCP-IP协议"><a href="#TCP-IP协议" class="headerlink" title="TCP/IP协议"></a>TCP/IP协议</h2><p>七层网络模型<br><img src="https://gitee.com/Vaedit/images/raw/master/img/85434e952e604f6dbcfbae0b6284bd2b~tplv-k3u1fbpfcp-zoom-1.image"></p>
+<h3 id="3次握手4次挥手"><a href="#3次握手4次挥手" class="headerlink" title="3次握手4次挥手"></a>3次握手4次挥手</h3><p><img src="https://gitee.com/Vaedit/images/raw/master/img/7ab1ce48e60a4593ab9d30d993c93f24~tplv-k3u1fbpfcp-zoom-1.image"></p>
 <h4 id="3次握手原理："><a href="#3次握手原理：" class="headerlink" title="3次握手原理："></a>3次握手原理：</h4><p><strong>第一次握手</strong>：建立连接。客户端发送连接请求报文段，将SYN位置为1，Sequence Number为x；然后客户端进入SYN_SENT状态，等待服务器的确认；</p>
 <p><strong>第二次握手</strong>：服务器收到SYN报文段。服务器收到客户端的SYN报文段，需要对这个SYN报文段进行确认，设置Acknowledgment Number为x+1(Sequence Number+1)；<br>同时，自己自己还要发送SYN请求信息，将SYN位置为1，Sequence Number为y；服务器端将上述所有信息放到一个报文段（即SYN+ACK报文段）中，一并发送给客户端，此时服务器进入SYN_RECV状态；</p>
 <p><strong>第三次握手</strong>：客户端收到服务器的SYN+ACK报文段。然后将Acknowledgment Number设置为y+1，向服务器发送ACK报文段，这个报文段发送完毕以后，客户端和服务器端都进入ESTABLISHED状态，完成TCP三次握手。</p>
@@ -981,8 +981,8 @@ open vnc://localhost:5901</code></pre>
 <blockquote>
 <p>官方安装文档：<a href="https://docs.iredmail.org/install.iredmail.on.rhel-zh_CN.html">https://docs.iredmail.org/install.iredmail.on.rhel-zh_CN.html</a></p>
 </blockquote>
-<h5 id="2-2-域名解析"><a href="#2-2-域名解析" class="headerlink" title="2.2 域名解析"></a>2.2 域名解析</h5><p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2e22800a2a664b29bbca36b790618d0d~tplv-k3u1fbpfcp-zoom-1.image"></p>
-<h5 id="2-3-安全组开放端口"><a href="#2-3-安全组开放端口" class="headerlink" title="2.3 安全组开放端口"></a>2.3 安全组开放端口</h5><p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e27fc9e14f094502b2ed9f8f8c112573~tplv-k3u1fbpfcp-zoom-1.image"></p>
+<h5 id="2-2-域名解析"><a href="#2-2-域名解析" class="headerlink" title="2.2 域名解析"></a>2.2 域名解析</h5><p><img src="https://gitee.com/Vaedit/images/raw/master/img/2e22800a2a664b29bbca36b790618d0d~tplv-k3u1fbpfcp-zoom-1.image"></p>
+<h5 id="2-3-安全组开放端口"><a href="#2-3-安全组开放端口" class="headerlink" title="2.3 安全组开放端口"></a>2.3 安全组开放端口</h5><p><img src="https://gitee.com/Vaedit/images/raw/master/img/e27fc9e14f094502b2ed9f8f8c112573~tplv-k3u1fbpfcp-zoom-1.image"></p>
 <h4 id="三-优化邮件服务器"><a href="#三-优化邮件服务器" class="headerlink" title="三 优化邮件服务器"></a>三 优化邮件服务器</h4><p>邮件服务器添加SPF，DKIM，DMARC，PTR,提高邮件送达率</p>
 <h5 id="3-1-设置SPF"><a href="#3-1-设置SPF" class="headerlink" title="3.1 设置SPF"></a>3.1 设置SPF</h5><blockquote>
 <p>SPF 记录是一种域名服务 (DNS) 记录，可确定允许哪些邮件服务器代表您的域来发送电子邮件。</p>
@@ -1004,19 +1004,19 @@ open vnc://localhost:5901</code></pre>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">amavisd showkeys <span class="comment">#如果报错制定配置文件</span></span><br><span class="line">amavisd -c /etc/amavisd/amavisd.conf showkeys</span><br><span class="line"><span class="comment">#输出去掉括号和引号</span></span><br><span class="line">v=DKIM1; p=MIGfMA0GCSqsdfdsfQEBAQUAA4GNADCBiQKBgQdsfdsfIydbCBnARzt0m8yVQwpQIJUebYk09TvDu56kAQEXuVNDS5G8DjvvCUslq/1+/EKcafvVh82of3rONn0wPhRpBm2CfDTD8pEWHmT6BRa+su9zJ02iomgHYl14sfxxfsdf</span><br></pre></td></tr></table></figure>
 
 <p>如图：</p>
-<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f21d7ce3e9ae4b26bacd953b641f28ad~tplv-k3u1fbpfcp-zoom-1.image"></p>
+<p><img src="https://gitee.com/Vaedit/images/raw/master/img/f21d7ce3e9ae4b26bacd953b641f28ad~tplv-k3u1fbpfcp-zoom-1.image"></p>
 <h5 id="3-3-设置DMARC"><a href="#3-3-设置DMARC" class="headerlink" title="3.3 设置DMARC"></a>3.3 设置DMARC</h5><blockquote>
 <p>DMARC协议是有效解决信头From伪造而诞生的一种新的邮件来源验证手段，为邮件发件人地址提供强大保护，并在邮件收发双方之间建立起一个数据反馈机制。</p>
 </blockquote>
 <p>如图：</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a560ec9b22a84028a4106f8f6d554301~tplv-k3u1fbpfcp-zoom-1.image"></p>
+<p><img src="https://gitee.com/Vaedit/images/raw/master/img/a560ec9b22a84028a4106f8f6d554301~tplv-k3u1fbpfcp-zoom-1.image"></p>
 <h5 id="3-4-PTR"><a href="#3-4-PTR" class="headerlink" title="3.4 PTR"></a>3.4 PTR</h5><blockquote>
 <p>PTR记录也就是IP反向解析，我们常见的解析都是将域名A记录解析到IP，PTR则是将IP反向解析到对应的域名，通过设置PTR可以提高发信方的信誉，从而提高到达率。</p>
 </blockquote>
 <p>AWS默认就做了PTR</p>
-<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/364babea950f433e90ec5940206e1b1d~tplv-k3u1fbpfcp-zoom-1.image"></p>
+<p><img src="https://gitee.com/Vaedit/images/raw/master/img/364babea950f433e90ec5940206e1b1d~tplv-k3u1fbpfcp-zoom-1.image"></p>
 <pre><code>  但不是我们需要的反向解析，这里没做修改，如果需要修改则需要提工单改为mail.domain.com</code></pre>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6b5b7025337544ed94e7270af8dd147a~tplv-k3u1fbpfcp-zoom-1.image"></p>
+<p><img src="https://gitee.com/Vaedit/images/raw/master/img/6b5b7025337544ed94e7270af8dd147a~tplv-k3u1fbpfcp-zoom-1.image"></p>
 <blockquote>
 <p>附AWS申请更改PTR和取消邮件限制地址：<a href="https://aws.amazon.com/tw/blogs/aws/reverse-dns-for-ec2s-elastic-ip-addresses/%EF%BC%8C%E4%B8%80%E8%88%AC1-3%E5%A4%A9%E5%86%85%E4%BC%9A%E9%85%8D%E7%BD%AE%E5%A5%BD%EF%BC%8C%E5%B9%B6%E4%B8%94%E4%BC%9A%E9%82%AE%E4%BB%B6%E6%8F%90%E9%86%92%E4%BD%A0%E3%80%82">https://aws.amazon.com/tw/blogs/aws/reverse-dns-for-ec2s-elastic-ip-addresses/，一般1-3天内会配置好，并且会邮件提醒你。</a></p>
 </blockquote>
@@ -1064,9 +1064,9 @@ open vnc://localhost:5901</code></pre>
 <li><p>mariadb默认数据库目录存放在/var/lib/mysql，安装完成后需要停掉切换到/data/mysql下</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#关闭并全备mariadb</span></span><br><span class="line">systemctl stop mariadb</span><br><span class="line">nestat -ntlp|grep mysql</span><br><span class="line">cp -a /var/lib/mysql /data/</span><br><span class="line"></span><br><span class="line"><span class="comment">#修改下配置文件指定mariadb datadir</span></span><br><span class="line">vim /etc/my.cnf</span><br><span class="line">datadir=/data/mysql</span><br><span class="line"></span><br><span class="line"><span class="comment">#启动</span></span><br><span class="line">systemctl start mariadb</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>默认后台管理地址：<a href="https://mail.domain.com/iredadmin/">https://mail.domain.com/iredadmin/</a>  账号：<a href="mailto:&#x70;&#x6f;&#x73;&#x74;&#x6d;&#97;&#115;&#x74;&#x65;&#114;&#x40;&#100;&#111;&#x6d;&#97;&#x69;&#x6e;&#46;&#x63;&#111;&#109;">&#x70;&#x6f;&#x73;&#x74;&#x6d;&#97;&#115;&#x74;&#x65;&#114;&#x40;&#100;&#111;&#x6d;&#97;&#x69;&#x6e;&#46;&#x63;&#111;&#109;</a> 密码：安装时指定</p>
+<li><p>默认后台管理地址：<a href="https://mail.domain.com/iredadmin/">https://mail.domain.com/iredadmin/</a>  账号：<a href="mailto:&#112;&#111;&#x73;&#116;&#x6d;&#97;&#115;&#116;&#101;&#x72;&#64;&#x64;&#111;&#x6d;&#x61;&#x69;&#x6e;&#46;&#x63;&#x6f;&#x6d;">&#112;&#111;&#x73;&#116;&#x6d;&#97;&#115;&#116;&#101;&#x72;&#64;&#x64;&#111;&#x6d;&#x61;&#x69;&#x6e;&#46;&#x63;&#x6f;&#x6d;</a> 密码：安装时指定</p>
 </li>
-<li><p>web mail地址：<a href="https://mail.domain.com/mail/">https://mail.domain.com/mail/</a>  账号：<a href="mailto:&#x70;&#x6f;&#115;&#116;&#109;&#97;&#115;&#116;&#x65;&#114;&#64;&#x64;&#x6f;&#109;&#97;&#105;&#110;&#46;&#x63;&#x6f;&#109;">&#x70;&#x6f;&#115;&#116;&#109;&#97;&#115;&#116;&#x65;&#114;&#64;&#x64;&#x6f;&#109;&#97;&#105;&#110;&#46;&#x63;&#x6f;&#109;</a> 密码：安装时指定</p>
+<li><p>web mail地址：<a href="https://mail.domain.com/mail/">https://mail.domain.com/mail/</a>  账号：<a href="mailto:&#x70;&#x6f;&#115;&#116;&#109;&#x61;&#115;&#116;&#101;&#x72;&#64;&#100;&#x6f;&#x6d;&#x61;&#105;&#110;&#46;&#x63;&#x6f;&#109;">&#x70;&#x6f;&#115;&#116;&#109;&#x61;&#115;&#116;&#101;&#x72;&#64;&#100;&#x6f;&#x6d;&#x61;&#105;&#110;&#46;&#x63;&#x6f;&#109;</a> 密码：安装时指定</p>
 </li>
 <li><pre><code class="bash">#各服务默认端口
 POP3 service: port 110 over TLS (recommended), or port 995 with SSL.
@@ -1079,15 +1079,15 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
 </code></pre>
 </li>
 </ol>
-<h4 id="六-客户端配置"><a href="#六-客户端配置" class="headerlink" title="六 客户端配置"></a>六 客户端配置</h4><h5 id="6-1-Foxmail配置"><a href="#6-1-Foxmail配置" class="headerlink" title="6.1 Foxmail配置"></a>6.1 Foxmail配置</h5><p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/487dcfa582bd4466a503fdffc7bfbdaa~tplv-k3u1fbpfcp-zoom-1.image"></p>
-<h4 id="七-优化检测"><a href="#七-优化检测" class="headerlink" title="七 优化检测"></a>七 优化检测</h4><h5 id="7-1-通过http-www-mail-tester-com-测试邮件服务器"><a href="#7-1-通过http-www-mail-tester-com-测试邮件服务器" class="headerlink" title="7.1 通过http://www.mail-tester.com/ 测试邮件服务器"></a>7.1 通过<a href="http://www.mail-tester.com/">http://www.mail-tester.com/</a> 测试邮件服务器</h5><p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0c469eff8d9d41a8a0adcad7216ac3ca~tplv-k3u1fbpfcp-zoom-1.image"></p>
+<h4 id="六-客户端配置"><a href="#六-客户端配置" class="headerlink" title="六 客户端配置"></a>六 客户端配置</h4><h5 id="6-1-Foxmail配置"><a href="#6-1-Foxmail配置" class="headerlink" title="6.1 Foxmail配置"></a>6.1 Foxmail配置</h5><p><img src="https://gitee.com/Vaedit/images/raw/master/img/487dcfa582bd4466a503fdffc7bfbdaa~tplv-k3u1fbpfcp-zoom-1.image"></p>
+<h4 id="七-优化检测"><a href="#七-优化检测" class="headerlink" title="七 优化检测"></a>七 优化检测</h4><h5 id="7-1-通过http-www-mail-tester-com-测试邮件服务器"><a href="#7-1-通过http-www-mail-tester-com-测试邮件服务器" class="headerlink" title="7.1 通过http://www.mail-tester.com/ 测试邮件服务器"></a>7.1 通过<a href="http://www.mail-tester.com/">http://www.mail-tester.com/</a> 测试邮件服务器</h5><p><img src="https://gitee.com/Vaedit/images/raw/master/img/0c469eff8d9d41a8a0adcad7216ac3ca~tplv-k3u1fbpfcp-zoom-1.image"></p>
 <p>通过邮件账号发送一封邮件 到上面的邮箱，查看邮件得分，它会提醒还有哪些不足,假如邮件服务器，原本就在黑名单内，那么该ip之前使用者存在滥用导致，只有一个办法，更换ip来解决。</p>
 <h5 id="7-2-QQ邮箱优化"><a href="#7-2-QQ邮箱优化" class="headerlink" title="7.2 QQ邮箱优化"></a>7.2 QQ邮箱优化</h5><ul>
 <li><p>注册合作伙伴（国内大部分邮箱都是qq邮箱）</p>
 <p>通过openmail.qq.com来提高qq邮箱发件成功率，截止我配置邮件服务器，该地址功能目前处于维护状态，不知何时好。</p>
 </li>
 </ul>
-<h5 id="7-3-设置grey-list-解决收件延迟问题"><a href="#7-3-设置grey-list-解决收件延迟问题" class="headerlink" title="7.3 设置grey list,解决收件延迟问题"></a>7.3 设置grey list,解决收件延迟问题</h5><p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ba8aa6034975481f9c36c15edc376572~tplv-k3u1fbpfcp-zoom-1.image"></p>
+<h5 id="7-3-设置grey-list-解决收件延迟问题"><a href="#7-3-设置grey-list-解决收件延迟问题" class="headerlink" title="7.3 设置grey list,解决收件延迟问题"></a>7.3 设置grey list,解决收件延迟问题</h5><p><img src="https://gitee.com/Vaedit/images/raw/master/img/ba8aa6034975481f9c36c15edc376572~tplv-k3u1fbpfcp-zoom-1.image"></p>
 ]]></content>
       <categories>
         <category>Linux基础服务</category>
@@ -1351,7 +1351,7 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
 <p>admin 12345</p>
 <p>然后就可以创建项目：共有和私有(共有不需要认证，只能下载，不能上传，私有需要认证，可以通过定义不同的角色来控制权限如管理员，开发人员，访客。)</p>
 <p>创建用户然后分配给项目</p>
-<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/29b1fa7f720e40809953c3d836ff2e1e~tplv-k3u1fbpfcp-zoom-1.image"></p>
+<p><img src="https://gitee.com/Vaedit/images/raw/master/img/29b1fa7f720e40809953c3d836ff2e1e~tplv-k3u1fbpfcp-zoom-1.image"></p>
 <h4 id="客户端使用harbor仓库"><a href="#客户端使用harbor仓库" class="headerlink" title="客户端使用harbor仓库"></a>客户端使用harbor仓库</h4><ol>
 <li><p>还是得本地域名解析</p>
 <p>在/etc/hosts中添加：</p>
@@ -1381,7 +1381,7 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
 <li>周一上午刚到公司便接到策划同事发来的消息，公司某老项目游戏有玩家报登录不上。</li>
 <li>于是便登录相关项目服务器，执行脚本，结果如下图：</li>
 </ol>
-<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/299a8d666a544ca9b9691af88fb7aa06~tplv-k3u1fbpfcp-zoom-1.image"></p>
+<p><img src="https://gitee.com/Vaedit/images/raw/master/img/299a8d666a544ca9b9691af88fb7aa06~tplv-k3u1fbpfcp-zoom-1.image"></p>
 <p>当时返回无返回结果，及红色框内无返回值。第一直觉便觉得是不是对应服务器网络有问题。</p>
 <a id="more"></a>
 
@@ -1484,15 +1484,15 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
     <title>curl报错记录</title>
     <url>/3a6ce56f.html</url>
     <content><![CDATA[<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>线上服务器使用curl访问苹果接口，访问报错如图</p>
-<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/805d5abfb29a4c8581515a547e367dda~tplv-k3u1fbpfcp-watermark.webp"></p>
+<p><img src="https://gitee.com/Vaedit/images/raw/master/img/805d5abfb29a4c8581515a547e367dda~tplv-k3u1fbpfcp-watermark.webp"></p>
 <p>无论用ip访问还是域名访问都报错，本地访问接口地址正常，ping也正常，只有线上服务器访问报错</p>
 <h4 id="排查解决"><a href="#排查解决" class="headerlink" title="排查解决"></a>排查解决</h4><p>由于没有遇到过类似情，同地域其他服务器都能正常访问，只有一个项目服务器不能访问，初步怀疑DNS问题，通过切换DNS发现还是没能解决，排除DNS问题。</p>
 <p>通过curl -v 更详细的看下报错</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -X GET https://appleid.apple.com/auth/keys -v</span><br></pre></td></tr></table></figure>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ade06a24cbdf4f1b8f7dd5553fede616~tplv-k3u1fbpfcp-watermark.webp"></p>
+<p><img src="https://gitee.com/Vaedit/images/raw/master/img/ade06a24cbdf4f1b8f7dd5553fede616~tplv-k3u1fbpfcp-watermark.webp"></p>
 <p>从上图发现报错和NSS有关，查阅资料发现可能是nss需要升级，所以找测试环境的同类型服务器测试升级</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install nss libcurl -y;yum update nss libcurl -y</span><br></pre></td></tr></table></figure>
-<p>恢复正常<br><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bcb8cecad5dd4002821ac38110c7d9ae~tplv-k3u1fbpfcp-watermark.webp"></p>
+<p>恢复正常<br><img src="https://gitee.com/Vaedit/images/raw/master/img/bcb8cecad5dd4002821ac38110c7d9ae~tplv-k3u1fbpfcp-watermark.webp"></p>
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><blockquote>
 <p>该问题是由于生产环境使用centos6.x版本的curl及nss版本过低引起，升级版本后可以正常访问</p>
 </blockquote>
@@ -1535,7 +1535,7 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
     <content><![CDATA[<h4 id="记录线上Centos6系统服务器，yum报错问题"><a href="#记录线上Centos6系统服务器，yum报错问题" class="headerlink" title="记录线上Centos6系统服务器，yum报错问题"></a>记录线上Centos6系统服务器，yum报错问题</h4><h5 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h5><ul>
 <li>线上6版本服务器突发yum执行报错,“Invalid release/repo/arch combination/”</li>
 </ul>
-<p><img src="https://vaedit-images.oss-cn-beijing.aliyuncs.com/img/image-20201225151919549.png" alt="image-20201225151919549"></p>
+<p><img src="https://gitee.com/Vaedit/images/raw/master/img/image-20201225151919549.png" alt="image-20201225151919549"></p>
 <h5 id="处理过程"><a href="#处理过程" class="headerlink" title="处理过程:"></a>处理过程:</h5><p>由于Centos6已于今年11月停止支持,这是官方源站下的readme</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">This directory (and version of CentOS) is deprecated. Please see this FAQ</span><br><span class="line">concerning the CentOS release scheme:</span><br><span class="line"></span><br><span class="line">https:&#x2F;&#x2F;wiki.centos.org&#x2F;FAQ&#x2F;General</span><br><span class="line"></span><br><span class="line">Please keep in mind that 6.0, 6.1, 6.2, 6.3, 6.4 , 6.5, 6.6, 6.7, 6.8 , 6.9 and 6.10 no longer get any updates, nor</span><br><span class="line">any security fix&#39;s.</span><br><span class="line">The whole CentOS 6 is *dead* and *shouldn&#39;t* be used anywhere at *all*</span><br></pre></td></tr></table></figure>
 
@@ -1570,7 +1570,7 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
 
 <a id="more"></a>
 
-<h4 id="后端代码"><a href="#后端代码" class="headerlink" title="后端代码"></a>后端代码</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">post</span>(<span class="params">self, request</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;接收文件&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        files = request.FILES.getlist(<span class="string">&quot;file&quot;</span>,<span class="literal">None</span>)</span><br><span class="line">        <span class="keyword">for</span> file <span class="keyword">in</span> files:</span><br><span class="line">            sql_path = <span class="string">f&quot;<span class="subst">&#123;os.getcwd()&#125;</span>/sql/<span class="subst">&#123;file.name&#125;</span>&quot;</span></span><br><span class="line">            <span class="comment"># 写入文件</span></span><br><span class="line">            <span class="keyword">with</span> open(sql_path, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">                <span class="keyword">for</span> content <span class="keyword">in</span> file.chunks():</span><br><span class="line">                    print(content)</span><br><span class="line">                    f.write(content)</span><br><span class="line">        <span class="keyword">return</span> JSONApiResponse()</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">return</span> JSONApiResponse(code=<span class="number">401</span>, msg=str(e))</span><br></pre></td></tr></table></figure>
+<h4 id="后端代码"><a href="#后端代码" class="headerlink" title="后端代码"></a>后端代码</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">post</span>(<span class="params">self, request</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;接收文件&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        files = request.FILES.getlist(<span class="string">&quot;file&quot;</span>,<span class="literal">None</span>)</span><br><span class="line">        <span class="keyword">for</span> file <span class="keyword">in</span> files:</span><br><span class="line">            sql_path = <span class="string">f&quot;<span class="subst">&#123;os.getcwd()&#125;</span>/sql/<span class="subst">&#123;file.name&#125;</span>&quot;</span></span><br><span class="line">            <span class="comment"># 写入文件</span></span><br><span class="line">            <span class="keyword">with</span> open(sql_path, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">                <span class="keyword">for</span> content <span class="keyword">in</span> file.chunks():</span><br><span class="line">                    print(content)</span><br><span class="line">                    f.write(content)</span><br><span class="line">                    <span class="keyword">return</span> JSONApiResponse()</span><br><span class="line">                <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">                    <span class="keyword">return</span> JSONApiResponse(code=<span class="number">401</span>, msg=str(e))</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -2101,7 +2101,7 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
 <li><strong>自定义网络</strong></li>
 </ul>
 <p>​      与默认的bridge原理一样，但自定义网络具备内部DNS发现，可以通过容器名或者主机名容器之间网络通信</p>
-<h3 id="网络原理"><a href="#网络原理" class="headerlink" title="网络原理"></a>网络原理</h3><p><img src="https://vaedit-images.oss-cn-beijing.aliyuncs.com/img/image-20210220125246952.png" alt="image-20210220125246952"></p>
+<h3 id="网络原理"><a href="#网络原理" class="headerlink" title="网络原理"></a>网络原理</h3><p><img src="https://gitee.com/Vaedit/images/raw/master/img/image-20210220125246952.png" alt="image-20210220125246952"></p>
 <h2 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h2><h3 id="Dockerfile指令"><a href="#Dockerfile指令" class="headerlink" title="Dockerfile指令"></a>Dockerfile指令</h3><table>
 <thead>
 <tr>
@@ -2196,7 +2196,7 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
 <h3 id="jenkins安装插件报错"><a href="#jenkins安装插件报错" class="headerlink" title="jenkins安装插件报错"></a>jenkins安装插件报错</h3><blockquote>
 <p>jenkins插件下载中心：<a href="http://updates.jenkins-ci.org/download/plugins/">http://updates.jenkins-ci.org/download/plugins/</a></p>
 </blockquote>
-<p><img src="https://vaedit-images.oss-cn-beijing.aliyuncs.com/img/image-20210220125314518.png" alt="image-20210220125314518"></p>
+<p><img src="https://gitee.com/Vaedit/images/raw/master/img/image-20210220125314518.png" alt="image-20210220125314518"></p>
 <p>报安装插件依赖错误，则需要手动从上面网址下载插件版本，并上传安装</p>
 <h4 id="docker-常用命令"><a href="#docker-常用命令" class="headerlink" title="docker 常用命令"></a>docker 常用命令</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker rm -f $(docker ps -qa) <span class="comment">#删除所有容器</span></span><br><span class="line"></span><br><span class="line">docker stats 容器id <span class="comment">#查看容器资源情况</span></span><br></pre></td></tr></table></figure>
 
