@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Vaedit&#39;s Blog</title>
   
-  <subtitle>运维技术博客</subtitle>
+  
   <link href="https://www.sdevops.cn/atom.xml" rel="self"/>
   
   <link href="https://www.sdevops.cn/"/>
