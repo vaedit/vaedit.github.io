@@ -28,7 +28,7 @@
 <meta property="og:description" content="某日凌晨，由于线上突发微信玩家无法登陆，排查发现微信接口报错。  处理过程 立马群里通知研发，测试等，跟进情况  由于是大规模且只有微信登陆失败，通过测试反馈登陆视频，判断还未到和后端服务器连接，且其他登陆渠道可以登陆，排除后端服务故障可能，问题很可能在微信接口调用这一步  通知研发排查微信接口相关调用是否有异常，研发反馈api.weixin.qq.com接口超时，正常应该有返回。  在服务器上">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-01T02:25:22.000Z">
-<meta property="article:modified_time" content="2021-04-01T02:56:57.076Z">
+<meta property="article:modified_time" content="2021-04-01T09:37:15.288Z">
 <meta property="article:author" content="Vaedit">
 <meta property="article:tag" content="Zabbix">
 <meta name="twitter:card" content="summary">
@@ -284,8 +284,6 @@
 <li><p>问题找到了，那么就只有切换接口地址，但是由于地址是写死在程序里，如果需要切换，需要重启相关程序，会影响业务，且国外正是白天，所以只有先批量本地解析。把 api.weixin.qq.com 本地解析到sh.api.weixin.qq.com 所在的ip，临时解决，快速恢复业务。</p>
 </li>
 </ol>
-<a id="more"></a>
-
 <h4 id="后续优化："><a href="#后续优化：" class="headerlink" title="后续优化："></a>后续优化：</h4><h5 id="运维方向："><a href="#运维方向：" class="headerlink" title="运维方向："></a>运维方向：</h5><p>增加微信接口监控：</p>
 <ul>
 <li><p>自定义脚本</p>
