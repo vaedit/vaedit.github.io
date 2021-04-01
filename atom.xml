@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Vaedit的博客</title>
+  <title>Vaedit&#39;s Blog</title>
   
   <subtitle>运维技术博客</subtitle>
-  <link href="https://www.1000b1.com/atom.xml" rel="self"/>
+  <link href="https://www.sdevops.cn/atom.xml" rel="self"/>
   
-  <link href="https://www.1000b1.com/"/>
+  <link href="https://www.sdevops.cn/"/>
   <updated>2021-04-01T02:56:57.076Z</updated>
-  <id>https://www.1000b1.com/</id>
+  <id>https://www.sdevops.cn/</id>
   
   <author>
     <name>Vaedit</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>微信API接口监控</title>
-    <link href="https://www.1000b1.com/182ad5ee.html"/>
-    <id>https://www.1000b1.com/182ad5ee.html</id>
+    <link href="https://www.sdevops.cn/182ad5ee.html"/>
+    <id>https://www.sdevops.cn/182ad5ee.html</id>
     <published>2021-04-01T02:25:22.000Z</published>
     <updated>2021-04-01T02:56:57.076Z</updated>
     
@@ -46,17 +46,17 @@
     
     
     
-    <category term="系统监控" scheme="https://www.1000b1.com/categories/%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7/"/>
+    <category term="系统监控" scheme="https://www.sdevops.cn/categories/%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7/"/>
     
     
-    <category term="Zabbix" scheme="https://www.1000b1.com/tags/Zabbix/"/>
+    <category term="Zabbix" scheme="https://www.sdevops.cn/tags/Zabbix/"/>
     
   </entry>
   
   <entry>
     <title>AWS通过SDK搜集资源信息</title>
-    <link href="https://www.1000b1.com/44ed022d.html"/>
-    <id>https://www.1000b1.com/44ed022d.html</id>
+    <link href="https://www.sdevops.cn/44ed022d.html"/>
+    <id>https://www.sdevops.cn/44ed022d.html</id>
     <published>2021-02-25T09:43:45.000Z</published>
     <updated>2021-03-02T01:44:59.304Z</updated>
     
@@ -65,17 +65,17 @@
     
     
     
-    <category term="AWS服务" scheme="https://www.1000b1.com/categories/AWS%E6%9C%8D%E5%8A%A1/"/>
+    <category term="AWS服务" scheme="https://www.sdevops.cn/categories/AWS%E6%9C%8D%E5%8A%A1/"/>
     
     
-    <category term="boto3" scheme="https://www.1000b1.com/tags/boto3/"/>
+    <category term="boto3" scheme="https://www.sdevops.cn/tags/boto3/"/>
     
   </entry>
   
   <entry>
     <title>DOCKER的学习记录-安装与实践</title>
-    <link href="https://www.1000b1.com/534ced63.html"/>
-    <id>https://www.1000b1.com/534ced63.html</id>
+    <link href="https://www.sdevops.cn/534ced63.html"/>
+    <id>https://www.sdevops.cn/534ced63.html</id>
     <published>2021-02-20T04:46:44.000Z</published>
     <updated>2021-03-12T07:52:00.435Z</updated>
     
@@ -84,17 +84,17 @@
     
     
     
-    <category term="k8s生态圈" scheme="https://www.1000b1.com/categories/k8s%E7%94%9F%E6%80%81%E5%9C%88/"/>
+    <category term="k8s生态圈" scheme="https://www.sdevops.cn/categories/k8s%E7%94%9F%E6%80%81%E5%9C%88/"/>
     
     
-    <category term="docker,k8s" scheme="https://www.1000b1.com/tags/docker-k8s/"/>
+    <category term="docker,k8s" scheme="https://www.sdevops.cn/tags/docker-k8s/"/>
     
   </entry>
   
   <entry>
     <title>批处理工具fabric教程</title>
-    <link href="https://www.1000b1.com/85caec3f.html"/>
-    <id>https://www.1000b1.com/85caec3f.html</id>
+    <link href="https://www.sdevops.cn/85caec3f.html"/>
+    <id>https://www.sdevops.cn/85caec3f.html</id>
     <published>2021-02-19T09:52:24.000Z</published>
     <updated>2021-02-20T04:43:03.224Z</updated>
     
@@ -110,17 +110,17 @@
     
     
     
-    <category term="python运维" scheme="https://www.1000b1.com/categories/python%E8%BF%90%E7%BB%B4/"/>
+    <category term="python运维" scheme="https://www.sdevops.cn/categories/python%E8%BF%90%E7%BB%B4/"/>
     
     
-    <category term="Fabric" scheme="https://www.1000b1.com/tags/Fabric/"/>
+    <category term="Fabric" scheme="https://www.sdevops.cn/tags/Fabric/"/>
     
   </entry>
   
   <entry>
     <title>Django分页</title>
-    <link href="https://www.1000b1.com/52969d8b.html"/>
-    <id>https://www.1000b1.com/52969d8b.html</id>
+    <link href="https://www.sdevops.cn/52969d8b.html"/>
+    <id>https://www.sdevops.cn/52969d8b.html</id>
     <published>2021-01-21T06:28:57.000Z</published>
     <updated>2021-01-22T03:03:39.534Z</updated>
     
@@ -129,17 +129,17 @@
     
     
     
-    <category term="python运维" scheme="https://www.1000b1.com/categories/python%E8%BF%90%E7%BB%B4/"/>
+    <category term="python运维" scheme="https://www.sdevops.cn/categories/python%E8%BF%90%E7%BB%B4/"/>
     
     
-    <category term="Django" scheme="https://www.1000b1.com/tags/Django/"/>
+    <category term="Django" scheme="https://www.sdevops.cn/tags/Django/"/>
     
   </entry>
   
   <entry>
     <title>AWS-EC2遗失秘钥或密码如何重置密码或秘钥</title>
-    <link href="https://www.1000b1.com/319af7fb.html"/>
-    <id>https://www.1000b1.com/319af7fb.html</id>
+    <link href="https://www.sdevops.cn/319af7fb.html"/>
+    <id>https://www.sdevops.cn/319af7fb.html</id>
     <published>2021-01-15T08:07:33.000Z</published>
     <updated>2021-01-15T08:39:46.301Z</updated>
     
@@ -167,17 +167,17 @@
     
     
     
-    <category term="AWS服务" scheme="https://www.1000b1.com/categories/AWS%E6%9C%8D%E5%8A%A1/"/>
+    <category term="AWS服务" scheme="https://www.sdevops.cn/categories/AWS%E6%9C%8D%E5%8A%A1/"/>
     
     
-    <category term="AWS" scheme="https://www.1000b1.com/tags/AWS/"/>
+    <category term="AWS" scheme="https://www.sdevops.cn/tags/AWS/"/>
     
   </entry>
   
   <entry>
     <title>Fabric远程后台执行脚本</title>
-    <link href="https://www.1000b1.com/34fbb0ff.html"/>
-    <id>https://www.1000b1.com/34fbb0ff.html</id>
+    <link href="https://www.sdevops.cn/34fbb0ff.html"/>
+    <id>https://www.sdevops.cn/34fbb0ff.html</id>
     <published>2021-01-12T10:13:05.000Z</published>
     <updated>2021-01-12T10:59:29.181Z</updated>
     
@@ -193,17 +193,17 @@
     
     
     
-    <category term="python运维" scheme="https://www.1000b1.com/categories/python%E8%BF%90%E7%BB%B4/"/>
+    <category term="python运维" scheme="https://www.sdevops.cn/categories/python%E8%BF%90%E7%BB%B4/"/>
     
     
-    <category term="fabric" scheme="https://www.1000b1.com/tags/fabric/"/>
+    <category term="fabric" scheme="https://www.sdevops.cn/tags/fabric/"/>
     
   </entry>
   
   <entry>
     <title>django接收并保存前端el-upload传递的文件</title>
-    <link href="https://www.1000b1.com/7ed37b22.html"/>
-    <id>https://www.1000b1.com/7ed37b22.html</id>
+    <link href="https://www.sdevops.cn/7ed37b22.html"/>
+    <id>https://www.sdevops.cn/7ed37b22.html</id>
     <published>2021-01-04T07:41:16.000Z</published>
     <updated>2021-03-12T07:51:33.600Z</updated>
     
@@ -212,17 +212,17 @@
     
     
     
-    <category term="Django" scheme="https://www.1000b1.com/categories/Django/"/>
+    <category term="Django" scheme="https://www.sdevops.cn/categories/Django/"/>
     
     
-    <category term="Django" scheme="https://www.1000b1.com/tags/Django/"/>
+    <category term="Django" scheme="https://www.sdevops.cn/tags/Django/"/>
     
   </entry>
   
   <entry>
     <title>CentosYUM源报错</title>
-    <link href="https://www.1000b1.com/a151d928.html"/>
-    <id>https://www.1000b1.com/a151d928.html</id>
+    <link href="https://www.sdevops.cn/a151d928.html"/>
+    <id>https://www.sdevops.cn/a151d928.html</id>
     <published>2020-12-25T05:34:37.000Z</published>
     <updated>2021-03-12T07:50:36.779Z</updated>
     
@@ -238,17 +238,17 @@
     
     
     
-    <category term="Linux基础服务" scheme="https://www.1000b1.com/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/"/>
+    <category term="Linux基础服务" scheme="https://www.sdevops.cn/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/"/>
     
     
-    <category term="Linux,YUM" scheme="https://www.1000b1.com/tags/Linux-YUM/"/>
+    <category term="Linux,YUM" scheme="https://www.sdevops.cn/tags/Linux-YUM/"/>
     
   </entry>
   
   <entry>
     <title>Django学习1</title>
-    <link href="https://www.1000b1.com/b8ae5402.html"/>
-    <id>https://www.1000b1.com/b8ae5402.html</id>
+    <link href="https://www.sdevops.cn/b8ae5402.html"/>
+    <id>https://www.sdevops.cn/b8ae5402.html</id>
     <published>2020-11-23T10:48:42.000Z</published>
     <updated>2020-11-23T10:49:53.412Z</updated>
     
@@ -257,17 +257,17 @@
     
     
     
-    <category term="Django" scheme="https://www.1000b1.com/categories/Django/"/>
+    <category term="Django" scheme="https://www.sdevops.cn/categories/Django/"/>
     
     
-    <category term="python,Django" scheme="https://www.1000b1.com/tags/python-Django/"/>
+    <category term="python,Django" scheme="https://www.sdevops.cn/tags/python-Django/"/>
     
   </entry>
   
   <entry>
     <title>curl报错记录</title>
-    <link href="https://www.1000b1.com/3a6ce56f.html"/>
-    <id>https://www.1000b1.com/3a6ce56f.html</id>
+    <link href="https://www.sdevops.cn/3a6ce56f.html"/>
+    <id>https://www.sdevops.cn/3a6ce56f.html</id>
     <published>2020-10-10T08:42:56.000Z</published>
     <updated>2021-03-12T07:51:03.472Z</updated>
     
@@ -276,17 +276,17 @@
     
     
     
-    <category term="故障记录" scheme="https://www.1000b1.com/categories/%E6%95%85%E9%9A%9C%E8%AE%B0%E5%BD%95/"/>
+    <category term="故障记录" scheme="https://www.sdevops.cn/categories/%E6%95%85%E9%9A%9C%E8%AE%B0%E5%BD%95/"/>
     
     
-    <category term="curl" scheme="https://www.1000b1.com/tags/curl/"/>
+    <category term="curl" scheme="https://www.sdevops.cn/tags/curl/"/>
     
   </entry>
   
   <entry>
     <title>Django2.2-DateTimeField去掉微秒</title>
-    <link href="https://www.1000b1.com/2488942.html"/>
-    <id>https://www.1000b1.com/2488942.html</id>
+    <link href="https://www.sdevops.cn/2488942.html"/>
+    <id>https://www.sdevops.cn/2488942.html</id>
     <published>2020-09-23T09:08:24.000Z</published>
     <updated>2021-03-12T07:51:10.813Z</updated>
     
@@ -301,17 +301,17 @@
     
     
     
-    <category term="python运维" scheme="https://www.1000b1.com/categories/python%E8%BF%90%E7%BB%B4/"/>
+    <category term="python运维" scheme="https://www.sdevops.cn/categories/python%E8%BF%90%E7%BB%B4/"/>
     
     
-    <category term="Django" scheme="https://www.1000b1.com/tags/Django/"/>
+    <category term="Django" scheme="https://www.sdevops.cn/tags/Django/"/>
     
   </entry>
   
   <entry>
     <title>mysqldump</title>
-    <link href="https://www.1000b1.com/df2ed841.html"/>
-    <id>https://www.1000b1.com/df2ed841.html</id>
+    <link href="https://www.sdevops.cn/df2ed841.html"/>
+    <id>https://www.sdevops.cn/df2ed841.html</id>
     <published>2020-09-22T13:15:14.000Z</published>
     <updated>2020-10-10T09:01:29.851Z</updated>
     
@@ -331,17 +331,17 @@
     
     
     
-    <category term="数据库" scheme="https://www.1000b1.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <category term="数据库" scheme="https://www.sdevops.cn/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
-    <category term="mysqldump" scheme="https://www.1000b1.com/tags/mysqldump/"/>
+    <category term="mysqldump" scheme="https://www.sdevops.cn/tags/mysqldump/"/>
     
   </entry>
   
   <entry>
     <title>mysqlhotcopy</title>
-    <link href="https://www.1000b1.com/14f2069a.html"/>
-    <id>https://www.1000b1.com/14f2069a.html</id>
+    <link href="https://www.sdevops.cn/14f2069a.html"/>
+    <id>https://www.sdevops.cn/14f2069a.html</id>
     <published>2020-09-22T13:15:06.000Z</published>
     <updated>2020-10-10T09:01:34.895Z</updated>
     
@@ -363,17 +363,17 @@
     
     
     
-    <category term="数据库" scheme="https://www.1000b1.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <category term="数据库" scheme="https://www.sdevops.cn/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
-    <category term="mysqlhotcopy" scheme="https://www.1000b1.com/tags/mysqlhotcopy/"/>
+    <category term="mysqlhotcopy" scheme="https://www.sdevops.cn/tags/mysqlhotcopy/"/>
     
   </entry>
   
   <entry>
     <title>Mysql二进制日志恢复</title>
-    <link href="https://www.1000b1.com/70b491cf.html"/>
-    <id>https://www.1000b1.com/70b491cf.html</id>
+    <link href="https://www.sdevops.cn/70b491cf.html"/>
+    <id>https://www.sdevops.cn/70b491cf.html</id>
     <published>2020-09-22T13:13:36.000Z</published>
     <updated>2020-10-10T09:01:22.511Z</updated>
     
@@ -403,17 +403,17 @@
     
     
     
-    <category term="数据库" scheme="https://www.1000b1.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <category term="数据库" scheme="https://www.sdevops.cn/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
-    <category term="binlog恢复" scheme="https://www.1000b1.com/tags/binlog%E6%81%A2%E5%A4%8D/"/>
+    <category term="binlog恢复" scheme="https://www.sdevops.cn/tags/binlog%E6%81%A2%E5%A4%8D/"/>
     
   </entry>
   
   <entry>
     <title>Iptables端口转发</title>
-    <link href="https://www.1000b1.com/818ac74b.html"/>
-    <id>https://www.1000b1.com/818ac74b.html</id>
+    <link href="https://www.sdevops.cn/818ac74b.html"/>
+    <id>https://www.sdevops.cn/818ac74b.html</id>
     <published>2020-09-22T13:10:31.000Z</published>
     <updated>2020-09-23T10:09:14.695Z</updated>
     
@@ -429,17 +429,17 @@
     
     
     
-    <category term="Linux基础服务" scheme="https://www.1000b1.com/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/"/>
+    <category term="Linux基础服务" scheme="https://www.sdevops.cn/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/"/>
     
     
-    <category term="iptables" scheme="https://www.1000b1.com/tags/iptables/"/>
+    <category term="iptables" scheme="https://www.sdevops.cn/tags/iptables/"/>
     
   </entry>
   
   <entry>
     <title>openssl升级</title>
-    <link href="https://www.1000b1.com/ceb34f9a.html"/>
-    <id>https://www.1000b1.com/ceb34f9a.html</id>
+    <link href="https://www.sdevops.cn/ceb34f9a.html"/>
+    <id>https://www.sdevops.cn/ceb34f9a.html</id>
     <published>2020-09-22T13:07:26.000Z</published>
     <updated>2020-09-25T06:31:42.334Z</updated>
     
@@ -448,17 +448,17 @@
     
     
     
-    <category term="Linux基础服务" scheme="https://www.1000b1.com/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/"/>
+    <category term="Linux基础服务" scheme="https://www.sdevops.cn/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/"/>
     
     
-    <category term="openssl" scheme="https://www.1000b1.com/tags/openssl/"/>
+    <category term="openssl" scheme="https://www.sdevops.cn/tags/openssl/"/>
     
   </entry>
   
   <entry>
     <title>Linux-ssh隧道详解</title>
-    <link href="https://www.1000b1.com/d517a7ab.html"/>
-    <id>https://www.1000b1.com/d517a7ab.html</id>
+    <link href="https://www.sdevops.cn/d517a7ab.html"/>
+    <id>https://www.sdevops.cn/d517a7ab.html</id>
     <published>2020-09-22T13:02:19.000Z</published>
     <updated>2020-09-23T10:09:14.696Z</updated>
     
@@ -472,17 +472,17 @@
     
     
     
-    <category term="Linux基础服务" scheme="https://www.1000b1.com/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/"/>
+    <category term="Linux基础服务" scheme="https://www.sdevops.cn/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/"/>
     
     
-    <category term="ssh隧道" scheme="https://www.1000b1.com/tags/ssh%E9%9A%A7%E9%81%93/"/>
+    <category term="ssh隧道" scheme="https://www.sdevops.cn/tags/ssh%E9%9A%A7%E9%81%93/"/>
     
   </entry>
   
   <entry>
     <title>Vsftpd服务</title>
-    <link href="https://www.1000b1.com/6900bf65.html"/>
-    <id>https://www.1000b1.com/6900bf65.html</id>
+    <link href="https://www.sdevops.cn/6900bf65.html"/>
+    <id>https://www.sdevops.cn/6900bf65.html</id>
     <published>2020-09-22T12:58:47.000Z</published>
     <updated>2020-09-23T10:09:14.701Z</updated>
     
@@ -493,17 +493,17 @@
     
     
     
-    <category term="Linux基础服务" scheme="https://www.1000b1.com/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/"/>
+    <category term="Linux基础服务" scheme="https://www.sdevops.cn/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/"/>
     
     
-    <category term="ftp" scheme="https://www.1000b1.com/tags/ftp/"/>
+    <category term="ftp" scheme="https://www.sdevops.cn/tags/ftp/"/>
     
   </entry>
   
   <entry>
     <title>迁移记录</title>
-    <link href="https://www.1000b1.com/7a001119.html"/>
-    <id>https://www.1000b1.com/7a001119.html</id>
+    <link href="https://www.sdevops.cn/7a001119.html"/>
+    <id>https://www.sdevops.cn/7a001119.html</id>
     <published>2020-09-22T10:47:18.000Z</published>
     <updated>2020-09-23T10:09:14.712Z</updated>
     
@@ -518,10 +518,10 @@
     
     
     
-    <category term="日志记录" scheme="https://www.1000b1.com/categories/%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95/"/>
+    <category term="日志记录" scheme="https://www.sdevops.cn/categories/%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95/"/>
     
     
-    <category term="个人记录" scheme="https://www.1000b1.com/tags/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95/"/>
+    <category term="个人记录" scheme="https://www.sdevops.cn/tags/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95/"/>
     
   </entry>
   
