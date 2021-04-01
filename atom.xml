@@ -6,7 +6,7 @@
   <link href="https://www.sdevops.cn/atom.xml" rel="self"/>
   
   <link href="https://www.sdevops.cn/"/>
-  <updated>2021-04-01T09:37:15.288Z</updated>
+  <updated>2021-04-01T09:39:59.627Z</updated>
   <id>https://www.sdevops.cn/</id>
   
   <author>
@@ -21,19 +21,28 @@
     <link href="https://www.sdevops.cn/182ad5ee.html"/>
     <id>https://www.sdevops.cn/182ad5ee.html</id>
     <published>2021-04-01T02:25:22.000Z</published>
-    <updated>2021-04-01T09:37:15.288Z</updated>
+    <updated>2021-04-01T09:39:59.627Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;blockquote&gt;
 &lt;p&gt;某日凌晨，由于线上突发微信玩家无法登陆，排查发现微信接口报错。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h4 id=&quot;处理过程&quot;&gt;&lt;a href=&quot;#处理过程&quot; class=&quot;headerlink&quot;</summary>
-        
-      
+&lt;h4 id=&quot;处理过程&quot;&gt;&lt;a href=&quot;#处理过程&quot; class=&quot;headerlink&quot; title=&quot;处理过程&quot;&gt;&lt;/a&gt;处理过程&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;立马群里通知研发，测试等，跟进情况&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;由于是大规模且只有微信登陆失败，通过测试反馈登陆视频，判断还未到和后端服务器连接，且其他登陆渠道可以登陆，排除后端服务故障可能，问题很可能在微信接口调用这一步&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;通知研发排查微信接口相关调用是否有异常，研发反馈api.weixin.qq.com接口超时，正常应该有返回。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在服务器上试了下curl api.weixin.qq.com，长时间无响应。确认是访问该地址异常。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;2种可能，一种是服务器所在AWS地域到api.weixin.qq.com存在网络问题，一种是微信接口本身问题。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;通知AWS排查是否存在相关网络原因，同时查看微信接口文档，发现默认api.weixin.qq.com接口节点所在是香港，还有两个接口sh.api.weixin.qq.com，sz.api.weixin.qq.com，测试其他两个接口可以访问，与此同时，AWS相关人员也反馈有其他公司遇到同类问题。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;问题找到了，那么就只有切换接口地址，但是由于地址是写死在程序里，如果需要切换，需要重启相关程序，会影响业务，且国外正是白天，所以只有先批量本地解析。把 api.weixin.qq.com 本地解析到sh.api.weixin.qq.com 所在的ip，临时解决，快速恢复业务。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</summary>
     
     
     
