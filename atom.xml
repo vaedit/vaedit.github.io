@@ -6,7 +6,7 @@
   <link href="https://www.sdevops.cn/atom.xml" rel="self"/>
   
   <link href="https://www.sdevops.cn/"/>
-  <updated>2021-04-01T09:39:59.627Z</updated>
+  <updated>2021-05-13T10:02:14.108Z</updated>
   <id>https://www.sdevops.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>金三银四记录</title>
+    <link href="https://www.sdevops.cn/4d220eed.html"/>
+    <id>https://www.sdevops.cn/4d220eed.html</id>
+    <published>2021-05-13T08:45:14.000Z</published>
+    <updated>2021-05-13T10:02:14.108Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;金三银四面试结果记录&quot;&gt;&lt;a href=&quot;#金三银四面试结果记录&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="面试" scheme="https://www.sdevops.cn/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>微信API接口监控</title>
@@ -497,31 +520,6 @@
     
     
     <category term="ftp" scheme="https://www.sdevops.cn/tags/ftp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>迁移记录</title>
-    <link href="https://www.sdevops.cn/7a001119.html"/>
-    <id>https://www.sdevops.cn/7a001119.html</id>
-    <published>2020-09-22T10:47:18.000Z</published>
-    <updated>2020-09-23T10:09:14.712Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span</summary>
-        
-      
-    
-    
-    
-    <category term="日志记录" scheme="https://www.sdevops.cn/categories/%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95/"/>
-    
-    
-    <category term="个人记录" scheme="https://www.sdevops.cn/tags/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95/"/>
     
   </entry>
   
