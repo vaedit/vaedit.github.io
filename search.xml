@@ -808,149 +808,6 @@ open vnc://localhost:5901</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>Zabbix实战-1</title>
-    <url>/abff1330.html</url>
-    <content><![CDATA[<blockquote>
-<p>作者：Vaedit</p>
-<p>官网文档地址：<a href="https://www.zabbix.com/cn/download?zabbix=4.0&amp;os_distribution=centos&amp;os_version=7&amp;db=mysql&amp;ws=apache">https://www.zabbix.com/cn/download?zabbix=4.0&amp;os_distribution=centos&amp;os_version=7&amp;db=mysql&amp;ws=apache</a></p>
-</blockquote>
-<p>实验环境</p>
-<table>
-<thead>
-<tr>
-<th>ip地址</th>
-<th>组件</th>
-<th>配置</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>192.168.0.160</td>
-<td>zabbix-server，php，mysql，zabbix-agent，zabbix-web，nginx等</td>
-<td>2核2G</td>
-</tr>
-<tr>
-<td>192.168.0.161</td>
-<td>zabbix-agent，nginx</td>
-<td>2核2G</td>
-</tr>
-</tbody></table>
-<h4 id="安装zabbix-server环境"><a href="#安装zabbix-server环境" class="headerlink" title="安装zabbix-server环境"></a>安装zabbix-server环境</h4><h5 id="1-初始化环境"><a href="#1-初始化环境" class="headerlink" title="1 初始化环境"></a>1 初始化环境</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#192.168.0.160</span></span><br><span class="line">setenforce 0</span><br><span class="line">systemctl stop firewalld</span><br><span class="line">systemctl <span class="built_in">enable</span> firewalld</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-
-<h5 id="2-安装Mysql"><a href="#2-安装Mysql" class="headerlink" title="2 安装Mysql"></a>2 安装Mysql</h5><p>部署Mysql 5.7版本：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum -y install yum-utils </span><br><span class="line">rpm -ivh https://dev.mysql.com/get/mysql80-community-release-el7-1.noarch.rpm</span><br><span class="line">yum-config-manager --<span class="built_in">disable</span> mysql80-community</span><br><span class="line">yum-config-manager --<span class="built_in">enable</span> mysql57-community</span><br><span class="line">yum install mysql-community-server mysql-community-devel</span><br><span class="line">systemctl start mysqld</span><br><span class="line">systemctl status mysqld</span><br><span class="line">systemctl <span class="built_in">enable</span> mysqld</span><br></pre></td></tr></table></figure>
-
-<p>设置root密码：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grep <span class="string">&#x27;temporary password&#x27;</span> /var/<span class="built_in">log</span>/mysqld.log</span><br><span class="line">mysql -uroot -p</span><br><span class="line">mysql&gt; ALTER USER <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED BY <span class="string">&#x27;Zabbix@2019&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<p>修改配置文件：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vi /etc/my.cnf</span></span><br><span class="line">[mysql]</span><br><span class="line">socket = /tmp/mysql.sock</span><br><span class="line">[mysqld]</span><br><span class="line">user = mysql</span><br><span class="line">port = 3306</span><br><span class="line">datadir = /var/lib/mysql</span><br><span class="line">socket = /tmp/mysql.sock</span><br><span class="line">bind-address = 0.0.0.0</span><br><span class="line">pid-file = /var/run/mysqld/mysqld.pid</span><br><span class="line">character-set-server = utf8</span><br><span class="line">collation-server = utf8_general_ci</span><br><span class="line">log-error = /var/<span class="built_in">log</span>/mysqld.log</span><br><span class="line"></span><br><span class="line">max_connections = 10240</span><br><span class="line">open_files_limit = 65535</span><br><span class="line">innodb_buffer_pool_size = 3G</span><br><span class="line">innodb_flush_log_at_trx_commit = 2</span><br><span class="line">innodb_log_file_size = 256M</span><br><span class="line"><span class="comment"># 修改完成后重启</span></span><br><span class="line"><span class="comment"># systemctl restart mysqld</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="3-安装Nginx"><a href="#3-安装Nginx" class="headerlink" title="3 安装Nginx"></a>3 安装Nginx</h5><p>源码编译安装：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://nginx.org/download/nginx-1.15.3.tar.gz</span><br><span class="line">yum install gcc pcre-devel openssl-devel –y</span><br><span class="line">useradd -M -s /sbin/nologin nginx</span><br><span class="line">tar zxvf nginx-1.15.3.tar.gz</span><br><span class="line"><span class="built_in">cd</span> nginx-1.15.3</span><br><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/nginx --user=nginx --group=nginx --with-http_ssl_module --with-http_stub_status_module</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
-
-<p>修改配置文件,修改pid位置：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vi /usr/local/nginx/conf/nginx.conf</span></span><br><span class="line">pid        /var/run/nginx.pid;</span><br></pre></td></tr></table></figure>
-
-<p>配置systemd管理服务：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vi /usr/lib/systemd/system/nginx.service</span></span><br><span class="line">[Unit]</span><br><span class="line">Description=The NGINX HTTP and reverse proxy server</span><br><span class="line">After=syslog.target network.target remote-fs.target nss-lookup.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">PIDFile=/var/run/nginx.pid</span><br><span class="line">ExecStartPre=/usr/<span class="built_in">local</span>/nginx/sbin/nginx -t</span><br><span class="line">ExecStart=/usr/<span class="built_in">local</span>/nginx/sbin/nginx</span><br><span class="line">ExecReload=/usr/<span class="built_in">local</span>/nginx/sbin/nginx -s reload</span><br><span class="line">ExecStop=/bin/<span class="built_in">kill</span> -s QUIT <span class="variable">$MAINPID</span></span><br><span class="line">PrivateTmp=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-
-<p>启动并开启自启：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl start nginx</span><br><span class="line">systemctl <span class="built_in">enable</span> nginx</span><br></pre></td></tr></table></figure>
-
-<h5 id="4-PHP部署"><a href="#4-PHP部署" class="headerlink" title="4 PHP部署"></a>4 PHP部署</h5><p>安装依赖：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install epel-release -y</span><br><span class="line">yum install -y gcc gcc-c++ make gd-devel libxml2-devel libcurl-devel libjpeg-devel libpng-devel openssl-devel libxslt-devel</span><br></pre></td></tr></table></figure>
-
-<p>源码编译安装PHP</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://docs.php.net/distributions/php-5.6.36.tar.gz</span><br><span class="line">tar zxf php-5.6.36.tar.gz</span><br><span class="line"><span class="built_in">cd</span> php-5.6.36</span><br><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/php \</span><br><span class="line">--with-config-file-path=/usr/<span class="built_in">local</span>/php/etc \</span><br><span class="line">--enable-fpm --enable-opcache \</span><br><span class="line">--with-mysql --with-mysqli  \</span><br><span class="line">--enable-session --with-zlib --with-curl --with-gd \</span><br><span class="line">--with-jpeg-dir --with-png-dir --with-freetype-dir \</span><br><span class="line">--enable-mbstring --enable-xmlwriter --enable-xmlreader \</span><br><span class="line">--enable-xml --enable-sockets --enable-bcmath --with-gettext</span><br><span class="line">make -j 8 &amp;&amp; make install</span><br></pre></td></tr></table></figure>
-
-<p>拷贝配置文件：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cp php.ini-production /usr/<span class="built_in">local</span>/php/etc/php.ini</span><br><span class="line">cp sapi/fpm/php-fpm.conf /usr/<span class="built_in">local</span>/php/etc/php-fpm.conf</span><br><span class="line">cp sapi/fpm/php-fpm.service /usr/lib/systemd/system/</span><br></pre></td></tr></table></figure>
-
-<p>配置systemd管理服务：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vi /usr/lib/systemd/system/php-fpm.service </span></span><br><span class="line">[Unit]</span><br><span class="line">Description=The PHP FastCGI Process Manager</span><br><span class="line">After=syslog.target network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">PIDFile=/usr/<span class="built_in">local</span>/php/var/run/php-fpm.pid</span><br><span class="line">ExecStart=/usr/<span class="built_in">local</span>/php/sbin/php-fpm --nodaemonize --fpm-config /usr/<span class="built_in">local</span>/php/etc/php-fpm.conf</span><br><span class="line">ExecReload=/bin/<span class="built_in">kill</span> -USR2 <span class="variable">$MAINPID</span></span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-
-<p>启动并开机自启：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl start php-fpm</span><br><span class="line">systemctl <span class="built_in">enable</span> php-fpm</span><br></pre></td></tr></table></figure>
-
-<h5 id="5-部署Zabbix-server"><a href="#5-部署Zabbix-server" class="headerlink" title="5 部署Zabbix-server"></a>5 部署Zabbix-server</h5><p>安装依赖包：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install libxml2-devel libcurl-devel libevent-devel net-snmp-devel mysql-community-devel -y</span><br></pre></td></tr></table></figure>
-
-<p>源码编译安装zabbix：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -zxf zabbix-4.0.0.tar.gz</span><br><span class="line">groupadd zabbix</span><br><span class="line">useradd -g zabbix zabbix -s /sbin/nologin</span><br><span class="line"><span class="built_in">cd</span> zabbix-4.0.0</span><br><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/zabbix --enable-server --enable-agent --enable-java --with-mysql --enable-ipv6 --with-net-snmp --with-libcurl --with-libxml2</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-
-<p>修改配置文件：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vi /usr/local/zabbix/etc/zabbix_server.conf</span></span><br><span class="line"><span class="comment"># egrep -v &quot;^#|^$&quot; /usr/local/zabbix/etc/zabbix_server.conf</span></span><br><span class="line">LogFile=/tmp/zabbix_server.log</span><br><span class="line">DBHost=localhost</span><br><span class="line">DBName=zabbix</span><br><span class="line">DBUser=root</span><br><span class="line">DBPassword=Zabbix@2019</span><br><span class="line">DBSocket= /tmp/mysql.sock</span><br><span class="line">Timeout=4</span><br><span class="line">AlertScriptsPath=/usr/<span class="built_in">local</span>/zabbix/alertscripts</span><br><span class="line">LogSlowQueries=3000</span><br></pre></td></tr></table></figure>
-
-<p>配置systemd管理服务：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vi /usr/lib/systemd/system/zabbix_server.service</span></span><br><span class="line">[Unit]</span><br><span class="line">Description=Zabbix Server</span><br><span class="line">After=syslog.target</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Environment=<span class="string">&quot;CONFFILE=/usr/local/zabbix/etc/zabbix_server.conf&quot;</span></span><br><span class="line">EnvironmentFile=-/etc/sysconfig/zabbix-server</span><br><span class="line">Type=forking</span><br><span class="line">Restart=on-failure</span><br><span class="line">PIDFile=/tmp/zabbix_server.pid</span><br><span class="line">KillMode=control-group</span><br><span class="line">ExecStart=/usr/<span class="built_in">local</span>/zabbix/sbin/zabbix_server -c <span class="variable">$CONFFILE</span></span><br><span class="line">ExecStop=/bin/<span class="built_in">kill</span> -SIGTERM <span class="variable">$MAINPID</span></span><br><span class="line">RestartSec=10s</span><br><span class="line">TimeoutSec=0</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-
-<p>导入表结构：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> zabbix-4.0.0/database/mysql</span><br><span class="line">mysql -uroot –pZabbix@2019</span><br><span class="line">create database zabbix default charset utf-8;</span><br><span class="line">mysql&gt; use zabbix;</span><br><span class="line">mysql&gt; <span class="built_in">source</span> schema.sql;</span><br><span class="line">mysql&gt; <span class="built_in">source</span> images.sql;</span><br><span class="line">mysql&gt; <span class="built_in">source</span> data.sql;</span><br><span class="line"></span><br><span class="line"><span class="comment">####单独设置zabbix用户</span></span><br><span class="line">mysql&gt; create database zabbix character <span class="built_in">set</span> utf8 collate utf8_bin;</span><br><span class="line">mysql&gt; create user zabbix@localhost identified by <span class="string">&#x27;password&#x27;</span>;</span><br><span class="line">mysql&gt; grant all privileges on zabbix.* to zabbix@localhost;</span><br><span class="line">mysql&gt; quit; </span><br><span class="line"></span><br><span class="line"><span class="comment">#yum安装可以通过如下导入初始架构和数据，系统将提示您输入新创建的密码。</span></span><br><span class="line">zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -p zabbix </span><br></pre></td></tr></table></figure>
-
-<p>启动并加入开机启动：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl start zabbix-server</span><br><span class="line">systemctl <span class="built_in">enable</span> zabbix-server</span><br></pre></td></tr></table></figure>
-
-<p>启动Agent，也监控本机：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/zabbix/sbin/zabbix_agentd</span><br></pre></td></tr></table></figure>
-
-<h5 id="6-部署Zabbix-WEB"><a href="#6-部署Zabbix-WEB" class="headerlink" title="6 部署Zabbix WEB"></a>6 部署Zabbix WEB</h5><blockquote>
-<p>Zabbix前端使用PHP写的，所以必须运行在PHP支持的Web服务器上。只需要简单的从frontends/php路径下复制PHP文件到Web服务器的网站根目录，就可以访问页面了。</p>
-</blockquote>
-<p> 拷贝Zabbix前端程序到网站根目录：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cp zabbix-4.0.0/frontends/php/* /usr/<span class="built_in">local</span>/nginx/html/ -rf</span><br></pre></td></tr></table></figure>
-
-<p>修改配置参数：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vi /usr/local/php/etc/php.ini</span></span><br><span class="line">max_execution_time = 300</span><br><span class="line">memory_limit = 128M</span><br><span class="line">post_max_size = 16M</span><br><span class="line">upload_max_filesize = 2M</span><br><span class="line">max_input_time = 300</span><br><span class="line">always_populate_raw_post_data = -1</span><br><span class="line">date.timezone = Asia/Shanghai</span><br></pre></td></tr></table></figure>
-
-<p>重启php-fpm生效：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl restart php-fpm</span><br></pre></td></tr></table></figure>
-
-<p>修改Nginx配置文件：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vi /usr/local/nginx/conf/nginx.conf  </span></span><br><span class="line">  server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  localhost;</span><br><span class="line"></span><br><span class="line">        access_log  logs/zabbix.access.log  main;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            root   html;</span><br><span class="line">            index  index.php index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location ~ \.php$ &#123;</span><br><span class="line">            root           html;</span><br><span class="line">            fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">            fastcgi_index  index.php;</span><br><span class="line">            fastcgi_param  SCRIPT_FILENAME  <span class="variable">$document_root</span><span class="variable">$fastcgi_script_name</span>;</span><br><span class="line">            include        fastcgi_params;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 重启Nginx</span></span><br><span class="line">systemctl restat nginx</span><br></pre></td></tr></table></figure>
-
-<p>然后就可以通过访问网页开始初始化配置Zabbix，初始化默认账号密码：Admin,zabbix</p>
-]]></content>
-      <categories>
-        <category>系统监控</category>
-      </categories>
-      <tags>
-        <tag>Zabbix</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Zabbix实战-2</title>
-    <url>/32f6428a.html</url>
-    <content><![CDATA[<h4 id="安装Zabbix-agent环境"><a href="#安装Zabbix-agent环境" class="headerlink" title="安装Zabbix-agent环境"></a>安装Zabbix-agent环境</h4><h5 id="1-初始化环境"><a href="#1-初始化环境" class="headerlink" title="1 初始化环境"></a>1 初始化环境</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#192.168.0.161</span></span><br><span class="line">setenforce 0</span><br><span class="line">systemctl stop firewalld</span><br><span class="line">systemctl <span class="built_in">enable</span> firewalld</span><br></pre></td></tr></table></figure>
-
-<h5 id="2-部署-Zabbix-Agent"><a href="#2-部署-Zabbix-Agent" class="headerlink" title="2 部署 Zabbix Agent"></a>2 部署 Zabbix Agent</h5><p>CentOS7.x操作系统安装：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -Uvh https://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/zabbix-release-4.0-2.el7.noarch.rpm</span><br><span class="line">yum install zabbix-agent -y</span><br></pre></td></tr></table></figure>
-
-<p>CentOS6.x操作系统安装：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -Uvh https://repo.zabbix.com/zabbix/4.0/rhel/6/x86_64/zabbix-release-4.0-2.el7.noarch.rpm</span><br><span class="line">yum install zabbix-agent -y</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-
-<p>修改配置文件：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># egrep -v &quot;^#|^$&quot; /etc/zabbix/zabbix_agentd.conf </span></span><br><span class="line">PidFile=/var/run/zabbix/zabbix_agentd.pid</span><br><span class="line">LogFile=/var/<span class="built_in">log</span>/zabbix/zabbix_agentd.log</span><br><span class="line">LogFileSize=0</span><br><span class="line">DebugLevel=3</span><br><span class="line">Server=192.168.0.160</span><br><span class="line">ListenPort=10050</span><br><span class="line">ListenIP=192.168.0.161</span><br><span class="line">ServerActive=192.168.0.160</span><br><span class="line">Hostname=agent1</span><br><span class="line">HostMetadata=vaedit <span class="built_in">test</span></span><br><span class="line">Include=/etc/zabbix/zabbix_agentd.d/*.conf</span><br><span class="line">UnsafeUserParameters=1</span><br></pre></td></tr></table></figure>
-
-<p>启动并加入开机启动：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl start zabbix-agent</span><br><span class="line">systemctl <span class="built_in">enable</span> zabbix-agent</span><br></pre></td></tr></table></figure>
-
-<h4 id="联通性测试"><a href="#联通性测试" class="headerlink" title="联通性测试"></a>联通性测试</h4><p>在Zabbix服务器执行以下命令，判断是否可以正常连接到Zabbix agent服务器。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/zabbix/bin/zabbix_get -s 192.168.0.161 -p 10050 -k <span class="string">&quot;system.uptime&quot;</span></span><br><span class="line"></span><br><span class="line">774564</span><br></pre></td></tr></table></figure>
-
-<p>返回数字说明连通正常。否则可能是被监控机防火墙阻断，无法连通，可以尝试在被监控机添加放行规则：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">iptables -I INPUT -s 192.168.0.160 -p tcp --dport 10050 -j ACCEPT</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>系统监控</category>
-      </categories>
-      <tags>
-        <tag>Zabbix</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>iredmail邮件服务器部署</title>
     <url>/9e9dd8.html</url>
     <content><![CDATA[<blockquote>
@@ -981,8 +838,8 @@ open vnc://localhost:5901</code></pre>
 <blockquote>
 <p>官方安装文档：<a href="https://docs.iredmail.org/install.iredmail.on.rhel-zh_CN.html">https://docs.iredmail.org/install.iredmail.on.rhel-zh_CN.html</a></p>
 </blockquote>
-<h5 id="2-2-域名解析"><a href="#2-2-域名解析" class="headerlink" title="2.2 域名解析"></a>2.2 域名解析</h5><p><img src="https://gitee.com/Vaedit/images/raw/master/img/2e22800a2a664b29bbca36b790618d0d~tplv-k3u1fbpfcp-zoom-1.image"></p>
-<h5 id="2-3-安全组开放端口"><a href="#2-3-安全组开放端口" class="headerlink" title="2.3 安全组开放端口"></a>2.3 安全组开放端口</h5><p><img src="https://gitee.com/Vaedit/images/raw/master/img/e27fc9e14f094502b2ed9f8f8c112573~tplv-k3u1fbpfcp-zoom-1.image"></p>
+<h5 id="2-2-域名解析"><a href="#2-2-域名解析" class="headerlink" title="2.2 域名解析"></a>2.2 域名解析</h5><p><img src=""></p>
+<h5 id="2-3-安全组开放端口"><a href="#2-3-安全组开放端口" class="headerlink" title="2.3 安全组开放端口"></a>2.3 安全组开放端口</h5><p><img src="https://vaedit-images.oss-cn-beijing.aliyuncs.com/img/e27fc9e14f094502b2ed9f8f8c112573~tplv-k3u1fbpfcp-zoom-1.image.png"></p>
 <h4 id="三-优化邮件服务器"><a href="#三-优化邮件服务器" class="headerlink" title="三 优化邮件服务器"></a>三 优化邮件服务器</h4><p>邮件服务器添加SPF，DKIM，DMARC，PTR,提高邮件送达率</p>
 <h5 id="3-1-设置SPF"><a href="#3-1-设置SPF" class="headerlink" title="3.1 设置SPF"></a>3.1 设置SPF</h5><blockquote>
 <p>SPF 记录是一种域名服务 (DNS) 记录，可确定允许哪些邮件服务器代表您的域来发送电子邮件。</p>
@@ -1004,19 +861,19 @@ open vnc://localhost:5901</code></pre>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">amavisd showkeys <span class="comment">#如果报错制定配置文件</span></span><br><span class="line">amavisd -c /etc/amavisd/amavisd.conf showkeys</span><br><span class="line"><span class="comment">#输出去掉括号和引号</span></span><br><span class="line">v=DKIM1; p=MIGfMA0GCSqsdfdsfQEBAQUAA4GNADCBiQKBgQdsfdsfIydbCBnARzt0m8yVQwpQIJUebYk09TvDu56kAQEXuVNDS5G8DjvvCUslq/1+/EKcafvVh82of3rONn0wPhRpBm2CfDTD8pEWHmT6BRa+su9zJ02iomgHYl14sfxxfsdf</span><br></pre></td></tr></table></figure>
 
 <p>如图：</p>
-<p><img src="https://gitee.com/Vaedit/images/raw/master/img/f21d7ce3e9ae4b26bacd953b641f28ad~tplv-k3u1fbpfcp-zoom-1.image"></p>
+<p><img src="https://vaedit-images.oss-cn-beijing.aliyuncs.com/img/f21d7ce3e9ae4b26bacd953b641f28ad~tplv-k3u1fbpfcp-zoom-1.image.png"></p>
 <h5 id="3-3-设置DMARC"><a href="#3-3-设置DMARC" class="headerlink" title="3.3 设置DMARC"></a>3.3 设置DMARC</h5><blockquote>
 <p>DMARC协议是有效解决信头From伪造而诞生的一种新的邮件来源验证手段，为邮件发件人地址提供强大保护，并在邮件收发双方之间建立起一个数据反馈机制。</p>
 </blockquote>
 <p>如图：</p>
-<p><img src="https://gitee.com/Vaedit/images/raw/master/img/a560ec9b22a84028a4106f8f6d554301~tplv-k3u1fbpfcp-zoom-1.image"></p>
+<p><img src="https://vaedit-images.oss-cn-beijing.aliyuncs.com/img/a560ec9b22a84028a4106f8f6d554301~tplv-k3u1fbpfcp-zoom-1.image.png"></p>
 <h5 id="3-4-PTR"><a href="#3-4-PTR" class="headerlink" title="3.4 PTR"></a>3.4 PTR</h5><blockquote>
 <p>PTR记录也就是IP反向解析，我们常见的解析都是将域名A记录解析到IP，PTR则是将IP反向解析到对应的域名，通过设置PTR可以提高发信方的信誉，从而提高到达率。</p>
 </blockquote>
 <p>AWS默认就做了PTR</p>
-<p><img src="https://gitee.com/Vaedit/images/raw/master/img/364babea950f433e90ec5940206e1b1d~tplv-k3u1fbpfcp-zoom-1.image"></p>
+<p><img src="https://vaedit-images.oss-cn-beijing.aliyuncs.com/img/364babea950f433e90ec5940206e1b1d~tplv-k3u1fbpfcp-zoom-1.image.png"></p>
 <pre><code>  但不是我们需要的反向解析，这里没做修改，如果需要修改则需要提工单改为mail.domain.com</code></pre>
-<p><img src="https://gitee.com/Vaedit/images/raw/master/img/6b5b7025337544ed94e7270af8dd147a~tplv-k3u1fbpfcp-zoom-1.image"></p>
+<p><img src="https://vaedit-images.oss-cn-beijing.aliyuncs.com/img/6b5b7025337544ed94e7270af8dd147a~tplv-k3u1fbpfcp-zoom-1.image.png"></p>
 <blockquote>
 <p>附AWS申请更改PTR和取消邮件限制地址：<a href="https://aws.amazon.com/tw/blogs/aws/reverse-dns-for-ec2s-elastic-ip-addresses/%EF%BC%8C%E4%B8%80%E8%88%AC1-3%E5%A4%A9%E5%86%85%E4%BC%9A%E9%85%8D%E7%BD%AE%E5%A5%BD%EF%BC%8C%E5%B9%B6%E4%B8%94%E4%BC%9A%E9%82%AE%E4%BB%B6%E6%8F%90%E9%86%92%E4%BD%A0%E3%80%82">https://aws.amazon.com/tw/blogs/aws/reverse-dns-for-ec2s-elastic-ip-addresses/，一般1-3天内会配置好，并且会邮件提醒你。</a></p>
 </blockquote>
@@ -1063,31 +920,32 @@ open vnc://localhost:5901</code></pre>
 </li>
 <li><p>mariadb默认数据库目录存放在/var/lib/mysql，安装完成后需要停掉切换到/data/mysql下</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#关闭并全备mariadb</span></span><br><span class="line">systemctl stop mariadb</span><br><span class="line">nestat -ntlp|grep mysql</span><br><span class="line">cp -a /var/lib/mysql /data/</span><br><span class="line"></span><br><span class="line"><span class="comment">#修改下配置文件指定mariadb datadir</span></span><br><span class="line">vim /etc/my.cnf</span><br><span class="line">datadir=/data/mysql</span><br><span class="line"></span><br><span class="line"><span class="comment">#启动</span></span><br><span class="line">systemctl start mariadb</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>默认后台管理地址：<a href="https://mail.domain.com/iredadmin/">https://mail.domain.com/iredadmin/</a>  账号：<a href="mailto:&#112;&#111;&#x73;&#116;&#x6d;&#97;&#115;&#116;&#101;&#x72;&#64;&#x64;&#111;&#x6d;&#x61;&#x69;&#x6e;&#46;&#x63;&#x6f;&#x6d;">&#112;&#111;&#x73;&#116;&#x6d;&#97;&#115;&#116;&#101;&#x72;&#64;&#x64;&#111;&#x6d;&#x61;&#x69;&#x6e;&#46;&#x63;&#x6f;&#x6d;</a> 密码：安装时指定</p>
-</li>
-<li><p>web mail地址：<a href="https://mail.domain.com/mail/">https://mail.domain.com/mail/</a>  账号：<a href="mailto:&#x70;&#x6f;&#115;&#116;&#109;&#x61;&#115;&#116;&#101;&#x72;&#64;&#100;&#x6f;&#x6d;&#x61;&#105;&#110;&#46;&#x63;&#x6f;&#109;">&#x70;&#x6f;&#115;&#116;&#109;&#x61;&#115;&#116;&#101;&#x72;&#64;&#100;&#x6f;&#x6d;&#x61;&#105;&#110;&#46;&#x63;&#x6f;&#109;</a> 密码：安装时指定</p>
-</li>
-<li><pre><code class="bash">#各服务默认端口
-POP3 service: port 110 over TLS (recommended), or port 995 with SSL.
-IMAP service: port 143 over TLS (recommended), or port 993 with SSL.
-SMTP service: port 587 over TLS.
-CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full email address&gt;
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">6. 默认邮件存放路径：&#x2F;data&#x2F;vmail&#x2F;  (安装时指定)</span><br><span class="line"></span><br><span class="line">7. 修改邮件附件大小限制：https:&#x2F;&#x2F;docs.iredmail.org&#x2F;change.mail.attachment.size-zh_CN.html</span><br><span class="line"></span><br><span class="line">   &#96;&#96;&#96;bash</span><br><span class="line">   209715200 #200M</span><br><span class="line">   postconf -e message_size_limit&#x3D;&#39;209715200&#39;</span><br><span class="line">   </span><br><span class="line">   postconf -e mailbox_size_limit&#x3D;&#39;209715200&#39;</span><br><span class="line">   </span><br><span class="line">   #后续步骤省略，请看官方文档</span><br></pre></td></tr></table></figure>
 
-
-</code></pre>
+<p>默认后台管理地址：<a href="https://mail.domain.com/iredadmin/">https://mail.domain.com/iredadmin/</a>  账号：<a href="mailto:&#x70;&#111;&#x73;&#116;&#109;&#97;&#x73;&#116;&#101;&#x72;&#x40;&#100;&#111;&#109;&#x61;&#105;&#x6e;&#x2e;&#x63;&#x6f;&#x6d;">&#x70;&#111;&#x73;&#116;&#109;&#97;&#x73;&#116;&#101;&#x72;&#x40;&#100;&#111;&#109;&#x61;&#105;&#x6e;&#x2e;&#x63;&#x6f;&#x6d;</a> 密码：安装时指定</p>
+<p>web mail地址：<a href="https://mail.domain.com/mail/">https://mail.domain.com/mail/</a>  账号：<a href="mailto:&#x70;&#x6f;&#115;&#116;&#x6d;&#x61;&#x73;&#116;&#101;&#114;&#x40;&#100;&#x6f;&#109;&#x61;&#105;&#110;&#46;&#99;&#111;&#109;">&#x70;&#x6f;&#115;&#116;&#x6d;&#x61;&#x73;&#116;&#101;&#114;&#x40;&#100;&#x6f;&#109;&#x61;&#105;&#110;&#46;&#99;&#111;&#109;</a> 密码：安装时指定</p>
 </li>
 </ol>
-<h4 id="六-客户端配置"><a href="#六-客户端配置" class="headerlink" title="六 客户端配置"></a>六 客户端配置</h4><h5 id="6-1-Foxmail配置"><a href="#6-1-Foxmail配置" class="headerlink" title="6.1 Foxmail配置"></a>6.1 Foxmail配置</h5><p><img src="https://gitee.com/Vaedit/images/raw/master/img/487dcfa582bd4466a503fdffc7bfbdaa~tplv-k3u1fbpfcp-zoom-1.image"></p>
-<h4 id="七-优化检测"><a href="#七-优化检测" class="headerlink" title="七 优化检测"></a>七 优化检测</h4><h5 id="7-1-通过http-www-mail-tester-com-测试邮件服务器"><a href="#7-1-通过http-www-mail-tester-com-测试邮件服务器" class="headerlink" title="7.1 通过http://www.mail-tester.com/ 测试邮件服务器"></a>7.1 通过<a href="http://www.mail-tester.com/">http://www.mail-tester.com/</a> 测试邮件服务器</h5><p><img src="https://gitee.com/Vaedit/images/raw/master/img/0c469eff8d9d41a8a0adcad7216ac3ca~tplv-k3u1fbpfcp-zoom-1.image"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#各服务默认端口</span></span><br><span class="line">POP3 service: port 110 over TLS (recommended), or port 995 with SSL.</span><br><span class="line">IMAP service: port 143 over TLS (recommended), or port 993 with SSL.</span><br><span class="line">SMTP service: port 587 over TLS.</span><br><span class="line">CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full email address&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>默认邮件存放路径：/data/vmail/  (安装时指定)</p>
+</li>
+<li><p>修改邮件附件大小限制：<a href="https://docs.iredmail.org/change.mail.attachment.size-zh_CN.html">https://docs.iredmail.org/change.mail.attachment.size-zh_CN.html</a></p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">209715200 <span class="comment">#200M</span></span><br><span class="line">postconf -e message_size_limit=<span class="string">&#x27;209715200&#x27;</span></span><br><span class="line"></span><br><span class="line">postconf -e mailbox_size_limit=<span class="string">&#x27;209715200&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#后续步骤省略，请看官方文档</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="六-客户端配置"><a href="#六-客户端配置" class="headerlink" title="六 客户端配置"></a>六 客户端配置</h4><h5 id="6-1-Foxmail配置"><a href="#6-1-Foxmail配置" class="headerlink" title="6.1 Foxmail配置"></a>6.1 Foxmail配置</h5><p><img src="https://vaedit-images.oss-cn-beijing.aliyuncs.com/img/487dcfa582bd4466a503fdffc7bfbdaa~tplv-k3u1fbpfcp-zoom-1.image.png"></p>
+<h4 id="七-优化检测"><a href="#七-优化检测" class="headerlink" title="七 优化检测"></a>七 优化检测</h4><h5 id="7-1-通过http-www-mail-tester-com-测试邮件服务器"><a href="#7-1-通过http-www-mail-tester-com-测试邮件服务器" class="headerlink" title="7.1 通过http://www.mail-tester.com/ 测试邮件服务器"></a>7.1 通过<a href="http://www.mail-tester.com/">http://www.mail-tester.com/</a> 测试邮件服务器</h5><p><img src="https://vaedit-images.oss-cn-beijing.aliyuncs.com/img/0c469eff8d9d41a8a0adcad7216ac3ca~tplv-k3u1fbpfcp-zoom-1.image.png"></p>
 <p>通过邮件账号发送一封邮件 到上面的邮箱，查看邮件得分，它会提醒还有哪些不足,假如邮件服务器，原本就在黑名单内，那么该ip之前使用者存在滥用导致，只有一个办法，更换ip来解决。</p>
 <h5 id="7-2-QQ邮箱优化"><a href="#7-2-QQ邮箱优化" class="headerlink" title="7.2 QQ邮箱优化"></a>7.2 QQ邮箱优化</h5><ul>
 <li><p>注册合作伙伴（国内大部分邮箱都是qq邮箱）</p>
 <p>通过openmail.qq.com来提高qq邮箱发件成功率，截止我配置邮件服务器，该地址功能目前处于维护状态，不知何时好。</p>
 </li>
 </ul>
-<h5 id="7-3-设置grey-list-解决收件延迟问题"><a href="#7-3-设置grey-list-解决收件延迟问题" class="headerlink" title="7.3 设置grey list,解决收件延迟问题"></a>7.3 设置grey list,解决收件延迟问题</h5><p><img src="https://gitee.com/Vaedit/images/raw/master/img/ba8aa6034975481f9c36c15edc376572~tplv-k3u1fbpfcp-zoom-1.image"></p>
+<h5 id="7-3-设置grey-list-解决收件延迟问题"><a href="#7-3-设置grey-list-解决收件延迟问题" class="headerlink" title="7.3 设置grey list,解决收件延迟问题"></a>7.3 设置grey list,解决收件延迟问题</h5><p><img src="https://vaedit-images.oss-cn-beijing.aliyuncs.com/img/ba8aa6034975481f9c36c15edc376572~tplv-k3u1fbpfcp-zoom-1.image.png"></p>
 ]]></content>
       <categories>
         <category>Linux基础服务</category>
@@ -1502,31 +1360,6 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
       </categories>
       <tags>
         <tag>curl</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Django学习1</title>
-    <url>/b8ae5402.html</url>
-    <content><![CDATA[<h4 id="安装Django"><a href="#安装Django" class="headerlink" title="安装Django"></a>安装Django</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install django==2.2.0</span><br><span class="line"><span class="meta">#</span><span class="bash">pip install djangorestframework</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="基础函数视图"><a href="#基础函数视图" class="headerlink" title="基础函数视图"></a>基础函数视图</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env/python</span></span><br><span class="line"><span class="comment"># --*-- coding:utf-8 --*--</span></span><br><span class="line"><span class="comment"># Author: Vaedit</span></span><br><span class="line"><span class="comment"># @Time: </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> JsonResponse,Http404</span><br><span class="line"><span class="keyword">from</span> django.views.decorators.csrf <span class="keyword">import</span> csrf_exempt <span class="comment"># 解决跨域</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@csrf_exempt </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">TestView</span>(<span class="params">request, *args, **kwargs</span>):</span></span><br><span class="line">    <span class="comment">#return HttpResponse(&quot;ok&quot;)</span></span><br><span class="line">    print(request.method)</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&#x27;GET&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">&quot;GET&quot;</span>)</span><br><span class="line">    <span class="keyword">elif</span> request.method == <span class="string">&#x27;POST&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">&quot;POST&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">elif</span> request.method == <span class="string">&#x27;PUT&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">&quot;PUT&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">elif</span> request.method == <span class="string">&#x27;DELETE&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">&quot;DELETE&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">raise</span> Http404()</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="类视图继承View"><a href="#类视图继承View" class="headerlink" title="类视图继承View"></a>类视图继承View</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestViewV2</span>(<span class="params">View</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span>(<span class="params">self,request,*args,**kwargs</span>):</span></span><br><span class="line">        print(request.GET)</span><br><span class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">&quot;GET view V2&quot;</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">post</span>(<span class="params">self, request, *args, **kwargs</span>):</span></span><br><span class="line">        <span class="comment"># print(request.body)</span></span><br><span class="line">        print(request.POST)</span><br><span class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">&quot;POST view v2&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">put</span>(<span class="params">self, request, *args, **kwargs</span>):</span></span><br><span class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">&quot;PUT view v2&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">delete</span>(<span class="params">self, request, *args, **kwargs</span>):</span></span><br><span class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">&quot;DELETE view v2&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> JsonResponse,Http404</span><br><span class="line"><span class="keyword">from</span> django.views.decorators.csrf <span class="keyword">import</span> csrf_exempt <span class="comment"># 解决跨域</span></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> TestData</span><br><span class="line">retdata = &#123;</span><br><span class="line">    <span class="string">&quot;code&quot;</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">&quot;data&quot;</span>: <span class="literal">None</span>,</span><br><span class="line">    <span class="string">&quot;message&quot;</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestViewV3</span>(<span class="params">View</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_object</span>(<span class="params">self, pk</span>):</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            obj = TestData.objects.get(pk=pk) <span class="comment"># 获取单条数据对象</span></span><br><span class="line">        <span class="keyword">except</span> Publisher.DoesNotExist <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">raise</span> Http404()</span><br><span class="line">        <span class="keyword">return</span> obj</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span>(<span class="params">self, request, *args, **kwargs</span>):</span></span><br><span class="line">        <span class="comment"># 如果有pk，则返回单条数据详情</span></span><br><span class="line">        pk = kwargs.get(<span class="string">&#x27;pk&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> pk:</span><br><span class="line">            obj = self.get_object(pk)</span><br><span class="line">            _data_dict = &#123;</span><br><span class="line">                <span class="string">&quot;pk&quot;</span>: obj.pk,</span><br><span class="line">                <span class="string">&quot;name&quot;</span>: obj.name,</span><br><span class="line">                <span class="string">&quot;address&quot;</span>: obj.address,</span><br><span class="line">            &#125;</span><br><span class="line">            retdata[<span class="string">&#x27;data&#x27;</span>] = _data_dict</span><br><span class="line">            <span class="keyword">return</span> JsonResponse(retdata)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># 返回数据列表，所有数据</span></span><br><span class="line">            objs = TestData.objects.all()</span><br><span class="line">            _data_list = []</span><br><span class="line">            <span class="keyword">for</span> obj <span class="keyword">in</span> objs:</span><br><span class="line">                _data_list.append(&#123;</span><br><span class="line">                    <span class="string">&quot;pk&quot;</span>: obj.pk,</span><br><span class="line">                    <span class="string">&quot;name&quot;</span>: obj.name,</span><br><span class="line">                    <span class="string">&quot;address&quot;</span>: obj.address,</span><br><span class="line">                &#125;)</span><br><span class="line">            retdata[<span class="string">&quot;data&quot;</span>] = _data_list</span><br><span class="line">            <span class="keyword">return</span> JsonResponse(retdata, safe=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">post</span>(<span class="params">self, request, *args, **kwargs</span>):</span></span><br><span class="line">        <span class="keyword">if</span> request.content_type == <span class="string">&#x27;application/json&#x27;</span>: </span><br><span class="line">            data = request.body <span class="comment"># 获取post请求内容</span></span><br><span class="line">            print(data)</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                data = json.loads(data)</span><br><span class="line">                print(data)</span><br><span class="line">            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">                retdata[<span class="string">&#x27;code&#x27;</span>] = <span class="number">-1</span></span><br><span class="line">                retdata[<span class="string">&#x27;message&#x27;</span>] = e</span><br><span class="line">                <span class="keyword">return</span> JsonResponse(retdata)</span><br><span class="line">        <span class="keyword">elif</span> request.content_type == <span class="string">&#x27;application/x-www-form-urlencoded&#x27;</span>:</span><br><span class="line">            data = request.POST.dict()</span><br><span class="line">            print(request.POST)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            retdata[<span class="string">&#x27;code&#x27;</span>] = <span class="number">-1</span></span><br><span class="line">            retdata[<span class="string">&#x27;data&#x27;</span>] = <span class="string">&quot;&quot;</span></span><br><span class="line">            retdata[<span class="string">&#x27;message&#x27;</span>] = <span class="string">&quot;Content-Type不支持当前&quot;</span></span><br><span class="line">            <span class="keyword">return</span> JsonResponse(retdata)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            p = TestData.objects.create(**data) <span class="comment"># 创建数据</span></span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            retdata[<span class="string">&#x27;code&#x27;</span>] = <span class="number">-1</span></span><br><span class="line">            retdata[<span class="string">&#x27;message&#x27;</span>] = <span class="string">&quot;TestData create err &#123;&#125;&quot;</span>.format(e)</span><br><span class="line">            <span class="keyword">return</span> JsonResponse(retdata)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            data[<span class="string">&#x27;pk&#x27;</span>] = p.pk</span><br><span class="line">            retdata[<span class="string">&quot;data&quot;</span>] = data</span><br><span class="line">            <span class="keyword">return</span> JsonResponse(retdata)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">put</span>(<span class="params">self, request, *args, **kwargs</span>):</span></span><br><span class="line">        pk = kwargs.get(<span class="string">&#x27;pk&#x27;</span>)</span><br><span class="line">        self.get_object(pk)</span><br><span class="line">        <span class="keyword">if</span> request.content_type == <span class="string">&#x27;application/json&#x27;</span>:</span><br><span class="line">            data = request.body</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                data = json.loads(data)</span><br><span class="line">            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">                retdata[<span class="string">&#x27;code&#x27;</span>] = <span class="number">-1</span></span><br><span class="line">                retdata[<span class="string">&#x27;message&#x27;</span>] = e</span><br><span class="line">                <span class="keyword">return</span> JsonResponse(retdata)</span><br><span class="line">        <span class="keyword">elif</span> request.content_type == <span class="string">&#x27;application/x-www-form-urlencoded&#x27;</span>:</span><br><span class="line">            data = request.POST.dict()</span><br><span class="line">            print(data)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            retdata[<span class="string">&#x27;code&#x27;</span>] = <span class="number">-1</span></span><br><span class="line">            retdata[<span class="string">&#x27;message&#x27;</span>] = <span class="string">&quot;Content-Type不支持当前&quot;</span></span><br><span class="line">            <span class="keyword">return</span> JsonResponse(retdata)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            TestData.objects.filter(pk=pk).update(**data) <span class="comment"># 更新内容</span></span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            retdata[<span class="string">&#x27;code&#x27;</span>] = <span class="number">-1</span></span><br><span class="line">            retdata[<span class="string">&#x27;message&#x27;</span>] = <span class="string">&#x27;Update pk &#123;&#125; err &#123;&#125;.&#x27;</span>.format(pk, e)</span><br><span class="line">            <span class="keyword">return</span> JsonResponse(retdata)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> JsonResponse(retdata)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">delete</span>(<span class="params">self, request, *args, **kwargs</span>):</span></span><br><span class="line">        pk = kwargs.get(<span class="string">&#x27;pk&#x27;</span>)</span><br><span class="line">        self.get_object(pk)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            TestData.objects.get(pk=pk).delete() 删除数据</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            retdata[<span class="string">&#x27;code&#x27;</span>] = <span class="number">-1</span></span><br><span class="line">            retdata[<span class="string">&#x27;message&#x27;</span>] = <span class="string">&#x27;Delete pk &#123;&#125; err &#123;&#125;.&#x27;</span>.format(pk, e)</span><br><span class="line">            <span class="keyword">return</span> JsonResponse(retdata)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> JsonResponse(retdata)</span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>Django</category>
-      </categories>
-      <tags>
-        <tag>python,Django</tag>
       </tags>
   </entry>
   <entry>
@@ -2313,6 +2146,189 @@ CalDAV and CardDAV server addresses: https://&lt;server&gt;/SOGo/dav/&lt;full em
 ]]></content>
       <tags>
         <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Zabbix实战-2</title>
+    <url>/32f6428a.html</url>
+    <content><![CDATA[<h4 id="安装Zabbix-agent环境"><a href="#安装Zabbix-agent环境" class="headerlink" title="安装Zabbix-agent环境"></a>安装Zabbix-agent环境</h4><h5 id="1-初始化环境"><a href="#1-初始化环境" class="headerlink" title="1 初始化环境"></a>1 初始化环境</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#192.168.0.161</span></span><br><span class="line">setenforce 0</span><br><span class="line">systemctl stop firewalld</span><br><span class="line">systemctl <span class="built_in">enable</span> firewalld</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-部署-Zabbix-Agent"><a href="#2-部署-Zabbix-Agent" class="headerlink" title="2 部署 Zabbix Agent"></a>2 部署 Zabbix Agent</h5><p>CentOS7.x操作系统安装：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -Uvh https://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/zabbix-release-4.0-2.el7.noarch.rpm</span><br><span class="line">yum install zabbix-agent -y</span><br></pre></td></tr></table></figure>
+
+<p>CentOS6.x操作系统安装：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -Uvh https://repo.zabbix.com/zabbix/4.0/rhel/6/x86_64/zabbix-release-4.0-2.el7.noarch.rpm</span><br><span class="line">yum install zabbix-agent -y</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<p>修改配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># egrep -v &quot;^#|^$&quot; /etc/zabbix/zabbix_agentd.conf </span></span><br><span class="line">PidFile=/var/run/zabbix/zabbix_agentd.pid</span><br><span class="line">LogFile=/var/<span class="built_in">log</span>/zabbix/zabbix_agentd.log</span><br><span class="line">LogFileSize=0</span><br><span class="line">DebugLevel=3</span><br><span class="line">Server=192.168.0.160</span><br><span class="line">ListenPort=10050</span><br><span class="line">ListenIP=192.168.0.161</span><br><span class="line">ServerActive=192.168.0.160</span><br><span class="line">Hostname=agent1</span><br><span class="line">HostMetadata=vaedit <span class="built_in">test</span></span><br><span class="line">Include=/etc/zabbix/zabbix_agentd.d/*.conf</span><br><span class="line">UnsafeUserParameters=1</span><br></pre></td></tr></table></figure>
+
+<p>启动并加入开机启动：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl start zabbix-agent</span><br><span class="line">systemctl <span class="built_in">enable</span> zabbix-agent</span><br></pre></td></tr></table></figure>
+
+<h4 id="联通性测试"><a href="#联通性测试" class="headerlink" title="联通性测试"></a>联通性测试</h4><p>在Zabbix服务器执行以下命令，判断是否可以正常连接到Zabbix agent服务器。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/zabbix/bin/zabbix_get -s 192.168.0.161 -p 10050 -k <span class="string">&quot;system.uptime&quot;</span></span><br><span class="line"></span><br><span class="line">774564</span><br></pre></td></tr></table></figure>
+
+<p>返回数字说明连通正常。否则可能是被监控机防火墙阻断，无法连通，可以尝试在被监控机添加放行规则：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">iptables -I INPUT -s 192.168.0.160 -p tcp --dport 10050 -j ACCEPT</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>系统监控</category>
+      </categories>
+      <tags>
+        <tag>Zabbix</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Django学习1</title>
+    <url>/b8ae5402.html</url>
+    <content><![CDATA[<h4 id="安装Django"><a href="#安装Django" class="headerlink" title="安装Django"></a>安装Django</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install django==2.2.0</span><br><span class="line"><span class="meta">#</span><span class="bash">pip install djangorestframework</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="基础函数视图"><a href="#基础函数视图" class="headerlink" title="基础函数视图"></a>基础函数视图</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env/python</span></span><br><span class="line"><span class="comment"># --*-- coding:utf-8 --*--</span></span><br><span class="line"><span class="comment"># Author: Vaedit</span></span><br><span class="line"><span class="comment"># @Time: </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> JsonResponse,Http404</span><br><span class="line"><span class="keyword">from</span> django.views.decorators.csrf <span class="keyword">import</span> csrf_exempt <span class="comment"># 解决跨域</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@csrf_exempt </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">TestView</span>(<span class="params">request, *args, **kwargs</span>):</span></span><br><span class="line">    <span class="comment">#return HttpResponse(&quot;ok&quot;)</span></span><br><span class="line">    print(request.method)</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&#x27;GET&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">&quot;GET&quot;</span>)</span><br><span class="line">    <span class="keyword">elif</span> request.method == <span class="string">&#x27;POST&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">&quot;POST&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">elif</span> request.method == <span class="string">&#x27;PUT&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">&quot;PUT&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">elif</span> request.method == <span class="string">&#x27;DELETE&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">&quot;DELETE&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">raise</span> Http404()</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="类视图继承View"><a href="#类视图继承View" class="headerlink" title="类视图继承View"></a>类视图继承View</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestViewV2</span>(<span class="params">View</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span>(<span class="params">self,request,*args,**kwargs</span>):</span></span><br><span class="line">        print(request.GET)</span><br><span class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">&quot;GET view V2&quot;</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">post</span>(<span class="params">self, request, *args, **kwargs</span>):</span></span><br><span class="line">        <span class="comment"># print(request.body)</span></span><br><span class="line">        print(request.POST)</span><br><span class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">&quot;POST view v2&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">put</span>(<span class="params">self, request, *args, **kwargs</span>):</span></span><br><span class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">&quot;PUT view v2&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">delete</span>(<span class="params">self, request, *args, **kwargs</span>):</span></span><br><span class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">&quot;DELETE view v2&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> JsonResponse,Http404</span><br><span class="line"><span class="keyword">from</span> django.views.decorators.csrf <span class="keyword">import</span> csrf_exempt <span class="comment"># 解决跨域</span></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> TestData</span><br><span class="line">retdata = &#123;</span><br><span class="line">    <span class="string">&quot;code&quot;</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">&quot;data&quot;</span>: <span class="literal">None</span>,</span><br><span class="line">    <span class="string">&quot;message&quot;</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestViewV3</span>(<span class="params">View</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_object</span>(<span class="params">self, pk</span>):</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            obj = TestData.objects.get(pk=pk) <span class="comment"># 获取单条数据对象</span></span><br><span class="line">        <span class="keyword">except</span> Publisher.DoesNotExist <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">raise</span> Http404()</span><br><span class="line">        <span class="keyword">return</span> obj</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span>(<span class="params">self, request, *args, **kwargs</span>):</span></span><br><span class="line">        <span class="comment"># 如果有pk，则返回单条数据详情</span></span><br><span class="line">        pk = kwargs.get(<span class="string">&#x27;pk&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> pk:</span><br><span class="line">            obj = self.get_object(pk)</span><br><span class="line">            _data_dict = &#123;</span><br><span class="line">                <span class="string">&quot;pk&quot;</span>: obj.pk,</span><br><span class="line">                <span class="string">&quot;name&quot;</span>: obj.name,</span><br><span class="line">                <span class="string">&quot;address&quot;</span>: obj.address,</span><br><span class="line">            &#125;</span><br><span class="line">            retdata[<span class="string">&#x27;data&#x27;</span>] = _data_dict</span><br><span class="line">            <span class="keyword">return</span> JsonResponse(retdata)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># 返回数据列表，所有数据</span></span><br><span class="line">            objs = TestData.objects.all()</span><br><span class="line">            _data_list = []</span><br><span class="line">            <span class="keyword">for</span> obj <span class="keyword">in</span> objs:</span><br><span class="line">                _data_list.append(&#123;</span><br><span class="line">                    <span class="string">&quot;pk&quot;</span>: obj.pk,</span><br><span class="line">                    <span class="string">&quot;name&quot;</span>: obj.name,</span><br><span class="line">                    <span class="string">&quot;address&quot;</span>: obj.address,</span><br><span class="line">                &#125;)</span><br><span class="line">            retdata[<span class="string">&quot;data&quot;</span>] = _data_list</span><br><span class="line">            <span class="keyword">return</span> JsonResponse(retdata, safe=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">post</span>(<span class="params">self, request, *args, **kwargs</span>):</span></span><br><span class="line">        <span class="keyword">if</span> request.content_type == <span class="string">&#x27;application/json&#x27;</span>: </span><br><span class="line">            data = request.body <span class="comment"># 获取post请求内容</span></span><br><span class="line">            print(data)</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                data = json.loads(data)</span><br><span class="line">                print(data)</span><br><span class="line">            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">                retdata[<span class="string">&#x27;code&#x27;</span>] = <span class="number">-1</span></span><br><span class="line">                retdata[<span class="string">&#x27;message&#x27;</span>] = e</span><br><span class="line">                <span class="keyword">return</span> JsonResponse(retdata)</span><br><span class="line">        <span class="keyword">elif</span> request.content_type == <span class="string">&#x27;application/x-www-form-urlencoded&#x27;</span>:</span><br><span class="line">            data = request.POST.dict()</span><br><span class="line">            print(request.POST)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            retdata[<span class="string">&#x27;code&#x27;</span>] = <span class="number">-1</span></span><br><span class="line">            retdata[<span class="string">&#x27;data&#x27;</span>] = <span class="string">&quot;&quot;</span></span><br><span class="line">            retdata[<span class="string">&#x27;message&#x27;</span>] = <span class="string">&quot;Content-Type不支持当前&quot;</span></span><br><span class="line">            <span class="keyword">return</span> JsonResponse(retdata)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            p = TestData.objects.create(**data) <span class="comment"># 创建数据</span></span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            retdata[<span class="string">&#x27;code&#x27;</span>] = <span class="number">-1</span></span><br><span class="line">            retdata[<span class="string">&#x27;message&#x27;</span>] = <span class="string">&quot;TestData create err &#123;&#125;&quot;</span>.format(e)</span><br><span class="line">            <span class="keyword">return</span> JsonResponse(retdata)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            data[<span class="string">&#x27;pk&#x27;</span>] = p.pk</span><br><span class="line">            retdata[<span class="string">&quot;data&quot;</span>] = data</span><br><span class="line">            <span class="keyword">return</span> JsonResponse(retdata)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">put</span>(<span class="params">self, request, *args, **kwargs</span>):</span></span><br><span class="line">        pk = kwargs.get(<span class="string">&#x27;pk&#x27;</span>)</span><br><span class="line">        self.get_object(pk)</span><br><span class="line">        <span class="keyword">if</span> request.content_type == <span class="string">&#x27;application/json&#x27;</span>:</span><br><span class="line">            data = request.body</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                data = json.loads(data)</span><br><span class="line">            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">                retdata[<span class="string">&#x27;code&#x27;</span>] = <span class="number">-1</span></span><br><span class="line">                retdata[<span class="string">&#x27;message&#x27;</span>] = e</span><br><span class="line">                <span class="keyword">return</span> JsonResponse(retdata)</span><br><span class="line">        <span class="keyword">elif</span> request.content_type == <span class="string">&#x27;application/x-www-form-urlencoded&#x27;</span>:</span><br><span class="line">            data = request.POST.dict()</span><br><span class="line">            print(data)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            retdata[<span class="string">&#x27;code&#x27;</span>] = <span class="number">-1</span></span><br><span class="line">            retdata[<span class="string">&#x27;message&#x27;</span>] = <span class="string">&quot;Content-Type不支持当前&quot;</span></span><br><span class="line">            <span class="keyword">return</span> JsonResponse(retdata)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            TestData.objects.filter(pk=pk).update(**data) <span class="comment"># 更新内容</span></span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            retdata[<span class="string">&#x27;code&#x27;</span>] = <span class="number">-1</span></span><br><span class="line">            retdata[<span class="string">&#x27;message&#x27;</span>] = <span class="string">&#x27;Update pk &#123;&#125; err &#123;&#125;.&#x27;</span>.format(pk, e)</span><br><span class="line">            <span class="keyword">return</span> JsonResponse(retdata)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> JsonResponse(retdata)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">delete</span>(<span class="params">self, request, *args, **kwargs</span>):</span></span><br><span class="line">        pk = kwargs.get(<span class="string">&#x27;pk&#x27;</span>)</span><br><span class="line">        self.get_object(pk)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            TestData.objects.get(pk=pk).delete() 删除数据</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            retdata[<span class="string">&#x27;code&#x27;</span>] = <span class="number">-1</span></span><br><span class="line">            retdata[<span class="string">&#x27;message&#x27;</span>] = <span class="string">&#x27;Delete pk &#123;&#125; err &#123;&#125;.&#x27;</span>.format(pk, e)</span><br><span class="line">            <span class="keyword">return</span> JsonResponse(retdata)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> JsonResponse(retdata)</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>Django</category>
+      </categories>
+      <tags>
+        <tag>python,Django</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>记录入职鹅厂后第一个负责项目上线</title>
+    <url>/41b11597.html</url>
+    <content><![CDATA[<h4 id="记录入职鹅厂3个月后负责的首个新项目上线"><a href="#记录入职鹅厂3个月后负责的首个新项目上线" class="headerlink" title="记录入职鹅厂3个月后负责的首个新项目上线"></a>记录入职鹅厂3个月后负责的首个新项目上线</h4><blockquote>
+<p>顺利打卡项目上线</p>
+</blockquote>
+<p><img src="https://gitee.com/Vaedit/images/raw/master/img/wecom-temp-97b8c6178587a936d9c03e8297cee03c-20210904023052184.jpg" alt="wecom-temp-97b8c6178587a936d9c03e8297cee03c"></p>
+]]></content>
+      <categories>
+        <category>日志记录</category>
+      </categories>
+      <tags>
+        <tag>个人记录</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Zabbix实战-1</title>
+    <url>/abff1330.html</url>
+    <content><![CDATA[<blockquote>
+<p>作者：Vaedit</p>
+<p>官网文档地址：<a href="https://www.zabbix.com/cn/download?zabbix=4.0&amp;os_distribution=centos&amp;os_version=7&amp;db=mysql&amp;ws=apache">https://www.zabbix.com/cn/download?zabbix=4.0&amp;os_distribution=centos&amp;os_version=7&amp;db=mysql&amp;ws=apache</a></p>
+</blockquote>
+<p>实验环境</p>
+<table>
+<thead>
+<tr>
+<th>ip地址</th>
+<th>组件</th>
+<th>配置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>192.168.0.160</td>
+<td>zabbix-server，php，mysql，zabbix-agent，zabbix-web，nginx等</td>
+<td>2核2G</td>
+</tr>
+<tr>
+<td>192.168.0.161</td>
+<td>zabbix-agent，nginx</td>
+<td>2核2G</td>
+</tr>
+</tbody></table>
+<h4 id="安装zabbix-server环境"><a href="#安装zabbix-server环境" class="headerlink" title="安装zabbix-server环境"></a>安装zabbix-server环境</h4><h5 id="1-初始化环境"><a href="#1-初始化环境" class="headerlink" title="1 初始化环境"></a>1 初始化环境</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#192.168.0.160</span></span><br><span class="line">setenforce 0</span><br><span class="line">systemctl stop firewalld</span><br><span class="line">systemctl <span class="built_in">enable</span> firewalld</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h5 id="2-安装Mysql"><a href="#2-安装Mysql" class="headerlink" title="2 安装Mysql"></a>2 安装Mysql</h5><p>部署Mysql 5.7版本：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum -y install yum-utils </span><br><span class="line">rpm -ivh https://dev.mysql.com/get/mysql80-community-release-el7-1.noarch.rpm</span><br><span class="line">yum-config-manager --<span class="built_in">disable</span> mysql80-community</span><br><span class="line">yum-config-manager --<span class="built_in">enable</span> mysql57-community</span><br><span class="line">yum install mysql-community-server mysql-community-devel</span><br><span class="line">systemctl start mysqld</span><br><span class="line">systemctl status mysqld</span><br><span class="line">systemctl <span class="built_in">enable</span> mysqld</span><br></pre></td></tr></table></figure>
+
+<p>设置root密码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grep <span class="string">&#x27;temporary password&#x27;</span> /var/<span class="built_in">log</span>/mysqld.log</span><br><span class="line">mysql -uroot -p</span><br><span class="line">mysql&gt; ALTER USER <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED BY <span class="string">&#x27;Zabbix@2019&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>修改配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vi /etc/my.cnf</span></span><br><span class="line">[mysql]</span><br><span class="line">socket = /tmp/mysql.sock</span><br><span class="line">[mysqld]</span><br><span class="line">user = mysql</span><br><span class="line">port = 3306</span><br><span class="line">datadir = /var/lib/mysql</span><br><span class="line">socket = /tmp/mysql.sock</span><br><span class="line">bind-address = 0.0.0.0</span><br><span class="line">pid-file = /var/run/mysqld/mysqld.pid</span><br><span class="line">character-set-server = utf8</span><br><span class="line">collation-server = utf8_general_ci</span><br><span class="line">log-error = /var/<span class="built_in">log</span>/mysqld.log</span><br><span class="line"></span><br><span class="line">max_connections = 10240</span><br><span class="line">open_files_limit = 65535</span><br><span class="line">innodb_buffer_pool_size = 3G</span><br><span class="line">innodb_flush_log_at_trx_commit = 2</span><br><span class="line">innodb_log_file_size = 256M</span><br><span class="line"><span class="comment"># 修改完成后重启</span></span><br><span class="line"><span class="comment"># systemctl restart mysqld</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="3-安装Nginx"><a href="#3-安装Nginx" class="headerlink" title="3 安装Nginx"></a>3 安装Nginx</h5><p>源码编译安装：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://nginx.org/download/nginx-1.15.3.tar.gz</span><br><span class="line">yum install gcc pcre-devel openssl-devel –y</span><br><span class="line">useradd -M -s /sbin/nologin nginx</span><br><span class="line">tar zxvf nginx-1.15.3.tar.gz</span><br><span class="line"><span class="built_in">cd</span> nginx-1.15.3</span><br><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/nginx --user=nginx --group=nginx --with-http_ssl_module --with-http_stub_status_module</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<p>修改配置文件,修改pid位置：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vi /usr/local/nginx/conf/nginx.conf</span></span><br><span class="line">pid        /var/run/nginx.pid;</span><br></pre></td></tr></table></figure>
+
+<p>配置systemd管理服务：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vi /usr/lib/systemd/system/nginx.service</span></span><br><span class="line">[Unit]</span><br><span class="line">Description=The NGINX HTTP and reverse proxy server</span><br><span class="line">After=syslog.target network.target remote-fs.target nss-lookup.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">PIDFile=/var/run/nginx.pid</span><br><span class="line">ExecStartPre=/usr/<span class="built_in">local</span>/nginx/sbin/nginx -t</span><br><span class="line">ExecStart=/usr/<span class="built_in">local</span>/nginx/sbin/nginx</span><br><span class="line">ExecReload=/usr/<span class="built_in">local</span>/nginx/sbin/nginx -s reload</span><br><span class="line">ExecStop=/bin/<span class="built_in">kill</span> -s QUIT <span class="variable">$MAINPID</span></span><br><span class="line">PrivateTmp=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<p>启动并开启自启：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl start nginx</span><br><span class="line">systemctl <span class="built_in">enable</span> nginx</span><br></pre></td></tr></table></figure>
+
+<h5 id="4-PHP部署"><a href="#4-PHP部署" class="headerlink" title="4 PHP部署"></a>4 PHP部署</h5><p>安装依赖：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install epel-release -y</span><br><span class="line">yum install -y gcc gcc-c++ make gd-devel libxml2-devel libcurl-devel libjpeg-devel libpng-devel openssl-devel libxslt-devel</span><br></pre></td></tr></table></figure>
+
+<p>源码编译安装PHP</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://docs.php.net/distributions/php-5.6.36.tar.gz</span><br><span class="line">tar zxf php-5.6.36.tar.gz</span><br><span class="line"><span class="built_in">cd</span> php-5.6.36</span><br><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/php \</span><br><span class="line">--with-config-file-path=/usr/<span class="built_in">local</span>/php/etc \</span><br><span class="line">--enable-fpm --enable-opcache \</span><br><span class="line">--with-mysql --with-mysqli  \</span><br><span class="line">--enable-session --with-zlib --with-curl --with-gd \</span><br><span class="line">--with-jpeg-dir --with-png-dir --with-freetype-dir \</span><br><span class="line">--enable-mbstring --enable-xmlwriter --enable-xmlreader \</span><br><span class="line">--enable-xml --enable-sockets --enable-bcmath --with-gettext</span><br><span class="line">make -j 8 &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<p>拷贝配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cp php.ini-production /usr/<span class="built_in">local</span>/php/etc/php.ini</span><br><span class="line">cp sapi/fpm/php-fpm.conf /usr/<span class="built_in">local</span>/php/etc/php-fpm.conf</span><br><span class="line">cp sapi/fpm/php-fpm.service /usr/lib/systemd/system/</span><br></pre></td></tr></table></figure>
+
+<p>配置systemd管理服务：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vi /usr/lib/systemd/system/php-fpm.service </span></span><br><span class="line">[Unit]</span><br><span class="line">Description=The PHP FastCGI Process Manager</span><br><span class="line">After=syslog.target network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">PIDFile=/usr/<span class="built_in">local</span>/php/var/run/php-fpm.pid</span><br><span class="line">ExecStart=/usr/<span class="built_in">local</span>/php/sbin/php-fpm --nodaemonize --fpm-config /usr/<span class="built_in">local</span>/php/etc/php-fpm.conf</span><br><span class="line">ExecReload=/bin/<span class="built_in">kill</span> -USR2 <span class="variable">$MAINPID</span></span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<p>启动并开机自启：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl start php-fpm</span><br><span class="line">systemctl <span class="built_in">enable</span> php-fpm</span><br></pre></td></tr></table></figure>
+
+<h5 id="5-部署Zabbix-server"><a href="#5-部署Zabbix-server" class="headerlink" title="5 部署Zabbix-server"></a>5 部署Zabbix-server</h5><p>安装依赖包：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install libxml2-devel libcurl-devel libevent-devel net-snmp-devel mysql-community-devel -y</span><br></pre></td></tr></table></figure>
+
+<p>源码编译安装zabbix：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -zxf zabbix-4.0.0.tar.gz</span><br><span class="line">groupadd zabbix</span><br><span class="line">useradd -g zabbix zabbix -s /sbin/nologin</span><br><span class="line"><span class="built_in">cd</span> zabbix-4.0.0</span><br><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/zabbix --enable-server --enable-agent --enable-java --with-mysql --enable-ipv6 --with-net-snmp --with-libcurl --with-libxml2</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>修改配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vi /usr/local/zabbix/etc/zabbix_server.conf</span></span><br><span class="line"><span class="comment"># egrep -v &quot;^#|^$&quot; /usr/local/zabbix/etc/zabbix_server.conf</span></span><br><span class="line">LogFile=/tmp/zabbix_server.log</span><br><span class="line">DBHost=localhost</span><br><span class="line">DBName=zabbix</span><br><span class="line">DBUser=root</span><br><span class="line">DBPassword=Zabbix@2019</span><br><span class="line">DBSocket= /tmp/mysql.sock</span><br><span class="line">Timeout=4</span><br><span class="line">AlertScriptsPath=/usr/<span class="built_in">local</span>/zabbix/alertscripts</span><br><span class="line">LogSlowQueries=3000</span><br></pre></td></tr></table></figure>
+
+<p>配置systemd管理服务：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vi /usr/lib/systemd/system/zabbix_server.service</span></span><br><span class="line">[Unit]</span><br><span class="line">Description=Zabbix Server</span><br><span class="line">After=syslog.target</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Environment=<span class="string">&quot;CONFFILE=/usr/local/zabbix/etc/zabbix_server.conf&quot;</span></span><br><span class="line">EnvironmentFile=-/etc/sysconfig/zabbix-server</span><br><span class="line">Type=forking</span><br><span class="line">Restart=on-failure</span><br><span class="line">PIDFile=/tmp/zabbix_server.pid</span><br><span class="line">KillMode=control-group</span><br><span class="line">ExecStart=/usr/<span class="built_in">local</span>/zabbix/sbin/zabbix_server -c <span class="variable">$CONFFILE</span></span><br><span class="line">ExecStop=/bin/<span class="built_in">kill</span> -SIGTERM <span class="variable">$MAINPID</span></span><br><span class="line">RestartSec=10s</span><br><span class="line">TimeoutSec=0</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<p>导入表结构：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> zabbix-4.0.0/database/mysql</span><br><span class="line">mysql -uroot –pZabbix@2019</span><br><span class="line">create database zabbix default charset utf-8;</span><br><span class="line">mysql&gt; use zabbix;</span><br><span class="line">mysql&gt; <span class="built_in">source</span> schema.sql;</span><br><span class="line">mysql&gt; <span class="built_in">source</span> images.sql;</span><br><span class="line">mysql&gt; <span class="built_in">source</span> data.sql;</span><br><span class="line"></span><br><span class="line"><span class="comment">####单独设置zabbix用户</span></span><br><span class="line">mysql&gt; create database zabbix character <span class="built_in">set</span> utf8 collate utf8_bin;</span><br><span class="line">mysql&gt; create user zabbix@localhost identified by <span class="string">&#x27;password&#x27;</span>;</span><br><span class="line">mysql&gt; grant all privileges on zabbix.* to zabbix@localhost;</span><br><span class="line">mysql&gt; quit; </span><br><span class="line"></span><br><span class="line"><span class="comment">#yum安装可以通过如下导入初始架构和数据，系统将提示您输入新创建的密码。</span></span><br><span class="line">zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -p zabbix </span><br></pre></td></tr></table></figure>
+
+<p>启动并加入开机启动：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl start zabbix-server</span><br><span class="line">systemctl <span class="built_in">enable</span> zabbix-server</span><br></pre></td></tr></table></figure>
+
+<p>启动Agent，也监控本机：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/zabbix/sbin/zabbix_agentd</span><br></pre></td></tr></table></figure>
+
+<h5 id="6-部署Zabbix-WEB"><a href="#6-部署Zabbix-WEB" class="headerlink" title="6 部署Zabbix WEB"></a>6 部署Zabbix WEB</h5><blockquote>
+<p>Zabbix前端使用PHP写的，所以必须运行在PHP支持的Web服务器上。只需要简单的从frontends/php路径下复制PHP文件到Web服务器的网站根目录，就可以访问页面了。</p>
+</blockquote>
+<p> 拷贝Zabbix前端程序到网站根目录：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cp zabbix-4.0.0/frontends/php/* /usr/<span class="built_in">local</span>/nginx/html/ -rf</span><br></pre></td></tr></table></figure>
+
+<p>修改配置参数：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vi /usr/local/php/etc/php.ini</span></span><br><span class="line">max_execution_time = 300</span><br><span class="line">memory_limit = 128M</span><br><span class="line">post_max_size = 16M</span><br><span class="line">upload_max_filesize = 2M</span><br><span class="line">max_input_time = 300</span><br><span class="line">always_populate_raw_post_data = -1</span><br><span class="line">date.timezone = Asia/Shanghai</span><br></pre></td></tr></table></figure>
+
+<p>重启php-fpm生效：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl restart php-fpm</span><br></pre></td></tr></table></figure>
+
+<p>修改Nginx配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vi /usr/local/nginx/conf/nginx.conf  </span></span><br><span class="line">  server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  localhost;</span><br><span class="line"></span><br><span class="line">        access_log  logs/zabbix.access.log  main;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            root   html;</span><br><span class="line">            index  index.php index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location ~ \.php$ &#123;</span><br><span class="line">            root           html;</span><br><span class="line">            fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">            fastcgi_index  index.php;</span><br><span class="line">            fastcgi_param  SCRIPT_FILENAME  <span class="variable">$document_root</span><span class="variable">$fastcgi_script_name</span>;</span><br><span class="line">            include        fastcgi_params;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 重启Nginx</span></span><br><span class="line">systemctl restat nginx</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以通过访问网页开始初始化配置Zabbix，初始化默认账号密码：Admin,zabbix</p>
+]]></content>
+      <categories>
+        <category>系统监控</category>
+      </categories>
+      <tags>
+        <tag>Zabbix</tag>
       </tags>
   </entry>
 </search>

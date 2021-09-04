@@ -20,21 +20,16 @@
     var CONFIG = {"hostname":"www.sdevops.cn","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","b2t":false,"scrollpercent":true,"padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="如果要分析 slow log，第一步就是先要获取到 slow log 文件，由于 RDS MySQL 是托管数据库，我们无法登录到 MySQL 所在服务器，那么应该如何来获取 slow log 文件呢？ 根据 MySQL slow log 的相关配置，我们知道 slow log 的存在形式一共有两种： table 或 file ，由 log_output 参数进行控制：  TABLE (默认) –">
-<meta property="og:type" content="article">
-<meta property="og:title" content="AWS-RDS慢查询日志查看导出">
-<meta property="og:url" content="https://www.sdevops.cn/5ed6ea01.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Vaedit&#39;s Blog">
+<meta property="og:url" content="https://www.sdevops.cn/archives/2021/09/index.html">
 <meta property="og:site_name" content="Vaedit&#39;s Blog">
-<meta property="og:description" content="如果要分析 slow log，第一步就是先要获取到 slow log 文件，由于 RDS MySQL 是托管数据库，我们无法登录到 MySQL 所在服务器，那么应该如何来获取 slow log 文件呢？ 根据 MySQL slow log 的相关配置，我们知道 slow log 的存在形式一共有两种： table 或 file ，由 log_output 参数进行控制：  TABLE (默认) –">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-09-22T10:41:17.000Z">
-<meta property="article:modified_time" content="2020-09-23T10:09:14.694Z">
 <meta property="article:author" content="Vaedit">
-<meta property="article:tag" content="AWS慢查询日志">
-<meta property="article:tag" content="mysql">
+<meta property="article:tag" content="linux,django,k8s,python">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://www.sdevops.cn/5ed6ea01.html">
+<link rel="canonical" href="https://www.sdevops.cn/archives/2021/09/">
 
 
 <script id="page-configurations">
@@ -42,12 +37,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : true,
+    isPost : false,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>AWS-RDS慢查询日志查看导出 | Vaedit's Blog</title>
+  <title>归档 | Vaedit's Blog</title>
   
 
 
@@ -192,167 +187,51 @@
         <div class="content-wrap">
           
 
-          <div class="content post posts-expand">
+          <div class="content archive">
             
 
-    
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.sdevops.cn/5ed6ea01.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Vaedit">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Vaedit's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          AWS-RDS慢查询日志查看导出
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-22 18:41:17" itemprop="dateCreated datePublished" datetime="2020-09-22T18:41:17+08:00">2020-09-22</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AWS%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">AWS服务</span></a>
-                </span>
-            </span>
-
-          
-            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span><br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.9k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+  
+  <div class="post-block">
+    <div class="posts-collapse">
+      <div class="collection-title">
+        
+        <span class="collection-header">还行! 目前共计 39 篇日志。 继续努力。</span>
+      </div>
 
       
-        <p>如果要分析 slow log，第一步就是先要获取到 slow log 文件，由于 RDS MySQL 是托管数据库，我们无法登录到 MySQL 所在服务器，那么应该如何来获取 slow log 文件呢？</p>
-<p>根据 MySQL slow log 的相关配置，我们知道 slow log 的存在形式一共有两种： table 或 file ，由 log_output 参数进行控制：</p>
-<ul>
-<li>TABLE (默认) – 将一般查询写入 general_log 表，将慢速查询写入 mysql.slow_log 表；</li>
-<li>FILE – 将一般查询日志和慢速查询日志写入文件系统；</li>
-<li>NONE – 禁用日志记录；</li>
-</ul>
-<p>针对不同形式的 slow log，我们有不同的方法将其下载到本地：</p>
-<ul>
-<li>TABLE ：由于这是将慢查询记录存放在 MySQL 的数据表里，这里我们可以使用 sql 命令将其输出到本地的一个文件；</li>
-<li>FILE ：慢查询日志存放在 RDS MySQL 托管主机上，我们可以利用 awscli 提供的 RDS API download-db-log-file-portion 将 slow log 下载到本地；</li>
-</ul>
-<p>具体实现形式请参加后续对应部分的内容。</p>
-<a id="more"></a>
-
-<h3 id="使用-sql-脚本获取-slow-log"><a href="#使用-sql-脚本获取-slow-log" class="headerlink" title="使用 sql 脚本获取 slow log"></a>使用 sql 脚本获取 slow log</h3><p>查看慢查询日志记录方式</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show variables like <span class="string">&#x27;log_output&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>导出当前全部慢查询日志</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uxxx -pxxxx -h xxx -D mysql -s -r -e <span class="string">&quot;SELECT CONCAT( &#x27;# Time: &#x27;, DATE_FORMAT(start_time, &#x27;%y%m%d %H%i%s&#x27;), &#x27;\n&#x27;, &#x27;# User@Host: &#x27;, user_host, &#x27;\n&#x27;, &#x27;# Query_time: &#x27;, TIME_TO_SEC(query_time),  &#x27;  Lock_time: &#x27;, TIME_TO_SEC(lock_time), &#x27;  Rows_sent: &#x27;, rows_sent, &#x27;  Rows_examined: &#x27;, rows_examined, &#x27;\n&#x27;, sql_text, &#x27;;&#x27; ) FROM mysql.slow_log&quot;</span> &gt; /data/mysql_slow_log.log</span><br></pre></td></tr></table></figure>
-
-<p>按时间导出</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -h mysql.xxxxxxxxxxxx.rds.cn-northwest-1.amazonaws.com.cn -u root -p -P13306 -D mysql -s -r -e <span class="string">&quot;SELECT CONCAT( &#x27;# Time: &#x27;, DATE_FORMAT(start_time, &#x27;%y%m%d %H%i%s&#x27;), &#x27;\n&#x27;, &#x27;# User@Host: &#x27;, user_host, &#x27;\n&#x27;, &#x27;# Query_time: &#x27;, TIME_TO_SEC(query_time),  &#x27;  Lock_time: &#x27;, TIME_TO_SEC(lock_time), &#x27;  Rows_sent: &#x27;, rows_sent, &#x27;  Rows_examined: &#x27;, rows_examined, &#x27;\n&#x27;, sql_text, &#x27;;&#x27; ) FROM mysql.slow_log where DATE_FORMAT(start_time, &#x27;%Y%m%d %H:%i:%s&#x27;) between &#x27;20190328 10:00:00&#x27; and &#x27;20190328 11:00:00&#x27; &quot;</span> &gt; /tmp/slow.log.10-11.log</span><br></pre></td></tr></table></figure>
-
-<h3 id="使用-awscli-获取-MySQL-slow-log"><a href="#使用-awscli-获取-MySQL-slow-log" class="headerlink" title="使用 awscli 获取 MySQL slow log"></a>使用 awscli 获取 MySQL slow log</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show variables like <span class="string">&#x27;%output%&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show variables like <span class="string">&#x27;%slow%&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aws rds download-db-log-file-portion --db-instance-identifier mysql --log-file-name slowquery/mysql-slowquery.log --starting-token 0 --output text&gt; mysql-slowquery.log</span><br></pre></td></tr></table></figure>
+    <div class="collection-year">
+      <span class="collection-header">2021</span>
     </div>
 
-    
-    
-    
-      
-  <div class="popular-posts-header">相关文章</div>
-  <ul class="popular-posts">
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/a7aeafa4.html" rel="bookmark">mysql表修复</a></div>
-    </li>
-  </ul>
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-        
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2021-09-04T01:40:27+08:00"
+              content="2021-09-04">
+          09-04
+        </time>
+      </div>
 
-<div>
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>Vaedit
-  </li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="https://www.sdevops.cn/5ed6ea01.html" title="AWS-RDS慢查询日志查看导出">https://www.sdevops.cn/5ed6ea01.html</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
-</div>
+      <div class="post-title">
+          <a class="post-title-link" href="/41b11597.html" itemprop="url">
+            <span itemprop="name">记录入职鹅厂后第一个负责项目上线</span>
+          </a>
+      </div>
 
-
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/AWS%E6%85%A2%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97/" rel="tag"># AWS慢查询日志</a>
-              <a href="/tags/mysql/" rel="tag"># mysql</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/32f6428a.html" rel="prev" title="Zabbix实战-2">
-      <i class="fa fa-chevron-left"></i> Zabbix实战-2
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/932165fe.html" rel="next" title="企业级私有镜像仓库Harbor">
-      企业级私有镜像仓库Harbor <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
+    </header>
   </article>
+
+
+    </div>
+  </div>
   
   
+  
+
   
 
 
@@ -405,7 +284,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-sql-%E8%84%9A%E6%9C%AC%E8%8E%B7%E5%8F%96-slow-log"><span class="nav-text">使用 sql 脚本获取 slow log</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-awscli-%E8%8E%B7%E5%8F%96-MySQL-slow-log"><span class="nav-text">使用 awscli 获取 MySQL slow log</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
