@@ -6,7 +6,7 @@
   <link href="https://www.sdevops.cn/atom.xml" rel="self"/>
   
   <link href="https://www.sdevops.cn/"/>
-  <updated>2022-01-04T13:05:08.083Z</updated>
+  <updated>2022-01-04T14:54:33.678Z</updated>
   <id>https://www.sdevops.cn/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>当游戏遇见K8S-滚服业务如何用Helm管理</title>
+    <link href="https://www.sdevops.cn/468bc414.html"/>
+    <id>https://www.sdevops.cn/468bc414.html</id>
+    <published>2022-01-04T14:32:37.000Z</published>
+    <updated>2022-01-04T14:54:33.678Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;对分区分服滚服业务Helm如何管理，需要不同小区对应一个value？或是不同小区对应一个templates的yaml小区模板?</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>爬虫之新浪热点获取</title>
@@ -502,25 +524,6 @@
     
     
     <category term="iptables" scheme="https://www.sdevops.cn/tags/iptables/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>openssl升级</title>
-    <link href="https://www.sdevops.cn/ceb34f9a.html"/>
-    <id>https://www.sdevops.cn/ceb34f9a.html</id>
-    <published>2020-09-22T13:07:26.000Z</published>
-    <updated>2020-09-25T06:31:42.334Z</updated>
-    
-    
-    <summary type="html">Linux下openssl源码包升级</summary>
-    
-    
-    
-    <category term="Linux基础服务" scheme="https://www.sdevops.cn/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/"/>
-    
-    
-    <category term="openssl" scheme="https://www.sdevops.cn/tags/openssl/"/>
     
   </entry>
   
