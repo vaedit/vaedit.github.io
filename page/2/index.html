@@ -193,6 +193,94 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.sdevops.cn/7ed37b22.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Vaedit">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vaedit's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/7ed37b22.html" class="post-title-link" itemprop="url">django接收并保存前端el-upload传递的文件</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-01-04 15:41:16" itemprop="dateCreated datePublished" datetime="2021-01-04T15:41:16+08:00">2021-01-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Django/" itemprop="url" rel="index"><span itemprop="name">Django</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="前端代码"><a href="#前端代码" class="headerlink" title="前端代码"></a>前端代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-upload</span><br><span class="line">  class&#x3D;&quot;upload-demo&quot;</span><br><span class="line">  ref&#x3D;&quot;upload&quot;</span><br><span class="line">  action&#x3D;&quot;&#x2F;api&#x2F;v1&#x2F;yw-sql&quot;  &#x2F;&#x2F; 接口地址</span><br><span class="line">  multiple</span><br><span class="line">  :headers&#x3D;&quot;importHeaders&quot; &#x2F;&#x2F; 添加请求头token</span><br><span class="line">  :on-preview&#x3D;&quot;handlePreview&quot; &#x2F;&#x2F; 点击已上传的文件链接时的钩子, 可以通过 file.response 拿到服务端返回数据</span><br><span class="line">  :on-remove&#x3D;&quot;handleRemove&quot; &#x2F;&#x2F; 删除时的钩子</span><br><span class="line">  :file-list&#x3D;&quot;fileList&quot;</span><br><span class="line">  :auto-upload&#x3D;&quot;false&quot;&gt;  &#x2F;&#x2F; 是否自动上传</span><br><span class="line">  &lt;el-button slot&#x3D;&quot;trigger&quot; size&#x3D;&quot;small&quot; type&#x3D;&quot;primary&quot;&gt;选取文件&lt;&#x2F;el-button&gt;</span><br><span class="line">  &lt;el-button style&#x3D;&quot;margin-left: 10px;&quot; size&#x3D;&quot;small&quot; type&#x3D;&quot;success&quot; @click&#x3D;&quot;submitUpload&quot;&gt;上传到服务器&lt;&#x2F;el-button&gt;</span><br><span class="line">  &lt;div slot&#x3D;&quot;tip&quot; class&#x3D;&quot;el-upload__tip&quot;&gt;只能上传SQL文件，且不超过100M&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;el-upload&gt;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/7ed37b22.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://www.sdevops.cn/a151d928.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1046,99 +1134,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.sdevops.cn/d517a7ab.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Vaedit">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Vaedit's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/d517a7ab.html" class="post-title-link" itemprop="url">Linux-ssh隧道详解</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-22 21:02:19" itemprop="dateCreated datePublished" datetime="2020-09-22T21:02:19+08:00">2020-09-22</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">Linux基础服务</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.2k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="隧道原理"><a href="#隧道原理" class="headerlink" title="隧道原理"></a>隧道原理</h4><p>隧道是一种把一种网络协议封装进另外一种网络协议进行传输的技术。这里我们研究ssh隧道，所以所有的网络通讯都是加密的。又被称作端口转发，因为ssh隧道通常会绑定一个本地端口，所有发向这个端口端口的数据包，都会被加密并透明地传输到远端系统。</p>
-<h4 id="隧道的类型"><a href="#隧道的类型" class="headerlink" title="隧道的类型"></a>隧道的类型</h4><h5 id="ssh隧道有3种类型："><a href="#ssh隧道有3种类型：" class="headerlink" title="ssh隧道有3种类型："></a>ssh隧道有3种类型：</h5><ul>
-<li>动态端口转发（Socks 代理）</li>
-<li>本地端口转发</li>
-<li>远端端口转发</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/d517a7ab.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1210,20 +1205,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-count">40</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-count">33</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1271,7 +1266,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="heart"></i>
   </span>
@@ -1280,12 +1275,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">101k</span>
+    <span title="站点总字数">105k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:31</span>
+    <span title="站点阅读时长">1:36</span>
 </div>
 
     <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
