@@ -6,7 +6,7 @@
   <link href="https://www.sdevops.cn/atom.xml" rel="self"/>
   
   <link href="https://www.sdevops.cn/"/>
-  <updated>2022-01-04T14:54:33.678Z</updated>
+  <updated>2022-01-04T14:56:09.795Z</updated>
   <id>https://www.sdevops.cn/</id>
   
   <author>
@@ -21,20 +21,20 @@
     <link href="https://www.sdevops.cn/468bc414.html"/>
     <id>https://www.sdevops.cn/468bc414.html</id>
     <published>2022-01-04T14:32:37.000Z</published>
-    <updated>2022-01-04T14:54:33.678Z</updated>
+    <updated>2022-01-04T14:56:09.795Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;对分区分服滚服业务Helm如何管理，需要不同小区对应一个value？或是不同小区对应一个templates的yaml小区模板?</summary>
-        
-      
+&lt;p&gt;对分区分服滚服业务Helm如何管理，需要不同小区对应一个value？或是不同小区对应一个templates的yaml小区模板? 那样太复杂了！&lt;br&gt;另外对某些小区yaml个性化的编排配置如何管理呢？我告诉你答案！欢迎大家一起交流。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;1-项目背景&quot;&gt;&lt;a href=&quot;#1-项目背景&quot; class=&quot;headerlink&quot; title=&quot;1.项目背景&quot;&gt;&lt;/a&gt;1.项目背景&lt;/h1&gt;&lt;p&gt;目前容器化业务多为全区全服业务，管理上多为一个集群一套环境，从头部署完成后，不需要考虑区服复用deployment/statefulset等，大多一对一的场景（一个deployment/statefulset，对应一个模块或用应用），配置文件也可以部署时，确定好后，后期变更较少。然而，滚服业务存在着大量复用deployment/statefulset/configmap/service/ingress等等控制器yaml模版，实现的方式也有多种，这里具体说下一个chart对应一个value管理多区服业务。&lt;/p&gt;</summary>
     
     
     
+    <category term="k8s生态圈" scheme="https://www.sdevops.cn/categories/k8s%E7%94%9F%E6%80%81%E5%9C%88/"/>
+    
+    
+    <category term="k8s,helm" scheme="https://www.sdevops.cn/tags/k8s-helm/"/>
     
   </entry>
   

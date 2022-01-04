@@ -28,9 +28,9 @@
 <meta property="og:description" content="对分区分服滚服业务Helm如何管理，需要不同小区对应一个value？或是不同小区对应一个templates的yaml小区模板? 那样太复杂了！另外对某些小区yaml个性化的编排配置如何管理呢？我告诉你答案！欢迎大家一起交流。  1.项目背景目前容器化业务多为全区全服业务，管理上多为一个集群一套环境，从头部署完成后，不需要考虑区服复用deployment&#x2F;statefulset等，大多一对一的场景">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-01-04T14:32:37.000Z">
-<meta property="article:modified_time" content="2022-01-04T14:54:33.678Z">
+<meta property="article:modified_time" content="2022-01-04T14:56:09.795Z">
 <meta property="article:author" content="Vaedit">
-<meta property="article:tag" content="linux,django,k8s,python">
+<meta property="article:tag" content="k8s,helm">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://www.sdevops.cn/468bc414.html">
@@ -223,6 +223,15 @@
 
               <time title="创建时间：2022-01-04 22:32:37" itemprop="dateCreated datePublished" datetime="2022-01-04T22:32:37+08:00">2022-01-04</time>
             </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/k8s%E7%94%9F%E6%80%81%E5%9C%88/" itemprop="url" rel="index"><span itemprop="name">k8s生态圈</span></a>
+                </span>
+            </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -260,6 +269,8 @@
 <p>对分区分服滚服业务Helm如何管理，需要不同小区对应一个value？或是不同小区对应一个templates的yaml小区模板? 那样太复杂了！<br>另外对某些小区yaml个性化的编排配置如何管理呢？我告诉你答案！欢迎大家一起交流。</p>
 </blockquote>
 <h1 id="1-项目背景"><a href="#1-项目背景" class="headerlink" title="1.项目背景"></a>1.项目背景</h1><p>目前容器化业务多为全区全服业务，管理上多为一个集群一套环境，从头部署完成后，不需要考虑区服复用deployment/statefulset等，大多一对一的场景（一个deployment/statefulset，对应一个模块或用应用），配置文件也可以部署时，确定好后，后期变更较少。然而，滚服业务存在着大量复用deployment/statefulset/configmap/service/ingress等等控制器yaml模版，实现的方式也有多种，这里具体说下一个chart对应一个value管理多区服业务。</p>
+<a id="more"></a>
+
 <h1 id="2-Helm"><a href="#2-Helm" class="headerlink" title="2.Helm"></a>2.Helm</h1><h2 id="2-1-Helm介绍"><a href="#2-1-Helm介绍" class="headerlink" title="2.1 Helm介绍"></a>2.1 Helm介绍</h2><p>Helm是一个Kubernetes的包管理工具，就像Linux下的包管理器，如yum/apt等，可以很方便的将之前打包好的yaml文件部署到kubernetes上。</p>
 <p>Helm有3个重要概念：</p>
 <ul>
@@ -311,6 +322,9 @@
 
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/k8s-helm/" rel="tag"># k8s,helm</a>
+          </div>
 
         
 
@@ -409,7 +423,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

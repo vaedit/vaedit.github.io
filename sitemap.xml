@@ -549,6 +549,13 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>https://www.sdevops.cn/tags/k8s-helm/</loc>
+    <lastmod>2022-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   
   <url>
